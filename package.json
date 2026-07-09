@@ -1,0 +1,12 @@
+{
+  "name": "roi-run-on-invest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "R.O.I. — Run On Invest · Site officiel — Paris La Défense, septembre 2027",
+  "scripts": {
+    "start": "serve . -l tcp://0.0.0.0:${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
