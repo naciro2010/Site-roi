@@ -3,716 +3,764 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R.O.I. — RUN ON INVEST · PARIS LA DÉFENSE 2027</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<title>R.O.I — Run On Invest · L'impact après la ligne d'arrivée</title>
+<meta name="description" content="R.O.I — Run On Invest. Une course entre les tours de Paris La Défense (5, 10 ou 21,5 km), puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027. Un seul dossard.">
 <style>
-:root{
-  --black:#0A0A0A;
-  --carbon:#141414;
-  --white:#FFFFFF;
-  --volt:#D8FF3E;
-  --grey:#9A9A9A;
-  --line:rgba(255,255,255,.12);
+/* ==========================================================================
+   R.O.I — Identité « LA LIGNE »
+   Papier craie · Encre · Orange impact
+   Archivo variable (62–125% de chasse) · JetBrains Mono (chrono)
+   Convention de marque : T– = avant la ligne, T+ = après la ligne.
+   ========================================================================== */
+
+@font-face{
+  font-family:'Archivo VF';
+  src:url('fonts/archivo-latin-wdth-normal.woff2') format('woff2-variations');
+  font-weight:100 900;
+  font-stretch:62% 125%;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
+@font-face{
+  font-family:'Archivo VF';
+  src:url('fonts/archivo-latin-ext-wdth-normal.woff2') format('woff2-variations');
+  font-weight:100 900;
+  font-stretch:62% 125%;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --craie:#F0EBE1;
+  --craie-2:#E7E1D4;
+  --encre:#141210;
+  --encre-2:#1D1A17;
+  --impact:#FF4400;
+  --beton:#8A8578;
+  --ligne-craie:rgba(20,18,16,.16);
+  --ligne-encre:rgba(240,235,225,.16);
+  --pad:clamp(20px,4vw,56px);
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Archivo',sans-serif;background:var(--black);color:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.92}
-.oblique{transform:skew(-8deg);display:inline-block}
+::selection{background:var(--impact);color:var(--craie)}
+
+body{
+  font-family:'Archivo VF',Archivo,system-ui,sans-serif;
+  font-stretch:100%;
+  background:var(--craie);
+  color:var(--encre);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ---- Types de marque ---- */
+.display{
+  font-stretch:125%;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.88;
+  letter-spacing:-.015em;
+}
+.cond{
+  font-stretch:62%;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.mono{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:500;
+  text-transform:uppercase;
+}
+h1,h2,h3{font-stretch:125%;font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.015em}
 a{color:inherit}
-.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
-.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:800;color:var(--volt)}
-.btn{display:inline-block;padding:18px 36px;font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transform:skew(-8deg);transition:transform .12s ease,background .12s ease,color .12s ease}
-.btn>span{display:inline-block;transform:skew(8deg)}
-.btn:focus-visible{outline:3px solid var(--volt);outline-offset:3px}
-.btn-volt{background:var(--volt);color:var(--black)}
-.btn-volt:hover{transform:skew(-8deg) scale(1.04);background:#fff}
-.btn-line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px var(--white)}
-.btn-line:hover{background:var(--white);color:var(--black);transform:skew(-8deg) scale(1.04)}
-.btn-black{background:var(--black);color:var(--white)}
-.btn-black:hover{background:#222;transform:skew(-8deg) scale(1.04)}
+img{max-width:100%}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 
-/* ================= NAV ================= */
-nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1220px;margin:0 auto}
-.logo{font-family:'Anton',sans-serif;font-size:28px;letter-spacing:.02em;text-decoration:none;transform:skew(-8deg);display:inline-block}
-.logo em{color:var(--volt);font-style:normal}
-.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
-.nav-links a{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;opacity:.85}
-.nav-links a:hover{opacity:1;color:var(--volt)}
-.nav-cta{background:var(--volt);color:var(--black) !important;padding:12px 20px;font-family:'Anton',sans-serif;font-size:14px;transform:skew(-8deg);opacity:1 !important}
-.nav-cta span{display:inline-block;transform:skew(8deg)}
-.burger{display:none;background:none;border:2px solid var(--white);color:var(--white);font-family:'Anton',sans-serif;font-size:13px;padding:8px 14px;cursor:pointer;text-transform:uppercase}
+/* ---- Étiquette chrono de section : T+01 / NOM ---- */
+.tmark{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+}
+.tmark::before{content:"";width:10px;height:10px;background:var(--impact);flex:none}
+.tmark b{color:var(--impact);font-weight:700}
 
-/* ================= HERO ================= */
-.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:80px 0 0}
-.speed{position:absolute;inset:-20%;background:repeating-linear-gradient(115deg,transparent 0 90px,rgba(255,255,255,.035) 90px 92px,transparent 92px 240px,rgba(216,255,62,.05) 240px 243px);animation:speed 9s linear infinite;pointer-events:none}
-@keyframes speed{from{transform:translateX(0)}to{transform:translateX(-340px)}}
-.hero .wrap{position:relative;z-index:2}
-.hero .eyebrow{display:block;margin-bottom:26px}
-.hero h1{font-size:clamp(68px,13.5vw,210px);letter-spacing:.005em}
-.hero h1 .row{display:block;transform:skew(-8deg)}
-.hero h1 .volt{color:var(--volt)}
-.hero h1 .ghost{color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.9)}
-.hero-tagline{margin-top:28px;font-family:'Archivo',sans-serif;font-style:italic;font-weight:700;font-size:clamp(17px,2vw,24px);text-transform:uppercase;letter-spacing:.04em;color:var(--white)}
-.hero-tagline::before{content:"";display:inline-block;width:46px;height:4px;background:var(--volt);margin-right:16px;vertical-align:middle;transform:skew(-8deg)}
-.hero-sub{margin:34px 0 40px;font-size:clamp(16px,1.6vw,20px);max-width:58ch;color:#CFCFCF;font-weight:500}
-.hero-sub b{color:var(--volt)}
-.hero-ctas{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:80px}
-.hero-meta{position:relative;z-index:2;border-top:1px solid var(--line);display:flex;flex-wrap:wrap}
-.hero-meta div{flex:1;min-width:200px;padding:22px 24px;border-right:1px solid var(--line);font-weight:700;letter-spacing:.14em;font-size:12.5px;text-transform:uppercase;color:var(--grey)}
-.hero-meta div b{display:block;color:var(--white);font-size:15px;margin-top:4px;letter-spacing:.06em}
-.hero-meta div:last-child{border-right:none}
+/* ---- La Ligne (motif signature) ---- */
+.laligne{position:relative;height:4px;background:var(--encre)}
+.laligne::after{
+  content:"";position:absolute;right:0;top:-6px;height:16px;width:112px;
+  background:
+    repeating-conic-gradient(var(--encre) 0% 25%, transparent 0% 50%) 0 0/16px 16px;
+}
+.dark .laligne{background:var(--craie)}
+.dark .laligne::after{background:repeating-conic-gradient(var(--craie) 0% 25%, transparent 0% 50%) 0 0/16px 16px}
 
-/* ================= MARQUEE ================= */
-.marquee{background:var(--volt);color:var(--black);overflow:hidden;padding:14px 0;border-top:3px solid var(--black)}
-.marquee-track{display:flex;width:max-content;animation:mq 22s linear infinite}
-.marquee span{font-family:'Anton',sans-serif;font-size:clamp(26px,3.4vw,44px);text-transform:uppercase;white-space:nowrap;padding:0 30px;transform:skew(-8deg)}
-.marquee .out{color:transparent;-webkit-text-stroke:1.6px var(--black)}
+/* ---- Boutons ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:14px;
+  font-stretch:80%;font-weight:900;text-transform:uppercase;letter-spacing:.05em;
+  font-size:15px;text-decoration:none;cursor:pointer;
+  padding:18px 28px;border:2px solid var(--encre);
+  transition:background .15s ease,color .15s ease,transform .15s ease;
+}
+.btn .arr{font-family:'JetBrains Mono',monospace;font-weight:700;transition:transform .15s ease}
+.btn:hover .arr{transform:translateX(5px)}
+.btn:focus-visible{outline:3px solid var(--impact);outline-offset:3px}
+.btn-impact{background:var(--impact);border-color:var(--impact);color:var(--craie)}
+.btn-impact:hover{background:var(--encre);border-color:var(--encre);color:var(--craie)}
+.btn-encre{background:var(--encre);color:var(--craie)}
+.btn-encre:hover{background:var(--impact);border-color:var(--impact)}
+.btn-ghost{background:transparent;color:var(--encre)}
+.btn-ghost:hover{background:var(--encre);color:var(--craie)}
+.dark .btn-ghost{color:var(--craie);border-color:var(--craie)}
+.dark .btn-ghost:hover{background:var(--craie);color:var(--encre)}
+
+/* ---- Reveal ---- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* ==========================================================================
+   NAV
+   ========================================================================== */
+header{
+  position:sticky;top:0;z-index:200;
+  background:color-mix(in srgb, var(--craie) 92%, transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--encre);
+}
+.nav-in{display:flex;align-items:stretch;justify-content:space-between;max-width:1360px;margin:0 auto;position:relative}
+.logo{
+  display:flex;align-items:center;gap:3px;
+  padding:16px var(--pad);text-decoration:none;
+  font-stretch:125%;font-weight:900;font-size:26px;letter-spacing:-.01em;line-height:1;
+}
+.logo i{display:inline-block;width:7px;height:7px;background:var(--impact);margin:0 5px;align-self:flex-end;margin-bottom:3px}
+.nav-links{display:flex;list-style:none;align-items:stretch}
+.nav-links a{
+  display:flex;align-items:center;height:100%;padding:0 18px;
+  font-stretch:75%;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;border-left:1px solid var(--ligne-craie);
+  transition:background .12s ease,color .12s ease;
+}
+.nav-links a:hover{background:var(--encre);color:var(--craie)}
+.nav-links a.nav-cta{background:var(--impact);color:var(--craie);border-left:none;padding:0 26px}
+.nav-links a.nav-cta:hover{background:var(--encre)}
+.burger{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:0 var(--pad);font-family:'JetBrains Mono',monospace;font-weight:700;
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{padding-top:clamp(48px,8vh,96px)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:18px}
+.hero-chrono{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton)}
+.hero-chrono b{color:var(--impact);font-weight:700}
+
+.hero-roi{
+  font-stretch:125%;font-weight:900;line-height:.8;letter-spacing:-.02em;
+  font-size:clamp(110px,24.5vw,370px);
+  display:flex;align-items:baseline;justify-content:space-between;width:100%;
+  user-select:none;
+}
+.hero-roi i{flex:none;width:.115em;height:.115em;background:var(--impact);align-self:flex-end;margin-bottom:.06em}
+
+.hero-strip{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  border-top:4px solid var(--encre);border-bottom:1px solid var(--ligne-craie);
+  padding:14px 0;margin-top:clamp(18px,3vw,34px);flex-wrap:wrap;
+}
+.hero-strip .rsi{font-stretch:62%;font-weight:800;font-size:clamp(20px,3.2vw,34px);letter-spacing:.14em;text-transform:uppercase}
+.hero-strip .rsi em{font-style:normal;color:var(--impact)}
+.hero-strip .damier{
+  height:22px;flex:1;min-width:120px;max-width:420px;
+  background:repeating-conic-gradient(var(--encre) 0% 25%, transparent 0% 50%) 0 0/22px 22px;
+  opacity:.9;
+}
+.hero-strip .mono{font-size:12px;letter-spacing:.2em;color:var(--beton)}
+
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,80px);padding:clamp(36px,5vw,64px) 0}
+.hero-tagline{
+  font-stretch:110%;font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(30px,4.6vw,62px);
+}
+.hero-tagline .souligne{color:var(--impact);position:relative;white-space:nowrap}
+.hero-tagline .souligne::after{content:"";position:absolute;left:-2%;right:-6%;bottom:.02em;height:.085em;background:var(--impact)}
+.hero-right p{font-size:clamp(16px,1.5vw,19px);font-weight:500;max-width:46ch;color:#3A362F}
+.hero-right p b{color:var(--encre)}
+.hero-right p + p{margin-top:14px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+
+.hero-meta{border-top:2px solid var(--encre);display:grid;grid-template-columns:repeat(4,1fr)}
+.hero-meta>div{padding:20px var(--pad) 20px 0;border-right:1px solid var(--ligne-craie)}
+.hero-meta>div:last-child{border-right:none}
+.hero-meta .k{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton);display:block;margin-bottom:8px}
+.hero-meta .v{font-stretch:75%;font-weight:900;font-size:clamp(15px,1.5vw,19px);text-transform:uppercase;letter-spacing:.03em;line-height:1.15}
+
+/* ==========================================================================
+   MARQUEE
+   ========================================================================== */
+.marquee{background:var(--impact);color:var(--craie);overflow:hidden;border-top:3px solid var(--encre);border-bottom:3px solid var(--encre)}
+.marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite;padding:16px 0}
+.marquee span{
+  font-stretch:110%;font-weight:900;text-transform:uppercase;white-space:nowrap;
+  font-size:clamp(22px,3vw,40px);letter-spacing:.01em;padding:0 8px;line-height:1;
+}
+.marquee .sep{font-family:'JetBrains Mono',monospace;font-weight:700;padding:0 22px;font-size:clamp(16px,2vw,26px);align-self:center}
+.marquee .out{color:transparent;-webkit-text-stroke:1.5px var(--craie)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){
-  .marquee-track,.speed{animation:none}
-  .reveal{opacity:1 !important;transform:none !important}
+
+/* ==========================================================================
+   SECTIONS COMMUNES
+   ========================================================================== */
+section{padding:clamp(80px,10vw,140px) 0}
+.dark{background:var(--encre);color:var(--craie)}
+.dark ::selection{background:var(--craie);color:var(--encre)}
+.sec-head{margin-bottom:clamp(40px,6vw,72px)}
+.sec-head .tmark{margin-bottom:26px}
+.sec-head h2{font-size:clamp(46px,7.5vw,110px)}
+.sec-head h2 .creuse{color:transparent;-webkit-text-stroke:2px var(--encre)}
+.dark .sec-head h2 .creuse{-webkit-text-stroke:2px var(--craie);color:transparent}
+.sec-head .intro{margin-top:24px;max-width:62ch;font-size:17px;font-weight:500;color:#4A463E}
+.dark .sec-head .intro{color:#B9B3A6}
+
+/* ==========================================================================
+   MANIFESTE
+   ========================================================================== */
+#manifeste .stances{max-width:880px}
+#manifeste .stance{
+  font-stretch:95%;font-weight:700;line-height:1.28;
+  font-size:clamp(22px,3.1vw,40px);
+  padding:clamp(22px,3vw,34px) 0;
+  border-bottom:1px solid var(--ligne-encre);
+  color:#CFC9BC;
 }
+#manifeste .stance b{color:var(--craie);font-weight:900}
+#manifeste .stance .imp{color:var(--impact)}
+#manifeste .stance:first-child{padding-top:0}
+#manifeste .sceau{
+  margin-top:clamp(40px,6vw,70px);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+#manifeste .sceau .sig{font-stretch:125%;font-weight:900;font-size:clamp(54px,9vw,130px);line-height:.85;text-transform:uppercase}
+#manifeste .sceau .sig i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
+#manifeste .sceau .base{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);padding-bottom:10px}
+#manifeste .sceau .base b{color:var(--impact)}
 
-/* ================= SECTIONS ================= */
-section{padding:110px 0}
-.sec-head h2{font-size:clamp(44px,6.5vw,96px)}
-.sec-head h2 .oblique{display:block}
-.sec-head p{margin-top:22px;max-width:60ch;font-size:17px;color:#CFCFCF}
-.sec-head{margin-bottom:64px}
-.volt-t{color:var(--volt)}
+/* ==========================================================================
+   DEUX TEMPS (T– / T+)
+   ========================================================================== */
+.temps-grid{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--encre)}
+.temps{padding:clamp(30px,4vw,54px);position:relative}
+.temps:first-child{border-right:2px solid var(--encre)}
+.temps .t-chrono{
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(28px,3.4vw,44px);
+  letter-spacing:-.02em;margin-bottom:8px;
+}
+.temps.apres .t-chrono{color:var(--impact)}
+.temps h3{font-size:clamp(30px,3.6vw,52px);margin-bottom:18px}
+.temps .lead{font-size:16px;font-weight:500;color:#4A463E;margin-bottom:26px;max-width:44ch}
+.temps ul{list-style:none}
+.temps li{
+  display:flex;gap:14px;align-items:baseline;
+  padding:12px 0;border-top:1px solid var(--ligne-craie);
+  font-stretch:80%;font-weight:800;font-size:14.5px;letter-spacing:.04em;text-transform:uppercase;
+}
+.temps li .mono{flex:none;font-size:11px;color:var(--impact);letter-spacing:.1em;font-weight:700}
+.temps-ligne{
+  grid-column:1 / -1;
+  display:flex;align-items:center;gap:22px;
+  background:var(--encre);color:var(--craie);
+  padding:18px clamp(30px,4vw,54px);
+}
+.temps-ligne .damier{height:20px;width:100px;flex:none;background:repeating-conic-gradient(var(--craie) 0% 25%, transparent 0% 50%) 0 0/20px 20px}
+.temps-ligne p{font-stretch:75%;font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(14px,1.8vw,20px)}
+.temps-ligne p em{font-style:normal;color:var(--impact)}
 
-/* ================= LES 2 ÉTAPES ================= */
-#etapes{padding-bottom:0}
-.etapes-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:0}
-.etape{position:relative;border:1px solid var(--line);background:var(--carbon);padding:54px 44px 48px;overflow:hidden;transition:border-color .2s ease,transform .2s ease}
-.etape:hover{border-color:var(--volt);transform:translateY(-6px)}
-.etape .stage-num{position:absolute;top:-24px;right:-8px;font-family:'Anton',sans-serif;font-size:200px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(216,255,62,.14);transform:skew(-8deg);pointer-events:none;user-select:none}
-.etape .stage-label{display:inline-block;background:var(--volt);color:var(--black);font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;transform:skew(-8deg);margin-bottom:26px}
-.etape .stage-label span{display:inline-block;transform:skew(8deg)}
-.etape h3{font-size:clamp(34px,3.6vw,52px);margin-bottom:18px}
-.etape h3 .oblique{display:block}
-.etape p.lead{font-size:16px;color:#CFCFCF;margin-bottom:26px;position:relative;z-index:2}
-.etape ul{list-style:none;position:relative;z-index:2}
-.etape ul li{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;font-weight:600;color:#E4E4E4}
-.etape ul li::before{content:"▸";color:var(--volt);margin-right:12px}
-.punchline{margin-top:22px;padding:90px 0;text-align:center;position:relative;overflow:hidden}
-.punchline .speed{opacity:.7}
-.punchline h2{position:relative;z-index:2;font-size:clamp(34px,5.4vw,78px);max-width:1050px;margin:0 auto}
-.punchline h2 .l{display:block;transform:skew(-8deg)}
-.punchline h2 .dim{color:#5C5C5C}
-.punchline h2 .volt{color:var(--volt)}
-.punchline p{position:relative;z-index:2;margin-top:26px;font-size:16px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
+/* ==========================================================================
+   FORMATS
+   ========================================================================== */
+.formats{border-top:2px solid var(--encre)}
+.format{
+  display:grid;grid-template-columns:minmax(160px,.9fr) 1.4fr 1fr auto;
+  gap:clamp(16px,3vw,44px);align-items:center;
+  padding:clamp(26px,3.5vw,40px) 0;border-bottom:2px solid var(--encre);
+  transition:background .15s ease,color .15s ease;
+  position:relative;text-decoration:none;
+}
+.format:hover{background:var(--encre);color:var(--craie)}
+.format:hover .f-why{color:#B9B3A6}
+.format .f-km{font-stretch:125%;font-weight:900;font-size:clamp(48px,7vw,96px);line-height:.85;text-transform:uppercase;white-space:nowrap}
+.format .f-km small{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.28em;letter-spacing:.14em;vertical-align:.25em;margin-left:.25em;color:var(--impact)}
+.format .f-name{font-stretch:75%;font-weight:900;font-size:clamp(18px,2vw,26px);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.format .f-why{font-size:15px;font-weight:500;color:#4A463E;max-width:44ch}
+.format .f-data{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;line-height:2}
+.format .f-data b{color:var(--impact);font-weight:700}
+.format .f-go{
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;
+  border:2px solid currentColor;width:52px;height:52px;display:flex;align-items:center;justify-content:center;
+  transition:transform .15s ease;
+}
+.format:hover .f-go{transform:translateX(6px);border-color:var(--impact);color:var(--impact)}
+.formats-note{
+  display:flex;gap:16px;align-items:center;padding:20px 0;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--beton);
+}
+.formats-note b{color:var(--impact);font-weight:700}
 
-/* ================= TARIFS / PREVENTE ================= */
-#prevente{position:relative}
-#prevente::before{content:"DROP 01";position:absolute;top:30px;right:-30px;font-family:'Anton',sans-serif;font-size:clamp(90px,16vw,240px);color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.08);transform:skew(-8deg);pointer-events:none;user-select:none;line-height:1}
-.unique-tarif{display:inline-block;background:var(--carbon);border:1px solid var(--volt);padding:14px 22px;transform:skew(-8deg);margin-bottom:56px}
-.unique-tarif span{display:inline-block;transform:skew(8deg);font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--volt)}
-.countdown{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 56px}
-.count-cell{background:var(--carbon);border:1px solid var(--line);padding:18px 22px;min-width:104px;text-align:center;transform:skew(-8deg)}
-.count-cell>div{transform:skew(8deg)}
-.count-cell .n{font-family:'Anton',sans-serif;font-size:44px;color:var(--volt);line-height:1}
-.count-cell .l{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-top:6px;font-weight:700}
-.count-title{width:100%;font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:800;color:var(--grey);margin-bottom:2px}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.tier{background:var(--carbon);border:1px solid var(--line);padding:40px 34px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .18s ease,border-color .18s ease}
-.tier:hover{transform:translateY(-8px)}
-.tier.hot{border:2px solid var(--volt);background:linear-gradient(160deg,#1A1F0A 0%,#141414 55%)}
-.tier .phase{font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:.03em}
-.tier .window{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--grey);margin:10px 0 30px}
-.tier.hot .window{color:var(--volt)}
-.tier .amount{font-family:'Anton',sans-serif;font-size:clamp(64px,6vw,92px);line-height:1;transform:skew(-8deg);display:inline-block}
-.tier.hot .amount{color:var(--volt)}
-.tier .amount small{font-size:36px}
-.tier .save{margin-top:14px;font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--volt)}
-.tier .save.dim{color:var(--grey)}
-.tier ul{list-style:none;margin:28px 0 30px;flex:1}
-.tier ul li{padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:#D8D8D8;font-weight:500}
-.tier ul li::before{content:"▸ ";color:var(--volt)}
-.tier .btn{width:100%;text-align:center;font-size:15px;padding:16px 10px}
-.tier .soon{width:100%;text-align:center;font-family:'Anton',sans-serif;font-size:15px;padding:16px 10px;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);border:1px dashed var(--line);transform:skew(-8deg)}
-.tier .soon span{display:inline-block;transform:skew(8deg)}
-.badge{position:absolute;top:16px;right:-42px;background:var(--volt);color:var(--black);font-family:'Anton',sans-serif;font-size:12px;letter-spacing:.14em;padding:6px 48px;transform:rotate(35deg);z-index:3}
-.stock-bar{margin-top:56px;max-width:640px}
-.stock-bar .track{height:14px;background:var(--carbon);border:1px solid var(--line);transform:skew(-8deg);overflow:hidden}
-.stock-bar .fill{height:100%;width:23%;background:var(--volt)}
-.stock-bar p{margin-top:12px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--volt)}
+/* ==========================================================================
+   LIEU
+   ========================================================================== */
+#lieu h2 span{display:block}
+#lieu .arche{
+  font-size:clamp(54px,10vw,160px);
+}
+#lieu .arche .creuse{color:transparent;-webkit-text-stroke:2px var(--craie)}
+.lieu-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ligne-encre);margin-top:clamp(40px,6vw,70px)}
+.lieu-cell{padding:clamp(26px,3vw,42px);border-right:1px solid var(--ligne-encre)}
+.lieu-cell:last-child{border-right:none}
+.lieu-cell .n{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--impact);font-size:13px;letter-spacing:.2em;display:block;margin-bottom:14px}
+.lieu-cell h3{font-size:clamp(20px,2.2vw,30px);font-stretch:90%;margin-bottom:12px}
+.lieu-cell p{font-size:15px;color:#B9B3A6;font-weight:500}
 
-/* ================= COURSE ================= */
-#course{background:var(--white);color:var(--black)}
-#course .sec-head p{color:#3A3A3A}
-#course .eyebrow{color:var(--black);background:var(--volt);padding:6px 12px;display:inline-block;transform:skew(-8deg)}
-#course .eyebrow span{display:inline-block;transform:skew(8deg)}
-.course-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:start}
-.info-rows{border-top:3px solid var(--black)}
-.info-rows>div{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid #DDDDDD}
-.info-rows .k{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:#6E6E6E;padding-top:4px}
-.info-rows .v{font-size:16.5px;font-weight:600}
-.schedule{background:var(--black);color:var(--white);padding:38px 34px;transform:skew(-4deg)}
-.schedule>div{transform:skew(4deg)}
-.schedule h3{font-size:30px;margin-bottom:24px;color:var(--volt)}
-.schedule table{width:100%;border-collapse:collapse;font-size:14px;font-weight:600}
-.schedule td{padding:12px 0;border-bottom:1px solid var(--line)}
-.schedule td:first-child{color:var(--volt);width:92px;font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.04em}
-.schedule .phase-row td{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.1em;color:var(--volt);padding-top:22px;border-bottom:2px solid var(--volt)}
+/* ==========================================================================
+   TARIFS
+   ========================================================================== */
+.vagues{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--encre)}
+.vague{padding:clamp(28px,3.5vw,46px);border-right:2px solid var(--encre);display:flex;flex-direction:column;gap:18px;position:relative}
+.vague:last-child{border-right:none}
+.vague .v-tag{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton)}
+.vague h3{font-size:clamp(24px,2.6vw,36px);font-stretch:90%}
+.vague .v-prix{font-stretch:125%;font-weight:900;font-size:clamp(52px,6vw,86px);line-height:.85}
+.vague .v-prix small{font-size:.4em;vertical-align:.85em;font-stretch:100%}
+.vague .v-lim{font-size:14px;font-weight:500;color:#4A463E}
+.vague .v-cta{margin-top:auto}
+.vague.hot{background:var(--impact);color:var(--craie)}
+.vague.hot .v-tag,.vague.hot .v-lim{color:rgba(240,235,225,.85)}
+.vague.hot .btn{border-color:var(--craie);background:var(--craie);color:var(--encre)}
+.vague.hot .btn:hover{background:var(--encre);border-color:var(--encre);color:var(--craie)}
+.vague .badge{
+  position:absolute;top:-16px;left:clamp(28px,3.5vw,46px);
+  background:var(--encre);color:var(--craie);
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  padding:7px 12px;
+}
+.tarif-note{margin-top:26px;font-size:15px;font-weight:500;color:#4A463E;max-width:70ch}
+.tarif-note b{color:var(--impact)}
 
-/* ================= AMBASSADEURS ================= */
-#ambassadeurs{position:relative;overflow:hidden}
-#ambassadeurs .speed{opacity:.5}
-.amb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:2}
-.amb{background:var(--carbon);border:1px solid var(--line);aspect-ratio:3/3.6;display:flex;flex-direction:column;justify-content:flex-end;padding:26px 24px;position:relative;overflow:hidden;transition:border-color .2s ease}
-.amb:hover{border-color:var(--volt)}
-.amb::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#1E1E1E 0%,#101010 100%)}
-.amb::after{content:"?";position:absolute;top:14%;left:50%;transform:translateX(-50%) skew(-8deg);font-family:'Anton',sans-serif;font-size:120px;color:transparent;-webkit-text-stroke:2px rgba(216,255,62,.25)}
-.amb .who{position:relative;z-index:2;font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase}
-.amb .role{position:relative;z-index:2;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--volt);margin-top:6px}
+/* ==========================================================================
+   FINALE
+   ========================================================================== */
+.finale{background:var(--impact);color:var(--craie);border-top:3px solid var(--encre)}
+.finale h2{font-size:clamp(52px,9vw,150px)}
+.finale h2 .creuse{color:transparent;-webkit-text-stroke:2px var(--craie)}
+.finale .fin-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:40px}
+.finale p{font-size:clamp(16px,1.6vw,20px);font-weight:600;max-width:52ch}
+.finale .btn{border-color:var(--encre);background:var(--encre);color:var(--craie);font-size:17px;padding:22px 36px}
+.finale .btn:hover{background:var(--craie);color:var(--encre);border-color:var(--craie)}
 
-/* ================= PARTENAIRES ================= */
-#partenaires{background:var(--volt);color:var(--black)}
-#partenaires .eyebrow{color:var(--volt);background:var(--black);padding:6px 12px;display:inline-block;transform:skew(-8deg)}
-#partenaires .eyebrow span{display:inline-block;transform:skew(8deg)}
-#partenaires .sec-head p{color:#1E1E1E;font-weight:600}
-.part-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:52px}
-.part{border:3px solid var(--black);padding:30px 26px;transition:background .15s ease,color .15s ease}
-.part:hover{background:var(--black);color:var(--volt)}
-.part h3{font-size:26px;margin-bottom:12px}
-.part p{font-size:14.5px;font-weight:600}
-.part:hover p{color:#EDEDED}
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0 34px}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid var(--ligne-encre)}
+.foot-logo{font-stretch:125%;font-weight:900;font-size:44px;line-height:.9;text-transform:uppercase}
+.foot-logo i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
+.foot-base{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--beton);margin-top:12px}
+.foot-cols{display:flex;gap:clamp(30px,6vw,90px);flex-wrap:wrap}
+.foot-cols h4{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--beton);margin-bottom:16px}
+.foot-cols ul{list-style:none}
+.foot-cols li{margin-bottom:10px}
+.foot-cols a{font-stretch:80%;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none}
+.foot-cols a:hover{color:var(--impact)}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--beton)}
 
-/* ================= INSCRIPTION ================= */
-#inscription{position:relative;overflow:hidden}
-#inscription::before{content:"GO";position:absolute;bottom:-40px;right:-20px;font-family:'Anton',sans-serif;font-size:clamp(160px,28vw,420px);color:transparent;-webkit-text-stroke:1.5px rgba(216,255,62,.12);transform:skew(-8deg);line-height:1;pointer-events:none}
-.form-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start;position:relative;z-index:2}
-.form-wrap h2{font-size:clamp(40px,5.5vw,80px)}
-.form-left p{margin-top:22px;font-size:16.5px;color:#CFCFCF;max-width:42ch}
-.form-left .tarif-recap{margin-top:30px;border:1px solid var(--line);background:var(--carbon)}
-.form-left .tarif-recap div{display:flex;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.form-left .tarif-recap div:last-child{border-bottom:none}
-.form-left .tarif-recap .now{color:var(--volt)}
-.form-left .tarif-recap .later{color:var(--grey)}
-.guarantee{margin-top:26px;display:inline-block;background:var(--carbon);border:1px solid var(--volt);color:var(--volt);font-weight:800;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;padding:12px 18px;transform:skew(-8deg)}
-.guarantee span{display:inline-block;transform:skew(8deg)}
-.field{margin-bottom:22px}
-.field label{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-bottom:9px;color:#BDBDBD}
-.field input,.field select{width:100%;padding:16px 18px;border:1px solid var(--line);background:var(--carbon);color:var(--white);font-family:'Archivo',sans-serif;font-size:15.5px;font-weight:500}
-.field input:focus,.field select:focus{outline:2px solid var(--volt);border-color:var(--volt)}
-.dist-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.dist-pick button{padding:20px 8px;border:1px solid var(--line);background:var(--carbon);color:var(--white);font-family:'Anton',sans-serif;font-size:26px;cursor:pointer;transform:skew(-8deg);transition:all .12s ease}
-.dist-pick button>span{display:block;transform:skew(8deg)}
-.dist-pick button small{display:block;font-family:'Archivo',sans-serif;font-size:10.5px;letter-spacing:.16em;font-weight:800;margin-top:5px;color:var(--grey)}
-.dist-pick button.sel{background:var(--volt);color:var(--black);border-color:var(--volt)}
-.dist-pick button.sel small{color:var(--black)}
-.dist-pick button:focus-visible{outline:3px solid var(--volt);outline-offset:2px}
-.confirm{display:none;margin-top:22px;border:2px solid var(--volt);padding:18px 20px;font-size:13.5px;font-weight:800;letter-spacing:.06em;color:var(--volt);text-transform:uppercase}
-.form-note{font-size:12.5px;color:var(--grey);margin-top:16px}
-
-/* ================= FAQ ================= */
-#faq{background:var(--white);color:var(--black)}
-#faq .eyebrow{color:var(--black);background:var(--volt);padding:6px 12px;display:inline-block;transform:skew(-8deg)}
-#faq .eyebrow span{display:inline-block;transform:skew(8deg)}
-#faq details{border-bottom:2px solid var(--black);padding:4px 0}
-#faq summary{cursor:pointer;font-family:'Anton',sans-serif;font-size:clamp(18px,2.2vw,26px);text-transform:uppercase;padding:22px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px}
-#faq summary::-webkit-details-marker{display:none}
-#faq summary::after{content:"+";font-family:'Anton',sans-serif;font-size:34px;color:var(--black);flex-shrink:0}
-#faq details[open] summary::after{content:"–"}
-#faq details p{padding:0 0 26px;color:#333;max-width:75ch;font-size:15.5px;font-weight:500}
-
-/* ================= FOOTER ================= */
-footer{padding:90px 0 40px;border-top:1px solid var(--line)}
-.foot-cta{text-align:center;margin-bottom:90px}
-.foot-cta h2{font-size:clamp(50px,9vw,140px)}
-.foot-cta .btn{margin-top:38px}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:60px}
-footer .logo{font-size:38px}
-footer .tagline{font-size:14px;color:var(--grey);margin-top:16px;max-width:32ch;font-weight:500}
-footer h4{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--volt);margin-bottom:18px;font-weight:800}
-footer ul{list-style:none}
-footer ul li{margin-bottom:11px}
-footer ul a{text-decoration:none;font-size:14.5px;color:#D8D8D8;font-weight:500}
-footer ul a:hover{color:var(--volt)}
-.foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--grey)}
-
-/* ================= REVEAL ================= */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-
-/* ================= RESPONSIVE ================= */
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
 @media (max-width:980px){
-  .etapes-grid,.tiers,.part-grid{grid-template-columns:1fr}
-  .amb-grid{grid-template-columns:1fr 1fr}
-  .course-grid,.form-wrap{grid-template-columns:1fr;gap:48px}
-  .schedule{transform:none}
-  .schedule>div{transform:none}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  #prevente::before{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-meta{grid-template-columns:repeat(2,1fr)}
+  .hero-meta>div{border-bottom:1px solid var(--ligne-craie)}
+  .temps-grid{grid-template-columns:1fr}
+  .temps:first-child{border-right:none;border-bottom:2px solid var(--encre)}
+  .format{grid-template-columns:1fr;gap:14px}
+  .format .f-go{display:none}
+  .lieu-grid{grid-template-columns:1fr}
+  .lieu-cell{border-right:none;border-bottom:1px solid var(--ligne-encre)}
+  .lieu-cell:last-child{border-bottom:none}
+  .vagues{grid-template-columns:1fr}
+  .vague{border-right:none;border-bottom:2px solid var(--encre)}
+  .vague:last-child{border-bottom:none}
 }
-@media (max-width:760px){
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--black);flex-direction:column;padding:24px;border-bottom:1px solid var(--line);gap:20px;align-items:flex-start}
+@media (max-width:860px){
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;background:var(--craie);border-bottom:2px solid var(--encre);
+  }
   .nav-links.open{display:flex}
+  .nav-links a{padding:18px var(--pad);border-left:none;border-top:1px solid var(--ligne-craie);height:auto}
   .burger{display:block}
-  section{padding:72px 0}
-  .hero{min-height:auto;padding:64px 0 0}
-  .info-rows>div{grid-template-columns:1fr;gap:4px}
-  .count-cell{min-width:78px;padding:14px 14px}
-  .count-cell .n{font-size:32px}
-  .amb-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee-track{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.format,.f-go{transition:none}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<!-- ============================ NAV ============================ -->
+<header>
   <div class="nav-in">
-    <a class="logo" href="#top">R.<em>O</em>.I.</a>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">Menu</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#etapes">Les 2 temps forts</a></li>
-      <li><a href="#prevente">Tarifs</a></li>
-      <li><a href="#course">Programme</a></li>
-      <li><a href="#partenaires">Partenaires</a></li>
-      <li><a href="#faq">Infos</a></li>
-      <li><a class="nav-cta" href="#inscription"><span>Mon dossard</span></a></li>
+    <a class="logo" href="#top" aria-label="R.O.I — Run On Invest">R<i></i>O<i></i>I</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav-links" onclick="toggleNav(this)">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#manifeste">Manifeste</a></li>
+      <li><a href="#temps">La journée</a></li>
+      <li><a href="#formats">Les formats</a></li>
+      <li><a href="#lieu">Le lieu</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a class="nav-cta" href="#tarifs">Prendre un dossard</a></li>
     </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero" id="top">
-  <div class="speed" aria-hidden="true"></div>
-  <div class="wrap">
-    <span class="eyebrow">Paris — La Défense · Septembre 2027</span>
-    <h1>
-      <span class="row">Run</span>
-      <span class="row ghost">On</span>
-      <span class="row volt">Invest.</span>
-    </h1>
-    <p class="hero-tagline">Le seul retour sur investissement qui se gagne à la course.</p>
-    <p class="hero-sub">Un événement, deux temps forts. <b>Temps fort 01 :</b> une vraie course — 5, 10 ou 21,5 km au cœur du quartier d'affaires. <b>Temps fort 02 :</b> un lieu emblématique de La Défense entièrement privatisé pour le plus grand événement de networking entre entrepreneurs, avec des ambassadeurs qui sont à la fois entrepreneurs reconnus et coureurs.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-volt" href="#prevente"><span>Acheter mon dossard — 350€</span></a>
-      <a class="btn btn-line" href="#etapes"><span>Découvrir les 2 temps forts</span></a>
-    </div>
-  </div>
-  <div class="hero-meta">
-    <div>Coureurs<b>10 000 attendus</b></div>
-    <div>Distances<b>5 · 10 · 21,5 km</b></div>
-    <div>Networking<b>Lieu emblématique privatisé</b></div>
-    <div>Réseau<b>Jusqu'à 10 000 profils</b></div>
   </div>
 </header>
 
-<!-- MARQUEE -->
+<!-- ============================ HERO ============================ -->
+<main id="top">
+<section class="hero" aria-label="R.O.I — Run On Invest">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="tmark"><b>ÉDITION 01</b> — PARIS LA DÉFENSE — SEPTEMBRE 2027</span>
+      <span class="hero-chrono" aria-hidden="true">LE CHRONO CONTINUE APRÈS LA LIGNE — <b id="chrono">T+00:00:00</b></span>
+    </div>
+
+    <div class="hero-roi" aria-hidden="true">R<i></i>O<i></i>I</div>
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">R.O.I — Run On Invest</h1>
+
+    <div class="hero-strip">
+      <span class="rsi">RUN <em>ON</em> INVEST</span>
+      <span class="damier" aria-hidden="true"></span>
+      <span class="mono">FR · 5K — 10K — 21,5K</span>
+    </div>
+
+    <div class="hero-grid">
+      <p class="hero-tagline reveal">L'impact <span class="souligne">après</span> la ligne d'arrivée.</p>
+      <div class="hero-right reveal">
+        <p>Une course au cœur de Paris La Défense — <b>5, 10 ou 21,5 km</b> entre les tours — suivie du <b>plus grand événement de networking entre entrepreneurs de France</b>.</p>
+        <p>Un seul dossard. Il te fait franchir la ligne, puis il devient ton profil pour tout ce qui commence après.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-impact" href="#tarifs"><span>Prendre un dossard</span><span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#manifeste"><span>Lire le manifeste</span><span class="arr">↓</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div><span class="k">LIEU</span><span class="v">Paris La Défense — Grande Arche</span></div>
+      <div><span class="k">DATE</span><span class="v">Septembre 2027</span></div>
+      <div><span class="k">DISTANCES</span><span class="v">5 · 10 · 21,5 KM</span></div>
+      <div><span class="k">UN DOSSARD</span><span class="v">Course + Networking</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MARQUEE ============================ -->
 <div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="mqTrack">
-    <span>Temps fort 01 — La course</span>
-    <span class="out">Temps fort 02 — Le networking</span>
-    <span>Paris — La Défense</span>
-    <span class="out">Septembre 2027</span>
-    <span>5K · 10K · 21,5K</span>
-    <span class="out">1 000 dossards early bird</span>
+  <div class="marquee-track">
+    <span>L'impact après la ligne d'arrivée</span><span class="sep">//</span>
+    <span class="out">Run On Invest</span><span class="sep">//</span>
+    <span>Paris La Défense</span><span class="sep">//</span>
+    <span class="out">Septembre 2027</span><span class="sep">//</span>
+    <span>L'impact après la ligne d'arrivée</span><span class="sep">//</span>
+    <span class="out">Run On Invest</span><span class="sep">//</span>
+    <span>Paris La Défense</span><span class="sep">//</span>
+    <span class="out">Septembre 2027</span><span class="sep">//</span>
   </div>
 </div>
 
-<!-- LES 2 ÉTAPES -->
-<section id="etapes">
+<!-- ============================ MANIFESTE ============================ -->
+<section class="dark" id="manifeste">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Le format</span>
-      <h2><span class="oblique">Un dossard.</span><span class="oblique volt-t">Deux temps forts.</span></h2>
-      <p>R.O.I. n'est pas une course avec un pot d'arrivée. C'est un événement en deux temps, pensé pour que l'effort de la course devienne du business.</p>
-    </div>
-    <div class="etapes-grid reveal">
-      <article class="etape">
-        <span class="stage-num">01</span>
-        <span class="stage-label"><span>Temps fort 01</span></span>
-        <h3><span class="oblique">La course</span></h3>
-        <p class="lead">Une vraie course chronométrée au cœur du premier quartier d'affaires d'Europe. Tu choisis ta distance, le réseau reste le même.</p>
-        <ul>
-          <li>5 km, 10 km ou 21,5 km — parcours fermé à La Défense</li>
-          <li>Dossard chronométré + puce, classements officiels</li>
-          <li>Départs par vagues entre les tours et sur l'esplanade</li>
-          <li>T-shirt technique, médaille finisher, ravitaillements</li>
-          <li>Ton dossard = ton profil : il active ton accès au temps fort 02</li>
-        </ul>
-      </article>
-      <article class="etape">
-        <span class="stage-num">02</span>
-        <span class="stage-label"><span>Temps fort 02</span></span>
-        <h3><span class="oblique">Le networking</span></h3>
-        <p class="lead">Un lieu emblématique de La Défense entièrement privatisé pour un événement de networking entre entrepreneurs — le plus grand du genre en France.</p>
-        <ul>
-          <li>Un lieu emblématique privatisé pour les 10 000 finishers</li>
-          <li>Prises de parole d'ambassadeurs : entrepreneurs reconnus &amp; coureurs</li>
-          <li>Matchmaking via l'app R.O.I. — activée dès ta ligne d'arrivée</li>
-          <li>Espaces de rencontre par secteurs : tech, finance, retail, impact...</li>
-          <li>Afterwork géant — les deals se signent en baskets</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-  <div class="punchline reveal">
-    <div class="speed" aria-hidden="true"></div>
-    <h2>
-      <span class="l dim">Tu repars avec de la transpiration,</span>
-      <span class="l dim">quelques courbatures demain —</span>
-      <span class="l">et surtout <span class="volt">un carnet d'adresses.</span></span>
-    </h2>
-    <p>▸ Un boost pour ta société, ton entreprise, ton business.</p>
-  </div>
-</section>
-
-<!-- TARIFS / PREVENTE -->
-<section id="prevente">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Drop 01 — Early Bird</span>
-      <h2><span class="oblique">Plus tu attends,</span><span class="oblique volt-t">plus c'est cher.</span></h2>
-      <p>Un seul dossard, un seul prix — quelle que soit ta distance. 5, 10 ou 21,5 km : même accès complet à la course et à l'Arena. Seule la date de ton inscription change le tarif.</p>
-    </div>
-
-    <div class="unique-tarif reveal"><span>▸ Tarif unique 5 km · 10 km · 21,5 km — même prix, même réseau</span></div>
-
-    <div class="countdown reveal" aria-label="Compte à rebours de fin du tarif early bird">
-      <p class="count-title">Fin du tarif Early Bird dans</p>
-      <div class="count-cell"><div><div class="n" id="cdJ">—</div><div class="l">Jours</div></div></div>
-      <div class="count-cell"><div><div class="n" id="cdH">—</div><div class="l">Heures</div></div></div>
-      <div class="count-cell"><div><div class="n" id="cdM">—</div><div class="l">Minutes</div></div></div>
-      <div class="count-cell"><div><div class="n" id="cdS">—</div><div class="l">Secondes</div></div></div>
-    </div>
-
-    <div class="tiers reveal">
-      <article class="tier hot">
-        <span class="badge">En cours</span>
-        <h3 class="phase">Early Bird</h3>
-        <p class="window">Maintenant → 30 novembre 2026 · 1 000 dossards</p>
-        <span class="amount">350<small>€</small></span>
-        <p class="save">▸ Économise 150€ sur le tarif final</p>
-        <ul>
-          <li>Course au choix : 5 / 10 / 21,5 km</li>
-          <li>Accès complet au temps fort networking</li>
-          <li>App R.O.I. + matchmaking dès l'arrivée</li>
-          <li>Badge "Fondateur" à vie sur ton profil</li>
-          <li>Placement prioritaire dans les sas de départ</li>
-        </ul>
-        <a class="btn btn-volt" href="#inscription"><span>Prendre mon dossard</span></a>
-      </article>
-      <article class="tier">
-        <h3 class="phase">Régulier</h3>
-        <p class="window">Décembre 2026 → fin janvier 2027</p>
-        <span class="amount">400<small>€</small></span>
-        <p class="save dim">▸ Économise 100€ sur le tarif final</p>
-        <ul>
-          <li>Course au choix : 5 / 10 / 21,5 km</li>
-          <li>Accès complet au temps fort networking</li>
-          <li>App R.O.I. + matchmaking dès l'arrivée</li>
-        </ul>
-        <div class="soon"><span>Ouvre en décembre 2026</span></div>
-      </article>
-      <article class="tier">
-        <h3 class="phase">Last Call</h3>
-        <p class="window">Février 2027 → jour J</p>
-        <span class="amount">500<small>€</small></span>
-        <p class="save dim">▸ Dans la limite des dossards restants</p>
-        <ul>
-          <li>Course au choix : 5 / 10 / 21,5 km</li>
-          <li>Accès complet au temps fort networking</li>
-          <li>App R.O.I. + matchmaking dès l'arrivée</li>
-        </ul>
-        <div class="soon"><span>Ouvre en février 2027</span></div>
-      </article>
-    </div>
-
-    <div class="stock-bar reveal">
-      <div class="track"><div class="fill"></div></div>
-      <p>▸ 23% des 1 000 dossards Early Bird déjà partis</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROGRAMME -->
-<section id="course">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow"><span>Le programme</span></span>
-      <h2><span class="oblique">Un événement,</span><span class="oblique">deux temps forts.</span></h2>
-      <p>Le chrono d'abord, le business ensuite. Tout se joue à La Défense — programme indicatif, horaires confirmés à l'ouverture des inscriptions générales.</p>
-    </div>
-    <div class="course-grid reveal">
-      <div class="info-rows">
-        <div><span class="k">Date</span><span class="v">Septembre 2027 — date précise annoncée à l'ouverture des inscriptions générales</span></div>
-        <div><span class="k">Lieu</span><span class="v">Paris — La Défense : parcours entre les tours, networking dans un lieu emblématique privatisé</span></div>
-        <div><span class="k">Distances</span><span class="v">5 km · 10 km · 21,5 km — parcours mesurés et chronométrés</span></div>
-        <div><span class="k">Niveau</span><span class="v">Ouvert à tous, du premier 5 km au semi confirmé — c'est le réseau qui compte</span></div>
-        <div><span class="k">Retrait dossards</span><span class="v">Village R.O.I. — la veille et le matin de la course</span></div>
-        <div><span class="k">Accès</span><span class="v">Métro ligne 1, RER A, Transilien L — La Défense Grande Arche</span></div>
-        <div><span class="k">Certificat</span><span class="v">Parcours Prévention Santé ou certificat médical selon la réglementation en vigueur</span></div>
-      </div>
-      <aside class="schedule">
-        <div>
-          <h3>Jour J — Indicatif</h3>
-          <table>
-            <tr class="phase-row"><td>T.F. 01</td><td>La course</td></tr>
-            <tr><td>H-2:00</td><td>Ouverture du village &amp; retrait des derniers dossards</td></tr>
-            <tr><td>H</td><td>Départ 21,5 km</td></tr>
-            <tr><td>H+0:45</td><td>Départ 10 km</td></tr>
-            <tr><td>H+1:30</td><td>Départ 5 km</td></tr>
-            <tr><td>H+3:00</td><td>Remise des prix</td></tr>
-            <tr class="phase-row"><td>T.F. 02</td><td>Le networking</td></tr>
-            <tr><td>H+4:00</td><td>Ouverture du lieu networking — l'app s'active</td></tr>
-            <tr><td>H+5:00</td><td>Talks d'ambassadeurs : entrepreneurs &amp; coureurs</td></tr>
-            <tr><td>H+6:30</td><td>Sessions de matchmaking par secteurs</td></tr>
-            <tr><td>H+8:30</td><td>Afterwork géant — jusqu'au bout de la nuit</td></tr>
-          </table>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- AMBASSADEURS -->
-<section id="ambassadeurs">
-  <div class="speed" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Les ambassadeurs</span>
-      <h2><span class="oblique">Ils dirigent des boîtes.</span><span class="oblique volt-t">Ils courent aussi.</span></h2>
-      <p>Sur scène : des entrepreneurs reconnus qui sont aussi des coureurs. Ils partagent ce que la course leur a appris sur le business — et inversement. Annonces des premiers noms à venir.</p>
-    </div>
-    <div class="amb-grid reveal">
-      <div class="amb"><span class="who">Ambassadeur 01</span><span class="role">Annonce à venir</span></div>
-      <div class="amb"><span class="who">Ambassadeur 02</span><span class="role">Annonce à venir</span></div>
-      <div class="amb"><span class="who">Ambassadeur 03</span><span class="role">Annonce à venir</span></div>
-      <div class="amb"><span class="who">Ambassadeur 04</span><span class="role">Annonce à venir</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PARTENAIRES -->
-<section id="partenaires">
-  <div class="wrap reveal">
     <div class="sec-head">
-      <span class="eyebrow"><span>Partenariats</span></span>
-      <h2><span class="oblique">Votre marque</span><span class="oblique">au départ.</span></h2>
-      <p>10 000 coureurs qualifiés — entrepreneurs, cadres, investisseurs — réunis à La Défense, puis connectés lors du temps fort networking et toute l'année sur l'app. Un accès direct à une audience business rare, dans un contexte d'énergie et de dépassement.</p>
+      <span class="tmark"><b>T+01</b> / MANIFESTE</span>
+      <h2>Certains retours <span class="creuse">ne tiennent pas</span> dans un tableau.</h2>
     </div>
-    <div class="part-grid">
-      <div class="part">
-        <h3>Visibilité événement</h3>
-        <p>Arche de départ, parcours, dossards, village, scène du networking : votre marque au cœur des deux temps forts, sur site et en captation.</p>
-      </div>
-      <div class="part">
-        <h3>Activation &amp; contenu</h3>
-        <p>Stand au village et au lieu networking, animations, challenges de marque dans l'app, contenus co-produits avant, pendant et après la course.</p>
-      </div>
-      <div class="part">
-        <h3>Networking privilégié</h3>
-        <p>Dossards VIP, espaces privatifs au lieu networking, prise de parole possible, mise en relation qualifiée avec la communauté R.O.I.</p>
-      </div>
+    <div class="stances">
+      <p class="stance reveal">Nous connaissons tous le retour sur investissement. Nous mesurons <b>les résultats, la croissance, la performance</b>.</p>
+      <p class="stance reveal">Mais certains retours ne tiennent pas dans un tableau. <b>Une rencontre. Une impulsion. Une idée qui devient un projet.</b></p>
+      <p class="stance reveal">R.O.I réunit ceux qui avancent, <b>dans leur vie comme dans leur métier</b>. Non pour collectionner les contacts, mais pour partager une expérience capable de créer <b>des liens durables</b>.</p>
+      <p class="stance reveal">Ici, la ligne d'arrivée n'est pas une fin. <b class="imp">C'est l'endroit précis où l'impact commence.</b></p>
     </div>
-    <a class="btn btn-black" href="mailto:partenariats@runoninvest.fr?subject=Partenariat%20R.O.I.%20%E2%80%94%20%C3%89dition%2001"><span>Demander le dossier partenaire</span></a>
+    <div class="sceau reveal">
+      <div class="sig">R<i></i>O<i></i>I</div>
+      <div class="base">L'IMPACT APRÈS LA LIGNE D'ARRIVÉE <b>■</b></div>
+    </div>
   </div>
 </section>
 
-<!-- INSCRIPTION -->
-<section id="inscription">
+<!-- ============================ DEUX TEMPS ============================ -->
+<section id="temps">
   <div class="wrap">
-    <div class="form-wrap reveal">
-      <div class="form-left">
-        <span class="eyebrow">Early Bird — Réservation</span>
-        <h2><span class="oblique">À toi</span><br><span class="oblique volt-t">de jouer.</span></h2>
-        <p>Réserve ton dossard au tarif Early Bird. Tu recevras ta confirmation et ton lien de paiement sécurisé par e-mail.</p>
-        <div class="tarif-recap">
-          <div class="now"><span>Early Bird — jusqu'au 30 nov. 2026</span><span>350€</span></div>
-          <div class="later"><span>Régulier — jusqu'à fin janv. 2027</span><span>400€</span></div>
-          <div class="later"><span>Last Call — jusqu'au jour J</span><span>500€</span></div>
-        </div>
-        <div class="guarantee"><span>▸ Tarif garanti 48h après réservation</span></div>
+    <div class="sec-head">
+      <span class="tmark"><b>T+02</b> / LA JOURNÉE</span>
+      <h2>Une journée.<br><span class="creuse">Deux retours.</span></h2>
+      <p class="intro">Tout est pensé autour d'une ligne. Avant elle, tu cours. Après elle, tout commence. Le même dossard raconte les deux histoires.</p>
+    </div>
+
+    <div class="temps-grid reveal">
+      <div class="temps avant">
+        <div class="t-chrono" aria-hidden="true">T–</div>
+        <h3>La course</h3>
+        <p class="lead">Un parcours fermé entre les tours de La Défense, départ et arrivée à la Grande Arche. Du bitume, du béton, du vertical — et un vrai chrono.</p>
+        <ul>
+          <li><span class="mono">01</span> 5, 10 ou 21,5 km — même départ, même énergie</li>
+          <li><span class="mono">02</span> Dossard chronométré + puce, classements officiels</li>
+          <li><span class="mono">03</span> T-shirt technique &amp; médaille finisher</li>
+          <li><span class="mono">04</span> Parcours entièrement privatisé</li>
+        </ul>
       </div>
-      <div>
-        <div class="field">
-          <label>Ta distance — même prix, même réseau</label>
-          <div class="dist-pick" id="distPick" role="group" aria-label="Choix de la distance">
-            <button type="button" data-v="5"><span>5K<small>350€ Early Bird</small></span></button>
-            <button type="button" data-v="10" class="sel"><span>10K<small>350€ Early Bird</small></span></button>
-            <button type="button" data-v="21.5"><span>21,5K<small>350€ Early Bird</small></span></button>
-          </div>
-        </div>
-        <div class="field"><label for="fPrenom">Prénom</label><input id="fPrenom" type="text" autocomplete="given-name"></div>
-        <div class="field"><label for="fNom">Nom</label><input id="fNom" type="text" autocomplete="family-name"></div>
-        <div class="field"><label for="fEmail">E-mail professionnel</label><input id="fEmail" type="email" autocomplete="email"></div>
-        <div class="field"><label for="fEntreprise">Entreprise / activité</label><input id="fEntreprise" type="text" autocomplete="organization"></div>
-        <div class="field">
-          <label for="fRole">Ton profil</label>
-          <select id="fRole">
-            <option>Entrepreneur·e / fondateur·rice</option>
-            <option>Cadre / dirigeant·e</option>
-            <option>Investisseur·euse</option>
-            <option>Indépendant·e / freelance</option>
-            <option>Autre profil</option>
-          </select>
-        </div>
-        <button class="btn btn-volt" id="reserveBtn" style="width:100%"><span>Réserver mon dossard — 350€</span></button>
-        <div class="confirm" id="confirmMsg"></div>
-        <p class="form-note">En réservant, tu acceptes d'être contacté par R.O.I. au sujet de ton inscription. Aucune donnée partagée avec des tiers.</p>
+      <div class="temps apres">
+        <div class="t-chrono" aria-hidden="true">T+</div>
+        <h3>Le retour</h3>
+        <p class="lead">Passé la ligne, ton dossard devient ton profil. Place au plus grand networking d'entrepreneurs de France — endorphines comprises.</p>
+        <ul>
+          <li><span class="mono">01</span> Le plus grand networking d'entrepreneurs de France</li>
+          <li><span class="mono">02</span> Ton dossard = ton profil : il active ton accès</li>
+          <li><span class="mono">03</span> Des rencontres à hauteur d'effort, pas d'ascenseur</li>
+          <li><span class="mono">04</span> Des liens qui durent plus longtemps que les courbatures</li>
+        </ul>
+      </div>
+      <div class="temps-ligne">
+        <span class="damier" aria-hidden="true"></span>
+        <p>LA LIGNE N'EST PAS UNE FIN — <em>c'est là que l'impact commence.</em></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
+<!-- ============================ FORMATS ============================ -->
+<section id="formats">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow"><span>Infos pratiques</span></span>
-      <h2><span class="oblique">Tout ce qu'il</span><span class="oblique">faut savoir.</span></h2>
+    <div class="sec-head">
+      <span class="tmark"><b>T+03</b> / LES FORMATS</span>
+      <h2>Choisis ta distance.<br><span class="creuse">Pas ton impact.</span></h2>
+      <p class="intro">Du 5 km au semi, tu franchis la même ligne et tu accèdes exactement au même événement. La distance ne change que l'effort — jamais l'après.</p>
     </div>
-    <div class="reveal">
-      <details>
-        <summary>Pourquoi le même prix sur les trois distances ?</summary>
-        <p>Parce que le dossard n'est pas un ticket de course : c'est ton accès au réseau. Que tu coures 5 ou 21,5 km, tu accèdes exactement au même événement de networking, aux mêmes ambassadeurs et à la même app de matchmaking. La distance est un choix sportif, pas un niveau de gamme.</p>
-      </details>
-      <details>
-        <summary>Comment évolue le tarif ?</summary>
-        <p>Trois périodes : Early Bird à 350€ jusqu'au 30 novembre 2026 (limité à 1 000 dossards), tarif régulier à 400€ jusqu'à fin janvier 2027, puis Last Call à 500€ jusqu'au jour J dans la limite des dossards restants. Plus tu t'inscris tôt, moins tu paies.</p>
-      </details>
-      <details>
-        <summary>Que comprend mon dossard ?</summary>
-        <p>Les deux temps forts complets : la course chronométrée (dossard + puce, t-shirt technique, médaille finisher, ravitaillements), et l'accès au networking dans un lieu emblématique privatisé (talks d'ambassadeurs, sessions de matchmaking, afterwork), plus l'application R.O.I. activée dès ta ligne d'arrivée.</p>
-      </details>
-      <details>
-        <summary>Comment fonctionne l'app de networking ?</summary>
-        <p>Après la course, ton profil professionnel s'active dans l'app. Tu accèdes progressivement au réseau des participants : les premiers contacts se débloquent à l'arrivée, puis ton engagement (échanges, événements, éditions suivantes) élargit ton accès.</p>
-      </details>
-      <details>
-        <summary>Puis-je changer de distance après ma réservation ?</summary>
-        <p>Oui, jusqu'à 60 jours avant la course, dans la limite des dossards disponibles — et sans surcoût, puisque le tarif est le même sur les trois distances.</p>
-      </details>
-      <details>
-        <summary>Le dossard est-il remboursable ou transférable ?</summary>
-        <p>Le dossard est transférable à une autre personne jusqu'à 30 jours avant l'événement. Une garantie annulation optionnelle sera proposée lors du paiement.</p>
-      </details>
-      <details>
-        <summary>Faut-il un certificat médical ?</summary>
-        <p>L'inscription à une course en France nécessite un Parcours Prévention Santé (PPS) ou un certificat médical selon la réglementation en vigueur au moment de l'événement. Les modalités te seront communiquées par e-mail avant la course.</p>
-      </details>
-      <details>
-        <summary>Puis-je inscrire mon équipe ou mon entreprise ?</summary>
-        <p>Oui. Des packs équipes (à partir de 10 dossards) avec dossards personnalisés au nom de l'entreprise seront disponibles. Contacte-nous à entreprises@runoninvest.fr.</p>
-      </details>
+
+    <div class="formats reveal">
+      <a class="format" href="#tarifs">
+        <div class="f-km">5<small>KM</small></div>
+        <div>
+          <div class="f-name">Le Sprint</div>
+          <p class="f-why">Pour se lancer, courir accompagné·e, ou garder du souffle pour les conversations d'après.</p>
+        </div>
+        <div class="f-data">BOUCLE ESPLANADE<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <span class="f-go" aria-hidden="true">→</span>
+      </a>
+      <a class="format" href="#tarifs">
+        <div class="f-km">10<small>KM</small></div>
+        <div>
+          <div class="f-name">La Référence</div>
+          <p class="f-why">Le format signature : assez long pour se dépasser, assez court pour arriver frais sur le parvis.</p>
+        </div>
+        <div class="f-data">ENTRE LES TOURS<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <span class="f-go" aria-hidden="true">→</span>
+      </a>
+      <a class="format" href="#tarifs">
+        <div class="f-km">21,5<small>KM</small></div>
+        <div>
+          <div class="f-name">Le Grand Format</div>
+          <p class="f-why">Le semi de La Défense, mesuré et fermé. Pour celles et ceux qui ne font pas les choses à moitié.</p>
+        </div>
+        <div class="f-data">PARCOURS MESURÉ · FERMÉ<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <span class="f-go" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="formats-note">
+      <span><b>■</b> UN DOSSARD, UN PRIX — QUELLE QUE SOIT LA DISTANCE.</span>
+      <span>MÊME LIGNE · MÊME ACCÈS · MÊME APRÈS</span>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================ LIEU ============================ -->
+<section class="dark" id="lieu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T+04</b> / LE LIEU</span>
+      <h2 class="arche"><span>Paris</span><span class="creuse">La Défense</span></h2>
+      <p class="intro">Le plus grand quartier d'affaires d'Europe, rendu aux coureurs le temps d'une journée. On court là où l'on signe, et on signe là où l'on court.</p>
+    </div>
+    <div class="laligne reveal" aria-hidden="true"></div>
+    <div class="lieu-grid reveal">
+      <div class="lieu-cell">
+        <span class="n">04.1 — DÉPART / ARRIVÉE</span>
+        <h3>La Grande Arche</h3>
+        <p>Départ et arrivée au pied de l'Arche. Une ligne de départ à la hauteur du symbole — et une ligne d'arrivée qui n'en est pas une.</p>
+      </div>
+      <div class="lieu-cell">
+        <span class="n">04.2 — LE PARCOURS</span>
+        <h3>Entre les tours</h3>
+        <p>Un tracé fermé et privatisé entre les tours : esplanade, parvis, perspectives. Le béton comme terrain de jeu.</p>
+      </div>
+      <div class="lieu-cell">
+        <span class="n">04.3 — L'APRÈS</span>
+        <h3>Le parvis, privatisé</h3>
+        <p>Passé la ligne, le quartier devient le plus grand espace de networking de France. Village, scène, rencontres — jusqu'au soir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TARIFS ============================ -->
+<section id="tarifs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T+05</b> / LES DOSSARDS</span>
+      <h2>Un dossard.<br><span class="creuse">Trois vagues.</span></h2>
+      <p class="intro">Tarif unique 5 km · 10 km · 21,5 km — même prix, même accès. Plus tu t'inscris tôt, moins tu paies. Chaque vague est limitée.</p>
+    </div>
+
+    <div class="vagues reveal">
+      <div class="vague hot">
+        <span class="badge">VAGUE OUVERTE</span>
+        <span class="v-tag">VAGUE 01 — JUSQU'AU 30 NOV. 2026</span>
+        <h3>Early Bird</h3>
+        <div class="v-prix">350<small>€</small></div>
+        <p class="v-lim">Quantité limitée. Économise 150€ sur le tarif final — tarif garanti 48h après réservation.</p>
+        <a class="btn v-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20Early%20Bird%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
+      </div>
+      <div class="vague">
+        <span class="v-tag">VAGUE 02 — JUSQU'À FIN JANVIER 2027</span>
+        <h3>Régulier</h3>
+        <div class="v-prix">400<small>€</small></div>
+        <p class="v-lim">Le tarif standard, tant qu'il reste des dossards. Toujours 100€ de moins que le jour J.</p>
+        <a class="btn btn-ghost v-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20R.O.I%20%E2%80%94%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
+      </div>
+      <div class="vague">
+        <span class="v-tag">VAGUE 03 — JUSQU'AU JOUR J</span>
+        <h3>Last Call</h3>
+        <div class="v-prix">500<small>€</small></div>
+        <p class="v-lim">Dans la limite des dossards disponibles. La ligne n'attend personne.</p>
+        <a class="btn btn-ghost v-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20Last%20Call%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
+      </div>
+    </div>
+    <p class="tarif-note"><b>Le dossard n'est pas un ticket de course.</b> C'est ton accès à la journée entière : course chronométrée, t-shirt technique, médaille finisher — et le networking d'après. Il est transférable à une autre personne jusqu'au jour J.</p>
+  </div>
+</section>
+
+<!-- ============================ FINALE ============================ -->
+<section class="finale" id="rejoindre">
+  <div class="wrap">
+    <h2 class="reveal">Prends ta place<br><span class="creuse">sur la ligne.</span></h2>
+    <div class="fin-grid reveal">
+      <p>Édition 01 — Paris La Défense, septembre 2027. Les dossards Early Bird sont ouverts, et ils partiront avant la date précise. La suite s'écrit après la ligne.</p>
+      <a class="btn" href="mailto:contact@runoninvest.fr?subject=Dossard%20Early%20Bird%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Prendre un dossard</span><span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
 <footer>
   <div class="wrap">
-    <div class="foot-cta reveal">
-      <h2><span class="oblique">Prêt·e au <span class="volt-t">départ ?</span></span></h2>
-      <a class="btn btn-volt" href="#inscription"><span>Mon dossard Early Bird — 350€</span></a>
-    </div>
-    <div class="foot-grid">
+    <div class="foot-top">
       <div>
-        <span class="logo">R.<em>O</em>.I.</span>
-        <p class="tagline">Le seul retour sur investissement qui se gagne à la course. Paris · La Défense · Septembre 2027.</p>
+        <div class="foot-logo">R<i></i>O<i></i>I</div>
+        <p class="foot-base">RUN ON INVEST — L'IMPACT APRÈS LA LIGNE D'ARRIVÉE</p>
       </div>
-      <div>
-        <h4>Événement</h4>
-        <ul>
-          <li><a href="#etapes">Les 2 temps forts</a></li>
-          <li><a href="#prevente">Tarifs &amp; Early Bird</a></li>
-          <li><a href="#course">Programme</a></li>
-          <li><a href="#faq">Infos pratiques</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Business</h4>
-        <ul>
-          <li><a href="#partenaires">Devenir partenaire</a></li>
-          <li><a href="mailto:entreprises@runoninvest.fr">Packs entreprises</a></li>
-          <li><a href="mailto:presse@runoninvest.fr">Presse &amp; médias</a></li>
-          <li><a href="mailto:ambassadeurs@runoninvest.fr">Devenir ambassadeur</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:contact@runoninvest.fr">contact@runoninvest.fr</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Strava Club</a></li>
-        </ul>
+      <div class="foot-cols">
+        <div>
+          <h4>ÉVÉNEMENT</h4>
+          <ul>
+            <li><a href="#manifeste">Manifeste</a></li>
+            <li><a href="#temps">La journée</a></li>
+            <li><a href="#formats">Les formats</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>CONTACT</h4>
+          <ul>
+            <li><a href="mailto:contact@runoninvest.fr">Contact</a></li>
+            <li><a href="mailto:partenariats@runoninvest.fr">Partenariats</a></li>
+            <li><a href="mailto:entreprises@runoninvest.fr">Entreprises</a></li>
+            <li><a href="mailto:presse@runoninvest.fr">Presse</a></li>
+            <li><a href="mailto:ambassadeurs@runoninvest.fr">Ambassadeurs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>SUIVRE</h4>
+          <ul>
+            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="#" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 R.O.I. — Run On Invest · SAS</span>
-      <span>Mentions légales · CGV · Confidentialité</span>
+      <span>© R.O.I — RUN ON INVEST · ÉDITION 01 · 2027</span>
+      <span>PARIS LA DÉFENSE — GRANDE ARCHE</span>
     </div>
   </div>
 </footer>
 
 <script>
-// Marquee : duplication pour boucle continue
-const mq = document.getElementById('mqTrack');
-mq.innerHTML += mq.innerHTML;
+/* Chrono T+ : après la ligne, le temps continue de compter. */
+(function(){
+  var el=document.getElementById('chrono');
+  if(!el)return;
+  var t0=Date.now();
+  function pad(n){return String(n).padStart(2,'0')}
+  setInterval(function(){
+    var s=Math.floor((Date.now()-t0)/1000);
+    el.textContent='T+'+pad(Math.floor(s/3600))+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60);
+  },1000);
+})();
 
-// Menu mobile
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  burger.setAttribute('aria-expanded', open);
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-// Compte à rebours — fin Early Bird : 30 novembre 2026, 23:59
-const deadline = new Date('2026-11-30T23:59:59+01:00').getTime();
-function pad(n){ return String(n).padStart(2,'0'); }
-function tickCountdown(){
-  const d = deadline - Date.now();
-  if (d <= 0) return;
-  document.getElementById('cdJ').textContent = Math.floor(d/86400000);
-  document.getElementById('cdH').textContent = pad(Math.floor(d/3600000)%24);
-  document.getElementById('cdM').textContent = pad(Math.floor(d/60000)%60);
-  document.getElementById('cdS').textContent = pad(Math.floor(d/1000)%60);
-}
-tickCountdown();
-setInterval(tickCountdown, 1000);
-
-// Sélecteur de distance
-const pick = document.getElementById('distPick');
-pick.querySelectorAll('button').forEach(b => {
-  b.addEventListener('click', () => {
-    pick.querySelectorAll('button').forEach(x => x.classList.remove('sel'));
-    b.classList.add('sel');
-  });
-});
-
-// Réservation (démo front-end)
-document.getElementById('reserveBtn').addEventListener('click', () => {
-  const email = document.getElementById('fEmail').value.trim();
-  const prenom = document.getElementById('fPrenom').value.trim();
-  const msg = document.getElementById('confirmMsg');
-  msg.style.display = 'block';
-  if (!email || !prenom) {
-    msg.style.borderColor = '#FF3B3B';
-    msg.style.color = '#FF3B3B';
-    msg.textContent = '! Renseigne au minimum ton prénom et ton e-mail.';
+/* Reveal au scroll */
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('on')});
     return;
   }
-  msg.style.borderColor = '#D8FF3E';
-  msg.style.color = '#D8FF3E';
-  msg.textContent = '✓ Réservation Early Bird enregistrée, ' + prenom + ' — vérifie ta boîte mail pour finaliser le paiement.';
-});
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+})();
 
-// Révélation au scroll
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+/* Nav mobile */
+function toggleNav(btn){
+  var l=document.getElementById('nav-links');
+  var open=l.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open?'true':'false');
+  btn.textContent=open?'Fermer':'Menu';
+}
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){
+    var l=document.getElementById('nav-links');
+    l.classList.remove('open');
+    var b=document.querySelector('.burger');
+    b.setAttribute('aria-expanded','false');b.textContent='Menu';
+  });
+});
 </script>
 </body>
 </html>
