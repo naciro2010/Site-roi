@@ -6,11 +6,11 @@ Site officiel de **R.O.I — Run On Invest** : une course (5 / 10 / 21,5 km) au 
 
 ## Identité visuelle « La Ligne »
 
-Le site (refonte from scratch) repose sur une identité propre, pensée autour de la ligne d'arrivée :
+Le site (refonte from scratch) repose sur une identité propre, pensée autour de la ligne d'arrivée — dans l'esprit affiche du studio (fond noir grainé, typo éditoriale, un seul accent) :
 
-- **Palette** : papier craie `#F0EBE1` · encre `#141210` · orange impact `#FF4400` — rupture avec les codes noir/fluo des événements fitness.
-- **Typographies** (100 % auto-hébergées, dossier `fonts/`) : Archivo variable (chasse 62–125 %, ultra-étendu pour les titres, condensé pour les labels) + JetBrains Mono pour tout ce qui est chrono/data.
-- **Motifs signature** : la ligne (trait + damier d'arrivée), le logotype `R■O■I` à points carrés orange, et la convention chrono **T– / T+** (avant la ligne = la course, après la ligne = le networking). Les sections sont numérotées `T+01…T+05`.
+- **Palette** : encre `#0E0D0C` (fond dominant, grain photographique en surimpression) · craie `#EFEBE2` (texte) · orange impact `#FF4400` — un seul accent, utilisé en sobriété (soulignés, puces, barre de ligne).
+- **Typographies** (100 % auto-hébergées, dossier `fonts/`) : Archivo variable pour les titres (chasse et graisse mesurées, pas de noir 900 systématique) + JetBrains Mono pour tout ce qui est label, chrono, data — à la manière des mentions `R.O.I.` / `NI UN AFTERWORK.` d'une affiche de communication.
+- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange, et la convention chrono **T– / T+** (avant la ligne = la course, après la ligne = le networking). Les sections sont numérotées `T+01…T+05`.
 
 Aucune dépendance externe (pas de Google Fonts, pas de JS tiers) — 100 % statique.
 
