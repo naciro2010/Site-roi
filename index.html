@@ -62,33 +62,29 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-/* ---- Grain (texture signature de l'affiche) ---- */
+/* ---- Grain (texture signature de l'affiche, visible sur craie ET encre) ---- */
 body::before{
   content:"";position:fixed;inset:0;z-index:999;pointer-events:none;
-  opacity:.34;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity:.3;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 0 1'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-/* ---- Types de marque ---- */
+/* ---- Types de marque ----
+   Titres : Archivo étendu (125%) en graisse FINE — le style affiche.
+   Labels : JetBrains Mono, majuscules, espacées. */
 .display{
   font-stretch:125%;
-  font-weight:900;
+  font-weight:250;
   text-transform:uppercase;
-  line-height:.88;
-  letter-spacing:-.015em;
-}
-.cond{
-  font-stretch:62%;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.04em;
+  line-height:1.05;
+  letter-spacing:.005em;
 }
 .mono{
   font-family:'JetBrains Mono',monospace;
   font-weight:500;
   text-transform:uppercase;
 }
-h1,h2,h3{font-stretch:118%;font-weight:300;text-transform:uppercase;line-height:.94;letter-spacing:0}
+h1,h2,h3{font-stretch:125%;font-weight:250;text-transform:uppercase;line-height:1.05;letter-spacing:.005em}
 a{color:inherit}
 img{max-width:100%}
 .wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
@@ -113,12 +109,12 @@ img{max-width:100%}
   opacity:.85;
 }
 
-/* ---- Boutons ---- */
+/* ---- Boutons (labels mono, bordure fine, héritent du contexte clair/sombre) ---- */
 .btn{
   display:inline-flex;align-items:center;gap:14px;
-  font-stretch:80%;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-  font-size:15px;text-decoration:none;cursor:pointer;
-  padding:18px 28px;border:1px solid var(--craie);
+  font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  font-size:13px;text-decoration:none;cursor:pointer;
+  padding:17px 26px;border:1px solid currentColor;
   transition:background .15s ease,color .15s ease,border-color .15s ease,transform .15s ease;
 }
 .btn .arr{font-family:'JetBrains Mono',monospace;font-weight:700;transition:transform .15s ease}
@@ -128,8 +124,9 @@ img{max-width:100%}
 .btn-impact:hover{background:var(--craie);border-color:var(--craie);color:var(--encre)}
 .btn-encre{background:var(--craie);border-color:var(--craie);color:var(--encre)}
 .btn-encre:hover{background:var(--impact);border-color:var(--impact);color:var(--craie)}
-.btn-ghost{background:transparent;color:var(--craie)}
+.btn-ghost{background:transparent;color:inherit}
 .btn-ghost:hover{background:var(--craie);color:var(--encre)}
+.light .btn-ghost:hover{background:var(--encre);color:var(--craie)}
 
 /* ---- Reveal ---- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
@@ -148,14 +145,13 @@ header{
 .logo{
   display:flex;align-items:center;gap:3px;
   padding:16px var(--pad);text-decoration:none;
-  font-family:'JetBrains Mono',monospace;
-  font-weight:500;font-size:20px;letter-spacing:.02em;line-height:1;
+  font-stretch:118%;font-weight:300;font-size:22px;letter-spacing:.04em;line-height:1;
 }
 .logo i{display:inline-block;width:6px;height:6px;background:var(--impact);margin:0 5px;align-self:flex-end;margin-bottom:3px}
 .nav-links{display:flex;list-style:none;align-items:stretch}
 .nav-links a{
   display:flex;align-items:center;height:100%;padding:0 18px;
-  font-stretch:75%;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
   text-decoration:none;border-left:1px solid var(--ligne-encre);
   transition:background .12s ease,color .12s ease;
 }
@@ -177,7 +173,7 @@ header{
 .hero-chrono b{color:var(--impact);font-weight:700}
 
 .hero-roi{
-  font-stretch:112%;font-weight:300;line-height:.82;letter-spacing:0;
+  font-stretch:125%;font-weight:250;line-height:.82;letter-spacing:0;
   font-size:clamp(90px,20vw,300px);
   display:flex;align-items:baseline;justify-content:space-between;width:100%;
   user-select:none;
@@ -189,7 +185,7 @@ header{
   border-top:1px solid var(--craie);border-bottom:1px solid var(--ligne-encre);
   padding:14px 0;margin-top:clamp(18px,3vw,34px);flex-wrap:wrap;
 }
-.hero-strip .rsi{font-stretch:62%;font-weight:700;font-size:clamp(18px,2.6vw,28px);letter-spacing:.16em;text-transform:uppercase}
+.hero-strip .rsi{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(13px,1.7vw,18px);letter-spacing:.3em;text-transform:uppercase}
 .hero-strip .rsi em{font-style:normal;color:var(--impact)}
 .hero-strip .damier{
   height:18px;flex:1;min-width:120px;max-width:420px;
@@ -200,7 +196,7 @@ header{
 
 .hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,80px);padding:clamp(36px,5vw,64px) 0}
 .hero-tagline{
-  font-stretch:112%;font-weight:300;text-transform:uppercase;line-height:1;letter-spacing:0;
+  font-stretch:125%;font-weight:250;text-transform:uppercase;line-height:1.08;letter-spacing:.005em;
   font-size:clamp(28px,4.2vw,56px);
 }
 .hero-tagline .souligne{color:var(--impact);position:relative;white-space:nowrap}
@@ -214,51 +210,63 @@ header{
 .hero-meta>div{padding:20px var(--pad) 20px 0;border-right:1px solid var(--ligne-encre)}
 .hero-meta>div:last-child{border-right:none}
 .hero-meta .k{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton);display:block;margin-bottom:8px}
-.hero-meta .v{font-stretch:75%;font-weight:800;font-size:clamp(15px,1.5vw,19px);text-transform:uppercase;letter-spacing:.03em;line-height:1.15}
+.hero-meta .v{font-stretch:110%;font-weight:500;font-size:clamp(14px,1.4vw,18px);text-transform:uppercase;letter-spacing:.04em;line-height:1.25}
 
 /* ==========================================================================
    MARQUEE
    ========================================================================== */
-.marquee{background:var(--impact);color:var(--craie);overflow:hidden;border-top:1px solid var(--encre);border-bottom:1px solid var(--encre)}
-.marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite;padding:14px 0}
+.marquee{background:var(--encre-2);color:var(--craie);overflow:hidden;border-top:1px solid var(--ligne-encre);border-bottom:1px solid var(--ligne-encre)}
+.marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite;padding:16px 0}
 .marquee span{
-  font-stretch:100%;font-weight:600;text-transform:uppercase;white-space:nowrap;
+  font-stretch:125%;font-weight:250;text-transform:uppercase;white-space:nowrap;
   font-size:clamp(20px,2.6vw,34px);letter-spacing:.01em;padding:0 8px;line-height:1;
 }
-.marquee .sep{font-family:'JetBrains Mono',monospace;font-weight:500;padding:0 22px;font-size:clamp(16px,2vw,26px);align-self:center}
-.marquee .out{color:transparent;-webkit-text-stroke:1.5px var(--craie)}
+.marquee .sep{font-family:'JetBrains Mono',monospace;font-weight:500;padding:0 22px;font-size:clamp(16px,2vw,26px);align-self:center;color:var(--impact)}
+.marquee .out{color:var(--beton)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ==========================================================================
-   SECTIONS COMMUNES
+   SECTIONS COMMUNES — le site alterne les deux fonds de l'affiche :
+   encre grainée (défaut) et craie grainée (.light)
    ========================================================================== */
 section{padding:clamp(80px,10vw,140px) 0}
 .dark{background:var(--encre-2)}
+.light{
+  background:var(--craie);color:var(--encre);
+  --muted:#57534A;
+  --beton:#7C7669;
+  --ligne-encre:rgba(14,13,12,.16);
+}
 .sec-head{margin-bottom:clamp(40px,6vw,72px)}
 .sec-head .tmark{margin-bottom:26px}
 .sec-head h2{font-size:clamp(42px,7vw,104px)}
-.sec-head h2 .creuse{color:transparent;-webkit-text-stroke:1.5px var(--craie)}
-.sec-head .intro{margin-top:24px;max-width:62ch;font-size:17px;font-weight:500;color:var(--muted)}
+.sec-head h2 .creuse{color:inherit}
+/* La barre orange de l'affiche, sous chaque titre de section */
+.sec-head h2::after,.finale h2::after{
+  content:"";display:block;width:min(240px,34%);height:5px;
+  background:var(--impact);margin-top:clamp(26px,4vw,44px);
+}
+.sec-head .intro{margin-top:26px;max-width:62ch;font-size:17px;font-weight:500;color:var(--muted)}
 
 /* ==========================================================================
    MANIFESTE
    ========================================================================== */
 #manifeste .stances{max-width:880px}
 #manifeste .stance{
-  font-stretch:100%;font-weight:500;line-height:1.28;
+  font-stretch:110%;font-weight:350;line-height:1.3;
   font-size:clamp(22px,3.1vw,40px);
   padding:clamp(22px,3vw,34px) 0;
   border-bottom:1px solid var(--ligne-encre);
   color:var(--muted);
 }
-#manifeste .stance b{color:var(--craie);font-weight:700}
+#manifeste .stance b{color:var(--craie);font-weight:450}
 #manifeste .stance .imp{color:var(--impact)}
 #manifeste .stance:first-child{padding-top:0}
 #manifeste .sceau{
   margin-top:clamp(40px,6vw,70px);
   display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
 }
-#manifeste .sceau .sig{font-stretch:112%;font-weight:300;font-size:clamp(48px,8vw,120px);line-height:.85;text-transform:uppercase}
+#manifeste .sceau .sig{font-stretch:125%;font-weight:250;font-size:clamp(48px,8vw,120px);line-height:.85;text-transform:uppercase}
 #manifeste .sceau .sig i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
 #manifeste .sceau .base{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);padding-bottom:10px}
 #manifeste .sceau .base b{color:var(--impact)}
@@ -280,18 +288,18 @@ section{padding:clamp(80px,10vw,140px) 0}
 .temps li{
   display:flex;gap:14px;align-items:baseline;
   padding:12px 0;border-top:1px solid var(--ligne-encre);
-  font-stretch:80%;font-weight:800;font-size:14.5px;letter-spacing:.04em;text-transform:uppercase;
+  font-stretch:105%;font-weight:500;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;
 }
 .temps li .mono{flex:none;font-size:11px;color:var(--impact);letter-spacing:.1em;font-weight:700}
 .temps-ligne{
   grid-column:1 / -1;
   display:flex;align-items:center;gap:22px;
-  background:var(--impact);color:var(--craie);
+  background:var(--encre);color:#EFEBE2;
   padding:18px clamp(30px,4vw,54px);
 }
-.temps-ligne .damier{height:20px;width:100px;flex:none;background:repeating-conic-gradient(var(--craie) 0% 25%, transparent 0% 50%) 0 0/20px 20px}
-.temps-ligne p{font-stretch:75%;font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(14px,1.8vw,20px)}
-.temps-ligne p em{font-style:normal;color:var(--encre)}
+.temps-ligne .damier{height:20px;width:100px;flex:none;background:repeating-conic-gradient(#EFEBE2 0% 25%, transparent 0% 50%) 0 0/20px 20px;opacity:.7}
+.temps-ligne p{font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)}
+.temps-ligne p em{font-style:normal;color:var(--impact)}
 
 /* ==========================================================================
    FORMATS
@@ -306,9 +314,9 @@ section{padding:clamp(80px,10vw,140px) 0}
 }
 .format:hover{background:var(--craie);color:var(--encre)}
 .format:hover .f-why{color:#4A463E}
-.format .f-km{font-stretch:115%;font-weight:400;font-size:clamp(46px,6.5vw,90px);line-height:.85;text-transform:uppercase;white-space:nowrap}
+.format .f-km{font-stretch:125%;font-weight:250;font-size:clamp(46px,6.5vw,90px);line-height:.85;text-transform:uppercase;white-space:nowrap}
 .format .f-km small{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.28em;letter-spacing:.14em;vertical-align:.25em;margin-left:.25em;color:var(--impact)}
-.format .f-name{font-stretch:75%;font-weight:800;font-size:clamp(18px,2vw,26px);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.format .f-name{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(13px,1.5vw,16px);text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px}
 .format .f-why{font-size:15px;font-weight:500;color:var(--muted);max-width:44ch}
 .format .f-data{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;line-height:2}
 .format .f-data b{color:var(--impact);font-weight:700}
@@ -331,7 +339,7 @@ section{padding:clamp(80px,10vw,140px) 0}
 #lieu .arche{
   font-size:clamp(50px,9vw,150px);
 }
-#lieu .arche .creuse{color:transparent;-webkit-text-stroke:1.5px var(--craie)}
+#lieu .arche .creuse{color:inherit}
 .lieu-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ligne-encre);margin-top:clamp(40px,6vw,70px)}
 .lieu-cell{padding:clamp(26px,3vw,42px);border-right:1px solid var(--ligne-encre)}
 .lieu-cell:last-child{border-right:none}
@@ -347,17 +355,17 @@ section{padding:clamp(80px,10vw,140px) 0}
 .vague:last-child{border-right:none}
 .vague .v-tag{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton)}
 .vague h3{font-size:clamp(24px,2.6vw,36px);font-stretch:90%}
-.vague .v-prix{font-stretch:115%;font-weight:400;font-size:clamp(50px,5.6vw,80px);line-height:.85}
+.vague .v-prix{font-stretch:125%;font-weight:250;font-size:clamp(50px,5.6vw,80px);line-height:.85}
 .vague .v-prix small{font-size:.4em;vertical-align:.85em;font-stretch:100%}
 .vague .v-lim{font-size:14px;font-weight:500;color:var(--muted)}
 .vague .v-cta{margin-top:auto}
-.vague.hot{background:var(--impact);color:var(--craie)}
-.vague.hot .v-tag,.vague.hot .v-lim{color:rgba(240,235,225,.85)}
-.vague.hot .btn{border-color:var(--encre);background:var(--encre);color:var(--craie)}
-.vague.hot .btn:hover{background:var(--craie);border-color:var(--craie);color:var(--encre)}
+.vague.hot{background:var(--encre);color:#EFEBE2}
+.vague.hot .v-tag,.vague.hot .v-lim{color:rgba(239,235,226,.72)}
+.vague.hot .btn{border-color:var(--impact);background:var(--impact);color:#EFEBE2}
+.vague.hot .btn:hover{background:#EFEBE2;border-color:#EFEBE2;color:var(--encre)}
 .vague .badge{
   position:absolute;top:-16px;left:clamp(28px,3.5vw,46px);
-  background:var(--craie);color:var(--encre);
+  background:var(--impact);color:#EFEBE2;
   font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
   padding:7px 12px;
 }
@@ -367,27 +375,31 @@ section{padding:clamp(80px,10vw,140px) 0}
 /* ==========================================================================
    FINALE
    ========================================================================== */
-.finale{background:var(--impact);color:var(--craie);border-top:1px solid var(--encre)}
+/* La finale reprend l'affiche craie : fond papier, titre fin, barre orange */
+.finale{
+  background:var(--craie);color:var(--encre);border-top:1px solid rgba(14,13,12,.16);
+  --muted:#57534A;--beton:#7C7669;--ligne-encre:rgba(14,13,12,.16);
+}
 .finale h2{font-size:clamp(48px,8.5vw,140px)}
-.finale h2 .creuse{color:transparent;-webkit-text-stroke:1.5px var(--craie)}
+.finale h2 .creuse{color:inherit}
 .finale .fin-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:40px}
-.finale p{font-size:clamp(16px,1.6vw,20px);font-weight:600;max-width:52ch}
-.finale .btn{border-color:var(--encre);background:var(--encre);color:var(--craie);font-size:17px;padding:22px 36px}
-.finale .btn:hover{background:var(--craie);color:var(--encre);border-color:var(--craie)}
+.finale p{font-size:clamp(16px,1.6vw,20px);font-weight:500;max-width:52ch;color:var(--muted)}
+.finale .btn{border-color:var(--impact);background:var(--impact);color:#EFEBE2;font-size:14px;padding:20px 32px}
+.finale .btn:hover{background:var(--encre);color:#EFEBE2;border-color:var(--encre)}
 
 /* ==========================================================================
    FOOTER
    ========================================================================== */
 footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0 34px}
 .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid var(--ligne-encre)}
-.foot-logo{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:32px;line-height:.9;text-transform:uppercase}
+.foot-logo{font-stretch:125%;font-weight:250;font-size:44px;line-height:.9;text-transform:uppercase}
 .foot-logo i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
 .foot-base{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--beton);margin-top:12px}
 .foot-cols{display:flex;gap:clamp(30px,6vw,90px);flex-wrap:wrap}
 .foot-cols h4{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--beton);margin-bottom:16px}
 .foot-cols ul{list-style:none}
 .foot-cols li{margin-bottom:10px}
-.foot-cols a{font-stretch:80%;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none}
+.foot-cols a{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 .foot-cols a:hover{color:var(--impact)}
 .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--beton)}
 
@@ -519,7 +531,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 </section>
 
 <!-- ============================ DEUX TEMPS ============================ -->
-<section id="temps">
+<section id="temps" class="light">
   <div class="wrap">
     <div class="sec-head">
       <span class="tmark"><b>T+02</b> / LA JOURNÉE</span>
@@ -633,7 +645,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 </section>
 
 <!-- ============================ TARIFS ============================ -->
-<section id="tarifs">
+<section id="tarifs" class="light">
   <div class="wrap">
     <div class="sec-head">
       <span class="tmark"><b>T+05</b> / LES DOSSARDS</span>
