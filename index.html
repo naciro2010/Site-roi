@@ -38,8 +38,8 @@
 :root{
   --craie:#EFEBE2;
   --craie-2:#E7E1D4;
-  --encre:#0A0A0A;
-  --encre-2:#131313;
+  --encre:#070707;
+  --encre-2:#101010;
   --impact:#FF4400;
   --beton:#8F897B;
   --muted:#B0A99C;
@@ -62,19 +62,14 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-/* ---- Grain pointillé (texture signature de l'affiche) ----
-   Deux couches : points clairs en screen (visibles sur l'encre),
-   points sombres en multiply (visibles sur la craie). */
-body::before,body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;
-}
+/* ---- Grain film (texture signature de l'affiche) ----
+   Une seule couche de bruit fin par pixel, sans seuillage : gris moyen
+   dont l'alpha suit le bruit — texture l'encre sans la délaver,
+   pique légèrement la craie. */
 body::before{
-  z-index:999;mix-blend-mode:screen;opacity:.4;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='3.5' intercept='-1.6'/><feFuncG type='linear' slope='3.5' intercept='-1.6'/><feFuncB type='linear' slope='3.5' intercept='-1.6'/><feFuncA type='linear' slope='0' intercept='1'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-body::after{
-  z-index:998;mix-blend-mode:multiply;opacity:.3;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='7'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='-3.5' intercept='2.6'/><feFuncG type='linear' slope='-3.5' intercept='2.6'/><feFuncB type='linear' slope='-3.5' intercept='2.6'/><feFuncA type='linear' slope='0' intercept='1'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  content:"";position:fixed;inset:0;pointer-events:none;
+  z-index:999;opacity:.55;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.62  0 0 0 0 0.62  0 0 0 0 0.62  0.8 0 0 0 -0.3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
 /* ---- Types de marque ----
