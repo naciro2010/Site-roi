@@ -226,42 +226,16 @@ header{
 .hero h1 .ln:nth-child(3) span{animation-delay:.32s}
 @keyframes monte{to{transform:translateY(0)}}
 
-.hero-grid{display:grid;grid-template-columns:1.5fr minmax(260px,370px);gap:clamp(30px,5.5vw,100px);align-items:start}
 .hero-grid .chapo{font-size:clamp(16.5px,1.5vw,19px);color:var(--sourdine);max-width:58ch;margin-top:clamp(26px,4vw,44px)}
 .hero-grid .chapo b{color:var(--ink);font-weight:560}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
 
-/* ---- Portrait — imprimé dans le papier, pas posé dessus.
-   Passage à l'encre (grisé + fusion multiply) : les tons se fondent
-   dans l'ivoire, les bords s'estompent au masque. La couleur revient
-   doucement au survol ; la figure dérive en parallaxe au scroll. ---- */
-.portrait{position:relative;margin:6px 0 0;max-width:380px;justify-self:end;width:100%}
-.portrait .voile{display:block}
-.portrait img{
-  display:block;width:100%;height:auto;
-  filter:grayscale(1) contrast(1.02) brightness(1.12);
-  mix-blend-mode:multiply;
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 16%, #000 88%, rgba(0,0,0,.4) 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 16%, #000 88%, rgba(0,0,0,.4) 100%);
-  mask-composite:intersect;
-  transition:filter 1.2s ease;
-}
-.portrait:hover img{filter:grayscale(.12) contrast(1.0) brightness(1.08)}
-.portrait figcaption{
-  margin-top:2px;display:flex;justify-content:space-between;align-items:center;gap:10px;
-  font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sourdine);
-}
-.portrait figcaption b{color:var(--vert);font-weight:500}
-.portrait figcaption::before{content:"";width:26px;height:1px;background:var(--vert);flex:none}
-@supports (animation-timeline: view()){
-  .portrait .voile{animation:derive linear both;animation-timeline:view();animation-range:entry 0% cover 130%}
-  @keyframes derive{from{transform:translateY(30px)}to{transform:translateY(-22px)}}
-}
+/* ---- Bouton LinkedIn — mis en évidence, dans la voix du système ---- */
+.btn-linkedin{border-color:var(--vert);color:var(--vert);background:transparent}
+.btn-linkedin:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(14,122,95,.22)}
+.encre .btn-linkedin{border-color:var(--vert-vif);color:var(--vert-vif)}
+.encre .btn-linkedin:hover{background:var(--vert-vif);border-color:var(--vert-vif);color:#08110D}
+.nav-liens a.nav-lkd{color:var(--vert);font-weight:560}
 
 /* Bandeau de chiffres — compteurs animés */
 .chiffres{border-top:1px solid var(--ink);margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(4,1fr)}
@@ -518,8 +492,6 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
    RESPONSIVE
    ========================================================================== */
 @media (max-width:1020px){
-  .hero-grid{grid-template-columns:1fr}
-  .portrait{justify-self:start;max-width:330px}
   .collectif{grid-template-columns:1fr}
   .offres{grid-template-columns:1fr}
   .offre{border-right:none;border-bottom:1px solid var(--ligne)}
@@ -555,8 +527,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   .flux-bus,.lien-cdc,.noeud-pulse{animation:none}
   .paquet{display:none}
   .fil{display:none}
-  .btn,.exp::before,.ligne-m::before,.portrait img{transition:none}
-  .portrait .voile{animation:none}
+  .btn,.exp::before,.ligne-m::before{transition:none}
   .stete .haut::before,.etape::before,.ligne-m .an::after{animation:none;transform:scaleX(1)}
 }
 </style>
@@ -577,6 +548,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <li><a href="#engagements">Engagements</a></li>
       <li><a href="#collectif">Le collectif</a></li>
       <li><a href="#parcours">Parcours</a></li>
+      <li><a class="nav-lkd" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       <li><a class="nav-cta" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes">Discutons →</a></li>
     </ul>
   </div>
@@ -600,13 +572,10 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
         <p class="chapo rv">Kotlin, Java, Kafka, Keycloak. Chez Europcar, j'ai unifié <b>plus de 3 millions de profils clients</b> et migré les backends vers l'événementiel — <b>sans une coupure de service</b>. J'interviens en régie comme au forfait, seul ou avec un collectif de freelances seniors quand il faut une équipe complète.</p>
         <div class="hero-ctas rv d1">
           <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Discutons de votre projet</span><span class="fl">→</span></a>
+          <a class="btn btn-linkedin" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener"><span>Me suivre sur LinkedIn</span><span class="fl">↗</span></a>
           <a class="btn btn-ligne" href="#engagements"><span>Modes d'engagement</span><span class="fl">↓</span></a>
         </div>
       </div>
-      <figure class="portrait rv d1">
-        <span class="voile"><img src="portrait.jpg" alt="Portrait de Mohamed Ennaciri" width="760" height="950" fetchpriority="high"></span>
-        <figcaption><span><b>fig. 00</b> — M. Ennaciri</span><span>Paris</span></figcaption>
-      </figure>
     </div>
     <div class="chiffres rv">
       <div><span class="n"><span class="compte" data-cible="15">0</span></span><span class="l">ans de production</span></div>
@@ -953,7 +922,10 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     </div>
     <div class="fin-grid rv">
       <p>Un premier échange de <b>30 minutes</b> suffit à savoir si je peux vous aider — et à vous le dire honnêtement si ce n'est pas le cas. Basé à Paris, disponible en régie, au forfait ou en squad.</p>
-      <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Réserver un échange</span><span class="fl">→</span></a>
+      <div class="fin-ctas" style="display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Réserver un échange</span><span class="fl">→</span></a>
+        <a class="btn btn-linkedin" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener"><span>LinkedIn</span><span class="fl">↗</span></a>
+      </div>
     </div>
     <div class="coord rv">
       <span><span class="k">Mail</span><a href="mailto:ennaciri.md@gmail.com">ennaciri.md@gmail.com</a></span>
@@ -970,7 +942,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   <div class="wrap foot">
     <a class="marque" href="#haut"><span class="noeud" aria-hidden="true"></span>Ennaciri</a>
     <span class="mono">© Mohamed Ennaciri · Architecte Backend &amp; Tech Lead · Paris</span>
-    <span class="mono">Site auto-hébergé — zéro dépendance, zéro tracker</span>
+    <a class="mono lien" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener" style="color:var(--vert)">LinkedIn — mohamed-ennaciri ↗</a>
   </div>
 </footer>
 
