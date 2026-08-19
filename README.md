@@ -19,7 +19,7 @@ Aucune dépendance externe (pas de Google Fonts, pas de JS tiers) — 100 % stat
 | Chemin | Contenu |
 |---|---|
 | `index.html` | **Site officiel** — identité « La Ligne » — servi à la racine `/` |
-| `cv/index.html` | **Le Dossard** — sous-page CV / services de Mohamed Ennaciri (Tech Lead), même identité « La Ligne » : le parcours raconté comme une course (dossard CSS, splits kilométriques, services en formats). Accessible sur `/cv` |
+| `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend & Tech Lead) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |
 | `fonts/` | Fontes auto-hébergées (Archivo variable + JetBrains Mono) |
 

@@ -3,922 +3,890 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Ennaciri — Tech Lead / Architecte Backend · Le dossard derrière R.O.I</title>
-<meta name="description" content="Mohamed Ennaciri, Tech Lead / Architecte Backend freelance (Kotlin, Java, Kafka, Keycloak). 15 ans de course : architecture événementielle, IAM, migrations sans coupure de service, squads distribuées, IA sous contrôle. Le profil derrière le site R.O.I.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23FF4400'/%3E%3C/svg%3E">
+<title>Mohamed Ennaciri — Architecte Backend &amp; Tech Lead · Régie, forfait &amp; squad</title>
+<meta name="description" content="Mohamed Ennaciri, architecte backend et Tech Lead freelance à Paris (Kotlin, Java, Kafka, Keycloak). Interventions en régie, projets au forfait avec engagement de résultat, ou squad complète avec un collectif de freelances seniors. 15 ans de systèmes critiques en production.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='none' stroke='%230E7A5F' stroke-width='2'/%3E%3Ccircle cx='8' cy='8' r='2.4' fill='%230E7A5F'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohamed Ennaciri",
+  "jobTitle": "Architecte Backend & Tech Lead",
+  "email": "mailto:ennaciri.md@gmail.com",
+  "telephone": "+33 7 80 78 60 15",
+  "address": { "@type": "PostalAddress", "addressLocality": "Issy-les-Moulineaux", "addressCountry": "FR" },
+  "sameAs": ["https://linkedin.com/in/mohamed-ennaciri"],
+  "knowsAbout": ["Kotlin", "Java", "Spring Boot", "Apache Kafka", "Keycloak", "OAuth 2.1", "Architecture événementielle", "Migration de systèmes legacy"]
+}
+</script>
 <style>
 /* ==========================================================================
-   M■E — LE DOSSARD
-   Sous-page CV / Services de Mohamed Ennaciri, dans l'identité « LA LIGNE »
-   du site R.O.I : encre & craie grainées, Archivo fine étirée, JetBrains Mono.
-   Concept : 15 ans de backend racontés comme une course.
-   T– = le legacy. T+ = la production. Les splits = les missions.
-   Animations : scroll-driven (animation-timeline), font-stretch variable
-   animé, chrono live, marquee — fallbacks IntersectionObserver + JS.
+   MOHAMED ENNACIRI — « LE DOSSIER »
+   Design system indépendant (rien de commun avec R.O.I) :
+   papier ivoire, encre vert nuit, accent émeraude.
+   Fraunces variable (opsz/SOFT/WONK) pour la voix éditoriale,
+   Instrument Sans pour le texte, IBM Plex Mono pour les annotations.
+   La page se lit comme un dossier d'architecture : chapitres §,
+   figures numérotées, doubles filets, schéma de flux vivant.
    ========================================================================== */
 
 @font-face{
-  font-family:'Archivo VF';
-  src:url('../fonts/archivo-latin-wdth-normal.woff2') format('woff2-variations');
-  font-weight:100 900;
-  font-stretch:62% 125%;
-  font-style:normal;
-  font-display:swap;
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  font-family:'Fraunces';
+  src:url('fonts/fraunces-latin-full-normal.woff2') format('woff2-variations');
+  font-weight:100 900;font-style:normal;font-display:swap;
 }
 @font-face{
-  font-family:'Archivo VF';
-  src:url('../fonts/archivo-latin-ext-wdth-normal.woff2') format('woff2-variations');
-  font-weight:100 900;
-  font-stretch:62% 125%;
-  font-style:normal;
-  font-display:swap;
-  unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;
+  font-family:'Fraunces';
+  src:url('fonts/fraunces-latin-full-italic.woff2') format('woff2-variations');
+  font-weight:100 900;font-style:italic;font-display:swap;
 }
-@font-face{font-family:'JetBrains Mono';src:url('../fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'JetBrains Mono';src:url('../fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'JetBrains Mono';src:url('../fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{
+  font-family:'Instrument Sans';
+  src:url('fonts/instrument-sans-latin-wght-normal.woff2') format('woff2-variations');
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Instrument Sans';
+  src:url('fonts/instrument-sans-latin-wght-italic.woff2') format('woff2-variations');
+  font-weight:100 900;font-style:italic;font-display:swap;
+}
+@font-face{font-family:'Plex Mono';src:url('fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Plex Mono';src:url('fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
 
 :root{
-  --craie:#EFEBE2;
-  --craie-2:#E7E1D4;
-  --encre:#070707;
-  --encre-2:#101010;
-  --impact:#FF4400;
-  --beton:#8F897B;
-  --muted:#B0A99C;
-  --ligne-craie:rgba(239,235,226,.14);
-  --ligne-encre:rgba(239,235,226,.09);
-  --pad:clamp(20px,4vw,56px);
+  --paper:#F7F4EC;
+  --paper-2:#EFEBDF;
+  --ink:#0F1B16;
+  --ink-2:#152420;
+  --vert:#0E7A5F;
+  --vert-vif:#27B88A;
+  --ligne:rgba(15,27,22,.16);
+  --ligne-faible:rgba(15,27,22,.09);
+  --sourdine:#5C665E;
+  --pad:clamp(20px,4.5vw,64px);
+  --maxw:1240px;
+}
+.encre{
+  --paper:#0F1B16;
+  --ligne:rgba(247,244,236,.16);
+  --ligne-faible:rgba(247,244,236,.08);
+  --sourdine:#8FA096;
+  --vert:#27B88A;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:var(--impact);color:var(--craie)}
+::selection{background:var(--vert);color:#F7F4EC}
 
 body{
-  position:relative;
-  font-family:'Archivo VF',Archivo,system-ui,sans-serif;
-  font-stretch:100%;
-  background:var(--encre);
-  color:var(--craie);
-  line-height:1.6;
+  font-family:'Instrument Sans',system-ui,sans-serif;
+  font-weight:430;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:16.5px;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-/* ---- Grain film (texture signature de l'affiche) ---- */
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;
-  z-index:999;opacity:.55;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.62  0 0 0 0 0.62  0 0 0 0 0.62  0.8 0 0 0 -0.3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
-/* ---- Types de marque ---- */
-.mono{
-  font-family:'JetBrains Mono',monospace;
-  font-weight:500;
-  text-transform:uppercase;
-}
-h1,h2,h3{font-stretch:125%;font-weight:250;text-transform:uppercase;line-height:1.05;letter-spacing:.005em}
+.encre{background:var(--paper);color:#F1EEE5}
 a{color:inherit}
-img{max-width:100%}
-.wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-
-/* ---- Étiquette chrono de section : T+01 / NOM ---- */
-.tmark{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:'JetBrains Mono',monospace;font-weight:500;
-  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted);
+h1,h2,h3,.serif{
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:400;
+  font-variation-settings:'opsz' 100,'SOFT' 0,'WONK' 0;
+  line-height:1.08;
+  letter-spacing:-.01em;
 }
-.tmark::before{content:"";width:8px;height:8px;background:var(--impact);flex:none}
-.tmark b{color:var(--impact);font-weight:700}
+em{font-style:italic}
+.mono{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ---- Double filet — motif signature du dossier ---- */
+.filet2{height:6px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.encre .filet2{border-color:#F1EEE5}
+
+/* ---- Liens : le soulignement se dessine ---- */
+.lien{
+  text-decoration:none;
+  background:linear-gradient(var(--vert),var(--vert)) no-repeat left 100% / 0% 1.5px;
+  transition:background-size .35s cubic-bezier(.2,.6,.2,1),color .2s ease;
+  padding-bottom:2px;
+}
+.lien:hover{background-size:100% 1.5px;color:var(--vert)}
 
 /* ---- Boutons ---- */
 .btn{
-  display:inline-flex;align-items:center;gap:14px;
-  font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
-  font-size:13px;text-decoration:none;cursor:pointer;
-  padding:17px 26px;border:1px solid currentColor;
-  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .15s ease;
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:'Instrument Sans',sans-serif;font-weight:560;font-size:15px;letter-spacing:.01em;
+  text-decoration:none;cursor:pointer;
+  padding:16px 26px;border-radius:2px;
+  border:1px solid var(--ink);
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
 }
-.btn .arr{font-family:'JetBrains Mono',monospace;font-weight:700;transition:transform .15s ease}
-.btn:hover .arr{transform:translateX(5px)}
-.btn:focus-visible{outline:3px solid var(--impact);outline-offset:3px}
-.btn-impact{background:var(--impact);border-color:var(--impact);color:var(--craie)}
-.btn-impact:hover{background:var(--craie);border-color:var(--craie);color:var(--encre)}
-.btn-ghost{background:transparent;color:inherit}
-.btn-ghost:hover{background:var(--craie);color:var(--encre)}
-.light .btn-ghost:hover{background:var(--encre);color:var(--craie)}
+.btn .fl{transition:transform .25s cubic-bezier(.2,.6,.2,1)}
+.btn:hover .fl{transform:translateX(5px)}
+.btn:focus-visible{outline:3px solid var(--vert);outline-offset:3px}
+.btn-plein{background:var(--ink);color:#F1EEE5}
+.btn-plein:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(14,122,95,.25)}
+.btn-ligne{background:transparent;color:inherit}
+.btn-ligne:hover{background:var(--ink);color:#F1EEE5}
+.encre .btn{border-color:#F1EEE5}
+.encre .btn-plein{background:#F1EEE5;color:var(--ink)}
+.encre .btn-plein:hover{background:var(--vert-vif);border-color:var(--vert-vif);color:#08110D}
+.encre .btn-ligne:hover{background:#F1EEE5;color:var(--ink)}
 
-/* ---- Reveal (fallback IntersectionObserver, partout) ---- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.on{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}
-.reveal.d2{transition-delay:.2s}
-.reveal.d3{transition-delay:.3s}
-
-/* ==========================================================================
-   BARRE DE PROGRESSION — la course se lit en haut de page.
-   Scroll-driven animation (animation-timeline: scroll) + fallback JS.
-   ========================================================================== */
-.progress{
-  position:fixed;top:0;left:0;right:0;height:3px;z-index:300;
-  background:var(--impact);
-  transform-origin:0 50%;transform:scaleX(0);
-}
-@supports (animation-timeline: scroll()){
-  .progress{animation:course linear both;animation-timeline:scroll(root)}
-  @keyframes course{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-}
+/* ---- Révélation au scroll : montée + net (dé-flou) ---- */
+.rv{opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.6,.2,1),filter .85s ease}
+.rv.on{opacity:1;transform:none;filter:blur(0)}
+.rv.d1{transition-delay:.12s}
+.rv.d2{transition-delay:.24s}
+.rv.d3{transition-delay:.36s}
 
 /* ==========================================================================
    NAV
    ========================================================================== */
 header{
   position:sticky;top:0;z-index:200;
-  background:color-mix(in srgb, var(--encre) 88%, transparent);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--ligne-encre);
+  background:color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--ligne);
 }
-.nav-in{display:flex;align-items:stretch;justify-content:space-between;max-width:1360px;margin:0 auto;position:relative}
-.logo{
-  display:flex;align-items:center;gap:3px;
-  padding:16px var(--pad);text-decoration:none;
-  font-stretch:118%;font-weight:300;font-size:22px;letter-spacing:.04em;line-height:1;
+.nav-in{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);height:72px;position:relative}
+.marque{
+  display:flex;align-items:center;gap:12px;text-decoration:none;
+  font-family:'Fraunces',serif;font-size:21px;font-weight:480;
+  font-variation-settings:'opsz' 60,'SOFT' 0,'WONK' 0;
+  transition:font-variation-settings .4s ease;
 }
-.logo i{display:inline-block;width:6px;height:6px;background:var(--impact);margin:0 5px;align-self:flex-end;margin-bottom:3px}
-.nav-links{display:flex;list-style:none;align-items:stretch}
-.nav-links a{
-  display:flex;align-items:center;height:100%;padding:0 18px;
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
-  text-decoration:none;border-left:1px solid var(--ligne-encre);
-  transition:background .12s ease,color .12s ease;
+.marque:hover{font-variation-settings:'opsz' 60,'SOFT' 40,'WONK' 1}
+.marque .noeud{position:relative;width:12px;height:12px;flex:none}
+.marque .noeud::before{content:"";position:absolute;inset:0;border:1.5px solid var(--vert);border-radius:50%}
+.marque .noeud::after{content:"";position:absolute;inset:3.5px;background:var(--vert);border-radius:50%}
+.marque small{font-family:'Plex Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sourdine);margin-left:4px;transform:translateY(2px)}
+.nav-liens{display:flex;list-style:none;align-items:center;gap:clamp(14px,2.4vw,32px)}
+.nav-liens a{font-size:14.5px;font-weight:480;text-decoration:none}
+.nav-liens a:not(.nav-cta){background:linear-gradient(var(--vert),var(--vert)) no-repeat left 100% / 0% 1.5px;transition:background-size .3s ease,color .2s ease;padding-bottom:3px}
+.nav-liens a:not(.nav-cta):hover{background-size:100% 1.5px;color:var(--vert)}
+.nav-cta{
+  font-weight:560;padding:11px 20px;border-radius:2px;
+  background:var(--ink);color:#F1EEE5;
+  transition:background .2s ease,box-shadow .2s ease;
 }
-.nav-links a:hover{background:var(--craie);color:var(--encre)}
-.nav-links a.nav-cta{background:var(--impact);color:var(--craie);border-left:none;padding:0 26px}
-.nav-links a.nav-cta:hover{background:var(--craie);color:var(--encre)}
-.nav-links a.nav-back{color:var(--beton)}
+.nav-cta:hover{background:var(--vert);box-shadow:0 8px 24px rgba(14,122,95,.25)}
 .burger{
-  display:none;background:none;border:none;cursor:pointer;
-  padding:0 var(--pad);font-family:'JetBrains Mono',monospace;font-weight:700;
-  font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--craie);
+  display:none;background:none;border:1px solid var(--ligne);border-radius:2px;cursor:pointer;
+  padding:9px 14px;font-family:'Plex Mono',monospace;font-weight:500;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
 }
 
 /* ==========================================================================
-   HERO — le nom comme une affiche, le dossard comme objet.
+   HERO — éditorial, marges de dossier
    ========================================================================== */
-.hero{padding-top:clamp(48px,8vh,96px)}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:18px}
-.hero-chrono{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton)}
-.hero-chrono b{color:var(--impact);font-weight:700}
-
-/* Le logotype géant M■E — les lettres montent, les points s'allument. */
-.hero-me{
-  font-stretch:125%;font-weight:250;line-height:.82;letter-spacing:0;
-  font-size:clamp(110px,24vw,340px);
-  display:flex;align-items:baseline;justify-content:space-between;width:100%;
-  user-select:none;
+.hero{padding:clamp(56px,9vh,110px) 0 clamp(40px,6vw,72px)}
+.hero .sur{display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--sourdine);margin-bottom:clamp(24px,4vw,40px)}
+.hero .sur .tiret{width:34px;height:1px;background:var(--vert);flex:none}
+.hero h1{
+  font-size:clamp(40px,6.4vw,84px);
+  font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;
+  max-width:19ch;
 }
-.hero-me .l{display:inline-block;overflow:hidden}
-.hero-me .l span{display:inline-block;transform:translateY(110%);animation:monte .9s cubic-bezier(.2,.7,.2,1) forwards}
-.hero-me .l:nth-child(1) span{animation-delay:.05s}
-.hero-me .l:nth-child(3) span{animation-delay:.2s}
-.hero-me i{
-  flex:none;width:.1em;height:.1em;background:var(--impact);align-self:flex-end;margin-bottom:.06em;
-  transform:scale(0);animation:allume .5s cubic-bezier(.2,.7,.2,1) .55s forwards;
+.hero h1 .accent{font-style:italic;color:var(--vert);white-space:nowrap;position:relative}
+.hero h1 .accent::after{
+  content:"";position:absolute;left:0;right:0;bottom:.03em;height:2px;background:var(--vert);
+  transform:scaleX(0);transform-origin:left;
+  animation:trait 1s cubic-bezier(.2,.6,.2,1) 1.1s forwards;
 }
+@keyframes trait{to{transform:scaleX(1)}}
+/* Les lignes du titre montent l'une après l'autre */
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;transform:translateY(105%);animation:monte .95s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .ln:nth-child(1) span{animation-delay:.08s}
+.hero h1 .ln:nth-child(2) span{animation-delay:.2s}
+.hero h1 .ln:nth-child(3) span{animation-delay:.32s}
 @keyframes monte{to{transform:translateY(0)}}
-@keyframes allume{to{transform:scale(1)}}
 
-.hero-strip{
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  border-top:1px solid var(--craie);border-bottom:1px solid var(--ligne-encre);
-  padding:14px 0;margin-top:clamp(18px,3vw,34px);flex-wrap:wrap;
-}
-.hero-strip .rsi{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(13px,1.7vw,18px);letter-spacing:.3em;text-transform:uppercase}
-.hero-strip .rsi em{font-style:normal;color:var(--impact)}
-.hero-strip .damier{
-  height:18px;flex:1;min-width:120px;max-width:420px;
-  background:repeating-conic-gradient(var(--craie) 0% 25%, transparent 0% 50%) 0 0/18px 18px;
-  opacity:.5;
-  animation:defile 3.2s linear infinite;
-}
-@keyframes defile{to{background-position:36px 0}}
-.hero-strip .mono{font-size:12px;letter-spacing:.2em;color:var(--beton)}
+.hero-bas{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(30px,5vw,90px);margin-top:clamp(30px,4.5vw,54px);align-items:end}
+.hero-bas .chapo{font-size:clamp(16.5px,1.5vw,19px);color:var(--sourdine);max-width:58ch}
+.hero-bas .chapo b{color:var(--ink);font-weight:560}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
 
-.hero-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:clamp(28px,5vw,80px);padding:clamp(36px,5vw,64px) 0;align-items:center}
-.hero-tagline{
-  font-stretch:125%;font-weight:250;text-transform:uppercase;line-height:1.08;letter-spacing:.005em;
-  font-size:clamp(26px,3.8vw,52px);
+/* Bandeau de chiffres — compteurs animés */
+.chiffres{border-top:1px solid var(--ink);margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(4,1fr)}
+.chiffres>div{padding:24px 24px 26px 0;border-right:1px solid var(--ligne)}
+.chiffres>div:last-child{border-right:none}
+.chiffres .n{
+  font-family:'Fraunces',serif;font-weight:340;font-variation-settings:'opsz' 144;
+  font-size:clamp(38px,4.6vw,62px);line-height:1;letter-spacing:-.02em;
 }
-.hero-tagline .souligne{color:var(--impact);position:relative;white-space:nowrap}
-.hero-tagline .souligne::after{content:"";position:absolute;left:-2%;right:-6%;bottom:.02em;height:.06em;background:var(--impact)}
-.hero-left p{font-size:clamp(16px,1.5vw,19px);font-weight:500;max-width:52ch;color:var(--muted);margin-top:22px}
-.hero-left p b{color:var(--craie)}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-
-/* ---- LE DOSSARD — carte CSS pure : trous, code-barres, bande impact.
-   Il flotte, il brille, il se redresse au survol. ---- */
-.bib-wrap{perspective:1200px;display:flex;justify-content:center}
-.bib-float{animation:flotte 7s ease-in-out infinite}
-@keyframes flotte{
-  0%,100%{transform:translateY(0) rotate(-2.2deg)}
-  50%{transform:translateY(-14px) rotate(-1.2deg)}
-}
-.bib{
-  position:relative;width:min(420px,100%);
-  background:var(--craie);color:var(--encre);
-  padding:clamp(22px,3vw,32px) clamp(24px,3vw,34px) clamp(20px,2.6vw,28px);
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-  transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;
-  overflow:hidden;
-}
-.bib-wrap:hover .bib{transform:rotate(2.2deg) scale(1.02);box-shadow:0 40px 100px rgba(255,68,0,.18)}
-/* Reflet qui balaie le dossard */
-.bib::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.5) 50%,transparent 58%);
-  transform:translateX(-120%);
-  animation:brille 6s ease-in-out infinite;
-}
-@keyframes brille{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
-.bib .trou{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--encre);box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
-.bib .trou.tl{top:12px;left:12px}.bib .trou.tr{top:12px;right:12px}
-.bib .trou.bl{bottom:12px;left:12px}.bib .trou.br{bottom:12px;right:12px}
-.bib-head{
-  display:flex;justify-content:space-between;align-items:center;gap:10px;
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  padding-bottom:12px;border-bottom:1px solid rgba(14,13,12,.16);
-}
-.bib-head .ed{color:var(--impact);white-space:nowrap;flex:none}
-.bib-num{
-  font-stretch:125%;font-weight:250;line-height:.8;
-  font-size:clamp(120px,14vw,170px);
-  display:flex;align-items:baseline;gap:10px;
-  padding:18px 0 6px;
-}
-.bib-num small{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.22em;color:var(--impact)}
-.bib-name{font-stretch:125%;font-weight:250;text-transform:uppercase;font-size:clamp(22px,2.6vw,30px);line-height:1.05}
-.bib-cat{
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:#57534A;margin-top:8px;
-}
-.bib-bar{height:5px;background:var(--impact);margin:16px 0}
-.bib-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
-.bib-code{
-  height:34px;flex:1;max-width:200px;
-  background:
-    repeating-linear-gradient(90deg,var(--encre) 0 2px,transparent 2px 5px,var(--encre) 5px 9px,transparent 9px 11px,var(--encre) 11px 12px,transparent 12px 17px),
-    repeating-linear-gradient(90deg,var(--encre) 0 1px,transparent 1px 7px);
-}
-.bib-foot .mono{font-size:10px;letter-spacing:.16em;color:#57534A;text-align:right;line-height:1.7}
-.bib-foot .mono b{color:var(--impact)}
-
-.hero-meta{border-top:1px solid var(--craie);display:grid;grid-template-columns:repeat(4,1fr)}
-.hero-meta>div{padding:20px var(--pad) 20px 0;border-right:1px solid var(--ligne-encre)}
-.hero-meta>div:last-child{border-right:none}
-.hero-meta .k{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton);display:block;margin-bottom:8px}
-.hero-meta .v{font-stretch:110%;font-weight:500;font-size:clamp(14px,1.4vw,18px);text-transform:uppercase;letter-spacing:.04em;line-height:1.25}
+.chiffres .n sup{font-family:'Instrument Sans',sans-serif;font-size:.42em;color:var(--vert);font-weight:560}
+.chiffres .l{display:block;margin-top:10px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sourdine)}
 
 /* ==========================================================================
-   MARQUEE
+   FIG. 01 — LE SCHÉMA VIVANT (panneau encre + grille bleu de travail)
    ========================================================================== */
-.marquee{background:var(--encre-2);color:var(--craie);overflow:hidden;border-top:1px solid var(--ligne-encre);border-bottom:1px solid var(--ligne-encre)}
-.marquee-track{display:flex;width:max-content;animation:mq 30s linear infinite;padding:16px 0}
-.marquee span{
-  font-stretch:125%;font-weight:250;text-transform:uppercase;white-space:nowrap;
-  font-size:clamp(20px,2.6vw,34px);letter-spacing:.01em;padding:0 8px;line-height:1;
+.panneau{
+  background:var(--ink-2);color:#E9EFEA;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
 }
-.marquee .sep{font-family:'JetBrains Mono',monospace;font-weight:500;padding:0 22px;font-size:clamp(16px,2vw,26px);align-self:center;color:var(--impact)}
-.marquee .out{color:var(--beton)}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.panneau .grille{
+  background-image:
+    repeating-linear-gradient(0deg,rgba(233,239,234,.045) 0 1px,transparent 1px 32px),
+    repeating-linear-gradient(90deg,rgba(233,239,234,.045) 0 1px,transparent 1px 32px);
+  padding:clamp(26px,4vw,48px) 0 clamp(30px,4vw,52px);
+}
+.fig-tete{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.fig-tete .mono{color:#9DB0A4}
+.fig-tete .mono b{color:var(--vert-vif);font-weight:500}
+.fig-cadre{overflow-x:auto;border:1px solid rgba(233,239,234,.14)}
+.fig-cadre svg{display:block;min-width:980px;width:100%;height:auto}
+.fig-legende{display:flex;gap:clamp(16px,3vw,36px);flex-wrap:wrap;margin-top:16px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9DB0A4}
+.fig-legende i{font-style:normal;color:var(--vert-vif)}
+
+/* Animations du schéma */
+.flux-bus{stroke-dasharray:7 9;animation:busflow 1.6s linear infinite}
+@keyframes busflow{to{stroke-dashoffset:-16}}
+.lien-cdc{stroke-dasharray:4 7;animation:busflow 2.6s linear infinite}
+.noeud-pulse{animation:pulse 2.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
 
 /* ==========================================================================
-   SECTIONS COMMUNES
+   SECTIONS — têtes de chapitre §
    ========================================================================== */
-section{padding:clamp(80px,10vw,140px) 0}
-.dark{background:var(--encre-2)}
-.light{
-  background:var(--craie);color:var(--encre);
-  --muted:#57534A;
-  --beton:#7C7669;
-  --ligne-encre:rgba(14,13,12,.16);
+section{padding:clamp(72px,9vw,128px) 0}
+.stete{margin-bottom:clamp(38px,5.5vw,64px)}
+.stete .haut{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--ink);padding-top:16px}
+.encre .stete .haut{border-top-color:#F1EEE5}
+.stete .para{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.18em;color:var(--vert)}
+.stete .fig{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sourdine)}
+.stete h2{
+  font-size:clamp(34px,4.8vw,62px);
+  font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;
+  margin-top:clamp(18px,3vw,30px);max-width:22ch;
 }
-.sec-head{margin-bottom:clamp(40px,6vw,72px)}
-.sec-head .tmark{margin-bottom:26px}
-.sec-head h2{font-size:clamp(42px,7vw,104px)}
-.sec-head h2::after,.finale h2::after{
-  content:"";display:block;width:min(240px,34%);height:5px;
-  background:var(--impact);margin-top:clamp(26px,4vw,44px);
-}
-.sec-head .intro{margin-top:26px;max-width:62ch;font-size:17px;font-weight:500;color:var(--muted)}
-
-/* Titres « élastiques » : la chasse variable d'Archivo s'étire au scroll —
-   la typo respire comme sur l'affiche. Scroll-driven, fallback statique. */
-@supports (animation-timeline: view()){
-  .etire{animation:etire linear both;animation-timeline:view();animation-range:entry 10% entry 90%}
-  @keyframes etire{
-    from{font-stretch:70%;opacity:.15;letter-spacing:.05em}
-    to{font-stretch:125%;opacity:1;letter-spacing:.005em}
-  }
-}
+.stete h2 .accent{font-style:italic;color:var(--vert)}
+.stete .intro{margin-top:20px;max-width:64ch;color:var(--sourdine);font-size:17px}
+.stete .intro b{color:inherit;font-weight:560}
+.encre .stete .intro b{color:#F1EEE5}
 
 /* ==========================================================================
-   T+01 — LE PROFIL (stances façon manifeste)
+   § 01 — EXPERTISES
    ========================================================================== */
-#profil .stances{max-width:920px}
-#profil .stance{
-  font-stretch:110%;font-weight:350;line-height:1.3;
-  font-size:clamp(21px,3vw,38px);
-  padding:clamp(22px,3vw,34px) 0;
-  border-bottom:1px solid var(--ligne-encre);
-  color:var(--muted);
+.expertises{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--ligne);border-left:1px solid var(--ligne)}
+.exp{
+  position:relative;padding:clamp(26px,3.4vw,44px);
+  border-right:1px solid var(--ligne);border-bottom:1px solid var(--ligne);
+  background:transparent;transition:background .25s ease;
 }
-#profil .stance b{color:var(--craie);font-weight:450}
-#profil .stance .imp{color:var(--impact)}
-#profil .stance:first-child{padding-top:0}
-#profil .sceau{
-  margin-top:clamp(40px,6vw,70px);
-  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+.exp:hover{background:#FCFAF4}
+.exp::before{
+  content:"";position:absolute;top:-1px;left:0;height:2px;width:100%;background:var(--vert);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.6,.2,1);
 }
-#profil .sceau .sig{font-stretch:125%;font-weight:250;font-size:clamp(48px,8vw,120px);line-height:.85;text-transform:uppercase}
-#profil .sceau .sig i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
-#profil .sceau .base{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);padding-bottom:10px}
-#profil .sceau .base b{color:var(--impact)}
+.exp:hover::before{transform:scaleX(1)}
+.exp .num{
+  font-family:'Fraunces',serif;font-weight:320;font-style:italic;
+  font-variation-settings:'opsz' 144;
+  font-size:clamp(40px,4.4vw,58px);line-height:1;color:var(--vert);
+}
+.exp h3{font-size:clamp(21px,2.2vw,27px);margin:16px 0 12px;font-variation-settings:'opsz' 100}
+.exp p{color:var(--sourdine);font-size:15.5px;max-width:52ch}
+.exp p b{color:var(--ink);font-weight:560}
+.exp .tags{margin-top:18px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sourdine)}
+.exp .tags i{font-style:normal;color:var(--vert)}
 
 /* ==========================================================================
-   T+02 — CE QUE JE PROPOSE (les services comme des formats de course)
-   Le grand numéro se COMPRIME au survol : la chasse variable freine.
+   § 02 — MODES D'ENGAGEMENT (encre)
    ========================================================================== */
-.services{border-top:1px solid var(--ligne-encre)}
-.srv{
-  display:grid;grid-template-columns:minmax(130px,.6fr) 1.6fr 1fr auto;
-  gap:clamp(16px,3vw,44px);align-items:center;
-  padding:clamp(26px,3.5vw,40px) 0;border-bottom:1px solid var(--ligne-encre);
-  position:relative;text-decoration:none;
-  background:linear-gradient(var(--encre),var(--encre)) no-repeat left center / 0% 100%;
-  transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease;
+.offres{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ligne)}
+.offre{
+  display:flex;flex-direction:column;
+  padding:clamp(26px,3.2vw,42px);
+  border-right:1px solid var(--ligne);
+  position:relative;transition:background .25s ease;
 }
-.srv:hover{background-size:100% 100%;color:var(--craie)}
-.srv:hover .s-why{color:var(--muted-hov,#B0A99C)}
-.srv>*{position:relative}
-.srv .s-num{
-  font-stretch:125%;font-weight:250;font-size:clamp(46px,6.5vw,90px);line-height:.85;
-  transition:font-stretch .45s ease,font-weight .45s ease,color .3s ease;
-  padding-left:clamp(0px,1vw,14px);
+.offre:last-child{border-right:none}
+.offre:hover{background:rgba(247,244,236,.035)}
+.offre .mode{font-family:'Plex Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--vert-vif)}
+.offre h3{font-size:clamp(24px,2.5vw,32px);margin:14px 0 6px;font-variation-settings:'opsz' 120}
+.offre .devise{font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:#AFBDB4;margin-bottom:22px}
+.offre ul{list-style:none;margin-bottom:26px}
+.offre li{
+  position:relative;padding:10px 0 10px 24px;
+  border-top:1px solid var(--ligne-faible);
+  font-size:15px;color:#C9D2CB;
 }
-.srv:hover .s-num{font-stretch:62%;font-weight:600;color:var(--impact)}
-.srv .s-name{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(13px,1.5vw,16px);text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px}
-.srv .s-why{font-size:15px;font-weight:500;color:var(--muted);max-width:52ch;transition:color .3s ease}
-.srv .s-data{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;line-height:2}
-.srv .s-data b{color:var(--impact);font-weight:700}
-.srv .s-go{
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;
-  border:1px solid currentColor;width:52px;height:52px;display:flex;align-items:center;justify-content:center;
-  transition:transform .15s ease;margin-right:clamp(0px,1vw,14px);
+.offre li b{color:#F1EEE5;font-weight:560}
+.offre li::before{content:"";position:absolute;left:2px;top:19px;width:7px;height:7px;border:1.5px solid var(--vert-vif);border-radius:50%}
+.offre .modalites{
+  margin-top:auto;padding:14px 16px;border:1px solid var(--ligne-faible);border-radius:2px;
+  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:2;color:#9DB0A4;
 }
-.srv:hover .s-go{transform:translateX(6px);border-color:var(--impact);color:var(--impact)}
-.services-note{
-  display:flex;gap:16px;align-items:center;padding:20px 0;flex-wrap:wrap;
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--beton);
+.offre .modalites b{color:var(--vert-vif);font-weight:500}
+.offre .pourqui{margin-top:16px;font-size:14px;color:#AFBDB4;font-style:italic;font-family:'Fraunces',serif}
+.offre.phare{background:rgba(39,184,138,.06)}
+.offre.phare:hover{background:rgba(39,184,138,.09)}
+.offre.phare::before{
+  content:"ENGAGEMENT DE RÉSULTAT";
+  position:absolute;top:-11px;left:clamp(26px,3.2vw,42px);
+  background:var(--vert-vif);color:#08110D;
+  font-family:'Plex Mono',monospace;font-weight:500;font-size:10px;letter-spacing:.18em;
+  padding:5px 10px;border-radius:2px;
 }
-.services-note b{color:var(--impact);font-weight:700}
+
+/* Parcours de démarrage : 4 étapes reliées */
+.demarrage{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,26px);margin-top:clamp(36px,5vw,56px)}
+.etape{position:relative;padding-top:20px}
+.etape::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--ligne)}
+.etape::after{
+  content:"";position:absolute;top:-4.5px;left:0;width:10px;height:10px;border-radius:50%;
+  background:var(--ink-2);border:1.5px solid var(--vert-vif);
+}
+.etape .en{font-family:'Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.18em;color:var(--vert-vif)}
+.etape h4{font-family:'Fraunces',serif;font-weight:460;font-size:18.5px;margin:8px 0 6px}
+.etape p{font-size:14px;color:#AFBDB4}
 
 /* ==========================================================================
-   T+03 — LES SPLITS (15 ans en temps de passage)
-   Le rail se dessine au scroll, le coureur (carré orange) descend avec toi.
+   § 03 — LE COLLECTIF
    ========================================================================== */
-.splits{position:relative;padding-left:clamp(36px,6vw,96px)}
-.rail{position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--ligne-encre)}
-.rail .trace{position:absolute;inset:0;background:var(--impact);transform-origin:top;transform:scaleY(0)}
-.rail .coureur{
-  position:absolute;left:50%;top:0;width:12px;height:12px;margin-left:-6px;
-  background:var(--impact);box-shadow:0 0 0 6px rgba(255,68,0,.15);
-  opacity:0;
+.collectif{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,80px);align-items:start}
+.collectif .txt p{color:var(--sourdine);font-size:17px;max-width:56ch}
+.collectif .txt p b{color:var(--ink);font-weight:560}
+.collectif .txt p + p{margin-top:16px}
+.collectif .txt .serment{
+  margin-top:28px;padding:22px 26px;border-left:2px solid var(--vert);background:#FCFAF4;
+  font-family:'Fraunces',serif;font-style:italic;font-size:19px;line-height:1.5;
 }
-@supports (animation-timeline: view()){
-  .rail .trace{animation:trace linear both;animation-timeline:view();animation-range:contain 0% contain 100%}
-  @keyframes trace{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-  .rail .coureur{opacity:1;animation:descend linear both;animation-timeline:view();animation-range:contain 0% contain 100%}
-  @keyframes descend{from{top:0}to{top:calc(100% - 12px)}}
+.roles{border:1px solid var(--ligne)}
+.roles>div{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:15px 20px;border-bottom:1px solid var(--ligne);
+  transition:background .2s ease,padding-left .25s ease;
 }
-.split{
-  position:relative;
-  display:grid;grid-template-columns:minmax(150px,.55fr) 1.7fr 1fr;
-  gap:clamp(16px,3vw,44px);align-items:start;
-  padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid var(--ligne-encre);
-}
-.split::before{
-  content:"";position:absolute;top:clamp(36px,4vw,54px);
-  left:calc(-1 * clamp(36px,6vw,96px) + 4px);
-  width:12px;height:12px;background:var(--impact);
-}
-.split .km{
-  font-stretch:125%;font-weight:250;font-size:clamp(40px,5.4vw,76px);line-height:.85;white-space:nowrap;
-}
-.split .km small{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.24em;letter-spacing:.18em;vertical-align:.35em;margin-right:.4em;color:var(--impact)}
-.split .annees{display:block;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.18em;color:var(--beton);margin-top:12px}
-.split h3{font-size:clamp(21px,2.4vw,32px);font-stretch:105%}
-.split .role{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--impact);display:block;margin:6px 0 12px}
-.split p{font-size:15px;font-weight:500;color:var(--muted);max-width:58ch}
-.split p b{color:var(--craie)}
-.split .stack{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--beton);line-height:2.1}
-.split .stack b{color:var(--craie);font-weight:500}
-.split.depart::before{background:var(--craie)}
-.split.depart .km,.split.depart h3{color:var(--beton)}
-.splits-arrivee{
-  display:flex;align-items:center;gap:22px;margin-top:clamp(30px,4vw,50px);
-  padding:18px clamp(20px,3vw,40px);background:var(--encre);
-}
-.splits-arrivee .damier{height:20px;width:100px;flex:none;background:repeating-conic-gradient(#EFEBE2 0% 25%, transparent 0% 50%) 0 0/20px 20px;opacity:.7;animation:defile 3.2s linear infinite}
-.splits-arrivee p{font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)}
-.splits-arrivee p em{font-style:normal;color:var(--impact)}
+.roles>div:last-child{border-bottom:none}
+.roles>div:hover{background:#FCFAF4;padding-left:26px}
+.roles .r{font-weight:560;font-size:15.5px}
+.roles .d{font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sourdine);text-align:right}
+.roles .tete-r{background:var(--ink);color:#F1EEE5}
+.roles .tete-r:hover{background:var(--ink);padding-left:20px}
+.roles .tete-r .d{color:var(--vert-vif)}
 
 /* ==========================================================================
-   T+04 — HORS STADE
+   § 04 — PARCOURS (registre)
    ========================================================================== */
-.hors-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ligne-encre)}
-.hors-cell{padding:clamp(26px,3vw,42px);border-right:1px solid var(--ligne-encre);transition:background .2s ease}
-.hors-cell:last-child{border-right:none}
-.hors-cell:hover{background:var(--craie-2)}
-.hors-cell .n{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--impact);font-size:13px;letter-spacing:.2em;display:block;margin-bottom:14px}
-.hors-cell h3{font-size:clamp(20px,2.2vw,30px);font-stretch:90%;margin-bottom:12px}
-.hors-cell p{font-size:15px;color:var(--muted);font-weight:500}
-.hors-note{
-  display:flex;gap:16px;align-items:center;margin-top:26px;flex-wrap:wrap;
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--beton);
+.registre{border-top:1px solid var(--ink)}
+.ligne-m{
+  display:grid;grid-template-columns:minmax(120px,.5fr) 1fr 1.4fr;
+  gap:clamp(14px,2.6vw,40px);align-items:baseline;
+  padding:clamp(18px,2.4vw,26px) 0;border-bottom:1px solid var(--ligne);
+  transition:background .2s ease;position:relative;
 }
-.hors-note b{color:var(--impact);font-weight:700}
+.ligne-m:hover{background:#FCFAF4}
+.ligne-m::before{
+  content:"";position:absolute;left:-14px;top:0;bottom:0;width:2px;background:var(--vert);
+  transform:scaleY(0);transition:transform .3s ease;transform-origin:top;
+}
+.ligne-m:hover::before{transform:scaleY(1)}
+.ligne-m .an{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.12em;color:var(--vert)}
+.ligne-m .qui{font-family:'Fraunces',serif;font-weight:460;font-size:clamp(17px,1.8vw,21px)}
+.ligne-m .qui small{display:block;font-family:'Plex Mono',monospace;font-weight:400;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sourdine);margin-top:4px}
+.ligne-m .quoi{font-size:15px;color:var(--sourdine)}
+.ligne-m .quoi b{color:var(--ink);font-weight:560}
+.registre-note{
+  display:flex;gap:24px;flex-wrap:wrap;align-items:baseline;
+  margin-top:26px;font-size:14.5px;color:var(--sourdine);
+}
+.registre-note .k{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--vert)}
+
+/* Le lab */
+.lab{
+  margin-top:clamp(40px,5vw,60px);
+  border:1px solid var(--ligne);border-left:3px solid var(--vert);
+  padding:clamp(22px,3vw,34px);
+  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;
+  background:#FCFAF4;
+}
+.lab .t .mono{color:var(--vert)}
+.lab h3{font-size:clamp(20px,2.2vw,26px);margin:10px 0 8px}
+.lab p{color:var(--sourdine);font-size:15.5px;max-width:60ch}
+.lab p b{color:var(--ink);font-weight:560}
 
 /* ==========================================================================
-   T+05 — LA PREUVE (ce site, livré avec des agents IA)
+   FINALE — CONTACT (encre)
    ========================================================================== */
-.preuve-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,80px);align-items:start}
-.preuve-grid .txt p{font-size:clamp(16px,1.6vw,20px);font-weight:500;color:var(--muted);max-width:56ch}
-.preuve-grid .txt p b{color:var(--craie)}
-.preuve-grid .txt p + p{margin-top:16px}
-.preuve-grid .txt .imp{color:var(--impact)}
-.preuve-stats{border:1px solid var(--ligne-encre)}
-.preuve-stats>div{
-  display:flex;align-items:baseline;justify-content:space-between;gap:18px;
-  padding:clamp(18px,2.4vw,26px) clamp(20px,2.6vw,30px);
-  border-bottom:1px solid var(--ligne-encre);
+.finale h2{
+  font-size:clamp(42px,6.6vw,96px);
+  font-variation-settings:'opsz' 144;
+  max-width:16ch;
 }
-.preuve-stats>div:last-child{border-bottom:none}
-.preuve-stats .pv{font-stretch:125%;font-weight:250;font-size:clamp(36px,4.4vw,64px);line-height:.9}
-.preuve-stats .pk{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);text-align:right}
-.preuve-cta{margin-top:30px}
-
-/* ==========================================================================
-   FINALE
-   ========================================================================== */
-.finale{
-  background:var(--craie);color:var(--encre);border-top:1px solid rgba(14,13,12,.16);
-  --muted:#57534A;--beton:#7C7669;--ligne-encre:rgba(14,13,12,.16);
-}
-.finale h2{font-size:clamp(48px,8.5vw,140px)}
-.finale .fin-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:40px}
-.finale p{font-size:clamp(16px,1.6vw,20px);font-weight:500;max-width:52ch;color:var(--muted)}
-.finale .fin-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.finale .btn-go{border-color:var(--impact);background:var(--impact);color:#EFEBE2;font-size:14px;padding:20px 32px}
-.finale .btn-go:hover{background:var(--encre);color:#EFEBE2;border-color:var(--encre)}
+.finale h2 .accent{font-style:italic;color:var(--vert-vif)}
+.finale .fin-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:clamp(26px,4vw,44px)}
+.finale p{font-size:clamp(16px,1.6vw,19px);color:#AFBDB4;max-width:52ch}
+.finale p b{color:#F1EEE5;font-weight:560}
 .finale .coord{
-  margin-top:40px;padding-top:24px;border-top:1px solid var(--ligne-encre);
-  display:flex;gap:clamp(20px,4vw,60px);flex-wrap:wrap;
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  margin-top:clamp(36px,5vw,56px);padding-top:26px;border-top:1px solid var(--ligne);
+  display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap;
+  font-family:'Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
 }
-.finale .coord a{text-decoration:none}
-.finale .coord a:hover{color:var(--impact)}
-.finale .coord .k{color:var(--beton);margin-right:10px}
+.finale .coord a{text-decoration:none;transition:color .2s ease}
+.finale .coord a:hover{color:var(--vert-vif)}
+.finale .coord .k{color:var(--sourdine);margin-right:10px}
 
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0 34px}
-.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid var(--ligne-encre)}
-.foot-logo{font-stretch:125%;font-weight:250;font-size:44px;line-height:.9;text-transform:uppercase}
-.foot-logo i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
-.foot-base{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--beton);margin-top:12px}
-.foot-cols{display:flex;gap:clamp(30px,6vw,90px);flex-wrap:wrap}
-.foot-cols h4{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--beton);margin-bottom:16px}
-.foot-cols ul{list-style:none}
-.foot-cols li{margin-bottom:10px}
-.foot-cols a{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
-.foot-cols a:hover{color:var(--impact)}
-.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--beton)}
+footer{border-top:1px solid var(--ligne);padding:30px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot .mono{color:var(--sourdine);font-size:10.5px}
+.foot .marque{font-size:17px}
+
+/* ==========================================================================
+   SCROLL-DRIVEN — les filets de chapitre se tracent en entrant
+   ========================================================================== */
+@supports (animation-timeline: view()){
+  .stete .haut{border-top:none;position:relative;padding-top:17px}
+  .stete .haut::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;background:currentColor;
+    transform-origin:left;
+    animation:file linear both;animation-timeline:view();animation-range:entry 0% entry 80%;
+  }
+  @keyframes file{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
 
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
-@media (max-width:1080px){
-  .hero-grid{grid-template-columns:1fr;justify-items:start}
-  .bib-wrap{justify-content:flex-start;width:100%}
-}
-@media (max-width:980px){
-  .hero-meta{grid-template-columns:repeat(2,1fr)}
-  .hero-meta>div{border-bottom:1px solid var(--ligne-encre)}
-  .srv{grid-template-columns:1fr;gap:14px}
-  .srv .s-go{display:none}
-  .split{grid-template-columns:1fr;gap:14px}
-  .hors-grid{grid-template-columns:1fr}
-  .hors-cell{border-right:none;border-bottom:1px solid var(--ligne-encre)}
-  .hors-cell:last-child{border-bottom:none}
-  .preuve-grid{grid-template-columns:1fr}
+@media (max-width:1020px){
+  .hero-bas{grid-template-columns:1fr}
+  .hero-ctas{justify-content:flex-start}
+  .collectif{grid-template-columns:1fr}
+  .offres{grid-template-columns:1fr}
+  .offre{border-right:none;border-bottom:1px solid var(--ligne)}
+  .offre:last-child{border-bottom:none}
+  .offre.phare{border-top:14px solid transparent}
+  .demarrage{grid-template-columns:repeat(2,1fr);gap:26px}
 }
 @media (max-width:860px){
-  .nav-links{
+  .chiffres{grid-template-columns:repeat(2,1fr)}
+  .chiffres>div{border-bottom:1px solid var(--ligne)}
+  .expertises{grid-template-columns:1fr}
+  .ligne-m{grid-template-columns:1fr;gap:8px}
+  .nav-liens{
     display:none;position:absolute;top:100%;left:0;right:0;
-    flex-direction:column;background:var(--craie);border-bottom:1px solid var(--encre);
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--ink);
   }
-  .nav-links.open{display:flex}
-  .nav-links a{padding:18px var(--pad);border-left:none;border-top:1px solid rgba(14,13,12,.14);height:auto;color:var(--encre)}
-  .nav-links a.nav-cta{color:var(--craie)}
-  .nav-links a.nav-back{color:var(--encre)}
+  .nav-liens.open{display:flex}
+  .nav-liens li{border-top:1px solid var(--ligne)}
+  .nav-liens a{display:block;padding:16px var(--pad)}
+  .nav-liens a.nav-cta{border-radius:0}
   .burger{display:block}
+}
+@media (max-width:560px){
+  .demarrage{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .marquee-track,.hero-strip .damier,.splits-arrivee .damier,.bib-float,.bib::after{animation:none}
-  .hero-me .l span{animation:none;transform:none}
-  .hero-me i{animation:none;transform:scale(1)}
-  .reveal{opacity:1;transform:none;transition:none}
-  .btn,.srv,.s-go,.s-num{transition:none}
-  .progress{display:none}
-  .etire{animation:none}
-  .rail .trace{animation:none;transform:scaleY(1)}
-  .rail .coureur{animation:none;opacity:0}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  .hero h1 .ln span{animation:none;transform:none}
+  .hero h1 .accent::after{animation:none;transform:scaleX(1)}
+  .flux-bus,.lien-cdc,.noeud-pulse{animation:none}
+  .paquet{display:none}
+  .btn,.exp::before,.ligne-m::before{transition:none}
+  .stete .haut::before{animation:none;transform:scaleX(1)}
 }
 </style>
 </head>
 <body>
 
-<div class="progress" id="progress" aria-hidden="true"></div>
-
 <!-- ============================ NAV ============================ -->
 <header>
   <div class="nav-in">
-    <a class="logo" href="#top" aria-label="M.E — Mohamed Ennaciri">M<i></i>E</a>
-    <button class="burger" aria-expanded="false" aria-controls="nav-links" onclick="toggleNav(this)">Menu</button>
-    <ul class="nav-links" id="nav-links">
-      <li><a class="nav-back" href="../">← R.O.I</a></li>
-      <li><a href="#profil">Le profil</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#splits">Les splits</a></li>
-      <li><a href="#horsstade">Hors stade</a></li>
-      <li><a class="nav-cta" href="mailto:ennaciri.md@gmail.com?subject=Mission%20Tech%20Lead%20%E2%80%94%20On%20court%20ensemble%20%3F">On court ensemble ?</a></li>
+    <a class="marque" href="#haut" aria-label="Mohamed Ennaciri — Architecte Backend">
+      <span class="noeud" aria-hidden="true"></span>Ennaciri<small>Architecture backend</small>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="nav-liens" onclick="toggleNav(this)">Menu</button>
+    <ul class="nav-liens" id="nav-liens">
+      <li><a href="#expertises">Expertises</a></li>
+      <li><a href="#engagements">Engagements</a></li>
+      <li><a href="#collectif">Le collectif</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a class="nav-cta" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes">Discutons →</a></li>
     </ul>
   </div>
 </header>
 
+<main id="haut">
 <!-- ============================ HERO ============================ -->
-<main id="top">
-<section class="hero" aria-label="Mohamed Ennaciri — Tech Lead / Architecte Backend">
+<section class="hero" aria-label="Mohamed Ennaciri — Architecte Backend & Tech Lead">
   <div class="wrap">
-    <div class="hero-top">
-      <span class="tmark"><b>DOSSARD № 011</b> — TECH LEAD / ARCHITECTE BACKEND — FREELANCE</span>
-      <span class="hero-chrono" aria-hidden="true">EN COURSE DEPUIS AVRIL 2011 — <b id="chrono">T+15A</b></span>
+    <div class="sur mono">
+      <span class="tiret" aria-hidden="true"></span>
+      <span>Mohamed Ennaciri — Architecte Backend &amp; Tech Lead · Freelance · Paris</span>
     </div>
-
-    <div class="hero-me" aria-hidden="true"><span class="l"><span>M</span></span><i></i><span class="l"><span>E</span></span></div>
-    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Mohamed Ennaciri — Tech Lead / Architecte Backend (Kotlin, Java, Kafka, Keycloak)</h1>
-
-    <div class="hero-strip">
-      <span class="rsi">MOHAMED <em>ENNACIRI</em></span>
-      <span class="damier" aria-hidden="true"></span>
-      <span class="mono">FR · KOTLIN — JAVA — KAFKA — KEYCLOAK</span>
-    </div>
-
-    <div class="hero-grid">
-      <div class="hero-left reveal">
-        <p class="hero-tagline">Je fais franchir la ligne aux systèmes. <span class="souligne">Sans coupure</span> de service.</p>
-        <p>Backend depuis 15 ans : Kotlin, Java, Spring Boot, Kafka, Keycloak. Chez Europcar, j'ai unifié <b>plus de 3 millions de profils clients</b> et migré les backends vers une <b>architecture orientée événements</b>.</p>
-        <p>Avant ça : Renault, Casino, Cegedim, Crédit Agricole — souvent pour faire cohabiter le legacy et le neuf, <b>pendant que tout le monde continue de rouler</b>.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-impact" href="mailto:ennaciri.md@gmail.com?subject=Mission%20Tech%20Lead%20%E2%80%94%20On%20court%20ensemble%20%3F"><span>On court ensemble ?</span><span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="#services"><span>Voir les services</span><span class="arr">↓</span></a>
-        </div>
-      </div>
-
-      <div class="bib-wrap reveal d1" aria-label="Dossard : Ennaciri Mohamed, 15 ans, Kotlin Java Kafka Keycloak, Tech Lead freelance">
-        <div class="bib-float">
-          <div class="bib">
-            <span class="trou tl" aria-hidden="true"></span><span class="trou tr" aria-hidden="true"></span>
-            <span class="trou bl" aria-hidden="true"></span><span class="trou br" aria-hidden="true"></span>
-            <div class="bib-head"><span>COURSE BACKEND — LONGUE DISTANCE</span><span class="ed">ÉD. 2011 → ∞</span></div>
-            <div class="bib-num">15<small>ANS<br>D'EXPÉRIENCE</small></div>
-            <div class="bib-name">Ennaciri Mohamed</div>
-            <div class="bib-cat">CAT. TECH LEAD · KOTLIN — JAVA — KAFKA — KEYCLOAK</div>
-            <div class="bib-bar" aria-hidden="true"></div>
-            <div class="bib-foot">
-              <div class="bib-code" aria-hidden="true"></div>
-              <div class="mono">SANS COUPURE<br>DE SERVICE <b>■</b></div>
-            </div>
-          </div>
-        </div>
+    <h1>
+      <span class="ln"><span>Quinze ans à faire</span></span>
+      <span class="ln"><span>tourner ce qui ne doit</span></span>
+      <span class="ln"><span><em class="accent">jamais s'arrêter.</em></span></span>
+    </h1>
+    <div class="hero-bas">
+      <p class="chapo rv">Kotlin, Java, Kafka, Keycloak. Chez Europcar, j'ai unifié <b>plus de 3 millions de profils clients</b> et migré les backends vers l'événementiel — <b>sans une coupure de service</b>. J'interviens en régie comme au forfait, seul ou avec un collectif de freelances seniors quand il faut une équipe complète.</p>
+      <div class="hero-ctas rv d1">
+        <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Discutons de votre projet</span><span class="fl">→</span></a>
+        <a class="btn btn-ligne" href="#engagements"><span>Modes d'engagement</span><span class="fl">↓</span></a>
       </div>
     </div>
-
-    <div class="hero-meta">
-      <div><span class="k">BASE</span><span class="v">Paris — Issy-les-Moulineaux</span></div>
-      <div><span class="k">EN COURSE DEPUIS</span><span class="v">2011 — 15 ans de backend</span></div>
-      <div><span class="k">DERNIER SPLIT</span><span class="v">Europcar — 3M+ profils unifiés</span></div>
-      <div><span class="k">STATUT</span><span class="v">Freelance — disponible</span></div>
+    <div class="chiffres rv">
+      <div><span class="n"><span class="compte" data-cible="15">0</span></span><span class="l">ans de production</span></div>
+      <div><span class="n"><span class="compte" data-cible="3">0</span>&thinsp;M<sup>+</sup></span><span class="l">profils clients unifiés</span></div>
+      <div><span class="n"><span class="compte" data-cible="9">0</span></span><span class="l">grands comptes servis</span></div>
+      <div><span class="n"><span class="compte" data-cible="4">0</span></span><span class="l">pays d'équipes pilotées</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ MARQUEE ============================ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Kotlin · Java · Spring Boot</span><span class="sep">//</span>
-    <span class="out">Kafka · Event-driven · CQRS · DDD</span><span class="sep">//</span>
-    <span>Keycloak · OAuth 2.1 · OIDC</span><span class="sep">//</span>
-    <span class="out">AWS · GCP · Azure · Kubernetes</span><span class="sep">//</span>
-    <span>Agents IA · Claude Code · MCP</span><span class="sep">//</span>
-    <span>Kotlin · Java · Spring Boot</span><span class="sep">//</span>
-    <span class="out">Kafka · Event-driven · CQRS · DDD</span><span class="sep">//</span>
-    <span>Keycloak · OAuth 2.1 · OIDC</span><span class="sep">//</span>
-    <span class="out">AWS · GCP · Azure · Kubernetes</span><span class="sep">//</span>
-    <span>Agents IA · Claude Code · MCP</span><span class="sep">//</span>
+<!-- ============================ FIG. 01 — SCHÉMA VIVANT ============================ -->
+<div class="panneau encre" aria-label="Figure 1 : plateforme événementielle type">
+  <div class="grille">
+    <div class="wrap">
+      <div class="fig-tete">
+        <span class="mono"><b>fig. 01</b> — plateforme événementielle type</span>
+        <span class="mono">réf. europcar — 3M+ profils · production</span>
+      </div>
+      <div class="fig-cadre">
+        <svg viewBox="0 0 1180 540" role="img" aria-label="Schéma d'architecture : canaux web, mobile et B2B derrière une gateway API sécurisée par Keycloak, services de domaine publiant sur un bus Kafka, consommé par des workers, la recherche MongoDB et le CRM ; un flux CDC relie l'Oracle legacy au bus.">
+          <defs>
+            <marker id="fl" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L8,4 L0,8 z" fill="#4A5C52"/>
+            </marker>
+          </defs>
+          <g stroke="#4A5C52" stroke-width="1.3" fill="none">
+            <path d="M160,102 L205,102 L205,205 L250,205" marker-end="url(#fl)"/>
+            <path d="M160,231 L250,231" marker-end="url(#fl)"/>
+            <path d="M160,342 L205,342 L205,257 L250,257" marker-end="url(#fl)"/>
+            <path d="M400,205 L450,205 L450,100 L500,100" marker-end="url(#fl)"/>
+            <path d="M400,231 L450,231 L450,200 L500,200" marker-end="url(#fl)"/>
+            <path d="M400,257 L450,257 L450,300 L500,300" marker-end="url(#fl)"/>
+            <path d="M680,100 L720,100 L720,430"/>
+            <path d="M680,200 L740,200 L740,430"/>
+            <path d="M680,300 L760,300 L760,430"/>
+            <path d="M605,430 L605,468" marker-end="url(#fl)"/>
+            <path d="M845,430 L845,468" marker-end="url(#fl)"/>
+            <path d="M1065,430 L1065,468" marker-end="url(#fl)"/>
+          </g>
+          <path d="M320,380 L320,290" stroke="#4A5C52" stroke-width="1.3" fill="none" stroke-dasharray="3 5" marker-end="url(#fl)"/>
+          <path class="lien-cdc" d="M1015,132 L1015,426" stroke="#27B88A" stroke-width="1.4" fill="none" opacity=".8"/>
+          <text x="1028" y="285" fill="#27B88A" font-family="Plex Mono,monospace" font-size="11" letter-spacing="2">CDC</text>
+
+          <!-- Bus Kafka -->
+          <path class="flux-bus" d="M470,430 L1140,430" stroke="#27B88A" stroke-width="2.4" fill="none"/>
+          <circle class="noeud-pulse" cx="470" cy="430" r="5" fill="#27B88A"/>
+          <text x="470" y="412" fill="#27B88A" font-family="Plex Mono,monospace" font-size="12" letter-spacing="2.5">BUS D'ÉVÉNEMENTS — KAFKA</text>
+
+          <!-- Paquets d'événements en circulation (masqués par les nœuds au passage) -->
+          <g class="paquet">
+            <circle r="7" fill="#27B88A" opacity=".22"><animateMotion dur="7s" repeatCount="indefinite" path="M160,231 L450,231 L450,200 L740,200 L740,430 L845,430 L845,468"/></circle>
+            <circle r="3.4" fill="#2FDCA5"><animateMotion dur="7s" repeatCount="indefinite" path="M160,231 L450,231 L450,200 L740,200 L740,430 L845,430 L845,468"/></circle>
+          </g>
+          <g class="paquet">
+            <circle r="7" fill="#27B88A" opacity=".22"><animateMotion dur="8.5s" begin="1.6s" repeatCount="indefinite" path="M160,102 L205,102 L205,205 L250,205 L400,205 L450,205 L450,100 L680,100 L720,100 L720,430 L605,430 L605,468"/></circle>
+            <circle r="3.4" fill="#2FDCA5"><animateMotion dur="8.5s" begin="1.6s" repeatCount="indefinite" path="M160,102 L205,102 L205,205 L250,205 L400,205 L450,205 L450,100 L680,100 L720,100 L720,430 L605,430 L605,468"/></circle>
+          </g>
+          <g class="paquet">
+            <circle r="7" fill="#27B88A" opacity=".22"><animateMotion dur="9.5s" begin="3.2s" repeatCount="indefinite" path="M160,342 L205,342 L205,257 L250,257 L400,257 L450,257 L450,300 L680,300 L760,300 L760,430 L1065,430 L1065,468"/></circle>
+            <circle r="3.4" fill="#2FDCA5"><animateMotion dur="9.5s" begin="3.2s" repeatCount="indefinite" path="M160,342 L205,342 L205,257 L250,257 L400,257 L450,257 L450,300 L680,300 L760,300 L760,430 L1065,430 L1065,468"/></circle>
+          </g>
+          <g class="paquet">
+            <circle r="3" fill="#2FDCA5"><animateMotion dur="4.5s" begin=".8s" repeatCount="indefinite" path="M1015,132 L1015,426"/></circle>
+          </g>
+
+          <!-- Nœuds (peints après les paquets : les événements « entrent » dans les boîtes) -->
+          <g font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.5">
+            <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+              <rect x="40" y="80" width="120" height="44" rx="3"/>
+              <rect x="40" y="209" width="120" height="44" rx="3"/>
+              <rect x="40" y="320" width="120" height="44" rx="3"/>
+            </g>
+            <text x="100" y="107" fill="#C9D2CB" text-anchor="middle">WEB</text>
+            <text x="100" y="236" fill="#C9D2CB" text-anchor="middle">MOBILE</text>
+            <text x="100" y="347" fill="#C9D2CB" text-anchor="middle">B2B / API</text>
+            <text x="40" y="62" fill="#8FA096" font-size="10" letter-spacing="2">CANAUX</text>
+
+            <rect x="250" y="176" width="150" height="110" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+            <text x="325" y="224" fill="#E9EFEA" text-anchor="middle">GATEWAY</text>
+            <text x="325" y="244" fill="#8FA096" text-anchor="middle" font-size="10">KONG · OAUTH 2.1</text>
+
+            <rect x="250" y="380" width="150" height="56" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2"/>
+            <text x="325" y="405" fill="#C9D2CB" text-anchor="middle">KEYCLOAK</text>
+            <text x="325" y="423" fill="#8FA096" text-anchor="middle" font-size="10">IAM · SSO · OIDC</text>
+
+            <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+              <rect x="500" y="70" width="180" height="60" rx="3"/>
+              <rect x="500" y="170" width="180" height="60" rx="3"/>
+              <rect x="500" y="270" width="180" height="60" rx="3"/>
+            </g>
+            <text x="590" y="96" fill="#C9D2CB" text-anchor="middle">SERVICE CLIENTS</text>
+            <text x="590" y="114" fill="#8FA096" text-anchor="middle" font-size="10">DOMAINE · DDD</text>
+            <text x="590" y="196" fill="#C9D2CB" text-anchor="middle">SERVICE RÉSERVATION</text>
+            <text x="590" y="214" fill="#8FA096" text-anchor="middle" font-size="10">ORCHESTRATEUR</text>
+            <text x="590" y="296" fill="#C9D2CB" text-anchor="middle">SERVICE CONSENTEMENTS</text>
+            <text x="590" y="314" fill="#8FA096" text-anchor="middle" font-size="10">CQRS · EVENT SOURCING</text>
+            <text x="500" y="52" fill="#8FA096" font-size="10" letter-spacing="2">SERVICES DE DOMAINE</text>
+
+            <rect x="930" y="72" width="170" height="60" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2" stroke-dasharray="5 4"/>
+            <text x="1015" y="98" fill="#C9D2CB" text-anchor="middle">ORACLE — LEGACY</text>
+            <text x="1015" y="116" fill="#8FA096" text-anchor="middle" font-size="10">SANS COUPURE</text>
+
+            <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+              <rect x="520" y="468" width="170" height="52" rx="3"/>
+              <rect x="760" y="468" width="170" height="52" rx="3"/>
+              <rect x="990" y="468" width="150" height="52" rx="3"/>
+            </g>
+            <text x="605" y="490" fill="#C9D2CB" text-anchor="middle">WORKERS</text>
+            <text x="605" y="507" fill="#8FA096" text-anchor="middle" font-size="10">ÉVÉNEMENTIELS</text>
+            <text x="845" y="490" fill="#C9D2CB" text-anchor="middle">RECHERCHE</text>
+            <text x="845" y="507" fill="#8FA096" text-anchor="middle" font-size="10">MONGODB</text>
+            <text x="1065" y="490" fill="#C9D2CB" text-anchor="middle">DATA / CRM</text>
+            <text x="1065" y="507" fill="#8FA096" text-anchor="middle" font-size="10">CONSOMMATEURS</text>
+          </g>
+        </svg>
+      </div>
+      <div class="fig-legende">
+        <span>— appel synchrone</span>
+        <span><i>●</i> événement en circulation</span>
+        <span><i>─ ─</i> flux CDC depuis le legacy</span>
+        <span>schéma animé en CSS/SVG, sans bibliothèque</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ============================ T+01 — LE PROFIL ============================ -->
-<section class="dark" id="profil">
+<!-- ============================ § 01 — EXPERTISES ============================ -->
+<section id="expertises">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tmark"><b>T+01</b> / LE PROFIL</span>
-      <h2 class="etire">Quinze ans.<br>Zéro abandon.</h2>
+    <div class="stete">
+      <div class="haut"><span class="para">§ 01 — Expertises</span><span class="fig">quatre terrains, une exigence</span></div>
+      <h2 class="rv">Le backend qui porte le business, <span class="accent">pas l'inverse.</span></h2>
+      <p class="intro rv">Quinze ans sur des systèmes que des millions de clients utilisent — chez Europcar, Renault, Casino, Cegedim et le Crédit Agricole. Quatre terrains où je m'engage sur le résultat.</p>
     </div>
-    <div class="stances">
-      <p class="stance reveal">Quinze ans de backend. Des systèmes qui encaissent <b>des millions de clients</b>, des squads réparties sur <b>quatre pays</b> — Inde, Maroc, Espagne, France.</p>
-      <p class="stance reveal">Ma spécialité : faire cohabiter <b>le legacy et le neuf</b>. COBOL, PHP et Oracle d'un côté ; Kotlin, Kafka et Keycloak de l'autre. <b>Sans jamais couper le service.</b></p>
-      <p class="stance reveal">Esprit entrepreneur — deux startups co-fondées. Je sais ce que coûte une ligne de code, <b>et ce qu'elle doit rapporter</b>.</p>
-      <p class="stance reveal">Et aujourd'hui, je fais coder des agents IA sous direction humaine. <b class="imp">Cette page en est la preuve : vous êtes dessus.</b></p>
-    </div>
-    <div class="sceau reveal">
-      <div class="sig">M<i></i>E</div>
-      <div class="base">TECH LEAD — LA LIGNE, SANS COUPURE <b>■</b></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ T+02 — SERVICES ============================ -->
-<section id="services" class="light">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tmark"><b>T+02</b> / CE QUE JE PROPOSE</span>
-      <h2 class="etire">Choisis ta distance.<br>Même exigence.</h2>
-      <p class="intro">Cinq formats d'intervention, du sprint d'audit à la mission longue. Quel que soit le format, la même règle : de l'architecture propre, du code livré, et un service qui ne s'arrête jamais.</p>
-    </div>
-
-    <div class="services reveal">
-      <a class="srv" href="mailto:ennaciri.md@gmail.com?subject=Architecture%20%C3%A9v%C3%A9nementielle%20%E2%80%94%20Mission">
-        <div class="s-num" aria-hidden="true">01</div>
-        <div>
-          <div class="s-name">L'architecture événementielle</div>
-          <p class="s-why">Refonte de backends en event-driven : Kafka, event sourcing, CQRS, DDD, hexagonal. Un découpage net — services de domaine, orchestrateurs, BFF, workers — qui tient la charge et les équipes.</p>
-        </div>
-        <div class="s-data">KAFKA · CQRS · DDD<br>MICROSERVICES <b>■ KOTLIN / JAVA</b></div>
-        <span class="s-go" aria-hidden="true">→</span>
-      </a>
-      <a class="srv" href="mailto:ennaciri.md@gmail.com?subject=IAM%20%2F%20SSO%20Keycloak%20%E2%80%94%20Mission">
-        <div class="s-num" aria-hidden="true">02</div>
-        <div>
-          <div class="s-name">L'identité &amp; les accès</div>
-          <p class="s-why">SSO multi-marques sur Keycloak, OAuth 2.1 / OIDC, sécurité des API. Chez Europcar et Goldcar : une seule page de connexion, un seul compte, plus de 3 millions de profils et leurs consentements unifiés.</p>
-        </div>
-        <div class="s-data">KEYCLOAK · OIDC · SAML<br>API SÉCURISÉES <b>■ KONG</b></div>
-        <span class="s-go" aria-hidden="true">→</span>
-      </a>
-      <a class="srv" href="mailto:ennaciri.md@gmail.com?subject=Migration%20sans%20coupure%20%E2%80%94%20Mission">
-        <div class="s-num" aria-hidden="true">03</div>
-        <div>
-          <div class="s-name">La migration sans coupure</div>
-          <p class="s-why">Du legacy vers le moderne pendant que tout roule : strangler fig, CDC Oracle vers MongoDB, COBOL et PHP vers Java et Kotlin. Quinze ans de pratique, zéro interruption de service.</p>
-        </div>
-        <div class="s-data">STRANGLER FIG · CDC<br>LEGACY <b>■ ZÉRO COUPURE</b></div>
-        <span class="s-go" aria-hidden="true">→</span>
-      </a>
-      <a class="srv" href="mailto:ennaciri.md@gmail.com?subject=Tech%20Leading%20%E2%80%94%20Mission">
-        <div class="s-num" aria-hidden="true">04</div>
-        <div>
-          <div class="s-name">Le tech leading</div>
-          <p class="s-why">Des squads back, front, UX, QA et ITOps sur quatre pays : objectifs fixés avec les PM/PO, arbitrages techniques, alignement avec les architectes, mentorat — et du code, des revues, du pairing tous les jours.</p>
-        </div>
-        <div class="s-data">SQUADS · 4 PAYS<br>CODE · REVUES <b>■ PAIRING</b></div>
-        <span class="s-go" aria-hidden="true">→</span>
-      </a>
-      <a class="srv" href="mailto:ennaciri.md@gmail.com?subject=IA%20%26%20agents%20de%20code%20%E2%80%94%20Mission">
-        <div class="s-num" aria-hidden="true">05</div>
-        <div>
-          <div class="s-name">L'IA sous contrôle</div>
-          <p class="s-why">Développement accéléré par agents — Claude Code : hooks, subagents, MCP — et POC d'IA générative en production. L'IA réduit les coûts de développement ; l'humain garde la maîtrise du code et la sécurité.</p>
-        </div>
-        <div class="s-data">CLAUDE CODE · MCP<br>MAÎTRISE <b>■ SÉCURITÉ</b></div>
-        <span class="s-go" aria-hidden="true">→</span>
-      </a>
-    </div>
-    <div class="services-note">
-      <span><b>■</b> CHAQUE MISSION COMMENCE PAR UN AUDIT — RETOUR SOUS 48H.</span>
-      <span>MÊME LIGNE · MÊME EXIGENCE · QUELLE QUE SOIT LA DISTANCE</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ T+03 — LES SPLITS ============================ -->
-<section class="dark" id="splits">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tmark"><b>T+03</b> / LES SPLITS</span>
-      <h2 class="etire">15 ans.<br>9 maisons.</h2>
-      <p class="intro">Les temps de passage, du dernier pointage au départ. Chaque kilomètre est une mission livrée en production — le rail orange descend avec toi.</p>
-    </div>
-
-    <div class="splits">
-      <div class="rail" aria-hidden="true"><span class="trace"></span><span class="coureur"></span></div>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>15</div><span class="annees">NOV. 2022 — AUJOURD'HUI</span></div>
-        <div>
-          <h3>Europcar Mobility Group</h3>
-          <span class="role">Technical Lead — transformation digitale B2B / B2C / B2B2C</span>
-          <p>Backends refondus en <b>architecture événementielle</b> (Kafka, event sourcing). <b>Login unique Europcar + Goldcar</b> sur un IdP Keycloak centralisé. <b>Plus de 3 millions de profils clients</b> et leurs consentements unifiés sur tous les canaux. Pipeline CDC Oracle → MongoDB, feature flags LaunchDarkly, SLO et alerting. Squad distribuée Inde / Maroc / France / Espagne.</p>
-        </div>
-        <div class="stack"><b>KOTLIN · SPRING BOOT</b><br>KAFKA CONFLUENT · KONG<br>AWS · K8S · TERRAFORM<br>KEYCLOAK · LAUNCHDARKLY</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>11</div><span class="annees">NOV. 2022</span></div>
-        <div>
-          <h3>Happn</h3>
-          <span class="role">Technical Lead — lancement de la migration PHP → Java</span>
-          <p>Audit du legacy PHP, cartographie des domaines, plan de migration progressive en <b>strangler fig</b>. Socle Spring Boot posé, premières API livrées, transfert par mob programming.</p>
-        </div>
-        <div class="stack"><b>JAVA 17 · SPRING BOOT</b><br>DOCKER · PHP (LEGACY)</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>11</div><span class="annees">JANV. — OCT. 2022</span></div>
-        <div>
-          <h3>Renault Digital</h3>
-          <span class="role">Technical Lead — véhicule connecté (Kamereon)</span>
-          <p>Activation de services, gestion des véhicules, mises à jour OTA. Co-conception en <b>DDD / BDD</b> avec le métier, RabbitMQ pour l'événementiel, <b>couverture de tests ≥ 80 %</b>.</p>
-        </div>
-        <div class="stack"><b>JAVA 11-17 · SPRING BOOT</b><br>RABBITMQ · AZURE AKS<br>TERRAFORM · POSTGRESQL</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>10</div><span class="annees">JUIL. — DÉC. 2021</span></div>
-        <div>
-          <h3>RelevanC — Groupe Casino</h3>
-          <span class="role">Technical Lead — plateforme d'offres &amp; promotions</span>
-          <p>Microservices cloud natifs sur GCP pour <b>plusieurs millions de clients</b>. Élasticité GKE réglée pour absorber les <b>pics de campagnes</b>, pipelines CI/CD durcis, rollback, SLO.</p>
-        </div>
-        <div class="stack"><b>KOTLIN / JAVA · GCP</b><br>CLOUD RUN · GKE<br>KEYCLOAK · GRAFANA</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>07</div><span class="annees">MAI 2018 — JUIN 2021</span></div>
-        <div>
-          <h3>Europcar Mobility Group</h3>
-          <span class="role">Technical Lead — lancement de OneSite</span>
-          <p>La nouvelle plateforme web d'Europcar : frontend Vue.js adossé à des <b>microservices hexagonaux</b>. Passation des consultants externes vers une <b>squad interne</b> — onboarding, mentorat, transfert.</p>
-        </div>
-        <div class="stack"><b>KOTLIN · JAVA · VUE.JS</b><br>AWS EKS · TERRAFORM<br>GITLAB CI/CD</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>06</div><span class="annees">JANV. 2017 — AVR. 2018</span></div>
-        <div>
-          <h3>Cegedim</h3>
-          <span class="role">Technical Lead — plateforme de remboursement santé</span>
-          <p>Microservices Java / Spring Boot, intégrations REST et SOAP pour assureurs et professionnels de santé. Tests automatisés introduits dans la CI : <b>moins de régressions en prod</b>.</p>
-        </div>
-        <div class="stack"><b>JAVA · SPRING BOOT</b><br>APACHE CXF · MONGODB<br>JENKINS · SONARQUBE</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>05</div><span class="annees">2016</span></div>
-        <div>
-          <h3>Capgemini × GEFCO</h3>
-          <span class="role">Technical Lead — migration facturation</span>
-          <p>Migration d'applications de facturation et de relance vers une stack moderne, <b>sans interruption de service</b> : rétro-documentation, architecture cible, ateliers MOA/MOE.</p>
-        </div>
-        <div class="stack"><b>JAVA / JEE · SPRING</b><br>PL/SQL · ORACLE</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>04</div><span class="annees">2015 — 2016</span></div>
-        <div>
-          <h3>CGI × Crédit Agricole</h3>
-          <span class="role">Team Leader — leasing &amp; affacturage (CAL&amp;F)</span>
-          <p>Grands projets de build — <b>environ 1 000 jours-homme</b>. Migration progressive de <b>COBOL / AS400 vers Java</b>, chiffrages, dossiers d'architecture, encadrement de juniors.</p>
-        </div>
-        <div class="stack"><b>JAVA / JEE · SPRING</b><br>COBOL / AS400 · DB2<br>STREAMSERVE · ORACLE</div>
-      </article>
-
-      <article class="split reveal">
-        <div><div class="km"><small>KM</small>01</div><span class="annees">2011 — 2014</span></div>
-        <div>
-          <h3>Logica puis CGI × CAL&amp;F</h3>
-          <span class="role">Ingénieur d'études — leasing &amp; affacturage</span>
-          <p>Responsable de la <b>plateforme d'intégration continue</b> (Jenkins / SVN) : builds et livraisons automatisés. Spécifications, tests, encadrement de stagiaires et de juniors.</p>
-        </div>
-        <div class="stack"><b>COBOL / AS400 · JAVA / JEE</b><br>SPRING · ORACLE · DB2</div>
-      </article>
-
-      <article class="split depart reveal">
-        <div><div class="km"><small>KM</small>00</div><span class="annees">2011 — LE DÉPART</span></div>
-        <div>
-          <h3>La ligne de départ</h3>
-          <span class="role">Master en informatique appliquée — Rabat × Brest</span>
-          <p>Université Mohammed V (Rabat) et Université de Bretagne Occidentale (France). Premier système livré en production : l'affacturage international sur AS/400, chez Eurofactor.</p>
-        </div>
-        <div class="stack"><b>JAVA / JEE · ORACLE</b><br>AS/400</div>
-      </article>
-
-      <div class="splits-arrivee reveal">
-        <span class="damier" aria-hidden="true"></span>
-        <p>LE PROCHAIN SPLIT — <em>c'est peut-être votre système.</em></p>
+    <div class="expertises">
+      <div class="exp rv">
+        <div class="num" aria-hidden="true">01</div>
+        <h3>Architecture événementielle</h3>
+        <p>Kafka, event sourcing, CQRS, DDD, architecture hexagonale. Des plateformes découpées proprement — <b>services de domaine, orchestrateurs, BFF, workers</b> — qui encaissent les pics et restent lisibles trois ans plus tard.</p>
+        <p class="tags">KAFKA CONFLUENT · RABBITMQ · <i>KOTLIN / JAVA · SPRING BOOT</i></p>
+      </div>
+      <div class="exp rv d1">
+        <div class="num" aria-hidden="true">02</div>
+        <h3>Identité &amp; accès</h3>
+        <p>Keycloak, OAuth 2.1, OIDC, SAML, sécurité des API derrière gateway. Chez Europcar et Goldcar : <b>un seul compte, une seule page de connexion, 3 millions de profils fédérés</b> — B2C, B2B et B2B2C.</p>
+        <p class="tags">KEYCLOAK · SSO MULTI-MARQUES · <i>KONG · JWT</i></p>
+      </div>
+      <div class="exp rv">
+        <div class="num" aria-hidden="true">03</div>
+        <h3>Migrations sans coupure</h3>
+        <p>Strangler fig, CDC, cohabitation legacy/moderne. COBOL, PHP et Oracle d'un côté ; Kotlin et Kafka de l'autre. <b>Quinze ans de bascules en production, zéro interruption de service</b> — de GEFCO à Happn.</p>
+        <p class="tags">STRANGLER FIG · CDC ORACLE→MONGODB · <i>ZÉRO COUPURE</i></p>
+      </div>
+      <div class="exp rv d1">
+        <div class="num" aria-hidden="true">04</div>
+        <h3>Ingénierie augmentée par l'IA</h3>
+        <p>Agents de code en conditions réelles — Claude Code : hooks, subagents, MCP — et POC d'IA générative en production. <b>L'IA divise les coûts de développement ; l'ingénierie garde la main</b> sur le code et la sécurité.</p>
+        <p class="tags">AGENTS DE CODE · GARDE-FOUS · <i>REVUE HUMAINE SYSTÉMATIQUE</i></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ T+04 — HORS STADE ============================ -->
-<section id="horsstade" class="light">
+<!-- ============================ § 02 — ENGAGEMENTS ============================ -->
+<section id="engagements" class="encre panneau">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tmark"><b>T+04</b> / HORS STADE</span>
-      <h2 class="etire">Ce que je construis<br>hors des missions.</h2>
-      <p class="intro">Deux startups co-fondées, une association présidée. L'entrepreneuriat n'est pas une ligne de CV : c'est la raison pour laquelle je compte le retour sur investissement de chaque ligne de code.</p>
+    <div class="stete">
+      <div class="haut"><span class="para">§ 02 — Modes d'engagement</span><span class="fig">régie · forfait · squad</span></div>
+      <h2 class="rv">Trois façons de travailler <span class="accent">ensemble.</span></h2>
+      <p class="intro rv">Du renfort senior au projet clé en main. Dans les trois cas : <b>du code en production, des décisions documentées et un reporting sans surprise</b>.</p>
     </div>
-    <div class="hors-grid reveal">
-      <div class="hors-cell">
-        <span class="n">04.1 — CO-FONDATEUR · 2022-2023</span>
-        <h3>Tonti</h3>
-        <p>Plateforme de cagnottes en ligne pour le marché marocain. Benchmark des acteurs européens, cadre réglementaire étudié avec Bank Al-Maghrib, première architecture Spring Boot / Vue.js / PostgreSQL.</p>
+
+    <div class="offres rv">
+      <div class="offre">
+        <span class="mode">Régie — au jour</span>
+        <h3>Le renfort senior</h3>
+        <p class="devise">« Un Tech Lead dans vos murs, pas un slide de plus. »</p>
+        <ul>
+          <li><b>Pilotage de squad</b> : objectifs avec les PM/PO, arbitrages techniques, alignement architectes</li>
+          <li><b>Du code tous les jours</b> — revues, pairing, guidelines</li>
+          <li>Montée en compétence de vos équipes : <b>l'objectif est de pouvoir partir</b></li>
+          <li>Point d'avancement hebdomadaire, objectifs trimestriels</li>
+        </ul>
+        <div class="modalites">FACTURATION <b>AU JOUR (TJM)</b><br>3 À 5 J/SEMAINE · 3-6 MOIS RENOUVELABLES<br>PARIS OU REMOTE</div>
+        <p class="pourqui">Pour donner un cap technique durable à une équipe existante.</p>
       </div>
-      <div class="hors-cell">
-        <span class="n">04.2 — FONDATEUR &amp; CTO · 2009-2011</span>
-        <h3>Startup AgriTech</h3>
-        <p>Incubée à l'université : outils numériques pour les éleveurs bovins et les coopératives laitières. Équipe de 7 personnes, solution livrée à l'Association nationale des éleveurs bovins (ANEB).</p>
+
+      <div class="offre phare">
+        <span class="mode">Forfait — au résultat</span>
+        <h3>Le projet livré</h3>
+        <p class="devise">« Un périmètre, un prix, une date. »</p>
+        <ul>
+          <li><b>Cadrage court</b> (1 à 2 semaines) puis proposition ferme, chiffrée par jalon</li>
+          <li>Jalons avec <b>critères d'acceptation mesurables</b> — démo à chaque étape</li>
+          <li><b>Engagement de résultat</b>, pas de moyens : le risque de dérive est chez moi, pas chez vous</li>
+          <li><b>Garantie 30 jours</b> après mise en production + réversibilité complète : code, documentation, sessions de transfert</li>
+        </ul>
+        <div class="modalites">PRIX <b>FERME PAR JALON</b><br>DÉMARRAGE SOUS 2 À 4 SEMAINES<br>SEUL OU AVEC LE COLLECTIF</div>
+        <p class="pourqui">Pour un chantier délimité : migration legacy, SSO Keycloak, refonte événementielle, pipeline CDC.</p>
       </div>
-      <div class="hors-cell">
-        <span class="n">04.3 — FONDATEUR &amp; PRÉSIDENT · 2012-2015</span>
-        <h3>ALMIA-FSR</h3>
-        <p>Association des lauréats : Offshoring Day 2014 pour rapprocher l'université et l'entreprise au Maroc, hackathon VIEW Univers — 3 jours, un jury professionnel, 3 projets primés.</p>
+
+      <div class="offre">
+        <span class="mode">Squad — équipe complète</span>
+        <h3>Le collectif</h3>
+        <p class="devise">« Une équipe entière, un seul interlocuteur. »</p>
+        <ul>
+          <li>Des <b>freelances seniors éprouvés</b> — back, front, QA, DevOps, data, UX — avec qui j'ai déjà livré en production</li>
+          <li>L'équipe est composée <b>sur le besoin réel</b>, jamais l'inverse</li>
+          <li><b>Direction technique de bout en bout</b> : un contrat, un responsable, une qualité</li>
+          <li>Montée en charge en 2 à 3 semaines, <b>décrue sans friction</b></li>
+        </ul>
+        <div class="modalites">RÉGIE OU FORFAIT · <b>2 À 8 PERSONNES</b><br>STAFFING SOUS 2-3 SEMAINES<br>UN SEUL CONTRAT</div>
+        <p class="pourqui">Pour livrer un produit entier — sans faire entrer une ESN dans vos murs.</p>
       </div>
     </div>
-    <div class="hors-note">
-      <span><b>■</b> ET SUR LE BITUME : COURSE À PIED &amp; TRAIL — OBJECTIF <b>UTMB</b> OU DIAGONALE DES FOUS.</span>
-      <span>LA LIGNE D'ARRIVÉE, ENCORE ET TOUJOURS.</span>
+
+    <div class="demarrage rv">
+      <div class="etape">
+        <span class="en">ÉTAPE 01</span>
+        <h4>Premier échange</h4>
+        <p>30 minutes, sans engagement. Votre contexte, vos contraintes — et un avis honnête, y compris si je ne suis pas le bon profil.</p>
+      </div>
+      <div class="etape">
+        <span class="en">ÉTAPE 02</span>
+        <h4>Audit &amp; cadrage</h4>
+        <p>État des lieux du système et des équipes, risques, trajectoire cible. Restitution écrite que vous gardez, quoi qu'il arrive.</p>
+      </div>
+      <div class="etape">
+        <span class="en">ÉTAPE 03</span>
+        <h4>Proposition</h4>
+        <p>Régie, forfait ou squad — chiffrée, jalonnée, avec les critères de réussite posés noir sur blanc.</p>
+      </div>
+      <div class="etape">
+        <span class="en">ÉTAPE 04</span>
+        <h4>Livraison</h4>
+        <p>Démos à chaque jalon, reporting hebdomadaire, décisions documentées. Et un transfert complet à la fin.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ T+05 — LA PREUVE ============================ -->
-<section class="dark" id="preuve">
+<!-- ============================ § 03 — LE COLLECTIF ============================ -->
+<section id="collectif">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tmark"><b>T+05</b> / LA PREUVE</span>
-      <h2 class="etire">Ce site.<br>Vous êtes dessus.</h2>
+    <div class="stete">
+      <div class="haut"><span class="para">§ 03 — Le collectif</span><span class="fig">un réseau, pas une agence</span></div>
+      <h2 class="rv">Seul on va vite. <span class="accent">Bien entouré, on livre.</span></h2>
     </div>
-    <div class="preuve-grid">
-      <div class="txt reveal">
-        <p>Le site R.O.I — et cette page — ont été <b>conçus et codés en binôme avec des agents IA</b> (Claude Code : hooks, subagents, MCP), sous direction humaine : identité « La Ligne » dérivée des affiches, design system complet, grain film en SVG, fontes variables auto-hébergées, animations pilotées par le scroll.</p>
-        <p>C'est exactement ce que je propose aux équipes : <b>l'IA pour aller plus vite, l'humain pour garder la ligne</b> — l'architecture, la qualité et la sécurité. <span class="imp">Le résultat se visite, il ne se raconte pas.</span></p>
-        <div class="preuve-cta">
-          <a class="btn btn-ghost" href="../"><span>Visiter le site R.O.I</span><span class="arr">→</span></a>
-        </div>
+    <div class="collectif">
+      <div class="txt rv">
+        <p>Quinze ans de missions chez les grands comptes laissent autre chose que des lignes sur un CV : <b>un réseau de freelances seniors avec qui j'ai réellement travaillé</b> — dans les mêmes squads, sur les mêmes mises en production, parfois à 3 h du matin.</p>
+        <p>Quand un projet dépasse ce qu'une personne peut porter, je compose l'équipe dans ce réseau : <b>uniquement des profils expérimentés, choisis pour le besoin précis du projet</b> — jamais pour remplir un plan de staffing. Chacun est indépendant ; c'est moi qui assume la direction technique et la responsabilité du résultat.</p>
+        <p>Pour vous, la différence avec une ESN est simple : <b>pas d'intercontrat à écouler, pas de junior facturé senior, pas de turnover subi</b>. Une équipe courte, des gens qui ont choisi d'être là, et un seul interlocuteur qui répond du tout.</p>
+        <div class="serment rv d1">« Je ne mets sur un projet que des personnes avec qui j'ai déjà livré — et que je re-choisirais les yeux fermés. »</div>
       </div>
-      <div class="preuve-stats reveal d1">
-        <div><span class="pv">0</span><span class="pk">DÉPENDANCE EXTERNE<br>PAS DE CDN, PAS DE TRACKER</span></div>
-        <div><span class="pv">100%</span><span class="pk">STATIQUE<br>HTML + CSS + JS VANILLA</span></div>
-        <div><span class="pv">2</span><span class="pk">FONTES VARIABLES<br>AUTO-HÉBERGÉES</span></div>
-        <div><span class="pv">1</span><span class="pk">SEUL ACCENT<br>ORANGE IMPACT #FF4400</span></div>
+      <div class="roles rv d1">
+        <div class="tete-r"><span class="r">Profils mobilisables</span><span class="d">Réseau éprouvé</span></div>
+        <div><span class="r">Backend — Kotlin, Java, Python</span><span class="d">Architecture · API · Perf</span></div>
+        <div><span class="r">Frontend — Vue, React, TypeScript</span><span class="d">Design system · Accessibilité</span></div>
+        <div><span class="r">DevOps &amp; SRE</span><span class="d">K8s · Terraform · Observabilité</span></div>
+        <div><span class="r">QA &amp; automatisation</span><span class="d">Stratégie de test · CI/CD</span></div>
+        <div><span class="r">Data &amp; IA</span><span class="d">Pipelines · MLOps · Agents</span></div>
+        <div><span class="r">Product design — UX/UI</span><span class="d">Recherche · Prototypage</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ § 04 — PARCOURS ============================ -->
+<section id="parcours" style="padding-top:0">
+  <div class="wrap">
+    <div class="stete">
+      <div class="haut"><span class="para">§ 04 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
+      <h2 class="rv">Des références qui <span class="accent">tournent encore.</span></h2>
+    </div>
+    <div class="registre rv">
+      <div class="ligne-m">
+        <span class="an">2022 — AUJ.</span>
+        <span class="qui">Europcar Mobility Group<small>Technical Lead — transformation digitale</small></span>
+        <span class="quoi">Refonte événementielle (Kafka), <b>SSO unique Europcar + Goldcar</b>, <b>3M+ profils unifiés</b>, CDC Oracle → MongoDB, squad sur 4 pays.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2022</span>
+        <span class="qui">Happn<small>Technical Lead — migration</small></span>
+        <span class="quoi">Lancement de la migration <b>PHP → Java</b> : audit, plan strangler fig, socle Spring Boot, premières API livrées.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2022</span>
+        <span class="qui">Renault Digital<small>Technical Lead — véhicule connecté</small></span>
+        <span class="quoi">Plateforme Kamereon (activation de services, OTA) : DDD/BDD, RabbitMQ, <b>couverture de tests ≥ 80 %</b>.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2021</span>
+        <span class="qui">RelevanC — Groupe Casino<small>Technical Lead — plateforme promotions</small></span>
+        <span class="quoi">Microservices cloud natifs sur GCP, <b>élasticité GKE réglée pour les pics de campagnes</b>, plusieurs millions de clients.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2018 — 21</span>
+        <span class="qui">Europcar Mobility Group<small>Technical Lead — OneSite</small></span>
+        <span class="quoi">Nouvelle plateforme web : Vue.js sur <b>microservices hexagonaux</b>, passation des consultants externes vers une squad interne.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2017 — 18</span>
+        <span class="qui">Cegedim<small>Technical Lead — santé</small></span>
+        <span class="quoi">Plateforme de remboursement pour assureurs : microservices REST/SOAP, tests automatisés en CI, <b>moins de régressions en prod</b>.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2016</span>
+        <span class="qui">GEFCO × Capgemini<small>Technical Lead — facturation</small></span>
+        <span class="quoi">Migration d'applications de facturation vers une stack moderne, <b>sans interruption de service</b>.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2015 — 16</span>
+        <span class="qui">Crédit Agricole × CGI<small>Team Leader — leasing &amp; affacturage</small></span>
+        <span class="quoi">Builds d'environ <b>1 000 jours-homme</b>, migration progressive <b>COBOL/AS400 → Java</b>, encadrement de juniors.</span>
+      </div>
+      <div class="ligne-m">
+        <span class="an">2011 — 14</span>
+        <span class="qui">CAL&amp;F × Logica puis CGI<small>Ingénieur d'études</small></span>
+        <span class="quoi">Plateforme d'intégration continue (Jenkins), premiers systèmes d'affacturage en production sur AS/400 et Java.</span>
+      </div>
+    </div>
+    <div class="registre-note rv">
+      <span class="k">Entrepreneuriat</span>
+      <span>Co-fondateur de <b>Tonti</b> (cagnottes en ligne, Maroc, 2022-23) · Fondateur &amp; CTO d'une <b>startup AgriTech</b> (équipe de 7, solution livrée à l'ANEB, 2009-11) · Président fondateur d'<b>ALMIA-FSR</b> (Offshoring Day, hackathon VIEW Univers).</span>
+    </div>
+    <div class="lab rv">
+      <div class="t">
+        <span class="mono">Le lab — dernière livraison</span>
+        <h3>Un site événementiel complet, livré en binôme avec des agents IA</h3>
+        <p>Design system sur mesure, animations pilotées par le scroll, fontes variables auto-hébergées, <b>zéro dépendance externe</b> — conçu, codé et mis en ligne avec des agents de code (Claude Code) sous direction humaine. La méthode que je propose en mission, appliquée à mes propres projets.</p>
+      </div>
+      <a class="btn btn-ligne" href="mailto:ennaciri.md@gmail.com?subject=Ing%C3%A9nierie%20augment%C3%A9e%20par%20l'IA"><span>En parler</span><span class="fl">→</span></a>
     </div>
   </div>
 </section>
 
 <!-- ============================ FINALE ============================ -->
-<section class="finale" id="contact">
+<section class="finale encre panneau" id="contact">
   <div class="wrap">
-    <h2 class="reveal etire">On court<br>ensemble ?</h2>
-    <div class="fin-grid reveal">
-      <p>Freelance, basé à Paris — Issy-les-Moulineaux. Disponible pour une mission de Tech Lead ou d'architecture backend : audit sous 48 h, premières recommandations dans la semaine.</p>
-      <div class="fin-ctas">
-        <a class="btn btn-go" href="mailto:ennaciri.md@gmail.com?subject=Mission%20Tech%20Lead%20%E2%80%94%20On%20court%20ensemble%20%3F"><span>Me contacter</span><span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="https://linkedin.com/in/mohamed-ennaciri" rel="noopener" target="_blank"><span>LinkedIn</span><span class="arr">↗</span></a>
-      </div>
+    <div class="stete" style="margin-bottom:0">
+      <div class="haut"><span class="para">§ 05 — Contact</span><span class="fig">réponse sous 48 h</span></div>
+      <h2 class="rv" style="margin-top:clamp(18px,3vw,30px)">Parlons de <span class="accent">votre système.</span></h2>
     </div>
-    <div class="coord reveal">
-      <span><span class="k">MAIL</span><a href="mailto:ennaciri.md@gmail.com">ennaciri.md@gmail.com</a></span>
-      <span><span class="k">TÉL</span><a href="tel:+33780786015">+33 7 80 78 60 15</a></span>
-      <span><span class="k">LANGUES</span>FR · EN · AR / DARIJA / AMAZIGH</span>
+    <div class="fin-grid rv">
+      <p>Un premier échange de <b>30 minutes</b> suffit à savoir si je peux vous aider — et à vous le dire honnêtement si ce n'est pas le cas. Basé à Paris, disponible en régie, au forfait ou en squad.</p>
+      <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Réserver un échange</span><span class="fl">→</span></a>
+    </div>
+    <div class="coord rv">
+      <span><span class="k">Mail</span><a href="mailto:ennaciri.md@gmail.com">ennaciri.md@gmail.com</a></span>
+      <span><span class="k">Tél</span><a href="tel:+33780786015">+33 7 80 78 60 15</a></span>
+      <span><span class="k">LinkedIn</span><a href="https://linkedin.com/in/mohamed-ennaciri" rel="noopener" target="_blank">mohamed-ennaciri</a></span>
+      <span><span class="k">Langues</span>FR · EN · AR</span>
     </div>
   </div>
 </section>
@@ -926,105 +894,67 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 
 <!-- ============================ FOOTER ============================ -->
 <footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <div class="foot-logo">M<i></i>E</div>
-        <p class="foot-base">TECH LEAD / ARCHITECTE BACKEND — SANS COUPURE DE SERVICE</p>
-      </div>
-      <div class="foot-cols">
-        <div>
-          <h4>PARCOURS</h4>
-          <ul>
-            <li><a href="#profil">Le profil</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#splits">Les splits</a></li>
-            <li><a href="#horsstade">Hors stade</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>CONTACT</h4>
-          <ul>
-            <li><a href="mailto:ennaciri.md@gmail.com">ennaciri.md@gmail.com</a></li>
-            <li><a href="tel:+33780786015">+33 7 80 78 60 15</a></li>
-            <li><a href="https://linkedin.com/in/mohamed-ennaciri" rel="noopener" target="_blank">LinkedIn</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>R.O.I</h4>
-          <ul>
-            <li><a href="../">← Retour au site</a></li>
-            <li><a href="../#manifeste">Le manifeste</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© MOHAMED ENNACIRI · DOSSARD № 011</span>
-      <span>PARIS — ISSY-LES-MOULINEAUX</span>
-    </div>
+  <div class="wrap foot">
+    <a class="marque" href="#haut"><span class="noeud" aria-hidden="true"></span>Ennaciri</a>
+    <span class="mono">© Mohamed Ennaciri · Architecte Backend &amp; Tech Lead · Paris</span>
+    <span class="mono">Site auto-hébergé — zéro dépendance, zéro tracker</span>
   </div>
 </footer>
 
 <script>
-/* Chrono T+ : en course depuis avril 2011 — le temps continue de compter. */
-(function(){
-  var el=document.getElementById('chrono');
-  if(!el)return;
-  var t0=new Date(2011,3,1).getTime();
-  function pad(n){return String(n).padStart(2,'0')}
-  function tick(){
-    var s=Math.floor((Date.now()-t0)/1000);
-    var jours=Math.floor(s/86400);
-    var ans=Math.floor(jours/365.2425);
-    var j=Math.floor(jours-ans*365.2425);
-    var r=s%86400;
-    el.textContent='T+'+ans+'A '+j+'J '+pad(Math.floor(r/3600))+':'+pad(Math.floor(r%3600/60))+':'+pad(r%60);
-  }
-  tick();setInterval(tick,1000);
-})();
-
-/* Reveal au scroll */
+/* Révélations au scroll */
 (function(){
   if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('on')});
+    document.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')});
     return;
   }
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(en){
       if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}
     });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
 })();
 
-/* Barre de progression : fallback JS si les scroll-driven animations CSS
-   ne sont pas supportées. */
+/* Compteurs du bandeau de chiffres */
 (function(){
-  if(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: scroll()'))return;
-  var bar=document.getElementById('progress');
-  if(!bar)return;
-  function maj(){
-    var h=document.documentElement;
-    var max=h.scrollHeight-h.clientHeight;
-    bar.style.transform='scaleX('+(max>0?h.scrollTop/max:0)+')';
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.compte');
+  if(!els.length)return;
+  function anime(el){
+    var cible=parseInt(el.dataset.cible,10);
+    if(reduce){el.textContent=cible;return}
+    var t0=null,duree=1400;
+    function pas(t){
+      if(!t0)t0=t;
+      var p=Math.min((t-t0)/duree,1);
+      el.textContent=Math.round(cible*(1-Math.pow(1-p,3)));
+      if(p<1)requestAnimationFrame(pas);
+    }
+    requestAnimationFrame(pas);
   }
-  addEventListener('scroll',maj,{passive:true});maj();
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.textContent=e.dataset.cible});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){anime(en.target);io.unobserve(en.target)}
+    });
+  },{threshold:.6});
+  els.forEach(function(e){io.observe(e)});
 })();
 
 /* Nav mobile */
 function toggleNav(btn){
-  var l=document.getElementById('nav-links');
+  var l=document.getElementById('nav-liens');
   var open=l.classList.toggle('open');
   btn.setAttribute('aria-expanded',open?'true':'false');
   btn.textContent=open?'Fermer':'Menu';
 }
-document.querySelectorAll('.nav-links a').forEach(function(a){
+document.querySelectorAll('.nav-liens a').forEach(function(a){
   a.addEventListener('click',function(){
-    var l=document.getElementById('nav-links');
+    var l=document.getElementById('nav-liens');
     l.classList.remove('open');
     var b=document.querySelector('.burger');
-    b.setAttribute('aria-expanded','false');b.textContent='Menu';
+    if(b){b.setAttribute('aria-expanded','false');b.textContent='Menu'}
   });
 });
 </script>
