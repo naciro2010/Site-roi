@@ -205,10 +205,28 @@ header{
 .hero h1 .ln:nth-child(3) span{animation-delay:.32s}
 @keyframes monte{to{transform:translateY(0)}}
 
-.hero-bas{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(30px,5vw,90px);margin-top:clamp(30px,4.5vw,54px);align-items:end}
-.hero-bas .chapo{font-size:clamp(16.5px,1.5vw,19px);color:var(--sourdine);max-width:58ch}
-.hero-bas .chapo b{color:var(--ink);font-weight:560}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.hero-grid{display:grid;grid-template-columns:1.5fr minmax(260px,370px);gap:clamp(30px,5.5vw,100px);align-items:start}
+.hero-grid .chapo{font-size:clamp(16.5px,1.5vw,19px);color:var(--sourdine);max-width:58ch;margin-top:clamp(26px,4vw,44px)}
+.hero-grid .chapo b{color:var(--ink);font-weight:560}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+
+/* ---- Portrait — traité comme une figure du dossier :
+   cadre passe-partout, repères de coupe émeraude, légende mono. ---- */
+.portrait{position:relative;margin:6px 0 0;max-width:370px;justify-self:end;width:100%}
+.portrait .cadre{border:1px solid var(--ligne);background:#FCFAF4;padding:10px}
+.portrait .cadre>span{display:block;overflow:hidden}
+.portrait img{display:block;width:100%;height:auto;filter:saturate(.94) contrast(1.02);transition:transform .8s cubic-bezier(.2,.6,.2,1)}
+.portrait:hover img{transform:scale(1.025)}
+.portrait .cm{position:absolute;width:15px;height:15px;border:0 solid var(--vert)}
+.portrait .cm.tl{top:-7px;left:-7px;border-top-width:1.5px;border-left-width:1.5px}
+.portrait .cm.tr{top:-7px;right:-7px;border-top-width:1.5px;border-right-width:1.5px}
+.portrait .cm.bl{bottom:29px;left:-7px;border-bottom-width:1.5px;border-left-width:1.5px}
+.portrait .cm.br{bottom:29px;right:-7px;border-bottom-width:1.5px;border-right-width:1.5px}
+.portrait figcaption{
+  margin-top:12px;display:flex;justify-content:space-between;gap:10px;
+  font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sourdine);
+}
+.portrait figcaption b{color:var(--vert);font-weight:500}
 
 /* Bandeau de chiffres — compteurs animés */
 .chiffres{border-top:1px solid var(--ink);margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(4,1fr)}
@@ -456,8 +474,8 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
    RESPONSIVE
    ========================================================================== */
 @media (max-width:1020px){
-  .hero-bas{grid-template-columns:1fr}
-  .hero-ctas{justify-content:flex-start}
+  .hero-grid{grid-template-columns:1fr}
+  .portrait{justify-self:start;max-width:330px}
   .collectif{grid-template-columns:1fr}
   .offres{grid-template-columns:1fr}
   .offre{border-right:none;border-bottom:1px solid var(--ligne)}
@@ -523,17 +541,25 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <span class="tiret" aria-hidden="true"></span>
       <span>Mohamed Ennaciri — Architecte Backend &amp; Tech Lead · Freelance · Paris</span>
     </div>
-    <h1>
-      <span class="ln"><span>Quinze ans à faire</span></span>
-      <span class="ln"><span>tourner ce qui ne doit</span></span>
-      <span class="ln"><span><em class="accent">jamais s'arrêter.</em></span></span>
-    </h1>
-    <div class="hero-bas">
-      <p class="chapo rv">Kotlin, Java, Kafka, Keycloak. Chez Europcar, j'ai unifié <b>plus de 3 millions de profils clients</b> et migré les backends vers l'événementiel — <b>sans une coupure de service</b>. J'interviens en régie comme au forfait, seul ou avec un collectif de freelances seniors quand il faut une équipe complète.</p>
-      <div class="hero-ctas rv d1">
-        <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Discutons de votre projet</span><span class="fl">→</span></a>
-        <a class="btn btn-ligne" href="#engagements"><span>Modes d'engagement</span><span class="fl">↓</span></a>
+    <div class="hero-grid">
+      <div class="hero-txt">
+        <h1>
+          <span class="ln"><span>Quinze ans à faire</span></span>
+          <span class="ln"><span>tourner ce qui ne doit</span></span>
+          <span class="ln"><span><em class="accent">jamais s'arrêter.</em></span></span>
+        </h1>
+        <p class="chapo rv">Kotlin, Java, Kafka, Keycloak. Chez Europcar, j'ai unifié <b>plus de 3 millions de profils clients</b> et migré les backends vers l'événementiel — <b>sans une coupure de service</b>. J'interviens en régie comme au forfait, seul ou avec un collectif de freelances seniors quand il faut une équipe complète.</p>
+        <div class="hero-ctas rv d1">
+          <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Premier%20%C3%A9change%20%E2%80%94%2030%20minutes"><span>Discutons de votre projet</span><span class="fl">→</span></a>
+          <a class="btn btn-ligne" href="#engagements"><span>Modes d'engagement</span><span class="fl">↓</span></a>
+        </div>
       </div>
+      <figure class="portrait rv d1">
+        <i class="cm tl" aria-hidden="true"></i><i class="cm tr" aria-hidden="true"></i>
+        <i class="cm bl" aria-hidden="true"></i><i class="cm br" aria-hidden="true"></i>
+        <div class="cadre"><span><img src="portrait.jpg" alt="Portrait de Mohamed Ennaciri" width="760" height="950" fetchpriority="high"></span></div>
+        <figcaption><span><b>fig. 00</b> — M. Ennaciri</span><span>Paris</span></figcaption>
+      </figure>
     </div>
     <div class="chiffres rv">
       <div><span class="n"><span class="compte" data-cible="15">0</span></span><span class="l">ans de production</span></div>
