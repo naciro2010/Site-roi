@@ -258,7 +258,8 @@ header{
 .pour-qui li{position:relative;padding:8px 0 8px 26px;font-size:15.5px}
 .pour-qui li::before{content:"→";position:absolute;left:0;top:8px;color:var(--vert);font-weight:600}
 
-.exp .res{margin-top:18px;padding-top:14px;border-top:1px solid var(--ligne-faible);font-size:15px;color:var(--vert-vif);font-weight:560}
+.exp .res{margin-top:18px;padding-top:14px;border-top:1px solid var(--ligne-faible);font-size:15px;color:var(--vert-vif);font-weight:560;display:flex;gap:9px;align-items:baseline}
+.exp .res::before{content:"→";flex:none}
 
 .cas p.quoi{font-size:16px;color:var(--sourdine);margin:18px 0 0;max-width:74ch}
 .cas p.quoi b{color:var(--ink);font-weight:560}
@@ -431,7 +432,7 @@ section{padding:clamp(72px,9vw,128px) 0}
 .offre.phare{background:rgba(79,138,114,.06)}
 .offre.phare:hover{background:rgba(79,138,114,.09)}
 .offre.phare::before{
-  content:"PÉRIMÈTRE ET RÉSULTAT DÉFINIS";
+  content:"";display:none;
   position:absolute;top:-11px;left:clamp(26px,3.2vw,42px);
   background:var(--vert-vif);color:#FFFFFF;
   font-family:'Plex Mono',monospace;font-weight:500;font-size:10px;letter-spacing:.16em;
@@ -694,10 +695,10 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     </a>
     <button class="burger" aria-expanded="false" aria-controls="nav-liens" onclick="toggleNav(this)">Menu</button>
     <ul class="nav-liens" id="nav-liens">
-      <li><a href="#expertise">Ce que je fais</a></li>
-      <li><a href="#engagements">Travailler ensemble</a></li>
+      <li><a href="#expertise">Expertises</a></li>
+      <li><a href="#engagements">Intervention</a></li>
       <li><a href="#references">Références</a></li>
-      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#ia">Ingénierie IA</a></li>
       <li><a class="nav-lkd" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       <li><a class="nav-cta" href="mailto:ennaciri.md@gmail.com?subject=Diagnostic%20d%27architecture%20%E2%80%94%20demande">Demander un diagnostic</a></li>
     </ul>
@@ -719,12 +720,12 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <p class="chapo rv">Sans coupure de service. 15 ans sur des plateformes utilisées par des millions de clients — Europcar, Renault, Groupe Casino, Crédit Agricole.</p>
 
     <div class="pour-qui rv d1">
-      <span class="k">Vous êtes au bon endroit si</span>
+      <span class="k">J'interviens quand</span>
       <ul>
-        <li>Votre plateforme est devenue difficile à faire évoluer.</li>
-        <li>Une migration traîne depuis trop longtemps.</li>
-        <li>Votre authentification doit servir plusieurs marques.</li>
-        <li>Votre équipe a besoin d'un cap technique.</li>
+        <li>Une plateforme est devenue difficile à faire évoluer.</li>
+        <li>Une migration est repoussée depuis trop longtemps.</li>
+        <li>L'authentification doit servir plusieurs marques.</li>
+        <li>Une équipe a besoin d'un cap technique.</li>
       </ul>
     </div>
 
@@ -1159,8 +1160,8 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 <section id="expertise">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 01 — Ce que je fais</span><span class="fig">quatre expertises</span></div>
-      <h2 class="rv">Quatre problèmes. <span class="accent">Quatre réponses.</span></h2>
+      <div class="haut"><span class="para">§ 01 — Expertises</span><span class="fig">quatre domaines</span></div>
+      <h2 class="rv">Architecture, legacy, identité, <span class="accent">équipe.</span></h2>
     </div>
     <div class="expertises" data-stagger>
       <div class="exp">
@@ -1168,28 +1169,28 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
         <h3>Architecture backend</h3>
         <p>Je conçois des plateformes qui encaissent la charge et restent modifiables des années plus tard.</p>
         <p class="tags">KOTLIN · JAVA · SPRING BOOT · <i>KAFKA · MICROSERVICES · DDD</i></p>
-        <p class="res">Résultat — des équipes qui livrent vite, sans casser l'existant.</p>
+        <p class="res">Des équipes qui livrent vite, sans casser l'existant.</p>
       </div>
       <div class="exp">
         <div class="num" aria-hidden="true">02</div>
         <h3>Migration de systèmes anciens</h3>
         <p>Je fais passer votre legacy vers du moderne par étapes, pendant que la production tourne.</p>
         <p class="tags">COBOL · PHP · ORACLE · <i>STRANGLER PATTERN · CDC</i></p>
-        <p class="res">Résultat — 15 ans de migrations, zéro interruption de service.</p>
+        <p class="res">15 ans de migrations, zéro interruption de service.</p>
       </div>
       <div class="exp">
         <div class="num" aria-hidden="true">03</div>
         <h3>Authentification &amp; sécurité</h3>
         <p>Un seul compte et une seule connexion pour toutes vos marques et tous vos canaux.</p>
         <p class="tags">KEYCLOAK · <i>OAUTH 2.1 · OIDC</i> · SAML · API GATEWAY</p>
-        <p class="res">Résultat — 3 millions de profils unifiés chez Europcar.</p>
+        <p class="res">3 millions de profils unifiés chez Europcar.</p>
       </div>
       <div class="exp">
         <div class="num" aria-hidden="true">04</div>
         <h3>Direction technique d'équipe</h3>
         <p>Je prends le cap technique d'une squad : décisions d'architecture, revue de code, montée en compétence.</p>
         <p class="tags">SQUADS DISTRIBUÉES · 4 PAYS · <i>MENTORAT · QUALITÉ</i></p>
-        <p class="res">Résultat — une équipe autonome à la fin de la mission.</p>
+        <p class="res">Une équipe autonome à la fin de la mission.</p>
       </div>
     </div>
   </div>
@@ -1199,14 +1200,14 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 <section id="engagements" class="encre panneau p-sauge">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 02 — Comment on travaille</span><span class="fig">régie · forfait · squad</span></div>
-      <h2 class="rv">Trois formats. <span class="accent">Vous choisissez.</span></h2>
+      <div class="haut"><span class="para">§ 02 — Modes d'intervention</span><span class="fig">régie · forfait · équipe</span></div>
+      <h2 class="rv">Régie, forfait, <span class="accent">ou équipe complète.</span></h2>
     </div>
     <div class="offres" data-stagger>
       <div class="offre">
         <span class="mode">01 — Régie</span>
         <h3>Je rejoins votre équipe</h3>
-        <p class="devise">« Un Tech Lead dans la squad, pas un consultant de plus. »</p>
+        <p class="devise">Un Tech Lead intégré à votre équipe, à temps partagé.</p>
         <ul>
           <li>Décisions d'architecture, code, revue</li>
           <li>Le niveau de l'équipe monte pendant la mission</li>
@@ -1216,7 +1217,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <div class="offre phare">
         <span class="mode">02 — Forfait</span>
         <h3>Je prends le chantier</h3>
-        <p class="devise">« Un périmètre, un prix, une date. »</p>
+        <p class="devise">Un périmètre défini, un prix ferme, une date.</p>
         <ul>
           <li>Migration, SSO / Keycloak, refonte backend</li>
           <li><b>Le risque de dérive est de mon côté</b></li>
@@ -1226,7 +1227,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <div class="offre">
         <span class="mode">03 — Squad</span>
         <h3>J'amène l'équipe</h3>
-        <p class="devise">« Une équipe courte, pas une pyramide de consultants. »</p>
+        <p class="devise">Une équipe courte de freelances seniors, un seul interlocuteur.</p>
         <ul>
           <li>Des freelances seniors avec qui j'ai déjà livré</li>
           <li>Un seul interlocuteur : moi</li>
@@ -1241,7 +1242,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 <section id="demarrer">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 03 — Comment ça commence</span><span class="fig">quatre étapes</span></div>
+      <div class="haut"><span class="para">§ 03 — Déroulé</span><span class="fig">quatre étapes</span></div>
       <h2 class="rv">De l'appel à la mise en production.</h2>
     </div>
     <div class="pas" data-stagger>
@@ -1340,11 +1341,60 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   </div>
 </section>
 
-<!-- ============================ § 05 — PARCOURS ============================ -->
+<!-- ============================ § 05 — INGÉNIERIE AUGMENTÉE ============================ -->
+<section id="ia" class="encre panneau p-sable">
+  <div class="wrap">
+    <div class="stete">
+      <div class="haut"><span class="para">§ 05 — Ingénierie augmentée</span><span class="fig">agents de code · état de l'art</span></div>
+      <h2 class="rv">L'IA dans la boucle, <span class="accent">sous contrôle.</span></h2>
+      <p class="intro rv">Je travaille tous les jours avec des agents de code. Le gain ne vient pas du modèle, il vient du <b>harnais qu'on met autour</b> — et ce harnais est du fichier versionné, relu comme du code.</p>
+    </div>
+
+    <div class="projets" data-stagger>
+      <div class="projet">
+        <span class="k">01 — Contexte</span>
+        <h3>Ce que l'agent lit</h3>
+        <p>Instructions courtes et versionnées, règles chargées seulement quand le fichier concerné est ouvert. Un contexte saturé dégrade la qualité — c'est la ressource à gérer en premier.</p>
+      </div>
+      <div class="projet">
+        <span class="k">02 — Skills</span>
+        <h3>Le savoir-faire à la demande</h3>
+        <p>Les procédures répétées deviennent des compétences chargées quand elles servent, pas des consignes permanentes qu'on paie à chaque session.</p>
+      </div>
+      <div class="projet">
+        <span class="k">03 — Hooks</span>
+        <h3>Ce qui ne se négocie pas</h3>
+        <p>Formatage, garde-fous, tests avant de rendre la main : exécutés par le harnais à chaque fois, pas laissés à l'appréciation du modèle.</p>
+      </div>
+      <div class="projet">
+        <span class="k">04 — Subagents</span>
+        <h3>Le regard extérieur</h3>
+        <p>L'exploration et la relecture tournent dans un contexte isolé. Celui qui relit le diff n'est pas celui qui l'a écrit.</p>
+      </div>
+      <div class="projet">
+        <span class="k">05 — Permissions</span>
+        <h3>Les limites dures</h3>
+        <p>Secrets, production, dépôt distant : hors de portée par configuration, pas par consigne. C'est la seule couche réellement contraignante.</p>
+      </div>
+      <div class="projet">
+        <span class="k">06 — Vérification</span>
+        <h3>La preuve, pas l'affirmation</h3>
+        <p>Un agent s'arrête quand le travail a l'air fini. Une vérification exécutable — tests, build, capture — referme la boucle sans intervention humaine.</p>
+      </div>
+    </div>
+
+    <div class="offres-pied rv">
+      <p>Ce que ça change en équipe : le même comportement pour tout le monde, y compris pour ceux qui n'écrivent pas de prompts.</p>
+      <a class="btn btn-linkedin" href="claude-code/"><span>Ma configuration complète</span><span class="fl">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ § 06 — PARCOURS ============================ -->
 <section id="parcours">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 05 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
+      <div class="haut"><span class="para">§ 06 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
       <h2 class="rv">15 ans de terrain.</h2>
     </div>
     <div class="registre" data-stagger>
@@ -1365,31 +1415,11 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   </div>
 </section>
 
-<!-- ============================ IA ============================ -->
-<div class="labo encre panneau p-sable" id="laboratoire">
-  <div class="wrap labo-grid">
-    <div class="rv">
-      <span class="k">Ingénierie augmentée par l'IA</span>
-      <h2>Faire coder des agents, <span class="accent">sans perdre la main.</span></h2>
-      <p>J'utilise des agents de code sur mes propres projets et en mission. Le gain est réel — <b>à condition d'encadrer</b> : garde-fous automatiques, revue humaine, permissions strictes.</p>
-      <p>Ce site en fait partie : conçu et mis en ligne de cette façon.</p>
-      <div style="margin-top:26px">
-        <a class="btn btn-linkedin" href="claude-code/"><span>Voir ma configuration complète</span><span class="fl">→</span></a>
-      </div>
-    </div>
-    <div class="regle rv d1">
-      <div><span class="g" aria-hidden="true">+</span><span class="t">L'IA <b>produit plus</b> — code, tests, documentation.</span></div>
-      <div><span class="g" aria-hidden="true">=</span><span class="t">L'ingénieur <b>décide plus</b> — architecture, sécurité, revue.</span></div>
-      <div><span class="g" aria-hidden="true">→</span><span class="t"><b>Plus de livraison, sans perte de maîtrise.</b></span></div>
-    </div>
-  </div>
-</div>
-
 <!-- ============================ CONTACT ============================ -->
 <section class="finale encre panneau p-sauge" id="contact">
   <div class="wrap">
     <div class="stete" style="margin-bottom:0">
-      <div class="haut"><span class="para">§ 06 — Contact</span><span class="fig">réponse rapide</span></div>
+      <div class="haut"><span class="para">§ 07 — Contact</span><span class="fig">réponse rapide</span></div>
       <h2 class="rv" style="margin-top:clamp(18px,3vw,30px)">Parlons de <span class="accent">votre système.</span></h2>
     </div>
     <p class="conclusion rv"><b>30 minutes suffisent</b> pour savoir si je peux vous aider. Je vous donne mon avis — même si la conclusion est que vous n'avez pas besoin de moi.</p>
