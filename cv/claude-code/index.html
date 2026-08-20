@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Configuration Claude Code — mémoire, skills, hooks, subagents · Mohamed Ennaciri</title>
-<meta name="description" content="La configuration complète que j'utilise pour faire coder des agents sans perdre la main : CLAUDE.md et mémoire, règles ciblées, skills, hooks déterministes, subagents, permissions. Le harnais avant le prompt.">
+<meta name="description" content="Configuration de référence pour faire coder des agents sans perdre la main : CLAUDE.md et mémoire, règles ciblées, skills, hooks déterministes, subagents, permissions. Le harnais avant le prompt.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='none' stroke='%230E7A5F' stroke-width='2'/%3E%3Ccircle cx='8' cy='8' r='2.4' fill='%230E7A5F'/%3E%3C/svg%3E">
 <style>
 /* ==========================================================================
@@ -254,7 +254,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <span class="ln"><span>Faire coder des agents</span></span>
       <span class="ln"><span><em class="accent">sans perdre la main.</em></span></span>
     </h1>
-    <p class="chapo rv">Voici la configuration que j'utilise au quotidien et que je déploie en mission. Elle ne repose pas sur des prompts astucieux mais sur un <b>harnais</b> : ce que l'agent sait, ce qu'il a le droit de faire, et ce qui est vérifié automatiquement avant qu'il puisse s'arrêter.</p>
+    <p class="chapo rv">Une configuration complète, mécanisme par mécanisme. Elle ne repose pas sur des prompts astucieux mais sur un <b>harnais</b> : ce que l'agent sait, ce qu'il a le droit de faire, et ce qui est vérifié automatiquement avant qu'il puisse s'arrêter.</p>
     <p class="chapo rv d1">Tout ce qui suit est du fichier versionné, relu en équipe, et qui produit le même comportement pour tout le monde — <b>y compris pour les développeurs qui n'écrivent pas de prompts</b>.</p>
     <div class="hero-ctas rv d1">
       <a class="btn btn-plein" href="#matrice"><span>La matrice de décision</span><span class="fl">↓</span></a>
@@ -292,7 +292,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 02 — La matrice de décision</span><span class="fig">le bon mécanisme au bon endroit</span></div>
       <h2 class="rv">Six mécanismes. <span class="accent">Un seul est le bon.</span></h2>
-      <p class="intro rv">C'est la question que je pose en premier sur chaque mission : <b>« ce que vous voulez, ça relève de quoi ? »</b> Mettre une procédure dans le fichier d'instructions, c'est la payer en contexte à chaque session ; mettre une garantie dans un prompt, c'est ne pas l'avoir.</p>
+      <p class="intro rv">La question à trancher avant d'écrire quoi que ce soit : <b>« ce que vous voulez, ça relève de quoi ? »</b> Mettre une procédure dans le fichier d'instructions, c'est la payer en contexte à chaque session ; mettre une garantie dans un prompt, c'est ne pas l'avoir.</p>
     </div>
     <div class="scroll-x rv">
       <table class="tbl">
@@ -340,7 +340,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       </table>
     </div>
     <div class="txt rv" style="margin-top:34px">
-      <p>Une règle simple pour trancher : <b>si le fait de l'oublier une fois sur dix est acceptable, c'est du contexte. Sinon, c'est un hook ou une permission.</b> Pour les accès externes, je privilégie les CLI existants (<code>gh</code>, <code>aws</code>, <code>kubectl</code>) avant d'ajouter un serveur MCP : une sortie de commande coûte beaucoup moins de contexte qu'un catalogue d'outils chargé en permanence.</p>
+      <p>Une règle simple pour trancher : <b>si le fait de l'oublier une fois sur dix est acceptable, c'est du contexte. Sinon, c'est un hook ou une permission.</b> Pour les accès externes, les CLI existants (<code>gh</code>, <code>aws</code>, <code>kubectl</code>) passent avant l'ajout d'un serveur MCP : une sortie de commande coûte beaucoup moins de contexte qu'un catalogue d'outils chargé en permanence.</p>
     </div>
   </div>
 </section>
@@ -351,7 +351,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 03 — L'arborescence</span><span class="fig">ce qui est versionné, ce qui ne l'est pas</span></div>
       <h2 class="rv">Deux portées : <span class="accent">moi, et l'équipe.</span></h2>
-      <p class="intro rv">La distinction structurante n'est pas technique, elle est sociale : ce qui est <b>poussé dans le dépôt engage toute l'équipe</b>, ce qui est ignoré par git n'engage que moi. Je ne mets jamais mes préférences personnelles dans le dépôt.</p>
+      <p class="intro rv">La distinction structurante n'est pas technique, elle est sociale : ce qui est <b>poussé dans le dépôt engage toute l'équipe</b>, ce qui est ignoré par git n'engage que moi. Les préférences personnelles n'ont rien à faire dans le dépôt.</p>
     </div>
     <div class="code rv">
       <div class="code-tete"><span><b>Arborescence</b> — portée personnelle et portée projet</span><span>~/.claude et &lt;projet&gt;/.claude</span></div>
@@ -380,7 +380,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
         <li>Les <b>réglages</b> se surchargent, du plus fort au plus faible : <b>politique d'entreprise → arguments de la ligne de commande → local → projet → utilisateur</b>. Une règle d'entreprise ne peut pas être contournée localement.</li>
         <li>Les <b>fichiers d'instructions</b> ne se surchargent pas : ils sont <b>concaténés</b>, de la portée la plus large à la plus spécifique. Rien n'écrase rien — d'où l'importance de relire régulièrement l'ensemble pour supprimer les consignes contradictoires.</li>
       </ul>
-      <p style="margin-top:16px">En pratique, je vérifie toujours ce qui a réellement été chargé dans la session avec <code>/context</code>, plutôt que de le supposer.</p>
+      <p style="margin-top:16px">Ce qui a réellement été chargé dans une session se vérifie avec <code>/context</code> — plutôt que de le supposer.</p>
     </div>
   </div>
 </section>
@@ -391,7 +391,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 04 — La mémoire</span><span class="fig">CLAUDE.md · règles ciblées · mémoire automatique</span></div>
       <h2 class="rv">Écrire ce qu'on ne veut <span class="accent">plus jamais réexpliquer.</span></h2>
-      <p class="intro rv">Le test que j'applique à chaque ligne : <b>« est-ce que la retirer provoquerait une erreur ? »</b> Si la réponse est non, elle sort. Un fichier d'instructions trop long ne rend pas l'agent plus docile — il noie les règles importantes et l'agent en ignore la moitié.</p>
+      <p class="intro rv">Le test à appliquer à chaque ligne : <b>« est-ce que la retirer provoquerait une erreur ? »</b> Si la réponse est non, elle sort. Un fichier d'instructions trop long ne rend pas l'agent plus docile — il noie les règles importantes et l'agent en ignore la moitié.</p>
     </div>
 
     <div class="txt rv">
@@ -444,9 +444,9 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     </div>
 
     <div class="txt rv" style="margin-top:36px">
-      <h3>La mémoire automatique, et pourquoi je l'audite</h3>
-      <p>En parallèle des fichiers que j'écris, l'agent tient ses propres notes par dépôt — commandes qui marchent, pièges rencontrés, préférences observées. C'est utile, mais <b>ce n'est pas parce que c'est écrit que c'est vrai</b> : une note obsolète devient une source d'erreurs silencieuses. Je passe la mémoire en revue avec <code>/memory</code> au même titre que je relirais un fichier de configuration — c'est du markdown ordinaire, qui s'édite et se supprime.</p>
-      <p>Ce qui est propre à ma machine reste dans la mémoire automatique. Ce qui doit valoir pour toute l'équipe remonte dans le <code>CLAUDE.md</code> versionné. La frontière est là.</p>
+      <h3>La mémoire automatique, et pourquoi elle s'audite</h3>
+      <p>En parallèle des fichiers écrits à la main, l'agent tient ses propres notes par dépôt — commandes qui marchent, pièges rencontrés, préférences observées. C'est utile, mais <b>ce n'est pas parce que c'est écrit que c'est vrai</b> : une note obsolète devient une source d'erreurs silencieuses. Elle se passe en revue avec <code>/memory</code> au même titre qu'un fichier de configuration — c'est du markdown ordinaire, qui s'édite et se supprime.</p>
+      <p>Ce qui est propre à une machine reste dans la mémoire automatique. Ce qui doit valoir pour toute l'équipe remonte dans le <code>CLAUDE.md</code> versionné. La frontière est là.</p>
     </div>
   </div>
 </section>
@@ -487,8 +487,8 @@ Ne pas signaler de préférences de style.</pre>
 
     <div class="txt rv" style="margin-top:30px">
       <h3>Le champ qui compte le plus : la description</h3>
-      <p>C'est sur cette seule phrase que l'agent décide de charger — ou non — la compétence. Une description vague (« aide pour l'architecture ») ne se déclenche jamais au bon moment. J'écris toujours <b>ce que ça fait, et surtout quand l'utiliser</b>, en mettant le cas d'usage principal en premier.</p>
-      <p>Pour les procédures qui ont des effets de bord — mise en production, migration, publication — j'ajoute <code>disable-model-invocation: true</code> : la compétence reste disponible sous forme de commande <code>/nom</code>, mais <b>l'agent ne peut pas la déclencher de lui-même</b>. Une mise en production ne s'improvise pas.</p>
+      <p>C'est sur cette seule phrase que l'agent décide de charger — ou non — la compétence. Une description vague (« aide pour l'architecture ») ne se déclenche jamais au bon moment. Une description utile dit <b>ce que ça fait, et surtout quand l'utiliser</b>, avec le cas d'usage principal en premier.</p>
+      <p>Pour les procédures qui ont des effets de bord — mise en production, migration, publication — le champ <code>disable-model-invocation: true</code> s'impose : la compétence reste disponible sous forme de commande <code>/nom</code>, mais <b>l'agent ne peut pas la déclencher de lui-même</b>. Une mise en production ne s'improvise pas.</p>
     </div>
 
     <div class="code rv">
@@ -514,11 +514,11 @@ Ne pas signaler de préférences de style.</pre>
     <div class="stete">
       <div class="haut"><span class="para">§ 06 — Les hooks</span><span class="fig">ce qui ne se négocie pas</span></div>
       <h2 class="rv">Ce qui doit arriver à tous les coups <span class="accent">ne se demande pas.</span></h2>
-      <p class="intro rv">Un hook est un script déclenché par le harnais sur un événement du cycle de vie. Il ne dépend pas de l'humeur du modèle, ni de la place restante dans le contexte. C'est là que je place <b>le formatage, les garde-fous et la porte de sortie</b>.</p>
+      <p class="intro rv">Un hook est un script déclenché par le harnais sur un événement du cycle de vie. Il ne dépend pas de l'humeur du modèle, ni de la place restante dans le contexte. C'est la place du <b>formatage, des garde-fous et de la porte de sortie</b>.</p>
     </div>
 
     <div class="txt rv">
-      <h3>Les trois que je configure sur chaque projet</h3>
+      <h3>Les trois qui couvrent l'essentiel</h3>
       <ul>
         <li><b>Après chaque écriture de fichier</b> — formatage et analyse statique. L'agent n'a plus à y penser, et le diff reste propre.</li>
         <li><b>Avant chaque commande shell</b> — un garde-fou qui refuse les commandes destructrices, quelle que soit la formulation employée.</li>
@@ -611,7 +611,7 @@ exit 0</pre>
     <div class="stete">
       <div class="haut"><span class="para">§ 07 — Les subagents</span><span class="fig">contexte isolé, regard neuf</span></div>
       <h2 class="rv">Celui qui écrit le code <span class="accent">ne doit pas le noter.</span></h2>
-      <p class="intro rv">Un subagent démarre dans un contexte vierge et ne renvoie qu'une synthèse. J'en fais deux usages : <b>absorber les explorations volumineuses</b> sans polluer la session principale, et <b>faire relire le travail par un regard qui n'a pas participé</b> — un relecteur qui ne voit que le diff et les critères juge le résultat, pas le raisonnement qui y a mené.</p>
+      <p class="intro rv">Un subagent démarre dans un contexte vierge et ne renvoie qu'une synthèse. Deux usages : <b>absorber les explorations volumineuses</b> sans polluer la session principale, et <b>faire relire le travail par un regard qui n'a pas participé</b> — un relecteur qui ne voit que le diff et les critères juge le résultat, pas le raisonnement qui y a mené.</p>
     </div>
 
     <div class="code rv">
@@ -638,7 +638,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
     </div>
 
     <div class="txt rv" style="margin-top:30px">
-      <p>Deux précautions apprises à l'usage. D'abord, <b>restreindre les outils</b> : un relecteur n'a aucune raison de pouvoir écrire, et un agent qui corrige ce qu'il relève ne relève plus rien. Ensuite, <b>cadrer ce qui compte comme un constat</b> : un relecteur à qui l'on demande de trouver des problèmes en trouvera toujours, y compris quand le travail est bon. Sans cadrage, on hérite d'abstractions inutiles et de tests pour des cas qui ne peuvent pas se produire.</p>
+      <p>Deux précautions. D'abord, <b>restreindre les outils</b> : un relecteur n'a aucune raison de pouvoir écrire, et un agent qui corrige ce qu'il relève ne relève plus rien. Ensuite, <b>cadrer ce qui compte comme un constat</b> : un relecteur à qui l'on demande de trouver des problèmes en trouvera toujours, y compris quand le travail est bon. Sans cadrage, on hérite d'abstractions inutiles et de tests pour des cas qui ne peuvent pas se produire.</p>
     </div>
   </div>
 </section>
@@ -687,7 +687,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
         <li><code>Read(~/Documents/*)</code> — le <code>~</code> désigne le <b>répertoire personnel</b>.</li>
         <li><code>WebFetch(domain:exemple.com)</code> — les accès réseau se pilotent par domaine.</li>
       </ul>
-      <h3>Trois règles que je ne négocie pas</h3>
+      <h3>Trois règles non négociables</h3>
       <ul>
         <li><b>Les secrets sont refusés par construction</b>, pas par consigne : fichiers d'environnement, coffres, clés privées. Un agent n'a jamais besoin de lire un secret pour écrire du code.</li>
         <li><b>La production n'est pas un environnement de travail.</b> Aucun contexte de production dans les commandes autorisées ; les accès privilégiés passent par les mécanismes prévus pour ça, avec approbation et traçabilité.</li>
@@ -717,7 +717,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
       <article class="etape rv">
         <div class="t"><span class="no" aria-hidden="true">02</span><h3>Planifier</h3></div>
         <div>
-          <p>Faire produire un plan, puis <b>le corriger avant d'écrire une ligne</b>. Sur les sujets importants, je fais d'abord interroger : l'agent pose les questions d'implémentation, d'interface et de cas limites, et le résultat devient une spécification écrite. On repart ensuite dans une session neuve, contexte propre, spécification en main.</p>
+          <p>Faire produire un plan, puis <b>le corriger avant d'écrire une ligne</b>. Sur les sujets importants, faire d'abord interroger : l'agent pose les questions d'implémentation, d'interface et de cas limites, et le résultat devient une spécification écrite. On repart ensuite dans une session neuve, contexte propre, spécification en main.</p>
           <p class="cmd">Le plan se relit comme un diff</p>
         </div>
       </article>
@@ -749,7 +749,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
 <section id="pieges" class="encre panneau">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 10 — Les pièges</span><span class="fig">observés en mission</span></div>
+      <div class="haut"><span class="para">§ 10 — Les pièges</span><span class="fig">les plus coûteux</span></div>
       <h2 class="rv">Six façons de perdre <span class="accent">le bénéfice.</span></h2>
     </div>
     <div class="pieges" data-stagger>
@@ -780,7 +780,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
       </div>
       <div class="piege">
         <h4>L'outillage qui remplace la décision</h4>
-        <p>Le plus fréquent en entreprise : on installe tout, on branche tout, et personne ne tranche sur ce qui doit être garanti. L'agent produit plus, l'équipe maîtrise moins.</p>
+        <p>Le piège d'organisation : on installe tout, on branche tout, et personne ne tranche sur ce qui doit être garanti. L'agent produit plus, l'équipe maîtrise moins.</p>
         <p class="fix"><b>Remède —</b> commencer par la matrice du § 02 : chaque règle a un seul bon emplacement.</p>
       </div>
     </div>
@@ -794,7 +794,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
       <div class="haut"><span class="para">§ 11 — Passer à l'échelle</span><span class="fig">réponse sous 48 h</span></div>
       <h2 class="rv" style="margin-top:clamp(16px,2.6vw,26px)">Ce setup, <span class="accent">dans vos équipes.</span></h2>
     </div>
-    <p class="rv">Cette configuration n'a d'intérêt que multipliée par le nombre de personnes qui l'utilisent. Ce que je mets en place en mission : <b>le socle versionné, les garde-fous, les permissions par équipe, et la revue automatique du diff</b> — pour que les gains soient les mêmes pour tout le monde, y compris pour ceux qui n'ont pas envie d'apprendre à écrire des prompts.</p>
+    <p class="rv">Cette configuration n'a d'intérêt que multipliée par le nombre de personnes qui l'utilisent. Ce qui se met en place : <b>le socle versionné, les garde-fous, les permissions par équipe, la revue automatique du diff</b> — pour que les gains soient les mêmes pour tout le monde, y compris pour ceux qui n'ont pas envie d'apprendre à écrire des prompts.</p>
     <p class="rv"><b>Et une règle de fond :</b> l'IA produit davantage, l'ingénieur décide davantage. Un agent qui livre du code que personne ne relit n'est pas un gain de productivité — c'est une dette qui s'écrit plus vite.</p>
     <div class="fin-ctas rv">
       <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Industrialiser%20l%27IA%20dans%20nos%20%C3%A9quipes"><span>En parler</span><span class="fl">→</span></a>
