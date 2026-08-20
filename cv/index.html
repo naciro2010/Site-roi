@@ -250,6 +250,34 @@ header{
 .chiffres .l{display:block;margin-top:10px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sourdine)}
 
 /* ==========================================================================
+   COMPOSANTS DE LECTURE RAPIDE
+   ========================================================================== */
+.pour-qui{margin-top:clamp(26px,4vw,38px);border-top:1px solid var(--ligne);padding-top:22px;max-width:74ch}
+.pour-qui .k{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sourdine);display:block;margin-bottom:12px}
+.pour-qui ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+.pour-qui li{position:relative;padding:8px 0 8px 26px;font-size:15.5px}
+.pour-qui li::before{content:"→";position:absolute;left:0;top:8px;color:var(--vert);font-weight:600}
+
+.exp .res{margin-top:18px;padding-top:14px;border-top:1px solid var(--ligne-faible);font-size:15px;color:var(--vert-vif);font-weight:560}
+
+.cas p.quoi{font-size:16px;color:var(--sourdine);margin:18px 0 0;max-width:74ch}
+.cas p.quoi b{color:var(--ink);font-weight:560}
+.cas .res{margin-top:16px;font-size:16.5px;font-weight:560;color:var(--vert-vif);display:flex;gap:10px;align-items:baseline}
+.cas .res::before{content:"→";flex:none}
+
+.pas{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,36px);border-top:1px solid var(--ligne);padding-top:28px}
+.pas>div{padding-right:10px}
+.pas .n{font-family:'Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.18em;color:var(--vert);display:block;margin-bottom:12px}
+.pas h3{font-size:clamp(18px,1.9vw,22px);margin-bottom:8px}
+.pas p{font-size:15px;color:var(--sourdine)}
+
+@media (max-width:900px){
+  .pas{grid-template-columns:1fr 1fr}
+  .pour-qui ul{grid-template-columns:1fr}
+}
+@media (max-width:600px){ .pas{grid-template-columns:1fr} }
+
+/* ==========================================================================
    FIG. 01 — LE SCHÉMA VIVANT
    ========================================================================== */
 .panneau{
@@ -666,10 +694,10 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     </a>
     <button class="burger" aria-expanded="false" aria-controls="nav-liens" onclick="toggleNav(this)">Menu</button>
     <ul class="nav-liens" id="nav-liens">
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#engagements">Engagements</a></li>
-      <li><a href="#methode">Méthode</a></li>
+      <li><a href="#expertise">Ce que je fais</a></li>
+      <li><a href="#engagements">Travailler ensemble</a></li>
       <li><a href="#references">Références</a></li>
+      <li><a href="#parcours">Parcours</a></li>
       <li><a class="nav-lkd" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       <li><a class="nav-cta" href="mailto:ennaciri.md@gmail.com?subject=Diagnostic%20d%27architecture%20%E2%80%94%20demande">Demander un diagnostic</a></li>
     </ul>
@@ -677,25 +705,34 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </header>
 
 <main id="haut">
-<!-- ============================ HERO ============================ -->
-<section class="hero" aria-label="Mohamed Ennaciri — Architecte Backend, Tech Lead, Engineering Partner">
+<!-- ============================ ACCUEIL ============================ -->
+<section class="hero" aria-label="Mohamed Ennaciri — Architecte Backend et Tech Lead">
   <div class="sur wrap mono">
     <span class="tiret" aria-hidden="true"></span>
-    <span><b>Mohamed Ennaciri</b> — Architecte Backend · Tech Lead · Engineering Partner</span>
+    <span><b>Mohamed Ennaciri</b> — Architecte Backend &amp; Tech Lead · Paris</span>
   </div>
   <div class="wrap">
     <h1>
-      <span class="ln"><span>Je transforme les systèmes</span></span>
-      <span class="ln"><span>complexes en plateformes</span></span>
-      <span class="ln"><span><em class="accent">capables de durer.</em></span></span>
+      <span class="ln"><span>Je modernise les systèmes</span></span>
+      <span class="ln"><span><em class="accent">backend critiques.</em></span></span>
     </h1>
-    <p class="chapo rv">15 ans à concevoir, moderniser et faire évoluer des systèmes critiques. J'interviens là où <b>les enjeux techniques deviennent des enjeux business</b> : architecture backend, transformation de legacy, identité, migration de données.</p>
-    <p class="stack-ligne rv d1">Java · Kotlin · Spring Boot · Kafka · Keycloak · <i>Architecture distribuée</i></p>
+    <p class="chapo rv">Sans coupure de service. 15 ans sur des plateformes utilisées par des millions de clients — Europcar, Renault, Groupe Casino, Crédit Agricole.</p>
+
+    <div class="pour-qui rv d1">
+      <span class="k">Vous êtes au bon endroit si</span>
+      <ul>
+        <li>Votre plateforme est devenue difficile à faire évoluer.</li>
+        <li>Une migration traîne depuis trop longtemps.</li>
+        <li>Votre authentification doit servir plusieurs marques.</li>
+        <li>Votre équipe a besoin d'un cap technique.</li>
+      </ul>
+    </div>
+
     <div class="hero-ctas rv d1">
       <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Diagnostic%20d%27architecture%20%E2%80%94%20demande"><span>Demander un diagnostic</span><span class="fl">→</span></a>
       <a class="btn btn-linkedin" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener"><span>LinkedIn</span><span class="fl">↗</span></a>
-      <a class="btn btn-ligne" href="#references"><span>Voir les références</span><span class="fl">↓</span></a>
     </div>
+
     <div class="chiffres rv">
       <div><span class="n"><span class="compte">15</span></span><span class="l">ans sur des systèmes critiques</span></div>
       <div><span class="n"><span class="compte">3</span>&thinsp;M<sup>+</sup></span><span class="l">profils clients unifiés</span></div>
@@ -1118,146 +1155,116 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   </div>
 </div>
 
-<!-- ============================ § 01 — EXPERTISE ============================ -->
+<!-- ============================ § 01 — CE QUE JE FAIS ============================ -->
 <section id="expertise">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 01 — L'expertise</span><span class="fig">quatre terrains</span></div>
-      <h2 class="rv">Là où la technique <span class="accent">devient une décision.</span></h2>
-      <p class="intro rv">Je n'interviens pas sur des sujets isolés, mais sur les endroits où une décision d'architecture engage le produit, l'équipe et le business pour les années qui suivent.</p>
+      <div class="haut"><span class="para">§ 01 — Ce que je fais</span><span class="fig">quatre expertises</span></div>
+      <h2 class="rv">Quatre problèmes. <span class="accent">Quatre réponses.</span></h2>
     </div>
     <div class="expertises" data-stagger>
       <div class="exp">
         <div class="num" aria-hidden="true">01</div>
-        <h3>Architecture qui sert le produit</h3>
-        <p class="these">Une bonne architecture n'est pas celle qui accumule les patterns.</p>
-        <p>C'est celle qui permet de livrer vite, de faire évoluer le produit sans tout casser, et de <b>garder la maîtrise du système plusieurs années plus tard</b>.</p>
-        <p class="tags">Hexagonale · DDD · <i>Event-driven · CQRS</i> · Microservices · API · Kafka · RabbitMQ · Cloud</p>
+        <h3>Architecture backend</h3>
+        <p>Je conçois des plateformes qui encaissent la charge et restent modifiables des années plus tard.</p>
+        <p class="tags">KOTLIN · JAVA · SPRING BOOT · <i>KAFKA · MICROSERVICES · DDD</i></p>
+        <p class="res">Résultat — des équipes qui livrent vite, sans casser l'existant.</p>
       </div>
       <div class="exp">
         <div class="num" aria-hidden="true">02</div>
-        <h3>Moderniser sans arrêter le business</h3>
-        <p class="these">Le legacy n'est pas toujours le problème.</p>
-        <p>Il le devient quand on ne peut plus le faire évoluer sans risque disproportionné. Transformations progressives, coexistence ancien / nouveau : <b>faire évoluer la plateforme sans demander au business d'attendre</b>.</p>
-        <p class="tags">Strangler pattern · <i>CDC · Migration de données</i> · Coexistence legacy · Découpage progressif</p>
+        <h3>Migration de systèmes anciens</h3>
+        <p>Je fais passer votre legacy vers du moderne par étapes, pendant que la production tourne.</p>
+        <p class="tags">COBOL · PHP · ORACLE · <i>STRANGLER PATTERN · CDC</i></p>
+        <p class="res">Résultat — 15 ans de migrations, zéro interruption de service.</p>
       </div>
       <div class="exp">
         <div class="num" aria-hidden="true">03</div>
-        <h3>Identité &amp; plateformes à grande échelle</h3>
-        <p class="these">L'authentification devient un sujet d'architecture dès qu'elle sert plusieurs marques.</p>
-        <p>Plusieurs marques, plusieurs parcours, un seul socle d'identité. Chez Europcar : <b>plus de 3 millions de profils unifiés</b> et une connexion commune Europcar / Goldcar.</p>
-        <p class="tags">Keycloak · <i>OAuth 2.1 · OIDC</i> · SAML · JWT · SSO · API Security · Gateway</p>
+        <h3>Authentification &amp; sécurité</h3>
+        <p>Un seul compte et une seule connexion pour toutes vos marques et tous vos canaux.</p>
+        <p class="tags">KEYCLOAK · <i>OAUTH 2.1 · OIDC</i> · SAML · API GATEWAY</p>
+        <p class="res">Résultat — 3 millions de profils unifiés chez Europcar.</p>
       </div>
       <div class="exp">
         <div class="num" aria-hidden="true">04</div>
-        <h3>L'IA comme accélérateur d'ingénierie</h3>
-        <p class="these">L'IA ne remplace pas l'architecture. Elle permet à une équipe expérimentée d'aller plus vite.</p>
-        <p>Agents de code, MCP, automatisation des tâches d'ingénierie — avec une règle simple : <b>accélérer sans perdre le contrôle</b>.</p>
-        <p class="tags">Code review humaine · <i>Garde-fous</i> · Tests automatisés · Sécurité · Maîtrise du code</p>
-        <p style="margin-top:14px"><a class="lien" href="claude-code/" style="font-weight:560;color:var(--vert)">Ma configuration complète — mémoire, skills, hooks, permissions →</a></p>
+        <h3>Direction technique d'équipe</h3>
+        <p>Je prends le cap technique d'une squad : décisions d'architecture, revue de code, montée en compétence.</p>
+        <p class="tags">SQUADS DISTRIBUÉES · 4 PAYS · <i>MENTORAT · QUALITÉ</i></p>
+        <p class="res">Résultat — une équipe autonome à la fin de la mission.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ § 02 — ENGAGEMENTS ============================ -->
+<!-- ============================ § 02 — COMMENT ON TRAVAILLE ============================ -->
 <section id="engagements" class="encre panneau p-sauge">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 02 — Les engagements</span><span class="fig">renfort · forfait · squad</span></div>
-      <h2 class="rv">Des problèmes techniques. <span class="accent">Des engagements clairs.</span></h2>
-      <p class="intro rv">Je ne vends pas uniquement du temps. <b>Je m'engage sur un niveau d'intervention adapté au problème</b> — et je le dis avant de commencer.</p>
+      <div class="haut"><span class="para">§ 02 — Comment on travaille</span><span class="fig">régie · forfait · squad</span></div>
+      <h2 class="rv">Trois formats. <span class="accent">Vous choisissez.</span></h2>
     </div>
-
     <div class="offres" data-stagger>
       <div class="offre">
-        <span class="mode">01 — Renfort stratégique</span>
-        <h3>Un Tech Lead senior au cœur de votre équipe</h3>
-        <p class="devise">« Le niveau de leadership technique qui manque, pas une ressource de plus. »</p>
+        <span class="mode">01 — Régie</span>
+        <h3>Je rejoins votre équipe</h3>
+        <p class="devise">« Un Tech Lead dans la squad, pas un consultant de plus. »</p>
         <ul>
-          <li><b>Décisions structurantes</b> assumées et documentées</li>
-          <li><b>Revue de code, mentorat, qualité</b> — le niveau de l'équipe monte</li>
-          <li>Un cap technique qui <b>survit à mon départ</b></li>
+          <li>Décisions d'architecture, code, revue</li>
+          <li>Le niveau de l'équipe monte pendant la mission</li>
         </ul>
-        <div class="modalites">3 À 5 JOURS <b>/ SEMAINE</b><br>MISSION DE 3 À 6 MOIS RENOUVELABLE<br>PARIS · REMOTE</div>
+        <div class="modalites">3 À 5 JOURS <b>/ SEMAINE</b><br>3 À 6 MOIS · PARIS OU REMOTE</div>
       </div>
-
       <div class="offre phare">
-        <span class="mode">02 — Transformation au forfait</span>
-        <h3>Un problème identifié. Un résultat défini</h3>
-        <p class="devise">« Le périmètre, les critères de réussite et les livrables sont définis avant de commencer. »</p>
+        <span class="mode">02 — Forfait</span>
+        <h3>Je prends le chantier</h3>
+        <p class="devise">« Un périmètre, un prix, une date. »</p>
         <ul>
-          <li>Migration legacy · <b>SSO / Keycloak</b> · refonte backend · événementiel</li>
-          <li>Cadrage → architecture cible → jalons → <b>mise en production</b> → transfert</li>
-          <li><b>Le risque de dérive est de mon côté</b>, pas du vôtre</li>
+          <li>Migration, SSO / Keycloak, refonte backend</li>
+          <li><b>Le risque de dérive est de mon côté</b></li>
         </ul>
-        <div class="modalites">PRIX <b>FERME PAR JALON</b><br>DÉMARRAGE SOUS 2 À 4 SEMAINES<br>SEUL OU AVEC LA SQUAD</div>
+        <div class="modalites">PRIX <b>FERME PAR JALON</b><br>LIVRÉ EN PRODUCTION</div>
       </div>
-
       <div class="offre">
-        <span class="mode">03 — Une squad complète</span>
-        <h3>Une équipe senior. Un seul interlocuteur</h3>
-        <p class="devise">« Pas une pyramide de consultants. Une équipe courte, construite autour du problème. »</p>
+        <span class="mode">03 — Squad</span>
+        <h3>J'amène l'équipe</h3>
+        <p class="devise">« Une équipe courte, pas une pyramide de consultants. »</p>
         <ul>
-          <li>Des <b>freelances seniors avec lesquels j'ai déjà travaillé</b> : backend, frontend, QA, DevOps, data, UX</li>
-          <li>Je reste votre <b>interlocuteur technique unique</b> sur tout le delivery</li>
-          <li>Équipe composée <b>sur le problème réel</b>, jamais sur un plan de staffing</li>
+          <li>Des freelances seniors avec qui j'ai déjà livré</li>
+          <li>Un seul interlocuteur : moi</li>
         </ul>
-        <div class="modalites">2 À 8 PERSONNES · <b>RÉGIE OU FORFAIT</b><br>MOBILISATION RAPIDE<br>UN SEUL CONTRAT</div>
+        <div class="modalites">2 À 8 PERSONNES<br>BACK · FRONT · QA · DEVOPS · DATA · UX</div>
       </div>
-    </div>
-
-    <div class="offres-pied rv">
-      <p>Si le bon conseil est de ne rien lancer, je vous le dirai aussi.</p>
-      <span class="mono">Réponse sous 48 h · Premier échange sans engagement</span>
     </div>
   </div>
 </section>
 
-<!-- ============================ § 03 — MÉTHODE ============================ -->
-<section id="methode">
+<!-- ============================ § 03 — COMMENT ÇA COMMENCE ============================ -->
+<section id="demarrer">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 03 — Ma façon de travailler</span><span class="fig">cinq temps</span></div>
-      <h2 class="rv">Comprendre <span class="accent">avant de construire.</span></h2>
-      <p class="intro rv">La plupart des échecs techniques ne viennent pas du code, mais d'une décision prise trop tôt.</p>
+      <div class="haut"><span class="para">§ 03 — Comment ça commence</span><span class="fig">quatre étapes</span></div>
+      <h2 class="rv">De l'appel à la mise en production.</h2>
     </div>
-    <div class="methode" data-stagger>
-      <article class="etape-m">
-        <div class="tete"><span class="no" aria-hidden="true">01</span><h3>Comprendre</h3></div>
-        <div class="txt">
-          <p>30 minutes pour comprendre le contexte, les contraintes et <b>ce qui bloque réellement</b> — pas ce qui est écrit dans le ticket. Je peux aussi vous dire que je ne suis pas la bonne personne.</p>
-          <p class="livrable">Livrable — un avis franc, sans engagement</p>
-        </div>
-      </article>
-      <article class="etape-m">
-        <div class="tete"><span class="no" aria-hidden="true">02</span><h3>Diagnostiquer</h3></div>
-        <div class="txt">
-          <p>Architecture, organisation, dette, flux critiques, risques. On regarde le système <b>et</b> l'équipe qui le fait vivre. <b>Vous repartez avec une vision claire</b>, que la mission se fasse ou non.</p>
-          <p class="livrable">Livrable — diagnostic écrit, risques hiérarchisés</p>
-        </div>
-      </article>
-      <article class="etape-m">
-        <div class="tete"><span class="no" aria-hidden="true">03</span><h3>Décider</h3></div>
-        <div class="txt">
-          <p>Architecture cible, trajectoire, compromis assumés. <b>Pas de transformation pour la transformation</b> : chaque décision doit tenir devant votre direction.</p>
-          <p class="livrable">Livrable — architecture cible, trajectoire, décisions documentées</p>
-        </div>
-      </article>
-      <article class="etape-m">
-        <div class="tete"><span class="no" aria-hidden="true">04</span><h3>Construire</h3></div>
-        <div class="txt">
-          <p><b>Le design doit finir dans le code.</b> Revue, pairing, tests, mise en production. Un architecte qui ne descend jamais dans le code produit des diagrammes inapplicables.</p>
-          <p class="livrable">Livrable — du code en production, jalon après jalon</p>
-        </div>
-      </article>
-      <article class="etape-m">
-        <div class="tete"><span class="no" aria-hidden="true">05</span><h3>Transmettre</h3></div>
-        <div class="txt">
-          <p><b>Une mission réussie ne crée pas de dépendance à son architecte.</b> Documentation et transfert font partie du travail, pas d'une option de fin de projet.</p>
-          <p class="livrable">Livrable — documentation, transfert, autonomie de l'équipe</p>
-        </div>
-      </article>
+    <div class="pas" data-stagger>
+      <div>
+        <span class="n">ÉTAPE 01</span>
+        <h3>On échange</h3>
+        <p>30 minutes. Vous décrivez la situation, je vous dis si je peux aider — ou non.</p>
+      </div>
+      <div>
+        <span class="n">ÉTAPE 02</span>
+        <h3>Je regarde</h3>
+        <p>Le système, l'équipe, les risques. Vous gardez le diagnostic écrit, quoi qu'il arrive.</p>
+      </div>
+      <div>
+        <span class="n">ÉTAPE 03</span>
+        <h3>Je propose</h3>
+        <p>Périmètre, prix, jalons et critères de réussite. Posés avant de commencer.</p>
+      </div>
+      <div>
+        <span class="n">ÉTAPE 04</span>
+        <h3>Je livre</h3>
+        <p>Du code en production, jalon par jalon. Et un transfert complet à la fin.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1266,129 +1273,68 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 <section id="references" class="encre panneau p-lin">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 04 — Les références</span><span class="fig">systèmes transformés</span></div>
-      <h2 class="rv">Quelques systèmes que j'ai contribué à <span class="accent">transformer.</span></h2>
-      <p class="intro rv">Des plateformes utilisées par des millions de clients, où <b>l'arrêt de service n'est pas une option</b>.</p>
+      <div class="haut"><span class="para">§ 04 — Références</span><span class="fig">ce que j'ai déjà livré</span></div>
+      <h2 class="rv">Des plateformes qui <span class="accent">tournent encore.</span></h2>
     </div>
 
     <div class="cas-liste" data-stagger>
       <article class="cas">
         <div class="cas-tete">
-          <div>
-            <h3>Europcar Mobility Group</h3>
-            <span class="role">Technical Lead — identité &amp; plateforme événementielle</span>
-          </div>
+          <div><h3>Europcar Mobility Group</h3><span class="role">Technical Lead — identité &amp; plateforme événementielle</span></div>
           <span class="an">2022 → aujourd'hui</span>
         </div>
-        <div class="cas-corps">
-          <div class="bloc">
-            <span class="k">Le contexte</span>
-            <p>Un groupe multi-marques, trois canaux de vente, des profils clients dispersés et un socle Oracle historique qu'il n'était pas question d'arrêter.</p>
-          </div>
-          <div class="bloc">
-            <span class="k">L'intervention</span>
-            <p>Backend refondu en <b>architecture événementielle Kafka</b>, <b>IdP Keycloak centralisé</b>, pipeline <b>CDC Oracle → MongoDB</b>. Squad distribuée sur plusieurs pays.</p>
-          </div>
-          <div class="bloc res">
-            <span class="k">Le résultat</span>
-            <p><b>Plus de 3 millions de profils unifiés</b> sur tous les canaux, un <b>SSO commun Europcar / Goldcar</b>, une recherche accélérée — <b>sans coupure de service</b>.</p>
-          </div>
-        </div>
-        <p class="cas-pied">Kotlin · Spring Boot · Kafka Confluent · Kong · Keycloak · AWS · Kubernetes · Terraform · PostgreSQL / Oracle · MongoDB · LaunchDarkly · Grafana · Dynatrace</p>
+        <p class="quoi">Refonte du backend en <b>architecture événementielle Kafka</b>, connexion commune Europcar / Goldcar sur Keycloak, migration de données Oracle → MongoDB. Squad distribuée sur quatre pays.</p>
+        <p class="res">3 millions de profils clients unifiés, sans coupure de service.</p>
+        <p class="cas-pied">Kotlin · Spring Boot · Kafka · Kong · Keycloak · AWS · Kubernetes · Terraform · MongoDB</p>
       </article>
 
       <article class="cas">
         <div class="cas-tete">
-          <div>
-            <h3>Renault Digital</h3>
-            <span class="role">Technical Lead — véhicule connecté</span>
-          </div>
+          <div><h3>Renault Digital</h3><span class="role">Technical Lead — véhicule connecté</span></div>
           <span class="an">2022</span>
         </div>
-        <div class="cas-corps">
-          <div class="bloc">
-            <span class="k">Le contexte</span>
-            <p>La plateforme Kamereon : activation de services à distance, gestion du parc, mises à jour OTA. Domaine métier complexe et partagé.</p>
-          </div>
-          <div class="bloc">
-            <span class="k">L'intervention</span>
-            <p>Co-conception en <b>DDD / BDD</b> avec le métier, architecture microservices retravaillée, <b>RabbitMQ</b> pour l'événementiel, chaîne de tests industrialisée.</p>
-          </div>
-          <div class="bloc res">
-            <span class="k">Le résultat</span>
-            <p>Fonctionnalités livrées avec une <b>couverture de tests d'au moins 80 %</b>, et un langage commun entre métier et ingénierie.</p>
-          </div>
-        </div>
-        <p class="cas-pied">Java 11-17 · Spring Boot · RabbitMQ · Azure AKS · Terraform · PostgreSQL</p>
+        <p class="quoi">Plateforme Kamereon : activation de services à distance et mises à jour à bord. Conception avec le métier, événementiel RabbitMQ, chaîne de tests industrialisée.</p>
+        <p class="res">Fonctionnalités livrées avec 80 % de couverture de tests.</p>
+        <p class="cas-pied">Java · Spring Boot · RabbitMQ · Azure · Terraform · PostgreSQL</p>
       </article>
 
       <article class="cas">
         <div class="cas-tete">
-          <div>
-            <h3>RelevanC — Groupe Casino</h3>
-            <span class="role">Technical Lead — plateforme d'offres &amp; promotions</span>
-          </div>
+          <div><h3>RelevanC — Groupe Casino</h3><span class="role">Technical Lead — plateforme de promotions</span></div>
           <span class="an">2021</span>
         </div>
-        <div class="cas-corps">
-          <div class="bloc">
-            <span class="k">Le contexte</span>
-            <p>Une plateforme de promotions pour plusieurs millions de clients, avec des <b>pics de trafic massifs</b> pendant les campagnes.</p>
-          </div>
-          <div class="bloc">
-            <span class="k">L'intervention</span>
-            <p>Microservices cloud natifs sur <b>GCP</b>, <b>élasticité GKE</b> réglée pour absorber les pics, CI/CD durcie avec stratégies de rollback.</p>
-          </div>
-          <div class="bloc res">
-            <span class="k">Le résultat</span>
-            <p>Une plateforme qui <b>encaisse les campagnes sans être dimensionnée en permanence pour le pic</b>, avec des SLO lisibles par le métier.</p>
-          </div>
-        </div>
-        <p class="cas-pied">Kotlin / Java · Spring Boot · GCP (Cloud Run, GKE) · Keycloak · PostgreSQL · Grafana</p>
+        <p class="quoi">Plateforme d'offres sur GCP pour plusieurs millions de clients, avec des pics de trafic massifs pendant les campagnes commerciales.</p>
+        <p class="res">Les pics absorbés sans surdimensionner la plateforme en permanence.</p>
+        <p class="cas-pied">Kotlin · Spring Boot · GCP · Kubernetes · Keycloak · Grafana</p>
       </article>
 
       <article class="cas">
         <div class="cas-tete">
-          <div>
-            <h3>Happn</h3>
-            <span class="role">Technical Lead — modernisation backend</span>
-          </div>
+          <div><h3>Happn</h3><span class="role">Technical Lead — modernisation backend</span></div>
           <span class="an">2022</span>
         </div>
-        <div class="cas-corps">
-          <div class="bloc">
-            <span class="k">Le contexte</span>
-            <p>Un backend PHP devenu difficile à faire évoluer, et une migration vers Java à sécuriser <b>avant</b> d'engager les équipes.</p>
-          </div>
-          <div class="bloc">
-            <span class="k">L'intervention</span>
-            <p>Audit du code, <b>cartographie des domaines</b>, plan de migration en <b>strangler pattern</b>, socle Spring Boot et premières API livrées.</p>
-          </div>
-          <div class="bloc res">
-            <span class="k">Le résultat</span>
-            <p>Une <b>trajectoire de migration validée et outillée</b>, un guide écrit, un transfert par mob programming — l'équipe poursuit sans dépendance.</p>
-          </div>
-        </div>
-        <p class="cas-pied">Java 17 · Spring Boot · Docker · PHP (legacy)</p>
+        <p class="quoi">Migration PHP vers Java : audit de l'existant, cartographie des domaines, plan par étapes, socle Spring Boot et premières API livrées.</p>
+        <p class="res">Une trajectoire validée et une équipe autonome pour la suivre.</p>
+        <p class="cas-pied">Java 17 · Spring Boot · Docker · PHP</p>
       </article>
     </div>
 
     <div class="autres rv">
-      <p class="autres-tete">Également — modernisation de systèmes critiques</p>
+      <p class="autres-tete">Également</p>
       <div class="autre">
-        <span class="c">GEFCO <span class="r">× Capgemini</span></span>
+        <span class="c">GEFCO</span>
         <span class="r">Tech Lead — facturation</span>
         <span class="d">Migration d'applications de facturation vers une architecture moderne, <b>avec continuité de service</b>.</span>
       </div>
       <div class="autre">
-        <span class="c">Crédit Agricole <span class="r">× CGI</span></span>
-        <span class="r">Team Leader — leasing &amp; affacturage</span>
-        <span class="d">Projets de build d'environ <b>1 000 jours-homme</b> et migration <b>COBOL / AS400 vers Java</b>, sans rupture pour les métiers.</span>
+        <span class="c">Crédit Agricole</span>
+        <span class="r">Team Leader — leasing</span>
+        <span class="d">Projets d'environ <b>1 000 jours-homme</b> et migration COBOL / AS400 vers Java.</span>
       </div>
       <div class="autre">
         <span class="c">Cegedim</span>
         <span class="r">Tech Lead — santé</span>
-        <span class="d">Plateforme de remboursement santé : microservices REST / SOAP et <b>tests automatisés introduits dans la CI</b>.</span>
+        <span class="d">Plateforme de remboursement : microservices et <b>tests automatisés introduits dans la CI</b>.</span>
       </div>
     </div>
   </div>
@@ -1398,150 +1344,55 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 <section id="parcours">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 05 — 15 ans de terrain</span><span class="fig">2011 → aujourd'hui</span></div>
-      <h2 class="rv">Comprendre les systèmes complexes, <span class="accent">puis les rendre simples.</span></h2>
-      <p class="intro rv">Un même fil conducteur — du COBOL bancaire aux plateformes événementielles distribuées.</p>
+      <div class="haut"><span class="para">§ 05 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
+      <h2 class="rv">15 ans de terrain.</h2>
     </div>
     <div class="registre" data-stagger>
-      <div class="ligne-m">
-        <span class="an">2022 — AUJ.</span>
-        <span class="qui">Europcar Mobility Group<small>Technical Lead — transformation backend</small></span>
-        <span class="quoi">Architecture événementielle Kafka, <b>SSO Europcar / Goldcar</b>, <b>3 M+ profils unifiés</b>, CDC.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2022</span>
-        <span class="qui">Happn<small>Tech Lead — modernisation</small></span>
-        <span class="quoi">Trajectoire de migration <b>PHP → Java</b> : audit, socle Spring Boot, premières API.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2022</span>
-        <span class="qui">Renault Digital<small>Tech Lead — véhicule connecté</small></span>
-        <span class="quoi">Plateforme Kamereon : activation de services et OTA. <b>DDD · BDD · RabbitMQ · Spring Boot</b>.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2021</span>
-        <span class="qui">RelevanC — Groupe Casino<small>Tech Lead — plateforme promotions</small></span>
-        <span class="quoi">Microservices GCP, <b>élasticité pour les pics de campagnes</b>, plusieurs millions de clients.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2018 — 21</span>
-        <span class="qui">Europcar Mobility Group<small>Tech Lead — nouvelle plateforme web</small></span>
-        <span class="quoi">Front Vue.js sur <b>microservices hexagonaux</b>, passation des consultants vers une squad interne.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2017</span>
-        <span class="qui">Cegedim<small>Tech Lead — plateformes de remboursement</small></span>
-        <span class="quoi">Microservices Java pour l'assurance santé, <b>tests automatisés introduits dans la CI</b>.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2016</span>
-        <span class="qui">GEFCO — Capgemini<small>Tech Lead — modernisation</small></span>
-        <span class="quoi">Modernisation de plateformes de facturation, <b>sans interruption de service</b>.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2015</span>
-        <span class="qui">Crédit Agricole — CGI<small>Team Leader — leasing &amp; affacturage</small></span>
-        <span class="quoi">Projets de build d'environ <b>1 000 jours-homme</b>, migration <b>COBOL / AS400 → Java</b>, encadrement.</span>
-      </div>
-      <div class="ligne-m">
-        <span class="an">2011</span>
-        <span class="qui">CAL&amp;F — Logica puis CGI<small>Ingénieur d'études</small></span>
-        <span class="quoi">Intégration continue (Jenkins), premiers systèmes d'affacturage en production.</span>
-      </div>
+      <div class="ligne-m"><span class="an">2022 — AUJ.</span><span class="qui">Europcar Mobility Group<small>Technical Lead</small></span><span class="quoi">Événementiel Kafka, SSO Europcar / Goldcar, 3 M+ profils unifiés.</span></div>
+      <div class="ligne-m"><span class="an">2022</span><span class="qui">Happn<small>Tech Lead</small></span><span class="quoi">Migration PHP → Java : audit, socle Spring Boot, premières API.</span></div>
+      <div class="ligne-m"><span class="an">2022</span><span class="qui">Renault Digital<small>Tech Lead</small></span><span class="quoi">Véhicule connecté : Kamereon, RabbitMQ, 80 % de couverture de tests.</span></div>
+      <div class="ligne-m"><span class="an">2021</span><span class="qui">RelevanC — Groupe Casino<small>Tech Lead</small></span><span class="quoi">Plateforme de promotions sur GCP, plusieurs millions de clients.</span></div>
+      <div class="ligne-m"><span class="an">2018 — 21</span><span class="qui">Europcar Mobility Group<small>Tech Lead</small></span><span class="quoi">Nouvelle plateforme web : Vue.js sur microservices hexagonaux.</span></div>
+      <div class="ligne-m"><span class="an">2017</span><span class="qui">Cegedim<small>Tech Lead</small></span><span class="quoi">Plateformes de remboursement santé, tests automatisés en CI.</span></div>
+      <div class="ligne-m"><span class="an">2016</span><span class="qui">GEFCO — Capgemini<small>Tech Lead</small></span><span class="quoi">Modernisation de la facturation, sans interruption de service.</span></div>
+      <div class="ligne-m"><span class="an">2015</span><span class="qui">Crédit Agricole — CGI<small>Team Leader</small></span><span class="quoi">Migration COBOL / AS400 vers Java, encadrement d'équipe.</span></div>
+      <div class="ligne-m"><span class="an">2011</span><span class="qui">CAL&amp;F — Logica puis CGI<small>Ingénieur d'études</small></span><span class="quoi">Intégration continue, premiers systèmes en production.</span></div>
+    </div>
+    <div class="registre-note rv">
+      <span class="k">Aussi</span>
+      <span>Co-fondateur de <b>Tonti</b> (cagnottes en ligne, 2022-23) et fondateur d'une <b>startup AgriTech</b> (équipe de 7, 2009-11). J'ai financé mes propres produits : je pense au coût autant qu'au code.</span>
     </div>
   </div>
 </section>
 
-<!-- ============================ § 06 — AU-DELÀ DES MISSIONS ============================ -->
-<section id="audela" style="padding-top:0">
-  <div class="wrap">
-    <div class="stete">
-      <div class="haut"><span class="para">§ 06 — Au-delà des missions</span><span class="fig">produits &amp; équipes</span></div>
-      <h2 class="rv">Construire n'a jamais été <span class="accent">uniquement mon métier.</span></h2>
-      <p class="intro rv">J'ai aussi créé des produits et monté des équipes — avec les contraintes de ceux qui financent leur propre développement.</p>
-    </div>
-    <div class="projets" data-stagger>
-      <div class="projet">
-        <span class="k">Co-fondateur · 2022-2023</span>
-        <h3>Tonti</h3>
-        <p>Plateforme de cagnottes digitales pour le marché marocain : cadre réglementaire, périmètre produit, première architecture.</p>
-      </div>
-      <div class="projet">
-        <span class="k">Fondateur &amp; CTO · 2009-2011</span>
-        <h3>AgriTech</h3>
-        <p>Solution numérique pour le secteur agricole, équipe de 7 personnes — livrée à l'association nationale des éleveurs.</p>
-      </div>
-      <div class="projet">
-        <span class="k">Président fondateur · 2012-2015</span>
-        <h3>ALMIA-FSR</h3>
-        <p>Initiatives autour de l'entrepreneuriat : journée université-entreprise, hackathon étudiant avec jury professionnel.</p>
-      </div>
-    </div>
-    <p class="mot-fin rv">Cette expérience entrepreneuriale influence directement ma manière d'aborder l'architecture : je pense autant au produit qu'au code.</p>
-  </div>
-</section>
-
-<!-- ============================ LE LABORATOIRE ============================ -->
+<!-- ============================ IA ============================ -->
 <div class="labo encre panneau p-sable" id="laboratoire">
   <div class="wrap labo-grid">
     <div class="rv">
-      <span class="k">Le laboratoire</span>
-      <h2>Et si l'IA devenait <span class="accent">un membre de l'équipe ?</span></h2>
-      <p>Je teste sur mes propres projets les méthodes que j'apporte ensuite en mission : <b>agents de code, MCP, automatisation, tests, documentation</b>.</p>
-      <p>Ce site en fait partie — conçu et mis en ligne avec des agents de code sous direction humaine.</p>
+      <span class="k">Ingénierie augmentée par l'IA</span>
+      <h2>Faire coder des agents, <span class="accent">sans perdre la main.</span></h2>
+      <p>J'utilise des agents de code sur mes propres projets et en mission. Le gain est réel — <b>à condition d'encadrer</b> : garde-fous automatiques, revue humaine, permissions strictes.</p>
+      <p>Ce site en fait partie : conçu et mis en ligne de cette façon.</p>
       <div style="margin-top:26px">
         <a class="btn btn-linkedin" href="claude-code/"><span>Voir ma configuration complète</span><span class="fl">→</span></a>
       </div>
     </div>
     <div class="regle rv d1">
-      <div><span class="g" aria-hidden="true">+</span><span class="t">L'IA <b>produit davantage</b> — code, tests, documentation, refactorings mécaniques.</span></div>
-      <div><span class="g" aria-hidden="true">=</span><span class="t">L'ingénieur <b>décide davantage</b> — architecture, compromis, sécurité, revue.</span></div>
-      <div><span class="g" aria-hidden="true">→</span><span class="t">Le résultat : <b>plus de delivery, sans perte de maîtrise</b> sur le système.</span></div>
+      <div><span class="g" aria-hidden="true">+</span><span class="t">L'IA <b>produit plus</b> — code, tests, documentation.</span></div>
+      <div><span class="g" aria-hidden="true">=</span><span class="t">L'ingénieur <b>décide plus</b> — architecture, sécurité, revue.</span></div>
+      <div><span class="g" aria-hidden="true">→</span><span class="t"><b>Plus de livraison, sans perte de maîtrise.</b></span></div>
     </div>
   </div>
 </div>
 
-<!-- ============================ § 07 — POURQUOI ============================ -->
-<section id="pourquoi">
-  <div class="wrap">
-    <div class="stete">
-      <div class="haut"><span class="para">§ 07 — Pourquoi travailler ensemble</span><span class="fig">la promesse</span></div>
-    </div>
-    <div class="credo rv">
-      <p>Un architecte ne devrait pas seulement produire des diagrammes.</p>
-      <p>Il doit comprendre le problème, prendre une décision, expliquer ses compromis — et <span class="accent">assumer son choix jusqu'en production.</span></p>
-      <p class="sous">C'est la différence entre un avis technique et un engagement d'ingénierie. Je m'engage sur le second.</p>
-    </div>
-    <div class="preuves rv d1">
-      <span>15 ans d'expérience</span>
-      <span>Environnements critiques</span>
-      <span>Équipes distribuées</span>
-      <span>Migrations complexes</span>
-      <span>Du code réellement livré</span>
-    </div>
-    <div class="equation rv d2">
-      <div><span>Moins</span>de complexité.</div>
-      <div><span>Plus</span>de maîtrise.</div>
-      <div><span>Plus</span>de delivery.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ FINALE ============================ -->
+<!-- ============================ CONTACT ============================ -->
 <section class="finale encre panneau p-sauge" id="contact">
   <div class="wrap">
     <div class="stete" style="margin-bottom:0">
-      <div class="haut"><span class="para">§ 08 — Contact</span><span class="fig">réponse sous 48 h</span></div>
+      <div class="haut"><span class="para">§ 06 — Contact</span><span class="fig">réponse rapide</span></div>
       <h2 class="rv" style="margin-top:clamp(18px,3vw,30px)">Parlons de <span class="accent">votre système.</span></h2>
     </div>
-    <ul class="situations" data-stagger>
-      <li>Vous avez une plateforme qui commence à <b>montrer ses limites</b> ?</li>
-      <li>Une migration que vous <b>repoussez depuis trop longtemps</b> ?</li>
-      <li>Une architecture qui devient <b>difficile à faire évoluer</b> ?</li>
-      <li>Une équipe qui a besoin d'un <b>leadership technique senior</b> ?</li>
-      <li>Ou simplement besoin d'un <b>regard extérieur</b> avant de prendre une décision structurante ?</li>
-    </ul>
-    <p class="conclusion rv"><b>30 minutes suffisent.</b> Je vous donne mon avis sur le problème — même si la conclusion est que vous n'avez pas besoin de moi.</p>
+    <p class="conclusion rv"><b>30 minutes suffisent</b> pour savoir si je peux vous aider. Je vous donne mon avis — même si la conclusion est que vous n'avez pas besoin de moi.</p>
     <div class="fin-ctas rv">
       <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Diagnostic%20d%27architecture%20%E2%80%94%20demande"><span>Demander un diagnostic</span><span class="fl">→</span></a>
       <a class="btn btn-linkedin" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener"><span>LinkedIn</span><span class="fl">↗</span></a>
@@ -1551,7 +1402,6 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <span><span class="k">Tél</span><a href="tel:+33780786015">+33 7 80 78 60 15</a></span>
       <span><span class="k">LinkedIn</span><a href="https://linkedin.com/in/mohamed-ennaciri" rel="noopener" target="_blank">mohamed-ennaciri ↗</a></span>
       <span><span class="k">Base</span>Paris · France</span>
-      <span><span class="k">Modes</span>Renfort · Forfait · Squad</span>
     </div>
   </div>
 </section>

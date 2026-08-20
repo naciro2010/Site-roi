@@ -260,8 +260,8 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <span class="ln"><span>Faire coder des agents</span></span>
       <span class="ln"><span><em class="accent">sans perdre la main.</em></span></span>
     </h1>
-    <p class="chapo rv">Une configuration complète, mécanisme par mécanisme. Pas des prompts astucieux : un <b>harnais</b> — ce que l'agent sait, ce qu'il a le droit de faire, et ce qui est vérifié avant qu'il puisse s'arrêter.</p>
-    <p class="chapo rv d1">Que du fichier versionné, relu en équipe, qui produit le même comportement pour tout le monde — <b>y compris pour ceux qui n'écrivent pas de prompts</b>.</p>
+    <p class="chapo rv">La configuration complète, mécanisme par mécanisme : ce que l'agent sait, ce qu'il a le droit de faire, et ce qui est vérifié avant qu'il puisse s'arrêter.</p>
+    <p class="chapo rv d1">Que du fichier versionné, relu en équipe — <b>le même comportement pour toute l'équipe</b>.</p>
     <div class="hero-ctas rv d1">
       <a class="btn btn-plein" href="#matrice"><span>La matrice de décision</span><span class="fl">↓</span></a>
       <a class="btn btn-ligne" href="mailto:ennaciri.md@gmail.com?subject=Industrialiser%20l%27IA%20dans%20nos%20%C3%A9quipes"><span>Déployer ça chez vous</span><span class="fl">→</span></a>
@@ -275,7 +275,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 01 — Le principe</span><span class="fig">deux règles, tout en découle</span></div>
       <h2 class="rv">Le harnais <span class="accent">avant le prompt.</span></h2>
-      <p class="intro rv">Un agent échoue rarement parce qu'il « ne comprend pas ». Il échoue parce qu'on lui a donné trop de contexte inutile, ou parce qu'on a <b>demandé</b> ce qui aurait dû être <b>câblé</b>.</p>
+      <p class="intro rv">Un agent échoue rarement parce qu'il « ne comprend pas », mais parce qu'on a <b>demandé</b> ce qui aurait dû être <b>câblé</b>.</p>
     </div>
     <div class="principes">
       <div class="principe rv">
@@ -298,7 +298,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 02 — La matrice de décision</span><span class="fig">le bon mécanisme au bon endroit</span></div>
       <h2 class="rv">Six mécanismes. <span class="accent">Un seul est le bon.</span></h2>
-      <p class="intro rv"><b>« Ce que vous voulez, ça relève de quoi ? »</b> Mettre une procédure dans le fichier d'instructions, c'est la payer à chaque session ; mettre une garantie dans un prompt, c'est ne pas l'avoir.</p>
+      <p class="intro rv"><b>« Ce que vous voulez, ça relève de quoi ? »</b> Une procédure dans le fichier d'instructions se paie à chaque session ; une garantie dans un prompt n'en est pas une.</p>
     </div>
     <div class="scroll-x rv">
       <table class="tbl">
@@ -357,7 +357,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 03 — L'arborescence</span><span class="fig">ce qui est versionné, ce qui ne l'est pas</span></div>
       <h2 class="rv">Deux portées : <span class="accent">moi, et l'équipe.</span></h2>
-      <p class="intro rv">La distinction n'est pas technique, elle est sociale : ce qui est <b>poussé dans le dépôt engage toute l'équipe</b>. Les préférences personnelles n'y ont pas leur place.</p>
+      <p class="intro rv">Ce qui est <b>poussé dans le dépôt engage toute l'équipe</b>. Les préférences personnelles n'y ont pas leur place.</p>
     </div>
     <div class="code rv">
       <div class="code-tete"><span><b>Arborescence</b> — portée personnelle et portée projet</span><span>~/.claude et &lt;projet&gt;/.claude</span></div>
@@ -397,7 +397,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 04 — La mémoire</span><span class="fig">CLAUDE.md · règles ciblées · mémoire automatique</span></div>
       <h2 class="rv">Écrire ce qu'on ne veut <span class="accent">plus jamais réexpliquer.</span></h2>
-      <p class="intro rv">Le test à appliquer à chaque ligne : <b>« est-ce que la retirer provoquerait une erreur ? »</b> Si non, elle sort. Un fichier trop long ne rend pas l'agent plus docile : il noie les règles importantes.</p>
+      <p class="intro rv">Le test à appliquer à chaque ligne : <b>« est-ce que la retirer provoquerait une erreur ? »</b> Si non, elle sort.</p>
     </div>
 
     <div class="txt rv">
@@ -463,7 +463,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 05 — Les skills</span><span class="fig">le savoir-faire, chargé à la demande</span></div>
       <h2 class="rv">Une procédure n'est pas <span class="accent">une instruction permanente.</span></h2>
-      <p class="intro rv">Dès qu'une section devient une <b>marche à suivre</b> plutôt qu'un fait, elle doit sortir. Une skill ne coûte rien tant qu'elle n'est pas utilisée : on peut y mettre le détail qu'on n'aurait jamais osé mettre ailleurs.</p>
+      <p class="intro rv">Dès qu'une section devient une <b>marche à suivre</b> plutôt qu'un fait, elle doit sortir. Une skill ne coûte rien tant qu'elle n'est pas utilisée.</p>
     </div>
 
     <div class="code rv">
@@ -520,7 +520,7 @@ Ne pas signaler de préférences de style.</pre>
     <div class="stete">
       <div class="haut"><span class="para">§ 06 — Les hooks</span><span class="fig">ce qui ne se négocie pas</span></div>
       <h2 class="rv">Ce qui doit arriver à tous les coups <span class="accent">ne se demande pas.</span></h2>
-      <p class="intro rv">Un hook est un script déclenché par le harnais sur un événement du cycle de vie. Il ne dépend pas de l'humeur du modèle, ni de la place restante dans le contexte. C'est la place du <b>formatage, des garde-fous et de la porte de sortie</b>.</p>
+      <p class="intro rv">Un script déclenché par le harnais, pas par le modèle. C'est la place du <b>formatage, des garde-fous et de la porte de sortie</b>.</p>
     </div>
 
     <div class="txt rv">
@@ -617,7 +617,7 @@ exit 0</pre>
     <div class="stete">
       <div class="haut"><span class="para">§ 07 — Les subagents</span><span class="fig">contexte isolé, regard neuf</span></div>
       <h2 class="rv">Celui qui écrit le code <span class="accent">ne doit pas le noter.</span></h2>
-      <p class="intro rv">Un subagent démarre dans un contexte vierge et ne renvoie qu'une synthèse. Deux usages : <b>absorber les explorations volumineuses</b>, et <b>faire relire par un regard qui n'a pas participé</b> — il juge le résultat, pas le raisonnement qui y a mené.</p>
+      <p class="intro rv">Contexte vierge, synthèse en retour. Deux usages : <b>absorber les explorations volumineuses</b>, et <b>faire relire par un regard qui n'a pas participé</b>.</p>
     </div>
 
     <div class="code rv">
@@ -710,7 +710,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
     <div class="stete">
       <div class="haut"><span class="para">§ 09 — La boucle de travail</span><span class="fig">cinq temps</span></div>
       <h2 class="rv">Donner à l'agent <span class="accent">de quoi se corriger seul.</span></h2>
-      <p class="intro rv">Un agent s'arrête quand le travail <b>a l'air</b> terminé. Sans vérification exécutable, c'est vous la boucle de contrôle. Avec un verdict automatique, la boucle se referme seule.</p>
+      <p class="intro rv">Un agent s'arrête quand le travail <b>a l'air</b> terminé. Sans vérification automatique, c'est vous la boucle de contrôle.</p>
     </div>
     <div class="boucle">
       <article class="etape rv">
@@ -800,8 +800,8 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
       <div class="haut"><span class="para">§ 11 — Passer à l'échelle</span><span class="fig">réponse sous 48 h</span></div>
       <h2 class="rv" style="margin-top:clamp(16px,2.6vw,26px)">Ce setup, <span class="accent">dans vos équipes.</span></h2>
     </div>
-    <p class="rv">Cette configuration n'a d'intérêt que multipliée par le nombre de personnes qui l'utilisent. Ce qui se met en place : <b>le socle versionné, les garde-fous, les permissions par équipe, la revue automatique du diff</b> — pour que les gains soient les mêmes pour tout le monde, y compris pour ceux qui n'ont pas envie d'apprendre à écrire des prompts.</p>
-    <p class="rv"><b>Et une règle de fond :</b> l'IA produit davantage, l'ingénieur décide davantage. Un agent qui livre du code que personne ne relit n'est pas un gain de productivité — c'est une dette qui s'écrit plus vite.</p>
+    <p class="rv">Cette configuration n'a d'intérêt que multipliée par le nombre de personnes qui l'utilisent : <b>socle versionné, garde-fous, permissions par équipe, revue automatique du diff</b>.</p>
+    <p class="rv">Un agent qui livre du code que personne ne relit n'est pas un gain de productivité — <b>c'est une dette qui s'écrit plus vite</b>.</p>
     <div class="fin-ctas rv">
       <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Industrialiser%20l%27IA%20dans%20nos%20%C3%A9quipes"><span>En parler</span><span class="fl">→</span></a>
       <a class="btn btn-ligne" href="../"><span>Le profil complet</span><span class="fl">→</span></a>
