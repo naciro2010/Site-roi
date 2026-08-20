@@ -20,23 +20,29 @@
 @font-face{font-family:'Plex Mono';src:url('../fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
 
 :root{
-  --paper:#F7F4EC;--ink:#0F1B16;--ink-2:#152420;
-  --vert:#0E7A5F;--vert-vif:#27B88A;
-  --ligne:rgba(15,27,22,.16);--ligne-faible:rgba(15,27,22,.09);
-  --sourdine:#5C665E;--pad:clamp(20px,4.5vw,64px);--maxw:1240px;
+  --paper:#FCFBF9;--ink:#2E3733;--ink-2:#FFFFFF;
+  --sauge:#EAF1EB;--brume:#E8EEF4;--sable:#F8F0E6;--lin:#F2EFEA;
+  --lavis:var(--sauge);
+  --vert:#4F8A72;--vert-vif:#3C6E58;
+  --ligne:rgba(46,55,51,.13);--ligne-faible:rgba(46,55,51,.08);
+  --sourdine:#6B756F;--pad:clamp(20px,4.5vw,64px);--maxw:1240px;
 }
-.encre{--paper:#0F1B16;--ligne:rgba(247,244,236,.16);--ligne-faible:rgba(247,244,236,.08);--sourdine:#8FA096;--vert:#27B88A}
+.encre{--paper:var(--lavis);--ink-2:#FFFFFF;--sourdine:#6B756F}
+.p-sauge{--lavis:var(--sauge)}
+.p-brume{--lavis:var(--brume)}
+.p-sable{--lavis:var(--sable)}
+.p-lin{--lavis:var(--lin)}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
-::selection{background:var(--vert);color:#F7F4EC}
+::selection{background:var(--vert);color:#FCFBF9}
 body{font-family:'Instrument Sans',system-ui,sans-serif;font-weight:430;background:var(--paper);color:var(--ink);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.encre{background:var(--paper);color:#F1EEE5}
+.encre{background:var(--paper);color:var(--ink)}
 a{color:inherit}
 h1,h2,h3,h4,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-variation-settings:'opsz' 100,'SOFT' 0,'WONK' 0;line-height:1.08;letter-spacing:-.01em}
 em{font-style:italic}
-code{font-family:'Plex Mono',monospace;font-size:.88em;background:rgba(14,122,95,.09);padding:2px 6px;border-radius:2px;color:var(--vert)}
-.encre code{background:rgba(39,184,138,.12);color:var(--vert-vif)}
+code{font-family:'Plex Mono',monospace;font-size:.88em;background:rgba(79,138,114,.09);padding:2px 6px;border-radius:2px;color:var(--vert)}
+.encre code{background:rgba(79,138,114,.12);color:var(--vert-vif)}
 .mono{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 
@@ -44,14 +50,14 @@ code{font-family:'Plex Mono',monospace;font-size:.88em;background:rgba(14,122,95
 .btn .fl{transition:transform .25s cubic-bezier(.2,.6,.2,1)}
 .btn:hover .fl{transform:translateX(5px)}
 .btn:focus-visible{outline:3px solid var(--vert);outline-offset:3px}
-.btn-plein{background:var(--ink);color:#F1EEE5}
-.btn-plein:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(14,122,95,.25)}
+.btn-plein{background:var(--ink);color:#FCFBF9}
+.btn-plein:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(79,138,114,.25)}
 .btn-ligne{background:transparent;color:inherit}
-.btn-ligne:hover{background:var(--ink);color:#F1EEE5}
-.encre .btn{border-color:#F1EEE5}
-.encre .btn-plein{background:#F1EEE5;color:var(--ink)}
-.encre .btn-plein:hover{background:var(--vert-vif);border-color:var(--vert-vif);color:#08110D}
-.encre .btn-ligne:hover{background:#F1EEE5;color:var(--ink)}
+.btn-ligne:hover{background:var(--ink);color:#FCFBF9}
+.encre .btn{border-color:#2E3733}
+.encre .btn-plein{background:var(--ink);color:#FCFBF9}
+.encre .btn-plein:hover{background:var(--vert-vif);border-color:var(--vert-vif);color:#FFFFFF}
+.encre .btn-ligne:hover{background:var(--ink);color:#FCFBF9}
 
 .rv{opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.6,.2,1),filter .85s ease}
 .rv.on{opacity:1;transform:none;filter:blur(0)}
@@ -70,20 +76,20 @@ header{position:sticky;top:0;z-index:200;background:color-mix(in srgb, var(--pap
 .marque{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:'Fraunces',serif;font-size:21px;font-weight:480;font-variation-settings:'opsz' 60}
 .marque .noeud{position:relative;width:12px;height:12px;flex:none}
 .marque .noeud::before{content:"";position:absolute;inset:0;border:1.5px solid var(--vert);border-radius:50%;animation:onde 3.4s ease-out infinite}
-@keyframes onde{0%{box-shadow:0 0 0 0 rgba(14,122,95,.3)}75%,100%{box-shadow:0 0 0 8px rgba(14,122,95,0)}}
+@keyframes onde{0%{box-shadow:0 0 0 0 rgba(79,138,114,.3)}75%,100%{box-shadow:0 0 0 8px rgba(79,138,114,0)}}
 .marque .noeud::after{content:"";position:absolute;inset:3.5px;background:var(--vert);border-radius:50%}
 .marque small{font-family:'Plex Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sourdine);margin-left:4px;transform:translateY(2px)}
 .nav-liens{display:flex;list-style:none;align-items:center;gap:clamp(12px,2vw,28px)}
 .nav-liens a{font-size:14.5px;font-weight:480;text-decoration:none;white-space:nowrap}
 .nav-liens a:not(.nav-cta){background:linear-gradient(var(--vert),var(--vert)) no-repeat left 100% / 0% 1.5px;transition:background-size .3s ease,color .2s ease;padding-bottom:3px}
 .nav-liens a:not(.nav-cta):hover{background-size:100% 1.5px;color:var(--vert)}
-.nav-cta{font-weight:560;padding:11px 20px;border-radius:2px;background:var(--ink);color:#F1EEE5;transition:background .2s ease}
+.nav-cta{font-weight:560;padding:11px 20px;border-radius:2px;background:var(--ink);color:#FCFBF9;transition:background .2s ease}
 .nav-cta:hover{background:var(--vert)}
 .burger{display:none;background:none;border:1px solid var(--ligne);border-radius:2px;cursor:pointer;padding:9px 14px;font-family:'Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 
 /* ---- HERO ---- */
 .hero{padding:clamp(56px,9vh,104px) 0 clamp(36px,5vw,64px);position:relative}
-.hero::before{content:"";position:absolute;top:-12%;right:3%;width:44vw;height:44vw;max-width:780px;max-height:780px;pointer-events:none;z-index:-1;border-radius:50%;background:radial-gradient(closest-side, rgba(14,122,95,.09), transparent 72%);animation:aurore 16s ease-in-out infinite alternate}
+.hero::before{content:"";position:absolute;top:-12%;right:3%;width:44vw;height:44vw;max-width:780px;max-height:780px;pointer-events:none;z-index:-1;border-radius:50%;background:radial-gradient(closest-side, rgba(79,138,114,.09), transparent 72%);animation:aurore 16s ease-in-out infinite alternate}
 @keyframes aurore{from{transform:translate(0,0) scale(1);opacity:.7}to{transform:translate(-7%,6%) scale(1.12);opacity:1}}
 .hero .sur{display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--sourdine);margin-bottom:clamp(24px,4vw,40px)}
 .hero .sur .tiret{width:34px;height:1px;background:var(--vert);flex:none;transform-origin:left;animation:file .9s cubic-bezier(.2,.6,.2,1) .1s both}
@@ -104,33 +110,33 @@ header{position:sticky;top:0;z-index:200;background:color-mix(in srgb, var(--pap
 
 /* ---- SECTIONS ---- */
 section{padding:clamp(64px,8vw,112px) 0}
-.panneau{background:var(--ink-2);color:#E9EFEA;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.panneau{background:var(--lavis);color:var(--ink);border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne)}
 .stete{margin-bottom:clamp(32px,4.5vw,52px)}
 .stete .haut{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--ink);padding-top:16px}
-.encre .stete .haut{border-top-color:#F1EEE5}
+.encre .stete .haut{border-top-color:#2E3733}
 .stete .para{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.18em;color:var(--vert)}
 .stete .fig{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sourdine)}
 .stete h2{font-size:clamp(30px,4.2vw,54px);font-variation-settings:'opsz' 144;margin-top:clamp(16px,2.6vw,26px);max-width:24ch}
 .stete h2 .accent{font-style:italic;color:var(--vert)}
 .stete .intro{margin-top:20px;max-width:68ch;color:var(--sourdine);font-size:17px}
 .stete .intro b{color:inherit;font-weight:560}
-.encre .stete .intro b{color:#F1EEE5}
+.encre .stete .intro b{color:#2E3733}
 .txt{max-width:68ch}
 .txt p{color:var(--sourdine);font-size:16.5px}
 .txt p + p{margin-top:14px}
 .txt p b{color:var(--ink);font-weight:560}
-.encre .txt p b{color:#F1EEE5}
+.encre .txt p b{color:#2E3733}
 .txt h3{font-size:clamp(20px,2.1vw,26px);margin:clamp(30px,4vw,44px) 0 12px}
 .txt ul{list-style:none;margin-top:14px}
 .txt li{position:relative;padding:9px 0 9px 24px;border-top:1px solid var(--ligne-faible);color:var(--sourdine);font-size:15.5px}
 .txt li::before{content:"";position:absolute;left:2px;top:18px;width:7px;height:7px;border:1.5px solid var(--vert);border-radius:50%}
 .txt li b{color:var(--ink);font-weight:560}
-.encre .txt li b{color:#F1EEE5}
+.encre .txt li b{color:#2E3733}
 
 /* ---- PRINCIPES ---- */
 .principes{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ligne);border-left:1px solid var(--ligne)}
 .principe{padding:clamp(24px,3.2vw,40px);border-right:1px solid var(--ligne);border-bottom:1px solid var(--ligne);position:relative;transition:background .25s ease}
-.principe:hover{background:#FCFAF4}
+.principe:hover{background:#F5F2ED}
 .principe::before{content:"";position:absolute;top:-1px;left:0;height:2px;width:100%;background:var(--vert);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.6,.2,1)}
 .principe:hover::before{transform:scaleX(1)}
 .principe .n{font-family:'Fraunces',serif;font-style:italic;font-weight:320;font-variation-settings:'opsz' 144;font-size:clamp(34px,3.8vw,48px);line-height:1;color:var(--vert)}
@@ -139,13 +145,13 @@ section{padding:clamp(64px,8vw,112px) 0}
 .principe p b{color:var(--ink);font-weight:560}
 
 /* ---- BLOC DE CODE ---- */
-.code{border:1px solid var(--ligne);background:var(--ink-2);border-radius:2px;overflow:hidden;margin-top:24px}
-.code-tete{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid rgba(233,239,234,.1);font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8FA096}
-.code-tete b{color:var(--vert-vif);font-weight:500}
-.code pre{margin:0;padding:18px;overflow-x:auto;font-family:'Plex Mono',monospace;font-size:13px;line-height:1.8;color:#D7DED8;tab-size:2}
-.code i{font-style:normal;color:#6E8076}
-.code b{font-weight:400;color:var(--vert-vif)}
-.code u{text-decoration:none;color:#F1EEE5}
+.code{border:1px solid rgba(46,55,51,.12);background:#333F39;border-radius:3px;overflow:hidden;margin-top:24px;box-shadow:0 2px 10px rgba(46,55,51,.06)}
+.code-tete{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:11px 18px;background:#2C3831;border-bottom:1px solid rgba(255,255,255,.07);font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#9AA79F}
+.code-tete b{color:#8FCFAF;font-weight:500}
+.code pre{margin:0;padding:18px;overflow-x:auto;font-family:'Plex Mono',monospace;font-size:13px;line-height:1.8;color:#DDE4DE;tab-size:2}
+.code i{font-style:normal;color:#8B968E}
+.code b{font-weight:400;color:#8FCFAF}
+.code u{text-decoration:none;color:#FFFFFF}
 
 /* ---- TABLEAU DE DÉCISION ---- */
 .scroll-x{overflow-x:auto;margin-top:10px}
@@ -154,12 +160,12 @@ section{padding:clamp(64px,8vw,112px) 0}
 .tbl td{padding:16px 20px 16px 0;border-bottom:1px solid var(--ligne-faible);vertical-align:top;font-size:15px;color:var(--sourdine)}
 .tbl td:first-child{color:inherit;font-weight:500}
 .tbl .m{font-family:'Plex Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--vert-vif);white-space:nowrap}
-.tbl tr:hover td{background:rgba(39,184,138,.04)}
+.tbl tr:hover td{background:rgba(79,138,114,.04)}
 
 /* ---- ÉTAPES DE LA BOUCLE ---- */
 .boucle{border-top:1px solid var(--ligne);margin-top:8px}
 .etape{display:grid;grid-template-columns:minmax(150px,.5fr) 1.6fr;gap:clamp(14px,3vw,48px);padding:clamp(20px,2.8vw,30px) 0;border-bottom:1px solid var(--ligne);transition:background .2s ease}
-.etape:hover{background:#FCFAF4}
+.etape:hover{background:#F5F2ED}
 .etape .t{display:flex;align-items:baseline;gap:14px}
 .etape .no{font-family:'Fraunces',serif;font-style:italic;font-weight:320;font-variation-settings:'opsz' 144;font-size:clamp(26px,2.8vw,36px);line-height:1;color:var(--vert);flex:none}
 .etape h3{font-size:clamp(19px,2vw,24px)}
@@ -178,8 +184,8 @@ section{padding:clamp(64px,8vw,112px) 0}
 /* ---- FINALE ---- */
 .finale h2{font-size:clamp(34px,5.2vw,72px);font-variation-settings:'opsz' 144;max-width:18ch}
 .finale h2 .accent{font-style:italic;color:var(--vert-vif)}
-.finale p{font-size:clamp(16px,1.6vw,19px);color:#AFBDB4;max-width:56ch;margin-top:26px}
-.finale p b{color:#F1EEE5;font-weight:560}
+.finale p{font-size:clamp(16px,1.6vw,19px);color:#6B756F;max-width:56ch;margin-top:26px}
+.finale p b{color:#2E3733;font-weight:560}
 .fin-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
 .finale .coord{margin-top:clamp(32px,4.4vw,50px);padding-top:26px;border-top:1px solid var(--ligne);display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap;font-family:'Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
 .finale .coord a{text-decoration:none;transition:color .2s ease}
@@ -254,8 +260,8 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <span class="ln"><span>Faire coder des agents</span></span>
       <span class="ln"><span><em class="accent">sans perdre la main.</em></span></span>
     </h1>
-    <p class="chapo rv">Une configuration complète, mécanisme par mécanisme. Elle ne repose pas sur des prompts astucieux mais sur un <b>harnais</b> : ce que l'agent sait, ce qu'il a le droit de faire, et ce qui est vérifié automatiquement avant qu'il puisse s'arrêter.</p>
-    <p class="chapo rv d1">Tout ce qui suit est du fichier versionné, relu en équipe, et qui produit le même comportement pour tout le monde — <b>y compris pour les développeurs qui n'écrivent pas de prompts</b>.</p>
+    <p class="chapo rv">La configuration complète, mécanisme par mécanisme : ce que l'agent sait, ce qu'il a le droit de faire, et ce qui est vérifié avant qu'il puisse s'arrêter.</p>
+    <p class="chapo rv d1">Que du fichier versionné, relu en équipe — <b>le même comportement pour toute l'équipe</b>.</p>
     <div class="hero-ctas rv d1">
       <a class="btn btn-plein" href="#matrice"><span>La matrice de décision</span><span class="fl">↓</span></a>
       <a class="btn btn-ligne" href="mailto:ennaciri.md@gmail.com?subject=Industrialiser%20l%27IA%20dans%20nos%20%C3%A9quipes"><span>Déployer ça chez vous</span><span class="fl">→</span></a>
@@ -269,30 +275,30 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 01 — Le principe</span><span class="fig">deux règles, tout en découle</span></div>
       <h2 class="rv">Le harnais <span class="accent">avant le prompt.</span></h2>
-      <p class="intro rv">Un agent de code n'échoue presque jamais parce qu'il « ne comprend pas ». Il échoue parce qu'on lui a donné trop de contexte inutile, ou parce qu'on a <b>demandé</b> quelque chose qui aurait dû être <b>câblé</b>.</p>
+      <p class="intro rv">Un agent échoue rarement parce qu'il « ne comprend pas », mais parce qu'on a <b>demandé</b> ce qui aurait dû être <b>câblé</b>.</p>
     </div>
     <div class="principes">
       <div class="principe rv">
         <div class="n" aria-hidden="true">01</div>
         <h3>Le contexte est la ressource rare</h3>
-        <p>La fenêtre de contexte contient toute la conversation : chaque fichier lu, chaque sortie de commande. Elle se remplit vite, et <b>la qualité se dégrade à mesure qu'elle se remplit</b>. Toute la configuration ci-dessous sert une seule chose : ne charger que ce qui est utile, au moment où c'est utile.</p>
+        <p>Elle contient toute la conversation : chaque fichier lu, chaque sortie de commande. Elle se remplit vite, et <b>la qualité se dégrade à mesure qu'elle se remplit</b>. D'où une seule règle : ne charger que ce qui est utile, quand c'est utile.</p>
       </div>
       <div class="principe rv d1">
         <div class="n" aria-hidden="true">02</div>
         <h3>Consultatif ou déterministe, il faut choisir</h3>
-        <p>Un fichier d'instructions est du <b>contexte</b> : le modèle le lit, en tient compte, et peut s'en écarter. Un hook est exécuté par le harnais, pas par le modèle : il a lieu <b>à tous les coups</b>. Ce qui doit être garanti — formatage, secrets, tests — ne se demande pas, ça se câble.</p>
+        <p>Un fichier d'instructions est du <b>contexte</b> : le modèle le lit et peut s'en écarter. Un hook est exécuté par le harnais : il a lieu <b>à tous les coups</b>. Formatage, secrets, tests : ça se câble.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ § 02 — LA MATRICE ============ -->
-<section id="matrice" class="encre panneau">
+<section id="matrice" class="encre panneau p-brume">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 02 — La matrice de décision</span><span class="fig">le bon mécanisme au bon endroit</span></div>
       <h2 class="rv">Six mécanismes. <span class="accent">Un seul est le bon.</span></h2>
-      <p class="intro rv">La question à trancher avant d'écrire quoi que ce soit : <b>« ce que vous voulez, ça relève de quoi ? »</b> Mettre une procédure dans le fichier d'instructions, c'est la payer en contexte à chaque session ; mettre une garantie dans un prompt, c'est ne pas l'avoir.</p>
+      <p class="intro rv"><b>« Ce que vous voulez, ça relève de quoi ? »</b> Une procédure dans le fichier d'instructions se paie à chaque session ; une garantie dans un prompt n'en est pas une.</p>
     </div>
     <div class="scroll-x rv">
       <table class="tbl">
@@ -340,7 +346,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       </table>
     </div>
     <div class="txt rv" style="margin-top:34px">
-      <p>Une règle simple pour trancher : <b>si le fait de l'oublier une fois sur dix est acceptable, c'est du contexte. Sinon, c'est un hook ou une permission.</b> Pour les accès externes, les CLI existants (<code>gh</code>, <code>aws</code>, <code>kubectl</code>) passent avant l'ajout d'un serveur MCP : une sortie de commande coûte beaucoup moins de contexte qu'un catalogue d'outils chargé en permanence.</p>
+      <p><b>Si l'oublier une fois sur dix est acceptable, c'est du contexte. Sinon, c'est un hook ou une permission.</b> Pour les accès externes, les CLI existants (<code>gh</code>, <code>aws</code>, <code>kubectl</code>) passent avant un serveur MCP : une sortie de commande coûte bien moins de contexte qu'un catalogue d'outils permanent.</p>
     </div>
   </div>
 </section>
@@ -351,7 +357,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 03 — L'arborescence</span><span class="fig">ce qui est versionné, ce qui ne l'est pas</span></div>
       <h2 class="rv">Deux portées : <span class="accent">moi, et l'équipe.</span></h2>
-      <p class="intro rv">La distinction structurante n'est pas technique, elle est sociale : ce qui est <b>poussé dans le dépôt engage toute l'équipe</b>, ce qui est ignoré par git n'engage que moi. Les préférences personnelles n'ont rien à faire dans le dépôt.</p>
+      <p class="intro rv">Ce qui est <b>poussé dans le dépôt engage toute l'équipe</b>. Les préférences personnelles n'y ont pas leur place.</p>
     </div>
     <div class="code rv">
       <div class="code-tete"><span><b>Arborescence</b> — portée personnelle et portée projet</span><span>~/.claude et &lt;projet&gt;/.claude</span></div>
@@ -378,7 +384,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <p>Les deux systèmes ne se résolvent pas de la même façon, et c'est une source de confusion classique :</p>
       <ul>
         <li>Les <b>réglages</b> se surchargent, du plus fort au plus faible : <b>politique d'entreprise → arguments de la ligne de commande → local → projet → utilisateur</b>. Une règle d'entreprise ne peut pas être contournée localement.</li>
-        <li>Les <b>fichiers d'instructions</b> ne se surchargent pas : ils sont <b>concaténés</b>, de la portée la plus large à la plus spécifique. Rien n'écrase rien — d'où l'importance de relire régulièrement l'ensemble pour supprimer les consignes contradictoires.</li>
+        <li>Les <b>fichiers d'instructions</b> ne se surchargent pas : ils sont <b>concaténés</b>, du plus large au plus spécifique. Rien n'écrase rien — d'où l'intérêt de les relire pour supprimer les consignes contradictoires.</li>
       </ul>
       <p style="margin-top:16px">Ce qui a réellement été chargé dans une session se vérifie avec <code>/context</code> — plutôt que de le supposer.</p>
     </div>
@@ -386,12 +392,12 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </section>
 
 <!-- ============ § 04 — LA MÉMOIRE ============ -->
-<section id="memoire" class="encre panneau">
+<section id="memoire" class="encre panneau p-lin">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 04 — La mémoire</span><span class="fig">CLAUDE.md · règles ciblées · mémoire automatique</span></div>
       <h2 class="rv">Écrire ce qu'on ne veut <span class="accent">plus jamais réexpliquer.</span></h2>
-      <p class="intro rv">Le test à appliquer à chaque ligne : <b>« est-ce que la retirer provoquerait une erreur ? »</b> Si la réponse est non, elle sort. Un fichier d'instructions trop long ne rend pas l'agent plus docile — il noie les règles importantes et l'agent en ignore la moitié.</p>
+      <p class="intro rv">Le test à appliquer à chaque ligne : <b>« est-ce que la retirer provoquerait une erreur ? »</b> Si non, elle sort.</p>
     </div>
 
     <div class="txt rv">
@@ -425,7 +431,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 
     <div class="txt rv" style="margin-top:36px">
       <h3>Les règles ciblées : la moitié du gain</h3>
-      <p>Une consigne qui ne concerne que les API n'a rien à faire dans le contexte quand on travaille sur le front. Les règles ciblées par chemin ne se chargent <b>que</b> lorsque l'agent touche un fichier correspondant. C'est le mécanisme le plus sous-utilisé, et celui qui fait le plus de différence sur un gros dépôt.</p>
+      <p>Une consigne qui ne concerne que les API n'a rien à faire en contexte quand on travaille sur le front. Les règles ciblées ne se chargent <b>que</b> sur les fichiers correspondants — le mécanisme le plus sous-utilisé, et le plus rentable sur un gros dépôt.</p>
     </div>
     <div class="code rv">
       <div class="code-tete"><span><b>.claude/rules/api.md</b> — chargée uniquement au contact des fichiers visés</span><span>frontmatter paths:</span></div>
@@ -445,7 +451,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 
     <div class="txt rv" style="margin-top:36px">
       <h3>La mémoire automatique, et pourquoi elle s'audite</h3>
-      <p>En parallèle des fichiers écrits à la main, l'agent tient ses propres notes par dépôt — commandes qui marchent, pièges rencontrés, préférences observées. C'est utile, mais <b>ce n'est pas parce que c'est écrit que c'est vrai</b> : une note obsolète devient une source d'erreurs silencieuses. Elle se passe en revue avec <code>/memory</code> au même titre qu'un fichier de configuration — c'est du markdown ordinaire, qui s'édite et se supprime.</p>
+      <p>L'agent tient aussi ses propres notes par dépôt : commandes qui marchent, pièges rencontrés. Utile, mais <b>ce n'est pas parce que c'est écrit que c'est vrai</b> — une note obsolète devient une erreur silencieuse. Ça se relit avec <code>/memory</code> comme un fichier de configuration.</p>
       <p>Ce qui est propre à une machine reste dans la mémoire automatique. Ce qui doit valoir pour toute l'équipe remonte dans le <code>CLAUDE.md</code> versionné. La frontière est là.</p>
     </div>
   </div>
@@ -457,7 +463,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     <div class="stete">
       <div class="haut"><span class="para">§ 05 — Les skills</span><span class="fig">le savoir-faire, chargé à la demande</span></div>
       <h2 class="rv">Une procédure n'est pas <span class="accent">une instruction permanente.</span></h2>
-      <p class="intro rv">Dès qu'une section du fichier d'instructions devient une <b>marche à suivre</b> plutôt qu'un fait, elle doit sortir et devenir une compétence. Le corps d'une skill ne coûte rien tant qu'elle n'est pas utilisée : on peut donc y mettre le détail qu'on n'aurait jamais osé mettre ailleurs.</p>
+      <p class="intro rv">Dès qu'une section devient une <b>marche à suivre</b> plutôt qu'un fait, elle doit sortir. Une skill ne coûte rien tant qu'elle n'est pas utilisée.</p>
     </div>
 
     <div class="code rv">
@@ -487,7 +493,7 @@ Ne pas signaler de préférences de style.</pre>
 
     <div class="txt rv" style="margin-top:30px">
       <h3>Le champ qui compte le plus : la description</h3>
-      <p>C'est sur cette seule phrase que l'agent décide de charger — ou non — la compétence. Une description vague (« aide pour l'architecture ») ne se déclenche jamais au bon moment. Une description utile dit <b>ce que ça fait, et surtout quand l'utiliser</b>, avec le cas d'usage principal en premier.</p>
+      <p>C'est sur cette seule phrase que l'agent décide de charger la compétence. « Aide pour l'architecture » ne se déclenche jamais au bon moment. Une bonne description dit <b>ce que ça fait, et surtout quand l'utiliser</b>.</p>
       <p>Pour les procédures qui ont des effets de bord — mise en production, migration, publication — le champ <code>disable-model-invocation: true</code> s'impose : la compétence reste disponible sous forme de commande <code>/nom</code>, mais <b>l'agent ne peut pas la déclencher de lui-même</b>. Une mise en production ne s'improvise pas.</p>
     </div>
 
@@ -509,12 +515,12 @@ Ne pas signaler de préférences de style.</pre>
 </section>
 
 <!-- ============ § 06 — LES HOOKS ============ -->
-<section id="hooks" class="encre panneau">
+<section id="hooks" class="encre panneau p-sable">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 06 — Les hooks</span><span class="fig">ce qui ne se négocie pas</span></div>
       <h2 class="rv">Ce qui doit arriver à tous les coups <span class="accent">ne se demande pas.</span></h2>
-      <p class="intro rv">Un hook est un script déclenché par le harnais sur un événement du cycle de vie. Il ne dépend pas de l'humeur du modèle, ni de la place restante dans le contexte. C'est la place du <b>formatage, des garde-fous et de la porte de sortie</b>.</p>
+      <p class="intro rv">Un script déclenché par le harnais, pas par le modèle. C'est la place du <b>formatage, des garde-fous et de la porte de sortie</b>.</p>
     </div>
 
     <div class="txt rv">
@@ -565,7 +571,7 @@ Ne pas signaler de préférences de style.</pre>
 
     <div class="txt rv" style="margin-top:34px">
       <h3>Le contrat d'un hook : entrée JSON, code de sortie</h3>
-      <p>Le script reçoit l'événement en JSON sur l'entrée standard et communique sa décision par son <b>code de sortie</b> : <code>0</code> laisse passer, <code>2</code> <b>bloque l'action</b> et renvoie le message d'erreur à l'agent pour qu'il corrige, tout autre code signale une erreur non bloquante. C'est ce qui permet d'écrire une politique en dix lignes de shell.</p>
+      <p>Le script reçoit l'événement en JSON sur l'entrée standard et répond par son <b>code de sortie</b> : <code>0</code> laisse passer, <code>2</code> <b>bloque</b> et renvoie le motif à l'agent, tout autre code signale une erreur non bloquante. Une politique tient en dix lignes de shell.</p>
     </div>
 
     <div class="code rv">
@@ -611,7 +617,7 @@ exit 0</pre>
     <div class="stete">
       <div class="haut"><span class="para">§ 07 — Les subagents</span><span class="fig">contexte isolé, regard neuf</span></div>
       <h2 class="rv">Celui qui écrit le code <span class="accent">ne doit pas le noter.</span></h2>
-      <p class="intro rv">Un subagent démarre dans un contexte vierge et ne renvoie qu'une synthèse. Deux usages : <b>absorber les explorations volumineuses</b> sans polluer la session principale, et <b>faire relire le travail par un regard qui n'a pas participé</b> — un relecteur qui ne voit que le diff et les critères juge le résultat, pas le raisonnement qui y a mené.</p>
+      <p class="intro rv">Contexte vierge, synthèse en retour. Deux usages : <b>absorber les explorations volumineuses</b>, et <b>faire relire par un regard qui n'a pas participé</b>.</p>
     </div>
 
     <div class="code rv">
@@ -638,18 +644,18 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
     </div>
 
     <div class="txt rv" style="margin-top:30px">
-      <p>Deux précautions. D'abord, <b>restreindre les outils</b> : un relecteur n'a aucune raison de pouvoir écrire, et un agent qui corrige ce qu'il relève ne relève plus rien. Ensuite, <b>cadrer ce qui compte comme un constat</b> : un relecteur à qui l'on demande de trouver des problèmes en trouvera toujours, y compris quand le travail est bon. Sans cadrage, on hérite d'abstractions inutiles et de tests pour des cas qui ne peuvent pas se produire.</p>
+      <p>Deux précautions. <b>Restreindre les outils</b> : un agent qui corrige ce qu'il relève ne relève plus rien. Et <b>cadrer ce qui compte comme un constat</b> : un relecteur à qui l'on demande de trouver des problèmes en trouvera toujours, y compris quand le travail est bon.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ § 08 — PERMISSIONS ============ -->
-<section id="permissions" class="encre panneau">
+<section id="permissions" class="encre panneau p-brume">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 08 — Permissions &amp; sécurité</span><span class="fig">la seule couche réellement contraignante</span></div>
       <h2 class="rv">Ce que l'agent ne peut pas faire, <span class="accent">il ne le fera pas.</span></h2>
-      <p class="intro rv">Les instructions orientent le comportement ; les permissions l'imposent. C'est la seule couche appliquée par le client quoi qu'il arrive — et donc la seule qui compte pour tout ce qui est irréversible ou confidentiel.</p>
+      <p class="intro rv">Les instructions orientent ; les permissions imposent. C'est la seule couche appliquée quoi qu'il arrive — donc la seule qui compte pour l'irréversible et le confidentiel.</p>
     </div>
 
     <div class="code rv">
@@ -693,7 +699,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
         <li><b>La production n'est pas un environnement de travail.</b> Aucun contexte de production dans les commandes autorisées ; les accès privilégiés passent par les mécanismes prévus pour ça, avec approbation et traçabilité.</li>
         <li><b>Le mode « sans aucune vérification » ne sert qu'en environnement isolé et jetable.</b> En intégration continue, il s'accompagne d'une liste d'outils restreinte — jamais d'un accès complet à la machine.</li>
       </ul>
-      <p style="margin-top:16px">Ces réglages se déposent aussi au niveau de l'organisation, où ils deviennent non contournables par les réglages locaux. C'est ce qui permet d'ouvrir l'usage des agents à une équipe entière sans ouvrir en même temps l'accès aux données sensibles.</p>
+      <p style="margin-top:16px">Déposés au niveau de l'organisation, ces réglages deviennent non contournables localement — c'est ce qui permet d'ouvrir les agents à une équipe entière sans ouvrir l'accès aux données sensibles.</p>
     </div>
   </div>
 </section>
@@ -704,7 +710,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
     <div class="stete">
       <div class="haut"><span class="para">§ 09 — La boucle de travail</span><span class="fig">cinq temps</span></div>
       <h2 class="rv">Donner à l'agent <span class="accent">de quoi se corriger seul.</span></h2>
-      <p class="intro rv">Un agent s'arrête quand le travail <b>a l'air</b> terminé. Sans vérification exécutable, c'est vous la boucle de contrôle, et chaque erreur attend que vous la remarquiez. Avec une vérification qui rend un verdict, la boucle se referme toute seule.</p>
+      <p class="intro rv">Un agent s'arrête quand le travail <b>a l'air</b> terminé. Sans vérification automatique, c'est vous la boucle de contrôle.</p>
     </div>
     <div class="boucle">
       <article class="etape rv">
@@ -717,7 +723,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
       <article class="etape rv">
         <div class="t"><span class="no" aria-hidden="true">02</span><h3>Planifier</h3></div>
         <div>
-          <p>Faire produire un plan, puis <b>le corriger avant d'écrire une ligne</b>. Sur les sujets importants, faire d'abord interroger : l'agent pose les questions d'implémentation, d'interface et de cas limites, et le résultat devient une spécification écrite. On repart ensuite dans une session neuve, contexte propre, spécification en main.</p>
+          <p>Faire produire un plan, puis <b>le corriger avant d'écrire une ligne</b>. Sur les sujets importants, faire d'abord interroger par l'agent : le résultat devient une spécification, qu'on exécute ensuite dans une session neuve.</p>
           <p class="cmd">Le plan se relit comme un diff</p>
         </div>
       </article>
@@ -730,7 +736,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
       <article class="etape rv">
         <div class="t"><span class="no" aria-hidden="true">04</span><h3>Vérifier</h3></div>
         <div>
-          <p>Exiger la <b>preuve</b>, pas l'affirmation : la sortie des tests, la commande exécutée et son résultat, la capture d'écran comparée à la maquette. Puis faire relire le diff par un subagent qui n'a pas participé. Relire une preuve coûte moins cher que refaire la vérification.</p>
+          <p>Exiger la <b>preuve</b>, pas l'affirmation : sortie des tests, commande et résultat, capture comparée à la maquette. Puis faire relire le diff par un subagent. Relire une preuve coûte moins que refaire la vérification.</p>
           <p class="cmd">Tests · build · capture · relecture indépendante</p>
         </div>
       </article>
@@ -746,7 +752,7 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
 </section>
 
 <!-- ============ § 10 — LES PIÈGES ============ -->
-<section id="pieges" class="encre panneau">
+<section id="pieges" class="encre panneau p-lin">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 10 — Les pièges</span><span class="fig">les plus coûteux</span></div>
@@ -788,14 +794,14 @@ et le correctif proposé. <u>Ne signale rien qui ne soit pas exploitable.</u></p
 </section>
 
 <!-- ============ FINALE ============ -->
-<section class="finale encre panneau" id="contact" style="background:var(--ink)">
+<section class="finale encre panneau p-sauge" id="contact">
   <div class="wrap">
     <div class="stete" style="margin-bottom:0">
       <div class="haut"><span class="para">§ 11 — Passer à l'échelle</span><span class="fig">réponse sous 48 h</span></div>
       <h2 class="rv" style="margin-top:clamp(16px,2.6vw,26px)">Ce setup, <span class="accent">dans vos équipes.</span></h2>
     </div>
-    <p class="rv">Cette configuration n'a d'intérêt que multipliée par le nombre de personnes qui l'utilisent. Ce qui se met en place : <b>le socle versionné, les garde-fous, les permissions par équipe, la revue automatique du diff</b> — pour que les gains soient les mêmes pour tout le monde, y compris pour ceux qui n'ont pas envie d'apprendre à écrire des prompts.</p>
-    <p class="rv"><b>Et une règle de fond :</b> l'IA produit davantage, l'ingénieur décide davantage. Un agent qui livre du code que personne ne relit n'est pas un gain de productivité — c'est une dette qui s'écrit plus vite.</p>
+    <p class="rv">Cette configuration n'a d'intérêt que multipliée par le nombre de personnes qui l'utilisent : <b>socle versionné, garde-fous, permissions par équipe, revue automatique du diff</b>.</p>
+    <p class="rv">Un agent qui livre du code que personne ne relit n'est pas un gain de productivité — <b>c'est une dette qui s'écrit plus vite</b>.</p>
     <div class="fin-ctas rv">
       <a class="btn btn-plein" href="mailto:ennaciri.md@gmail.com?subject=Industrialiser%20l%27IA%20dans%20nos%20%C3%A9quipes"><span>En parler</span><span class="fl">→</span></a>
       <a class="btn btn-ligne" href="../"><span>Le profil complet</span><span class="fl">→</span></a>
