@@ -53,37 +53,29 @@
 @font-face{font-family:'Plex Mono';src:url('fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
 
 :root{
-  --paper:#FCFBF9;
-  --paper-2:#F5F2ED;
-  --ink:#2E3733;
-  --ink-2:#FFFFFF;
-  /* lavis pastel — un ton par chapitre, pour rythmer sans assombrir */
-  --sauge:#EAF1EB;
-  --brume:#E8EEF4;
-  --sable:#F8F0E6;
-  --lin:#F2EFEA;
-  --lavis:var(--sauge);
-  --vert:#4F8A72;
-  --vert-vif:#3C6E58;
-  --ligne:rgba(46,55,51,.13);
-  --ligne-faible:rgba(46,55,51,.08);
-  --sourdine:#6B756F;
+  --paper:#F7F4EC;
+  --paper-2:#EFEBDF;
+  --ink:#0F1B16;
+  --ink-2:#152420;
+  --vert:#0E7A5F;
+  --vert-vif:#27B88A;
+  --ligne:rgba(15,27,22,.16);
+  --ligne-faible:rgba(15,27,22,.09);
+  --sourdine:#5C665E;
   --pad:clamp(20px,4.5vw,64px);
   --maxw:1240px;
 }
-.encre{                       /* section teintée : lavis pastel, texte encre */
-  --paper:var(--lavis);
-  --ink-2:#FFFFFF;
-  --sourdine:#6B756F;
+.encre{
+  --paper:#0F1B16;
+  --ligne:rgba(247,244,236,.16);
+  --ligne-faible:rgba(247,244,236,.08);
+  --sourdine:#8FA096;
+  --vert:#27B88A;
 }
-.p-sauge{--lavis:var(--sauge)}
-.p-brume{--lavis:var(--brume)}
-.p-sable{--lavis:var(--sable)}
-.p-lin{--lavis:var(--lin)}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
-::selection{background:var(--vert);color:#FCFBF9}
+::selection{background:var(--vert);color:#F7F4EC}
 
 body{
   font-family:'Instrument Sans',system-ui,sans-serif;
@@ -95,7 +87,7 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-.encre{background:var(--paper);color:var(--ink)}
+.encre{background:var(--paper);color:#F1EEE5}
 a{color:inherit}
 h1,h2,h3,h4,.serif{
   font-family:'Fraunces',Georgia,serif;
@@ -129,15 +121,22 @@ em{font-style:italic}
 .btn .fl{transition:transform .25s cubic-bezier(.2,.6,.2,1)}
 .btn:hover .fl{transform:translateX(5px)}
 .btn:focus-visible{outline:3px solid var(--vert);outline-offset:3px}
-.btn-plein{background:var(--ink);color:#FCFBF9}
-.btn-plein:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(79,138,114,.25)}
+.btn-plein{background:var(--ink);color:#F1EEE5}
+.btn-plein:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(14,122,95,.25)}
 .btn-ligne{background:transparent;color:inherit}
-.btn-ligne:hover{background:var(--ink);color:#FCFBF9}
+.btn-ligne:hover{background:var(--ink);color:#F1EEE5}
 .btn-linkedin{border-color:var(--vert);color:var(--vert);background:transparent}
-.btn-linkedin:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(79,138,114,.22)}
+.btn-linkedin:hover{background:var(--vert);border-color:var(--vert);color:#fff;box-shadow:0 10px 30px rgba(14,122,95,.22)}
+.encre .btn{border-color:#F1EEE5}
+.encre .btn-plein{background:#F1EEE5;color:var(--ink)}
+.encre .btn-plein:hover{background:var(--vert-vif);border-color:var(--vert-vif);color:#08110D}
+.encre .btn-ligne:hover{background:#F1EEE5;color:var(--ink)}
+.encre .btn-linkedin{border-color:var(--vert-vif);color:var(--vert-vif)}
+.encre .btn-linkedin:hover{background:var(--vert-vif);border-color:var(--vert-vif);color:#08110D}
 
 /* ---- Révélation au scroll : montée + net (dé-flou) ---- */
-.rv{opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.6,.2,1),filter .85s ease}
+.rv{opacity:1}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:none;filter:blur(0)}
 .rv.d1{transition-delay:.12s}
 .rv.d2{transition-delay:.24s}
@@ -169,7 +168,7 @@ header{
 .marque:hover{font-variation-settings:'opsz' 60,'SOFT' 40,'WONK' 1}
 .marque .noeud{position:relative;width:12px;height:12px;flex:none}
 .marque .noeud::before{content:"";position:absolute;inset:0;border:1.5px solid var(--vert);border-radius:50%;animation:onde 3.4s ease-out infinite}
-@keyframes onde{0%{box-shadow:0 0 0 0 rgba(79,138,114,.3)}75%,100%{box-shadow:0 0 0 8px rgba(79,138,114,0)}}
+@keyframes onde{0%{box-shadow:0 0 0 0 rgba(14,122,95,.3)}75%,100%{box-shadow:0 0 0 8px rgba(14,122,95,0)}}
 .marque .noeud::after{content:"";position:absolute;inset:3.5px;background:var(--vert);border-radius:50%}
 .marque small{font-family:'Plex Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sourdine);margin-left:4px;transform:translateY(2px)}
 .nav-liens{display:flex;list-style:none;align-items:center;gap:clamp(12px,2vw,28px)}
@@ -179,10 +178,10 @@ header{
 .nav-liens a.nav-lkd{color:var(--vert);font-weight:560}
 .nav-cta{
   font-weight:560;padding:11px 20px;border-radius:2px;
-  background:var(--ink);color:#FCFBF9;
+  background:var(--ink);color:#F1EEE5;
   transition:background .2s ease,box-shadow .2s ease;
 }
-.nav-cta:hover{background:var(--vert);box-shadow:0 8px 24px rgba(79,138,114,.25)}
+.nav-cta:hover{background:var(--vert);box-shadow:0 8px 24px rgba(14,122,95,.25)}
 .burger{
   display:none;background:none;border:1px solid var(--ligne);border-radius:2px;cursor:pointer;
   padding:9px 14px;font-family:'Plex Mono',monospace;font-weight:500;
@@ -196,7 +195,7 @@ header{
 .hero::before{
   content:"";position:absolute;top:-12%;right:3%;width:46vw;height:46vw;max-width:820px;max-height:820px;
   pointer-events:none;z-index:-1;border-radius:50%;
-  background:radial-gradient(closest-side, rgba(79,138,114,.09), transparent 72%);
+  background:radial-gradient(closest-side, rgba(14,122,95,.09), transparent 72%);
   animation:aurore 16s ease-in-out infinite alternate;
 }
 @keyframes aurore{
@@ -250,55 +249,26 @@ header{
 .chiffres .l{display:block;margin-top:10px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sourdine)}
 
 /* ==========================================================================
-   COMPOSANTS DE LECTURE RAPIDE
-   ========================================================================== */
-.pour-qui{margin-top:clamp(26px,4vw,38px);border-top:1px solid var(--ligne);padding-top:22px;max-width:74ch}
-.pour-qui .k{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sourdine);display:block;margin-bottom:12px}
-.pour-qui ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
-.pour-qui li{position:relative;padding:8px 0 8px 26px;font-size:15.5px}
-.pour-qui li::before{content:"→";position:absolute;left:0;top:8px;color:var(--vert);font-weight:600}
-
-.exp .res{margin-top:18px;padding-top:14px;border-top:1px solid var(--ligne-faible);font-size:15px;color:var(--vert-vif);font-weight:560;display:flex;gap:9px;align-items:baseline}
-.exp .res::before{content:"→";flex:none}
-
-.cas p.quoi{font-size:16px;color:var(--sourdine);margin:18px 0 0;max-width:74ch}
-.cas p.quoi b{color:var(--ink);font-weight:560}
-.cas .res{margin-top:16px;font-size:16.5px;font-weight:560;color:var(--vert-vif);display:flex;gap:10px;align-items:baseline}
-.cas .res::before{content:"→";flex:none}
-
-.pas{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,36px);border-top:1px solid var(--ligne);padding-top:28px}
-.pas>div{padding-right:10px}
-.pas .n{font-family:'Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.18em;color:var(--vert);display:block;margin-bottom:12px}
-.pas h3{font-size:clamp(18px,1.9vw,22px);margin-bottom:8px}
-.pas p{font-size:15px;color:var(--sourdine)}
-
-@media (max-width:900px){
-  .pas{grid-template-columns:1fr 1fr}
-  .pour-qui ul{grid-template-columns:1fr}
-}
-@media (max-width:600px){ .pas{grid-template-columns:1fr} }
-
-/* ==========================================================================
    FIG. 01 — LE SCHÉMA VIVANT
    ========================================================================== */
 .panneau{
-  background:var(--lavis);color:var(--ink);
-  border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);
+  background:var(--ink-2);color:#E9EFEA;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
 }
 .panneau .grille{
   background-image:
-    repeating-linear-gradient(0deg,rgba(46,55,51,.05) 0 1px,transparent 1px 32px),
-    repeating-linear-gradient(90deg,rgba(46,55,51,.05) 0 1px,transparent 1px 32px);
+    repeating-linear-gradient(0deg,rgba(233,239,234,.045) 0 1px,transparent 1px 32px),
+    repeating-linear-gradient(90deg,rgba(233,239,234,.045) 0 1px,transparent 1px 32px);
   padding:clamp(26px,4vw,48px) 0 clamp(30px,4vw,52px);
   animation:grille-derive 60s linear infinite;
 }
 @keyframes grille-derive{to{background-position:64px 64px,64px 64px}}
 .fig-tete{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
-.fig-tete .mono{color:#77827B}
+.fig-tete .mono{color:#9DB0A4}
 .fig-tete .mono b{color:var(--vert-vif);font-weight:500}
-.fig-cadre{overflow-x:auto;border:1px solid var(--ligne);background:#FFFFFF;border-radius:2px}
+.fig-cadre{overflow-x:auto;border:1px solid rgba(233,239,234,.14)}
 .fig-cadre svg{display:block;min-width:1040px;width:100%;height:auto}
-.fig-legende{display:flex;gap:clamp(16px,3vw,36px);flex-wrap:wrap;margin-top:16px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#77827B}
+.fig-legende{display:flex;gap:clamp(16px,3vw,36px);flex-wrap:wrap;margin-top:16px;font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9DB0A4}
 .fig-legende i{font-style:normal;color:var(--vert-vif)}
 .flux-bus{stroke-dasharray:7 9;animation:busflow 1.6s linear infinite}
 @keyframes busflow{to{stroke-dashoffset:-16}}
@@ -310,10 +280,10 @@ header{
    ATELIER — trois architectures de référence commutables.
    Schémas neutres : aucun contexte client, uniquement des patterns standards.
    ========================================================================== */
-.onglets{display:flex;flex-wrap:wrap;border:1px solid rgba(46,55,51,.13);margin-bottom:18px}
+.onglets{display:flex;flex-wrap:wrap;border:1px solid rgba(233,239,234,.14);margin-bottom:18px}
 .onglets button{
-  flex:1 1 240px;background:transparent;border:none;border-right:1px solid rgba(46,55,51,.13);
-  color:#77827B;cursor:pointer;text-align:left;padding:15px 20px;
+  flex:1 1 240px;background:transparent;border:none;border-right:1px solid rgba(233,239,234,.14);
+  color:#9DB0A4;cursor:pointer;text-align:left;padding:15px 20px;
   font-family:'Plex Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
   transition:background .25s ease,color .25s ease;position:relative;
 }
@@ -322,28 +292,27 @@ header{
   content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--vert-vif);
   transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.6,.2,1);
 }
-.onglets button:hover{color:#2E3733;background:rgba(46,55,51,.04)}
-.onglets button[aria-selected="true"]{color:#2E3733;background:rgba(79,138,114,.07)}
+.onglets button:hover{color:#E9EFEA;background:rgba(233,239,234,.03)}
+.onglets button[aria-selected="true"]{color:#E9EFEA;background:rgba(39,184,138,.07)}
 .onglets button[aria-selected="true"]::before{transform:scaleX(1)}
 .onglets button:focus-visible{outline:2px solid var(--vert-vif);outline-offset:-2px}
 .onglets button em{
   display:block;font-style:normal;font-size:10px;letter-spacing:.08em;text-transform:none;
-  color:#9AA49D;margin-top:6px;
+  color:#6E8076;margin-top:6px;
 }
 .fig-panneau[hidden]{display:none}
 .fig-panneau{animation:apparait .55s cubic-bezier(.2,.6,.2,1) both}
 @keyframes apparait{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .fig-normes{
-  margin-top:14px;padding-top:14px;border-top:1px solid rgba(46,55,51,.10);
-  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#77827B;line-height:1.9;
+  margin-top:14px;padding-top:14px;border-top:1px solid rgba(233,239,234,.1);
+  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#7E9187;line-height:1.9;
 }
 .fig-normes b{color:var(--vert-vif);font-weight:500}
 
 /* Séquence animée (fig. 02) : chaque étape s'allume à son tour */
-.seq{opacity:.2;animation:sequence 13s linear infinite}
-@keyframes sequence{0%{opacity:.2}2%{opacity:1}11%{opacity:1}14%{opacity:.2}100%{opacity:.2}}
-.s1{animation-delay:0s}.s2{animation-delay:1.6s}.s3{animation-delay:3.2s}.s4{animation-delay:4.8s}
-.s5{animation-delay:6.4s}.s6{animation-delay:8s}.s7{animation-delay:9.6s}.s8{animation-delay:11.2s}
+.seq{opacity:.22;animation:sequence 8s linear infinite}
+@keyframes sequence{0%{opacity:.22}3%{opacity:1}22%{opacity:1}27%{opacity:.22}100%{opacity:.22}}
+.s1{animation-delay:0s}.s2{animation-delay:2s}.s3{animation-delay:4s}.s4{animation-delay:6s}
 /* Rotation des secrets (fig. 03) */
 .rot{animation:tourne 7s linear infinite;transform-origin:center;transform-box:fill-box}
 @keyframes tourne{to{transform:rotate(360deg)}}
@@ -357,7 +326,7 @@ header{
 section{padding:clamp(72px,9vw,128px) 0}
 .stete{margin-bottom:clamp(38px,5.5vw,64px)}
 .stete .haut{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--ink);padding-top:16px}
-.encre .stete .haut{border-top-color:#2E3733}
+.encre .stete .haut{border-top-color:#F1EEE5}
 .stete .para{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.18em;color:var(--vert)}
 .stete .fig{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sourdine)}
 .stete h2{
@@ -368,7 +337,7 @@ section{padding:clamp(72px,9vw,128px) 0}
 .stete h2 .accent{font-style:italic;color:var(--vert)}
 .stete .intro{margin-top:20px;max-width:66ch;color:var(--sourdine);font-size:17px}
 .stete .intro b{color:inherit;font-weight:560}
-.encre .stete .intro b{color:#2E3733}
+.encre .stete .intro b{color:#F1EEE5}
 
 /* ==========================================================================
    § 01 — EXPERTISE
@@ -379,7 +348,7 @@ section{padding:clamp(72px,9vw,128px) 0}
   border-right:1px solid var(--ligne);border-bottom:1px solid var(--ligne);
   background:transparent;transition:background .25s ease;
 }
-.exp:hover{background:#F5F2ED}
+.exp:hover{background:#FCFAF4}
 .exp::before{
   content:"";position:absolute;top:-1px;left:0;height:2px;width:100%;background:var(--vert);
   transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.6,.2,1);
@@ -411,30 +380,30 @@ section{padding:clamp(72px,9vw,128px) 0}
   position:relative;transition:background .25s ease;
 }
 .offre:last-child{border-right:none}
-.offre:hover{background:rgba(46,55,51,.03)}
+.offre:hover{background:rgba(247,244,236,.035)}
 .offre .mode{font-family:'Plex Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--vert-vif)}
 .offre h3{font-size:clamp(24px,2.5vw,32px);margin:14px 0 6px;font-variation-settings:'opsz' 120}
-.offre .devise{font-family:'Fraunces',serif;font-style:italic;font-size:17.5px;color:#3A443E;margin-bottom:18px}
-.offre .pour{font-size:15px;color:#6B756F;margin-bottom:20px}
+.offre .devise{font-family:'Fraunces',serif;font-style:italic;font-size:17.5px;color:#C9D2CB;margin-bottom:18px}
+.offre .pour{font-size:15px;color:#AFBDB4;margin-bottom:20px}
 .offre ul{list-style:none;margin-bottom:26px}
 .offre li{
   position:relative;padding:10px 0 10px 24px;
   border-top:1px solid var(--ligne-faible);
-  font-size:15px;color:#3A443E;
+  font-size:15px;color:#C9D2CB;
 }
-.offre li b{color:#2E3733;font-weight:560}
+.offre li b{color:#F1EEE5;font-weight:560}
 .offre li::before{content:"";position:absolute;left:2px;top:19px;width:7px;height:7px;border:1.5px solid var(--vert-vif);border-radius:50%}
 .offre .modalites{
   margin-top:auto;padding:14px 16px;border:1px solid var(--ligne-faible);border-radius:2px;
-  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:2;color:#77827B;
+  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:2;color:#9DB0A4;
 }
 .offre .modalites b{color:var(--vert-vif);font-weight:500}
-.offre.phare{background:rgba(79,138,114,.06)}
-.offre.phare:hover{background:rgba(79,138,114,.09)}
+.offre.phare{background:rgba(39,184,138,.06)}
+.offre.phare:hover{background:rgba(39,184,138,.09)}
 .offre.phare::before{
-  content:"";display:none;
+  content:"PÉRIMÈTRE ET RÉSULTAT DÉFINIS";
   position:absolute;top:-11px;left:clamp(26px,3.2vw,42px);
-  background:var(--vert-vif);color:#FFFFFF;
+  background:var(--vert-vif);color:#08110D;
   font-family:'Plex Mono',monospace;font-weight:500;font-size:10px;letter-spacing:.16em;
   padding:5px 10px;border-radius:2px;
 }
@@ -455,7 +424,7 @@ section{padding:clamp(72px,9vw,128px) 0}
   padding:clamp(26px,3.4vw,42px) 0;border-bottom:1px solid var(--ligne);
   position:relative;transition:background .25s ease;
 }
-.etape-m:hover{background:#F5F2ED}
+.etape-m:hover{background:#FCFAF4}
 .etape-m .tete{display:flex;align-items:baseline;gap:16px}
 .etape-m .no{
   font-family:'Fraunces',serif;font-style:italic;font-weight:320;font-variation-settings:'opsz' 144;
@@ -481,7 +450,7 @@ section{padding:clamp(72px,9vw,128px) 0}
   content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--vert-vif);
   transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.2,.6,.2,1);
 }
-.cas:hover{background:rgba(79,138,114,.04);border-color:rgba(79,138,114,.35)}
+.cas:hover{background:rgba(39,184,138,.04);border-color:rgba(39,184,138,.35)}
 .cas:hover::before{transform:scaleY(1)}
 .cas-tete{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--ligne-faible)}
 .cas-tete h3{font-size:clamp(24px,2.8vw,36px);font-variation-settings:'opsz' 144}
@@ -492,12 +461,12 @@ section{padding:clamp(72px,9vw,128px) 0}
   display:block;margin-bottom:10px;
   font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sourdine);
 }
-.cas-corps .bloc p{font-size:15px;color:#3A443E;line-height:1.6}
-.cas-corps .bloc p b{color:#2E3733;font-weight:560}
+.cas-corps .bloc p{font-size:15px;color:#C9D2CB;line-height:1.6}
+.cas-corps .bloc p b{color:#F1EEE5;font-weight:560}
 .cas-corps .bloc.res p b{color:var(--vert-vif)}
 .cas-pied{
   padding-top:18px;border-top:1px solid var(--ligne-faible);
-  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#77827B;line-height:1.9;
+  font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9DB0A4;line-height:1.9;
 }
 .autres{margin-top:clamp(28px,4vw,46px);border-top:1px solid var(--ligne)}
 .autres-tete{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sourdine);padding:20px 0 6px}
@@ -507,8 +476,8 @@ section{padding:clamp(72px,9vw,128px) 0}
 }
 .autre .c{font-family:'Fraunces',serif;font-weight:460;font-size:18px}
 .autre .r{font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--vert-vif)}
-.autre .d{font-size:14.5px;color:#6B756F}
-.autre .d b{color:#2E3733;font-weight:560}
+.autre .d{font-size:14.5px;color:#AFBDB4}
+.autre .d b{color:#F1EEE5;font-weight:560}
 
 /* ==========================================================================
    § 05 — PARCOURS (registre)
@@ -520,7 +489,7 @@ section{padding:clamp(72px,9vw,128px) 0}
   padding:clamp(16px,2.2vw,24px) 0;border-bottom:1px solid var(--ligne);
   transition:background .2s ease;position:relative;
 }
-.ligne-m:hover{background:#F5F2ED}
+.ligne-m:hover{background:#FCFAF4}
 .ligne-m .an{font-family:'Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.12em;color:var(--vert)}
 .ligne-m .qui{font-family:'Fraunces',serif;font-weight:460;font-size:clamp(17px,1.8vw,21px)}
 .ligne-m .qui small{display:block;font-family:'Plex Mono',monospace;font-weight:400;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sourdine);margin-top:4px}
@@ -532,7 +501,7 @@ section{padding:clamp(72px,9vw,128px) 0}
    ========================================================================== */
 .projets{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ligne);border-left:1px solid var(--ligne)}
 .projet{padding:clamp(24px,3vw,38px);border-right:1px solid var(--ligne);border-bottom:1px solid var(--ligne);transition:background .25s ease}
-.projet:hover{background:#F5F2ED}
+.projet:hover{background:#FCFAF4}
 .projet .k{font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--vert);display:block;margin-bottom:12px}
 .projet h3{font-size:clamp(20px,2.1vw,26px);margin-bottom:10px;font-variation-settings:'opsz' 100}
 .projet p{font-size:15px;color:var(--sourdine)}
@@ -549,15 +518,15 @@ section{padding:clamp(72px,9vw,128px) 0}
 .labo .k{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--vert-vif)}
 .labo h2{font-size:clamp(26px,3.4vw,44px);margin:16px 0 18px;font-variation-settings:'opsz' 144;max-width:20ch}
 .labo h2 .accent{font-style:italic;color:var(--vert-vif)}
-.labo p{color:#6B756F;font-size:16.5px;max-width:54ch}
-.labo p b{color:#2E3733;font-weight:560}
+.labo p{color:#AFBDB4;font-size:16.5px;max-width:54ch}
+.labo p b{color:#F1EEE5;font-weight:560}
 .labo p + p{margin-top:14px}
 .regle{border:1px solid var(--ligne)}
 .regle>div{padding:18px 22px;border-bottom:1px solid var(--ligne);display:flex;align-items:baseline;gap:16px}
 .regle>div:last-child{border-bottom:none}
 .regle .g{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--vert-vif);flex:none;line-height:1}
-.regle .t{font-size:15.5px;color:#3A443E}
-.regle .t b{color:#2E3733;font-weight:560}
+.regle .t{font-size:15.5px;color:#C9D2CB}
+.regle .t b{color:#F1EEE5;font-weight:560}
 
 /* ==========================================================================
    § 07 — POURQUOI
@@ -592,14 +561,14 @@ section{padding:clamp(72px,9vw,128px) 0}
 .situations{margin-top:clamp(30px,4vw,48px);max-width:74ch}
 .situations li{
   list-style:none;padding:14px 0 14px 30px;border-top:1px solid var(--ligne);
-  font-size:clamp(15.5px,1.6vw,18px);color:#3A443E;position:relative;
+  font-size:clamp(15.5px,1.6vw,18px);color:#C9D2CB;position:relative;
 }
 .situations li::before{
   content:"";position:absolute;left:2px;top:24px;width:9px;height:9px;border:1.5px solid var(--vert-vif);border-radius:50%;
 }
-.situations li b{color:#2E3733;font-weight:560}
-.finale .conclusion{margin-top:clamp(28px,3.6vw,42px);font-size:clamp(16px,1.6vw,19px);color:#6B756F;max-width:56ch}
-.finale .conclusion b{color:#2E3733;font-weight:560}
+.situations li b{color:#F1EEE5;font-weight:560}
+.finale .conclusion{margin-top:clamp(28px,3.6vw,42px);font-size:clamp(16px,1.6vw,19px);color:#AFBDB4;max-width:56ch}
+.finale .conclusion b{color:#F1EEE5;font-weight:560}
 .fin-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
 .finale .coord{
   margin-top:clamp(36px,5vw,56px);padding-top:26px;border-top:1px solid var(--ligne);
@@ -633,6 +602,63 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
     content:"";position:absolute;left:0;bottom:-6px;width:34px;height:1px;background:var(--vert);
     transform-origin:left;animation:file linear both;animation-timeline:view();animation-range:entry 0% entry 60%;
   }
+}
+
+/* ==========================================================================
+   COMPOSANTS DE LECTURE RAPIDE
+   ========================================================================== */
+.pour-qui{margin-top:clamp(26px,4vw,38px);border-top:1px solid var(--ligne);padding-top:22px;max-width:76ch}
+.pour-qui .k{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sourdine);display:block;margin-bottom:12px}
+.pour-qui ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+.pour-qui li{position:relative;padding:8px 0 8px 26px;font-size:15.5px}
+.pour-qui li::before{content:"→";position:absolute;left:0;top:8px;color:var(--vert);font-weight:600}
+
+.exp .res{margin-top:18px;padding-top:14px;border-top:1px solid var(--ligne-faible);font-size:15px;color:var(--vert);font-weight:560;display:flex;gap:9px;align-items:baseline}
+.exp .res::before{content:"→";flex:none}
+
+.cas p.quoi{font-size:16px;color:#C9D2CB;margin:18px 0 0;max-width:76ch;line-height:1.6}
+.cas p.quoi b{color:#F1EEE5;font-weight:560}
+.cas .res{margin-top:16px;font-size:16.5px;font-weight:560;color:var(--vert-vif);display:flex;gap:10px;align-items:baseline}
+.cas .res::before{content:"→";flex:none}
+
+.pas{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,36px);border-top:1px solid var(--ligne);padding-top:28px}
+.pas>div{padding-right:10px}
+.pas .n{font-family:'Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.18em;color:var(--vert);display:block;margin-bottom:12px}
+.pas h3{font-size:clamp(18px,1.9vw,22px);margin-bottom:8px}
+.pas p{font-size:15px;color:var(--sourdine)}
+
+/* Le badge promotionnel de l'offre au forfait est retiré */
+.offre.phare::before{content:none}
+
+/* ==========================================================================
+   MOUVEMENT — entrées nettes, sans flou, courbe d'inertie unique
+   ========================================================================== */
+.rv{opacity:1}
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+
+/* Les titres de chapitre se dévoilent par balayage vertical */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .stete h2{clip-path:inset(0 0 110% 0);animation:devoile linear both;animation-timeline:view();animation-range:entry 4% entry 46%}
+    @keyframes devoile{to{clip-path:inset(0 0 -14% 0)}}
+  }
+}
+
+/* Cartes : élévation discrète au survol */
+.exp,.projet,.cas,.offre{transition:background .3s ease,border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease}
+.exp:hover,.projet:hover{transform:translateY(-2px)}
+.cas:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.btn{transition:background .25s ease,color .25s ease,border-color .25s ease,box-shadow .35s ease,transform .3s cubic-bezier(.16,1,.3,1)}
+.btn:hover{transform:translateY(-1px)}
+
+@media (max-width:900px){
+  .pas{grid-template-columns:1fr 1fr}
+  .pour-qui ul{grid-template-columns:1fr}
+}
+@media (max-width:600px){ .pas{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){
+  .exp:hover,.projet:hover,.cas:hover,.btn:hover{transform:none}
 }
 
 /* ==========================================================================
@@ -743,414 +769,242 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   </div>
 </section>
 
-<!-- ============================ ATELIER — 3 ARCHITECTURES ============================ -->
-<div class="panneau encre p-brume" id="atelier">
+<!-- ============================ ATELIER — SCHÉMAS DE RÉFÉRENCE ============================ -->
+<div class="panneau encre" id="atelier">
   <div class="grille">
     <div class="wrap">
       <div class="fig-tete">
-        <span class="mono"><b>L'atelier</b> — architectures de référence</span>
-        <span class="mono">schémas neutres · aucun contexte client</span>
+        <span class="mono"><b>Schémas de référence</b></span>
+        <span class="mono">neutres · aucun contexte client</span>
       </div>
 
-      <div class="onglets" role="tablist" aria-label="Architectures de référence">
-        <button role="tab" id="tab-evt" aria-controls="fig-evt" aria-selected="true">
-          Fig. 01 — Plateforme événementielle<em>Outbox · Kafka · CQRS · CDC</em>
-        </button>
-        <button role="tab" id="tab-iam" aria-controls="fig-iam" aria-selected="false">
-          Fig. 02 — IAM · fédération d'identité<em>OAuth 2.1 · OIDC · PKCE · JWKS</em>
-        </button>
-        <button role="tab" id="tab-pam" aria-controls="fig-pam" aria-selected="false">
-          Fig. 03 — PAM · accès à privilèges<em>JIT · coffre · bastion · audit</em>
-        </button>
+      <div class="onglets" role="tablist" aria-label="Schémas de référence">
+        <button role="tab" id="tab-evt" aria-controls="fig-evt" aria-selected="true">Plateforme événementielle<em>Kafka · CQRS · migration progressive</em></button>
+        <button role="tab" id="tab-iam" aria-controls="fig-iam" aria-selected="false">Identité<em>OAuth 2.1 · OIDC · PKCE</em></button>
+        <button role="tab" id="tab-pam" aria-controls="fig-pam" aria-selected="false">Accès à privilèges<em>Juste-à-temps · bastion · audit</em></button>
       </div>
 
-      <!-- ---------------- FIG. 01 — ÉVÉNEMENTIEL ---------------- -->
+      <!-- ---------- ÉVÉNEMENTIEL ---------- -->
       <div class="fig-panneau" id="fig-evt" role="tabpanel" aria-labelledby="tab-evt">
         <div class="fig-cadre">
-          <svg viewBox="0 0 1240 660" role="img" aria-label="Architecture événementielle : canaux derrière une passerelle API, contextes métier publiant via un outbox transactionnel relayé vers un bus Kafka partitionné, consommé par une projection CQRS, des workers, une synchronisation partenaires et un socle analytique, avec registre de schémas, file d'erreurs et capture de données du système historique.">
-            <defs>
-              <marker id="fx-evt" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0,0 L8,4 L0,8 z" fill="#AEB9B2"/>
-              </marker>
-            </defs>
+          <svg viewBox="0 0 1120 470" role="img" aria-label="Plateforme événementielle : trois canaux derrière une passerelle API, trois services de domaine publiant sur un bus d'événements, consommé par une projection de lecture, des notifications et un socle analytique ; le système historique alimente le bus par capture de changements.">
+            <defs><marker id="m-evt" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#4A5C52"/></marker></defs>
 
-            <!-- liens synchrones -->
-            <g stroke="#AEB9B2" stroke-width="1.3" fill="none">
-              <path d="M160,88 L210,88" marker-end="url(#fx-evt)"/>
-              <path d="M160,158 L210,158" marker-end="url(#fx-evt)"/>
-              <path d="M160,228 L210,228" marker-end="url(#fx-evt)"/>
-              <path d="M380,82 L440,82" marker-end="url(#fx-evt)"/>
-              <path d="M380,172 L440,172" marker-end="url(#fx-evt)"/>
-              <path d="M380,262 L440,262" marker-end="url(#fx-evt)"/>
-              <path d="M650,82 L705,82 L705,160 L760,160" marker-end="url(#fx-evt)"/>
-              <path d="M650,172 L760,172" marker-end="url(#fx-evt)"/>
-              <path d="M650,262 L705,262 L705,186 L760,186" marker-end="url(#fx-evt)"/>
-              <path d="M845,204 L845,436" marker-end="url(#fx-evt)"/>
-              <path d="M350,440 L350,500" marker-end="url(#fx-evt)"/>
-              <path d="M590,440 L590,500" marker-end="url(#fx-evt)"/>
-              <path d="M830,440 L830,500" marker-end="url(#fx-evt)"/>
-              <path d="M1070,440 L1070,500" marker-end="url(#fx-evt)"/>
-              <path d="M590,558 L590,590" marker-end="url(#fx-evt)"/>
+            <g stroke="#4A5C52" stroke-width="1.3" fill="none">
+              <path d="M160,86 L220,86" marker-end="url(#m-evt)"/>
+              <path d="M160,156 L220,156" marker-end="url(#m-evt)"/>
+              <path d="M160,226 L220,226" marker-end="url(#m-evt)"/>
+              <path d="M380,87 L440,87" marker-end="url(#m-evt)"/>
+              <path d="M380,165 L440,165" marker-end="url(#m-evt)"/>
+              <path d="M380,243 L440,243" marker-end="url(#m-evt)"/>
+              <path d="M640,87 L680,87 L680,336" marker-end="url(#m-evt)"/>
+              <path d="M640,165 L700,165 L700,336" marker-end="url(#m-evt)"/>
+              <path d="M640,243 L720,243 L720,336" marker-end="url(#m-evt)"/>
+              <path d="M390,340 L390,386" marker-end="url(#m-evt)"/>
+              <path d="M620,340 L620,386" marker-end="url(#m-evt)"/>
+              <path d="M850,340 L850,386" marker-end="url(#m-evt)"/>
             </g>
-            <!-- liens de contrôle (pointillés) -->
-            <g stroke="#AEB9B2" stroke-width="1.2" fill="none" stroke-dasharray="3 5">
-              <path d="M295,300 L295,268" marker-end="url(#fx-evt)"/>
-              <path d="M565,402 L565,436" marker-end="url(#fx-evt)"/>
-            </g>
-            <!-- capture de données du SI historique -->
-            <path class="lien-cdc" d="M1115,120 L1115,436" stroke="#4F8A72" stroke-width="1.4" fill="none" opacity=".85"/>
-            <text x="1128" y="300" fill="#4F8A72" font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.6">CAPTURE DE</text>
-            <text x="1128" y="316" fill="#4F8A72" font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.6">CHANGEMENTS</text>
+            <path class="lien-cdc" d="M1010,116 L1010,336" stroke="#27B88A" stroke-width="1.4" fill="none" opacity=".85"/>
+            <text x="1022" y="228" fill="#27B88A" font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.6">CAPTURE DE</text>
+            <text x="1022" y="244" fill="#27B88A" font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.6">CHANGEMENTS</text>
 
-            <!-- bus -->
-            <path class="flux-bus" d="M200,440 L1235,440" stroke="#4F8A72" stroke-width="2.4" fill="none"/>
-            <circle class="noeud-pulse" cx="200" cy="440" r="5" fill="#4F8A72"/>
-            <text x="200" y="422" fill="#4F8A72" font-family="Plex Mono,monospace" font-size="12" letter-spacing="2.2">BUS D'ÉVÉNEMENTS — TOPICS PARTITIONNÉS · CLÉ = IDENTIFIANT D'AGRÉGAT · ORDRE GARANTI PAR CLÉ</text>
+            <path class="flux-bus" d="M210,340 L1110,340" stroke="#27B88A" stroke-width="2.4" fill="none"/>
+            <circle class="noeud-pulse" cx="210" cy="340" r="5" fill="#27B88A"/>
+            <text x="210" y="322" fill="#27B88A" font-family="Plex Mono,monospace" font-size="12" letter-spacing="2.2">BUS D'ÉVÉNEMENTS</text>
 
-            <!-- événements en circulation -->
             <g class="paquet">
-              <circle r="7" fill="#4F8A72" opacity=".2"><animateMotion dur="8s" repeatCount="indefinite" path="M95,88 L295,88 L380,82 L545,82 L650,82 L705,82 L705,160 L845,160 L845,440 L350,440 L350,500"/></circle>
-              <circle r="3.4" fill="#63A88B"><animateMotion dur="8s" repeatCount="indefinite" path="M95,88 L295,88 L380,82 L545,82 L650,82 L705,82 L705,160 L845,160 L845,440 L350,440 L350,500"/></circle>
+              <circle r="3.4" fill="#2FDCA5"><animateMotion dur="7s" repeatCount="indefinite" path="M95,86 L300,86 L440,87 L640,87 L680,87 L680,340 L390,340 L390,386"/></circle>
             </g>
             <g class="paquet">
-              <circle r="7" fill="#4F8A72" opacity=".2"><animateMotion dur="9.5s" begin="1.8s" repeatCount="indefinite" path="M95,158 L295,158 L380,172 L545,172 L650,172 L845,172 L845,440 L590,440 L590,500"/></circle>
-              <circle r="3.4" fill="#63A88B"><animateMotion dur="9.5s" begin="1.8s" repeatCount="indefinite" path="M95,158 L295,158 L380,172 L545,172 L650,172 L845,172 L845,440 L590,440 L590,500"/></circle>
+              <circle r="3.4" fill="#2FDCA5"><animateMotion dur="8.5s" begin="1.8s" repeatCount="indefinite" path="M95,156 L300,156 L440,165 L640,165 L700,165 L700,340 L620,340 L620,386"/></circle>
             </g>
             <g class="paquet">
-              <circle r="7" fill="#4F8A72" opacity=".2"><animateMotion dur="10.5s" begin="3.6s" repeatCount="indefinite" path="M95,228 L295,228 L380,262 L545,262 L650,262 L705,262 L705,186 L845,186 L845,440 L830,440 L830,500"/></circle>
-              <circle r="3.4" fill="#63A88B"><animateMotion dur="10.5s" begin="3.6s" repeatCount="indefinite" path="M95,228 L295,228 L380,262 L545,262 L650,262 L705,262 L705,186 L845,186 L845,440 L830,440 L830,500"/></circle>
-            </g>
-            <g class="paquet">
-              <circle r="3.2" fill="#63A88B"><animateMotion dur="6.5s" begin=".9s" repeatCount="indefinite" path="M1115,120 L1115,440 L1070,440 L1070,500"/></circle>
+              <circle r="3.2" fill="#2FDCA5"><animateMotion dur="6.5s" begin="1s" repeatCount="indefinite" path="M1010,116 L1010,340 L850,340 L850,386"/></circle>
             </g>
 
-            <!-- nœuds (peints par-dessus : les événements entrent dans les boîtes) -->
             <g font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.4">
-              <text x="30" y="46" fill="#77827B" font-size="10" letter-spacing="2">CANAUX</text>
-              <g fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2">
-                <rect x="30" y="64" width="130" height="48" rx="3"/>
-                <rect x="30" y="134" width="130" height="48" rx="3"/>
-                <rect x="30" y="204" width="130" height="48" rx="3"/>
+              <text x="30" y="48" fill="#8FA096" font-size="10" letter-spacing="2">CANAUX</text>
+              <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+                <rect x="30" y="64" width="130" height="44" rx="3"/>
+                <rect x="30" y="134" width="130" height="44" rx="3"/>
+                <rect x="30" y="204" width="130" height="44" rx="3"/>
               </g>
-              <text x="95" y="93" fill="#3A443E" text-anchor="middle">WEB</text>
-              <text x="95" y="163" fill="#3A443E" text-anchor="middle">MOBILE</text>
-              <text x="95" y="228" fill="#3A443E" text-anchor="middle">PARTENAIRES</text>
-              <text x="95" y="243" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">API B2B</text>
+              <text x="95" y="91" fill="#C9D2CB" text-anchor="middle">WEB</text>
+              <text x="95" y="161" fill="#C9D2CB" text-anchor="middle">MOBILE</text>
+              <text x="95" y="231" fill="#C9D2CB" text-anchor="middle">PARTENAIRES</text>
 
-              <rect x="210" y="54" width="170" height="214" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="295" y="150" fill="#2E3733" text-anchor="middle">PASSERELLE API</text>
-              <text x="295" y="170" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">OAUTH 2.1 · mTLS · QUOTAS</text>
-              <text x="295" y="186" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">IDEMPOTENCY-KEY</text>
+              <rect x="220" y="64" width="160" height="184" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+              <text x="300" y="150" fill="#E9EFEA" text-anchor="middle">PASSERELLE API</text>
+              <text x="300" y="170" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">AUTHENTIFICATION · QUOTAS</text>
 
-              <rect x="210" y="300" width="170" height="54" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="295" y="324" fill="#3A443E" text-anchor="middle">IAM — OIDC</text>
-              <text x="295" y="341" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">VALIDATION · cf. fig. 02</text>
-
-              <text x="440" y="40" fill="#77827B" font-size="10" letter-spacing="2">CONTEXTES MÉTIER — UNE BASE PAR SERVICE</text>
-              <g fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2">
-                <rect x="440" y="52" width="210" height="60" rx="3"/>
-                <rect x="440" y="142" width="210" height="60" rx="3"/>
-                <rect x="440" y="232" width="210" height="60" rx="3"/>
+              <text x="440" y="44" fill="#8FA096" font-size="10" letter-spacing="2">SERVICES DE DOMAINE</text>
+              <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+                <rect x="440" y="58" width="200" height="58" rx="3"/>
+                <rect x="440" y="136" width="200" height="58" rx="3"/>
+                <rect x="440" y="214" width="200" height="58" rx="3"/>
               </g>
-              <text x="545" y="80" fill="#3A443E" text-anchor="middle">CONTEXTE COMMANDES</text>
-              <text x="545" y="98" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">AGRÉGAT · OUTBOX TRANSACTIONNEL</text>
-              <text x="545" y="170" fill="#3A443E" text-anchor="middle">CONTEXTE CLIENTS</text>
-              <text x="545" y="188" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">AGRÉGAT · OUTBOX TRANSACTIONNEL</text>
-              <text x="545" y="260" fill="#3A443E" text-anchor="middle">CONTEXTE FACTURATION</text>
-              <text x="545" y="278" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">AGRÉGAT · OUTBOX TRANSACTIONNEL</text>
+              <text x="540" y="84" fill="#C9D2CB" text-anchor="middle">CLIENTS</text>
+              <text x="540" y="102" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">BASE DÉDIÉE · OUTBOX</text>
+              <text x="540" y="162" fill="#C9D2CB" text-anchor="middle">RÉSERVATION</text>
+              <text x="540" y="180" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">BASE DÉDIÉE · OUTBOX</text>
+              <text x="540" y="240" fill="#C9D2CB" text-anchor="middle">FACTURATION</text>
+              <text x="540" y="258" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">BASE DÉDIÉE · OUTBOX</text>
 
-              <rect x="760" y="140" width="170" height="64" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="845" y="168" fill="#2E3733" text-anchor="middle">RELAI D'OUTBOX</text>
-              <text x="845" y="186" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">LIVRAISON AU MOINS UNE FOIS</text>
+              <rect x="930" y="58" width="160" height="58" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2" stroke-dasharray="5 4"/>
+              <text x="1010" y="84" fill="#C9D2CB" text-anchor="middle">SI HISTORIQUE</text>
+              <text x="1010" y="102" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">REMPLACÉ PAR ÉTAPES</text>
 
-              <rect x="440" y="350" width="250" height="52" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="565" y="374" fill="#3A443E" text-anchor="middle">REGISTRE DE SCHÉMAS</text>
-              <text x="565" y="391" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">COMPATIBILITÉ ASCENDANTE GARANTIE</text>
-
-              <rect x="1020" y="56" width="190" height="64" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2" stroke-dasharray="5 4"/>
-              <text x="1115" y="84" fill="#3A443E" text-anchor="middle">SI HISTORIQUE</text>
-              <text x="1115" y="102" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">REMPLACEMENT PROGRESSIF</text>
-
-              <g fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2">
-                <rect x="250" y="500" width="200" height="58" rx="3"/>
-                <rect x="490" y="500" width="200" height="58" rx="3"/>
-                <rect x="730" y="500" width="200" height="58" rx="3"/>
-                <rect x="970" y="500" width="200" height="58" rx="3"/>
-                <rect x="490" y="590" width="200" height="52" rx="3" stroke-dasharray="5 4"/>
+              <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+                <rect x="300" y="386" width="180" height="54" rx="3"/>
+                <rect x="530" y="386" width="180" height="54" rx="3"/>
+                <rect x="760" y="386" width="180" height="54" rx="3"/>
               </g>
-              <text x="350" y="526" fill="#3A443E" text-anchor="middle">PROJECTION CQRS</text>
-              <text x="350" y="543" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">BASE DE LECTURE DÉNORMALISÉE</text>
-              <text x="590" y="526" fill="#3A443E" text-anchor="middle">WORKERS</text>
-              <text x="590" y="543" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">CONSOMMATION IDEMPOTENTE</text>
-              <text x="830" y="526" fill="#3A443E" text-anchor="middle">SYNCHRO PARTENAIRES</text>
-              <text x="830" y="543" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">APPELS SORTANTS · REPRISE</text>
-              <text x="1070" y="526" fill="#3A443E" text-anchor="middle">SOCLE ANALYTIQUE</text>
-              <text x="1070" y="543" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">ENTREPÔT · TEMPS RÉEL</text>
-              <text x="590" y="614" fill="#3A443E" text-anchor="middle">FILE D'ERREURS</text>
-              <text x="590" y="631" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">REJEU DEPUIS L'OFFSET</text>
-
-              <text x="970" y="600" fill="#77827B" font-size="10" letter-spacing="1.4">GROUPES DE CONSOMMATEURS</text>
-              <text x="970" y="618" fill="#77827B" font-size="10" letter-spacing="1.4">MONTÉE EN CHARGE PAR PARTITION</text>
-              <text x="970" y="636" fill="#77827B" font-size="10" letter-spacing="1.4">TRAÇAGE DISTRIBUÉ DE BOUT EN BOUT</text>
+              <text x="390" y="410" fill="#C9D2CB" text-anchor="middle">BASE DE LECTURE</text>
+              <text x="390" y="427" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">RECHERCHE RAPIDE</text>
+              <text x="620" y="410" fill="#C9D2CB" text-anchor="middle">NOTIFICATIONS</text>
+              <text x="620" y="427" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">TRAITEMENTS ASYNCHRONES</text>
+              <text x="850" y="410" fill="#C9D2CB" text-anchor="middle">SOCLE ANALYTIQUE</text>
+              <text x="850" y="427" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">TEMPS RÉEL</text>
             </g>
           </svg>
         </div>
-        <div class="fig-legende">
-          <span>— appel synchrone</span>
-          <span><i>●</i> événement en circulation</span>
-          <span><i>─ ─</i> capture de changements · contrôle</span>
-        </div>
-        <p class="fig-normes"><b>Ce que le schéma garantit</b> — publication fiable sans transaction distribuée (outbox transactionnel), ordre par clé d'agrégat, consommateurs idempotents et rejouables, contrat d'événement versionné avec compatibilité ascendante, et remplacement progressif du système historique par capture de changements. <b>Repères</b> — CloudEvents 1.0 · CQRS / event sourcing · DDD (contextes délimités) · OpenTelemetry.</p>
+        <p class="fig-normes">Chaque service écrit en base et publie son événement dans la même transaction : <b>rien ne se perd si le bus tombe</b>. Le système historique reste branché pendant toute la migration.</p>
       </div>
 
-      <!-- ---------------- FIG. 02 — IAM ---------------- -->
+      <!-- ---------- IDENTITÉ ---------- -->
       <div class="fig-panneau" id="fig-iam" role="tabpanel" aria-labelledby="tab-iam" hidden>
         <div class="fig-cadre">
-          <svg viewBox="0 0 1240 620" role="img" aria-label="Architecture IAM : flux OpenID Connect avec code d'autorisation et PKCE entre l'agent utilisateur, un BFF client confidentiel, le serveur d'autorisation et ses sources d'identité, puis validation du jeton par la passerelle API auprès du JWKS.">
-            <defs>
-              <marker id="fx-iam" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0,0 L8,4 L0,8 z" fill="#AEB9B2"/>
-              </marker>
-            </defs>
+          <svg viewBox="0 0 1120 420" role="img" aria-label="Identité : l'utilisateur se connecte via l'application, le serveur d'autorisation authentifie contre l'annuaire avec MFA et délivre un jeton, que la passerelle vérifie avant d'appeler l'API.">
+            <defs><marker id="m-iam" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#4A5C52"/></marker></defs>
 
-            <g stroke="#AEB9B2" stroke-width="1.3" fill="none">
-              <path d="M190,120 L250,120" marker-end="url(#fx-iam)"/>
-              <path d="M110,90 L110,24 L690,24 L690,40" marker-end="url(#fx-iam)"/>
-              <path d="M440,110 L560,110" marker-end="url(#fx-iam)"/>
-              <path d="M560,140 L440,140" marker-end="url(#fx-iam)"/>
-              <path d="M830,66 L880,66" marker-end="url(#fx-iam)"/>
-              <path d="M830,138 L880,138" marker-end="url(#fx-iam)"/>
-              <path d="M830,210 L880,210" marker-end="url(#fx-iam)"/>
-              <path d="M345,150 L345,330" marker-end="url(#fx-iam)"/>
-              <path d="M440,360 L560,360" marker-end="url(#fx-iam)"/>
+            <g stroke="#4A5C52" stroke-width="1.3" fill="none">
+              <path d="M190,118 L260,118" marker-end="url(#m-iam)"/>
+              <path d="M440,106 L520,106" marker-end="url(#m-iam)"/>
+              <path d="M520,150 L440,150" marker-end="url(#m-iam)"/>
+              <path d="M750,86 L810,86" marker-end="url(#m-iam)"/>
+              <path d="M750,158 L810,158" marker-end="url(#m-iam)"/>
+              <path d="M350,146 L350,280" marker-end="url(#m-iam)"/>
+              <path d="M440,308 L520,308" marker-end="url(#m-iam)"/>
             </g>
-            <g stroke="#AEB9B2" stroke-width="1.2" fill="none" stroke-dasharray="3 5">
-              <path d="M420,345 L500,345 L500,262 L620,262 L620,240" marker-end="url(#fx-iam)"/>
+            <g stroke="#4A5C52" stroke-width="1.2" fill="none" stroke-dasharray="3 5">
+              <path d="M440,292 L480,292 L480,214 L620,214 L620,190" marker-end="url(#m-iam)"/>
             </g>
-
-            <!-- jetons en circulation -->
-            <g class="paquet">
-              <circle r="3.4" fill="#63A88B"><animateMotion dur="6.5s" repeatCount="indefinite" path="M110,120 L345,120 L440,110 L690,110"/></circle>
-            </g>
-            <g class="paquet">
-              <circle r="3.4" fill="#63A88B"><animateMotion dur="5.5s" begin="1.4s" repeatCount="indefinite" path="M345,150 L345,360 L560,360"/></circle>
-            </g>
+            <g class="paquet"><circle r="3.4" fill="#2FDCA5"><animateMotion dur="6s" repeatCount="indefinite" path="M110,118 L350,118 L440,106 L635,106"/></circle></g>
+            <g class="paquet"><circle r="3.4" fill="#2FDCA5"><animateMotion dur="5.5s" begin="1.6s" repeatCount="indefinite" path="M350,146 L350,308 L520,308"/></circle></g>
 
             <g font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.4">
-              <rect x="30" y="90" width="160" height="60" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="110" y="116" fill="#3A443E" text-anchor="middle">AGENT UTILISATEUR</text>
-              <text x="110" y="134" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">NAVIGATEUR · APP MOBILE</text>
+              <rect x="30" y="90" width="160" height="56" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2"/>
+              <text x="110" y="123" fill="#C9D2CB" text-anchor="middle">UTILISATEUR</text>
 
-              <rect x="250" y="90" width="190" height="60" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="345" y="116" fill="#2E3733" text-anchor="middle">BFF — CONFIDENTIEL</text>
-              <text x="345" y="134" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">COOKIE HttpOnly · SameSite</text>
+              <rect x="260" y="90" width="180" height="56" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+              <text x="350" y="115" fill="#E9EFEA" text-anchor="middle">APPLICATION</text>
+              <text x="350" y="133" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">JETONS CÔTÉ SERVEUR</text>
 
-              <rect x="560" y="40" width="270" height="200" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="695" y="68" fill="#2E3733" text-anchor="middle">SERVEUR D'AUTORISATION</text>
-              <text x="695" y="86" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">OIDC · OAUTH 2.1 · MULTI-REALMS</text>
-              <g fill="#77827B" font-size="10" letter-spacing="0">
-                <text x="582" y="118">/par · /authorize — code + PKCE</text>
-                <text x="582" y="140">/token — rotation des refresh</text>
-                <text x="582" y="162">/jwks · /userinfo</text>
-                <text x="582" y="184">/introspect · /revoke</text>
-                <text x="582" y="206">/logout — déconnexion propagée</text>
+              <rect x="520" y="60" width="230" height="130" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+              <text x="635" y="90" fill="#E9EFEA" text-anchor="middle">SERVEUR D'AUTORISATION</text>
+              <text x="635" y="108" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">OIDC · OAUTH 2.1 · MULTI-MARQUES</text>
+              <g fill="#9DB0A4" font-size="10" letter-spacing="0">
+                <text x="542" y="136">code d'autorisation + PKCE</text>
+                <text x="542" y="156">jetons signés, durée courte</text>
+                <text x="542" y="176">clés publiques exposées</text>
               </g>
 
-              <g fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2">
-                <rect x="880" y="40" width="200" height="52" rx="3"/>
-                <rect x="880" y="112" width="200" height="52" rx="3"/>
-                <rect x="880" y="184" width="200" height="52" rx="3"/>
+              <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+                <rect x="810" y="60" width="180" height="52" rx="3"/>
+                <rect x="810" y="132" width="180" height="52" rx="3"/>
               </g>
-              <text x="980" y="64" fill="#3A443E" text-anchor="middle">ANNUAIRE LDAP / AD</text>
-              <text x="980" y="81" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">FÉDÉRATION D'UTILISATEURS</text>
-              <text x="980" y="136" fill="#3A443E" text-anchor="middle">IdP SAML 2.0</text>
-              <text x="980" y="153" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">COURTAGE D'IDENTITÉ · SSO</text>
-              <text x="980" y="208" fill="#3A443E" text-anchor="middle">MFA · ÉLÉVATION</text>
-              <text x="980" y="225" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">CLAIMS acr / amr</text>
+              <text x="900" y="83" fill="#C9D2CB" text-anchor="middle">ANNUAIRE</text>
+              <text x="900" y="100" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">LDAP · FÉDÉRATION SAML</text>
+              <text x="900" y="155" fill="#C9D2CB" text-anchor="middle">MFA</text>
+              <text x="900" y="172" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">AUTHENTIFICATION FORTE</text>
 
-              <rect x="250" y="330" width="190" height="60" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="345" y="356" fill="#3A443E" text-anchor="middle">PASSERELLE API</text>
-              <text x="345" y="374" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">VALIDATION LOCALE · CLÉS JWKS</text>
+              <rect x="260" y="280" width="180" height="56" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2"/>
+              <text x="350" y="305" fill="#C9D2CB" text-anchor="middle">PASSERELLE API</text>
+              <text x="350" y="323" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">VÉRIFIE LE JETON</text>
 
-              <rect x="560" y="310" width="270" height="100" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="695" y="340" fill="#3A443E" text-anchor="middle">RESSOURCES PROTÉGÉES</text>
-              <text x="695" y="364" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">CONTRÔLE PAR PORTÉE · AUDIENCE · RÔLES</text>
-              <text x="695" y="386" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">SERVICE À SERVICE — ÉCHANGE DE JETON</text>
-
-              <text x="880" y="300" fill="#77827B" font-size="10" letter-spacing="1.4">JETONS LIÉS AU CLIENT</text>
-              <text x="880" y="318" fill="#77827B" font-size="10" letter-spacing="1.4">DPoP OU mTLS — NON REJOUABLES</text>
-              <text x="880" y="342" fill="#77827B" font-size="10" letter-spacing="1.4">AUCUN JETON STOCKÉ</text>
-              <text x="880" y="360" fill="#77827B" font-size="10" letter-spacing="1.4">DANS LE NAVIGATEUR</text>
+              <rect x="520" y="265" width="230" height="86" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2"/>
+              <text x="635" y="298" fill="#C9D2CB" text-anchor="middle">API MÉTIER</text>
+              <text x="635" y="318" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">DROITS PORTÉS PAR LE JETON</text>
             </g>
 
-            <!-- badges de séquence -->
             <g font-family="Plex Mono,monospace" font-size="11" font-weight="500">
-              <g class="seq s1"><circle cx="220" cy="98" r="11" fill="#4F8A72"/><text x="220" y="102" fill="#FFFFFF" text-anchor="middle">1</text></g>
-              <g class="seq s2"><circle cx="300" cy="24" r="11" fill="#4F8A72"/><text x="300" y="28" fill="#FFFFFF" text-anchor="middle">2</text></g>
-              <g class="seq s3"><circle cx="855" cy="112" r="11" fill="#4F8A72"/><text x="855" y="116" fill="#FFFFFF" text-anchor="middle">3</text></g>
-              <g class="seq s4"><circle cx="520" cy="24" r="11" fill="#4F8A72"/><text x="520" y="28" fill="#FFFFFF" text-anchor="middle">4</text></g>
-              <g class="seq s5"><circle cx="500" cy="92" r="11" fill="#4F8A72"/><text x="500" y="96" fill="#FFFFFF" text-anchor="middle">5</text></g>
-              <g class="seq s6"><circle cx="500" cy="158" r="11" fill="#4F8A72"/><text x="500" y="162" fill="#FFFFFF" text-anchor="middle">6</text></g>
-              <g class="seq s7"><circle cx="345" cy="245" r="11" fill="#4F8A72"/><text x="345" y="249" fill="#FFFFFF" text-anchor="middle">7</text></g>
-              <g class="seq s8"><circle cx="500" cy="360" r="11" fill="#4F8A72"/><text x="500" y="364" fill="#FFFFFF" text-anchor="middle">8</text></g>
+              <g class="seq s1"><circle cx="225" cy="100" r="11" fill="#27B88A"/><text x="225" y="104" fill="#08110D" text-anchor="middle">1</text></g>
+              <g class="seq s2"><circle cx="480" cy="88" r="11" fill="#27B88A"/><text x="480" y="92" fill="#08110D" text-anchor="middle">2</text></g>
+              <g class="seq s3"><circle cx="480" cy="168" r="11" fill="#27B88A"/><text x="480" y="172" fill="#08110D" text-anchor="middle">3</text></g>
+              <g class="seq s4"><circle cx="350" cy="214" r="11" fill="#27B88A"/><text x="350" y="218" fill="#08110D" text-anchor="middle">4</text></g>
             </g>
-
-            <!-- séquence détaillée -->
-            <line x1="30" y1="450" x2="1210" y2="450" stroke="#AEB9B2" stroke-width="1"/>
-            <text x="30" y="440" fill="#77827B" font-family="Plex Mono,monospace" font-size="10" letter-spacing="2">SÉQUENCE — CODE D'AUTORISATION AVEC PKCE</text>
-            <g font-family="Plex Mono,monospace" font-size="11" letter-spacing=".6" fill="#3A443E">
-              <g class="seq s1"><text x="30" y="486">1 — ACCÈS À UNE RESSOURCE PROTÉGÉE</text></g>
-              <g class="seq s2"><text x="30" y="516">2 — REQUÊTE D'AUTORISATION POUSSÉE + PKCE</text></g>
-              <g class="seq s3"><text x="30" y="546">3 — AUTHENTIFICATION · MFA · FÉDÉRATION</text></g>
-              <g class="seq s4"><text x="30" y="576">4 — CODE À USAGE UNIQUE, LIÉ AU CLIENT</text></g>
-              <g class="seq s5"><text x="640" y="486">5 — ÉCHANGE DU CODE + VÉRIFIEUR PKCE</text></g>
-              <g class="seq s6"><text x="640" y="516">6 — JETON D'IDENTITÉ · D'ACCÈS · DE RAFRAÎCHISSEMENT</text></g>
-              <g class="seq s7"><text x="640" y="546">7 — APPEL PORTEUR DEPUIS LE BFF</text></g>
-              <g class="seq s8"><text x="640" y="576">8 — SIGNATURE, PORTÉE ET AUDIENCE VÉRIFIÉES</text></g>
+            <g font-family="Plex Mono,monospace" font-size="11" letter-spacing=".6" fill="#C9D2CB">
+              <g class="seq s1"><text x="30" y="392">1 — L'utilisateur demande un accès</text></g>
+              <g class="seq s2"><text x="380" y="392">2 — Authentification et MFA</text></g>
+              <g class="seq s3"><text x="660" y="392">3 — Jeton délivré</text></g>
+              <g class="seq s4"><text x="860" y="392">4 — Appel vérifié</text></g>
             </g>
           </svg>
         </div>
-        <div class="fig-legende">
-          <span>— échange direct</span>
-          <span><i>●</i> jeton en circulation</span>
-          <span><i>─ ─</i> récupération des clés de signature</span>
-        </div>
-        <p class="fig-normes"><b>Ce que le schéma garantit</b> — aucun jeton exposé au navigateur (motif BFF, cookie <i>HttpOnly</i>), code d'autorisation à usage unique lié au client, jetons signés vérifiés localement par la passerelle, élévation d'authentification tracée dans les <i>claims</i>, et déconnexion propagée à toutes les applications. <b>Repères</b> — OAuth 2.1 · OpenID Connect Core · RFC 7636 (PKCE) · RFC 9126 (PAR) · RFC 8693 (échange de jetons) · RFC 9449 (DPoP) · RFC 8705 (mTLS) · SAML 2.0.</p>
+        <p class="fig-normes">Une seule connexion pour toutes les marques et tous les canaux. La passerelle vérifie le jeton <b>sans rappeler le serveur d'autorisation</b> à chaque requête.</p>
       </div>
 
-      <!-- ---------------- FIG. 03 — PAM ---------------- -->
+      <!-- ---------- ACCÈS À PRIVILÈGES ---------- -->
       <div class="fig-panneau" id="fig-pam" role="tabpanel" aria-labelledby="tab-pam" hidden>
         <div class="fig-cadre">
-          <svg viewBox="0 0 1240 580" role="img" aria-label="Architecture PAM : demande d'accès juste-à-temps validée par un workflow d'approbation, secret délivré par un coffre à rotation automatique et injecté par un broker de session vers les cibles, avec enregistrement de session, audit SIEM et compte de bris de glace.">
-            <defs>
-              <marker id="fx-pam" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0,0 L8,4 L0,8 z" fill="#AEB9B2"/>
-              </marker>
-            </defs>
+          <svg viewBox="0 0 1120 400" role="img" aria-label="Accès à privilèges : une demande justifiée et approuvée déclenche la remise d'un secret temporaire par le coffre, injecté par un bastion qui ouvre la session vers la cible et l'enregistre.">
+            <defs><marker id="m-pam" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#4A5C52"/></marker></defs>
 
-            <g stroke="#AEB9B2" stroke-width="1.3" fill="none">
-              <path d="M200,86 L250,86" marker-end="url(#fx-pam)"/>
-              <path d="M200,156 L250,156" marker-end="url(#fx-pam)"/>
-              <path d="M200,226 L250,226" marker-end="url(#fx-pam)"/>
-              <path d="M420,120 L445,120 L445,98 L470,98" marker-end="url(#fx-pam)"/>
-              <path d="M570,136 L570,176" marker-end="url(#fx-pam)"/>
-              <path d="M670,214 L705,214 L705,110 L740,110" marker-end="url(#fx-pam)"/>
-              <path d="M840,160 L840,210" marker-end="url(#fx-pam)"/>
-              <path d="M940,240 L975,240 L975,202 L1010,202" marker-end="url(#fx-pam)"/>
-              <path d="M940,260 L1010,260" marker-end="url(#fx-pam)"/>
-              <path d="M940,280 L975,280 L975,342 L1010,342" marker-end="url(#fx-pam)"/>
-              <path d="M840,310 L840,360" marker-end="url(#fx-pam)"/>
-              <path d="M740,398 L670,398" marker-end="url(#fx-pam)"/>
+            <g stroke="#4A5C52" stroke-width="1.3" fill="none">
+              <path d="M200,105 L250,105" marker-end="url(#m-pam)"/>
+              <path d="M200,175 L250,175" marker-end="url(#m-pam)"/>
+              <path d="M410,120 L460,108" marker-end="url(#m-pam)"/>
+              <path d="M565,146 L565,190" marker-end="url(#m-pam)"/>
+              <path d="M670,222 L700,222 L700,155 L730,155" marker-end="url(#m-pam)"/>
+              <path d="M910,140 L935,140 L935,114 L960,114" marker-end="url(#m-pam)"/>
+              <path d="M910,170 L935,170 L935,184 L960,184" marker-end="url(#m-pam)"/>
+              <path d="M820,200 L820,250" marker-end="url(#m-pam)"/>
             </g>
-            <g stroke="#AEB9B2" stroke-width="1.2" fill="none" stroke-dasharray="3 5">
-              <path d="M335,360 L335,256" marker-end="url(#fx-pam)"/>
-            </g>
-
-            <!-- parcours d'un accès juste-à-temps -->
-            <g class="paquet">
-              <circle r="7" fill="#4F8A72" opacity=".2"><animateMotion dur="11s" repeatCount="indefinite" path="M115,86 L335,86 L335,120 L445,120 L445,98 L570,98 L570,214 L705,214 L705,110 L840,110 L840,260 L1010,260"/></circle>
-              <circle r="3.4" fill="#63A88B"><animateMotion dur="11s" repeatCount="indefinite" path="M115,86 L335,86 L335,120 L445,120 L445,98 L570,98 L570,214 L705,214 L705,110 L840,110 L840,260 L1010,260"/></circle>
-            </g>
-            <g class="paquet">
-              <circle r="3.2" fill="#63A88B"><animateMotion dur="5s" begin="2s" repeatCount="indefinite" path="M840,310 L840,360"/></circle>
-              <circle r="3.2" fill="#63A88B"><animateMotion dur="5s" begin="3s" repeatCount="indefinite" path="M740,398 L670,398"/></circle>
-            </g>
+            <g class="paquet"><circle r="3.4" fill="#2FDCA5"><animateMotion dur="9s" repeatCount="indefinite" path="M105,105 L330,105 L460,108 L565,108 L565,222 L700,222 L700,155 L820,155 L960,155"/></circle></g>
 
             <g font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.4">
-              <text x="30" y="46" fill="#77827B" font-size="10" letter-spacing="2">DEMANDEURS</text>
-              <g fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2">
-                <rect x="30" y="62" width="170" height="48" rx="3"/>
-                <rect x="30" y="132" width="170" height="48" rx="3"/>
-                <rect x="30" y="202" width="170" height="48" rx="3"/>
+              <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+                <rect x="30" y="80" width="170" height="50" rx="3"/>
+                <rect x="30" y="150" width="170" height="50" rx="3"/>
               </g>
-              <text x="115" y="85" fill="#3A443E" text-anchor="middle">ADMINISTRATEUR</text>
-              <text x="115" y="101" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">ÉQUIPE INTERNE</text>
-              <text x="115" y="155" fill="#3A443E" text-anchor="middle">PRESTATAIRE</text>
-              <text x="115" y="171" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">ACCÈS EXTERNE ENCADRÉ</text>
-              <text x="115" y="225" fill="#3A443E" text-anchor="middle">COMPTE APPLICATIF</text>
-              <text x="115" y="241" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">SECRET NON HUMAIN</text>
+              <text x="115" y="110" fill="#C9D2CB" text-anchor="middle">ADMINISTRATEUR</text>
+              <text x="115" y="180" fill="#C9D2CB" text-anchor="middle">PRESTATAIRE</text>
 
-              <rect x="250" y="62" width="170" height="194" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="335" y="146" fill="#2E3733" text-anchor="middle">IDENTITÉ + MFA</text>
-              <text x="335" y="164" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">AUTHENTIFICATION FORTE</text>
-              <text x="335" y="180" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">SOURCE UNIQUE — cf. fig. 02</text>
+              <rect x="250" y="80" width="160" height="120" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+              <text x="330" y="136" fill="#E9EFEA" text-anchor="middle">IDENTITÉ + MFA</text>
+              <text x="330" y="154" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">MÊME SOURCE QUE LE SI</text>
 
-              <rect x="470" y="60" width="200" height="76" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="570" y="88" fill="#3A443E" text-anchor="middle">DEMANDE JUSTE-À-TEMPS</text>
-              <text x="570" y="106" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">MOTIF · PÉRIMÈTRE · DURÉE</text>
-              <text x="570" y="122" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">RATTACHÉE À UN TICKET</text>
+              <rect x="460" y="70" width="210" height="76" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2"/>
+              <text x="565" y="98" fill="#C9D2CB" text-anchor="middle">ACCÈS JUSTE-À-TEMPS</text>
+              <text x="565" y="116" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">MOTIF · DURÉE LIMITÉE</text>
+              <text x="565" y="132" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">VALIDÉ PAR UN TIERS</text>
 
-              <rect x="470" y="176" width="200" height="76" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="570" y="204" fill="#3A443E" text-anchor="middle">APPROBATION</text>
-              <text x="570" y="222" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">VALIDATION À QUATRE YEUX</text>
-              <text x="570" y="238" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">SÉPARATION DES TÂCHES</text>
+              <rect x="460" y="190" width="210" height="64" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+              <text x="565" y="218" fill="#E9EFEA" text-anchor="middle">COFFRE DE SECRETS</text>
+              <text x="565" y="236" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">ROTATION AUTOMATIQUE</text>
 
-              <rect x="740" y="60" width="200" height="100" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="840" y="92" fill="#2E3733" text-anchor="middle">COFFRE DE SECRETS</text>
-              <text x="840" y="110" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">COMPTES À PRIVILÈGES · CLÉS</text>
-              <text x="840" y="126" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">ROTATION AUTOMATIQUE</text>
-              <text x="840" y="146" fill="#4F8A72" text-anchor="middle" font-size="10" letter-spacing="0">SECRET ÉPHÉMÈRE À CHAQUE ACCÈS</text>
-              <g class="rot"><path d="M769,122 a9,9 0 1,1 -6,-3" fill="none" stroke="#4F8A72" stroke-width="1.5"/></g>
+              <rect x="730" y="110" width="180" height="90" rx="3" fill="#152420" stroke="#27B88A" stroke-width="1.4"/>
+              <text x="820" y="142" fill="#E9EFEA" text-anchor="middle">BASTION</text>
+              <text x="820" y="160" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">SSH · RDP · BASE DE DONNÉES</text>
+              <text x="820" y="180" fill="#27B88A" text-anchor="middle" font-size="10" letter-spacing="0">SECRET JAMAIS AFFICHÉ</text>
 
-              <rect x="740" y="210" width="200" height="100" rx="3" fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.4"/>
-              <text x="840" y="240" fill="#2E3733" text-anchor="middle">BROKER DE SESSION</text>
-              <text x="840" y="258" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">SSH · RDP · SQL · KUBERNETES</text>
-              <text x="840" y="276" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">INJECTION DU SECRET PAR LE PROXY</text>
-              <text x="840" y="294" fill="#4F8A72" text-anchor="middle" font-size="10" letter-spacing="0">JAMAIS RÉVÉLÉ À L'OPÉRATEUR</text>
-
-              <text x="1010" y="176" fill="#77827B" font-size="10" letter-spacing="2">CIBLES</text>
-              <g fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2">
-                <rect x="1010" y="184" width="200" height="48" rx="3"/>
-                <rect x="1010" y="244" width="200" height="48" rx="3"/>
-                <rect x="1010" y="304" width="200" height="48" rx="3"/>
+              <g fill="#152420" stroke="#54665C" stroke-width="1.2">
+                <rect x="960" y="90" width="140" height="48" rx="3"/>
+                <rect x="960" y="160" width="140" height="48" rx="3"/>
               </g>
-              <text x="1110" y="207" fill="#3A443E" text-anchor="middle">SERVEURS</text>
-              <text x="1110" y="223" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">LINUX · WINDOWS</text>
-              <text x="1110" y="267" fill="#3A443E" text-anchor="middle">BASES DE DONNÉES</text>
-              <text x="1110" y="283" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">PRODUCTION · DONNÉES SENSIBLES</text>
-              <text x="1110" y="327" fill="#3A443E" text-anchor="middle">CONSOLES CLOUD · K8S</text>
-              <text x="1110" y="343" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">NIVEAU LE PLUS PRIVILÉGIÉ</text>
+              <text x="1030" y="119" fill="#C9D2CB" text-anchor="middle">SERVEURS</text>
+              <text x="1030" y="189" fill="#C9D2CB" text-anchor="middle">BASES</text>
 
-              <rect x="740" y="360" width="200" height="76" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="840" y="388" fill="#3A443E" text-anchor="middle">ENREGISTREMENT</text>
-              <text x="840" y="406" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">SESSION + COMMANDES SAISIES</text>
-              <text x="840" y="422" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">STOCKAGE INALTÉRABLE</text>
-              <circle class="rec" cx="920" cy="378" r="5" fill="#4F8A72"/>
+              <rect x="730" y="250" width="180" height="58" rx="3" fill="#152420" stroke="#54665C" stroke-width="1.2"/>
+              <text x="820" y="275" fill="#C9D2CB" text-anchor="middle">ENREGISTREMENT</text>
+              <text x="820" y="293" fill="#8FA096" text-anchor="middle" font-size="10" letter-spacing="0">SESSION TRACÉE · AUDIT</text>
+              <circle class="rec" cx="890" cy="266" r="4.5" fill="#27B88A"/>
 
-              <rect x="470" y="360" width="200" height="76" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2"/>
-              <text x="570" y="388" fill="#3A443E" text-anchor="middle">AUDIT · SIEM</text>
-              <text x="570" y="406" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">DÉTECTION · ALERTES TEMPS RÉEL</text>
-              <text x="570" y="422" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">REVUE PÉRIODIQUE DES DROITS</text>
-
-              <rect x="250" y="360" width="170" height="76" rx="3" fill="#FFFFFF" stroke="#C2CCC5" stroke-width="1.2" stroke-dasharray="5 4"/>
-              <text x="335" y="388" fill="#3A443E" text-anchor="middle">BRIS DE GLACE</text>
-              <text x="335" y="406" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">COMPTE SCELLÉ</text>
-              <text x="335" y="422" fill="#77827B" text-anchor="middle" font-size="10" letter-spacing="0">ALERTE IMMÉDIATE</text>
-
-              <text x="1010" y="382" fill="#4F8A72" font-size="10" letter-spacing="1.4">EXPIRATION AUTOMATIQUE</text>
-              <text x="1010" y="398" fill="#4F8A72" font-size="10" letter-spacing="1.4">RÉVOCATION EN FIN DE FENÊTRE</text>
-            </g>
-
-            <g fill="#FFFFFF" stroke="#4F8A72" stroke-width="1.1" opacity=".9">
-              <rect x="30" y="480" width="270" height="42" rx="3"/>
-              <rect x="320" y="480" width="270" height="42" rx="3"/>
-              <rect x="610" y="480" width="270" height="42" rx="3"/>
-              <rect x="900" y="480" width="270" height="42" rx="3"/>
-            </g>
-            <g font-family="Plex Mono,monospace" font-size="11" letter-spacing="1.2" fill="#3A443E">
-              <text x="165" y="506" text-anchor="middle">ZÉRO PRIVILÈGE PERMANENT</text>
-              <text x="455" y="506" text-anchor="middle">MOINDRE PRIVILÈGE</text>
-              <text x="745" y="506" text-anchor="middle">TRAÇABILITÉ INTÉGRALE</text>
-              <text x="1035" y="506" text-anchor="middle">CLOISONNEMENT PAR NIVEAUX</text>
+              <text x="30" y="352" fill="#8FA096" font-size="10" letter-spacing="1.6">AUCUN DROIT PERMANENT SUR LES CIBLES · ACCÈS OUVERT PUIS REFERMÉ · CHAQUE ACTION ATTRIBUABLE</text>
             </g>
           </svg>
         </div>
-        <div class="fig-legende">
-          <span>— parcours d'accès</span>
-          <span><i>●</i> demande juste-à-temps</span>
-          <span><i>─ ─</i> procédure hors nominal</span>
-        </div>
-        <p class="fig-normes"><b>Ce que le schéma garantit</b> — aucun droit permanent sur les cibles : chaque accès est demandé, motivé, approuvé, limité dans le temps et révoqué automatiquement. L'opérateur ne voit jamais le secret, la session est enregistrée intégralement, et chaque action reste attribuable à une personne. <b>Repères</b> — Zero Trust (NIST SP 800-207) · moindre privilège et séparation des tâches (ISO/IEC 27001, NIST SP 800-53) · cloisonnement des niveaux d'administration · recommandations ANSSI sur l'administration sécurisée.</p>
+        <p class="fig-normes">Personne ne détient de droit permanent. L'accès est demandé, approuvé, ouvert pour une durée, puis refermé — et <b>l'opérateur ne voit jamais le mot de passe</b>.</p>
       </div>
     </div>
   </div>
@@ -1161,7 +1015,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 01 — Expertises</span><span class="fig">quatre domaines</span></div>
-      <h2 class="rv">Architecture, legacy, identité, <span class="accent">équipe.</span></h2>
+      <h2>Architecture, legacy, identité, <span class="accent">équipe.</span></h2>
     </div>
     <div class="expertises" data-stagger>
       <div class="exp">
@@ -1197,11 +1051,11 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </section>
 
 <!-- ============================ § 02 — COMMENT ON TRAVAILLE ============================ -->
-<section id="engagements" class="encre panneau p-sauge">
+<section id="engagements" class="encre panneau">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 02 — Modes d'intervention</span><span class="fig">régie · forfait · équipe</span></div>
-      <h2 class="rv">Régie, forfait, <span class="accent">ou équipe complète.</span></h2>
+      <h2>Régie, forfait, <span class="accent">ou équipe complète.</span></h2>
     </div>
     <div class="offres" data-stagger>
       <div class="offre">
@@ -1243,7 +1097,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 03 — Déroulé</span><span class="fig">quatre étapes</span></div>
-      <h2 class="rv">De l'appel à la mise en production.</h2>
+      <h2>De l'appel à la mise en production.</h2>
     </div>
     <div class="pas" data-stagger>
       <div>
@@ -1271,11 +1125,11 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </section>
 
 <!-- ============================ § 04 — RÉFÉRENCES ============================ -->
-<section id="references" class="encre panneau p-lin">
+<section id="references" class="encre panneau">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 04 — Références</span><span class="fig">ce que j'ai déjà livré</span></div>
-      <h2 class="rv">Des plateformes qui <span class="accent">tournent encore.</span></h2>
+      <h2>Des plateformes qui <span class="accent">tournent encore.</span></h2>
     </div>
 
     <div class="cas-liste" data-stagger>
@@ -1342,49 +1196,49 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </section>
 
 <!-- ============================ § 05 — INGÉNIERIE AUGMENTÉE ============================ -->
-<section id="ia" class="encre panneau p-sable">
+<section id="ia" class="encre panneau">
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 05 — Ingénierie augmentée</span><span class="fig">agents de code · état de l'art</span></div>
-      <h2 class="rv">L'IA dans la boucle, <span class="accent">sous contrôle.</span></h2>
-      <p class="intro rv">Je travaille tous les jours avec des agents de code. Le gain ne vient pas du modèle, il vient du <b>harnais qu'on met autour</b> — et ce harnais est du fichier versionné, relu comme du code.</p>
+      <h2>L'IA dans la boucle, <span class="accent">sous contrôle.</span></h2>
+      <p class="intro rv">Le gain ne vient pas du modèle, il vient du <b>cadre qu'on met autour</b> — et ce cadre est du fichier versionné, relu comme du code.</p>
     </div>
 
     <div class="projets" data-stagger>
       <div class="projet">
         <span class="k">01 — Contexte</span>
         <h3>Ce que l'agent lit</h3>
-        <p>Instructions courtes et versionnées, règles chargées seulement quand le fichier concerné est ouvert. Un contexte saturé dégrade la qualité — c'est la ressource à gérer en premier.</p>
+        <p>Des instructions courtes et versionnées, chargées seulement quand elles servent. Un contexte saturé dégrade la qualité du résultat.</p>
       </div>
       <div class="projet">
         <span class="k">02 — Skills</span>
         <h3>Le savoir-faire à la demande</h3>
-        <p>Les procédures répétées deviennent des compétences chargées quand elles servent, pas des consignes permanentes qu'on paie à chaque session.</p>
+        <p>Les procédures répétées deviennent des compétences appelées à la demande, pas des consignes permanentes.</p>
       </div>
       <div class="projet">
         <span class="k">03 — Hooks</span>
         <h3>Ce qui ne se négocie pas</h3>
-        <p>Formatage, garde-fous, tests avant de rendre la main : exécutés par le harnais à chaque fois, pas laissés à l'appréciation du modèle.</p>
+        <p>Formatage, garde-fous, tests : exécutés automatiquement à chaque fois, pas laissés au modèle.</p>
       </div>
       <div class="projet">
         <span class="k">04 — Subagents</span>
         <h3>Le regard extérieur</h3>
-        <p>L'exploration et la relecture tournent dans un contexte isolé. Celui qui relit le diff n'est pas celui qui l'a écrit.</p>
+        <p>Exploration et relecture en contexte isolé. Celui qui relit le code n'est pas celui qui l'a écrit.</p>
       </div>
       <div class="projet">
         <span class="k">05 — Permissions</span>
         <h3>Les limites dures</h3>
-        <p>Secrets, production, dépôt distant : hors de portée par configuration, pas par consigne. C'est la seule couche réellement contraignante.</p>
+        <p>Secrets et production hors de portée par configuration — la seule couche réellement contraignante.</p>
       </div>
       <div class="projet">
         <span class="k">06 — Vérification</span>
         <h3>La preuve, pas l'affirmation</h3>
-        <p>Un agent s'arrête quand le travail a l'air fini. Une vérification exécutable — tests, build, capture — referme la boucle sans intervention humaine.</p>
+        <p>Un agent s'arrête quand le travail a l'air fini. Les tests tranchent à sa place.</p>
       </div>
     </div>
 
     <div class="offres-pied rv">
-      <p>Ce que ça change en équipe : le même comportement pour tout le monde, y compris pour ceux qui n'écrivent pas de prompts.</p>
+      <p>En équipe, le même comportement pour tout le monde.</p>
       <a class="btn btn-linkedin" href="claude-code/"><span>Ma configuration complète</span><span class="fl">→</span></a>
     </div>
   </div>
@@ -1395,7 +1249,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   <div class="wrap">
     <div class="stete">
       <div class="haut"><span class="para">§ 06 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
-      <h2 class="rv">15 ans de terrain.</h2>
+      <h2>15 ans de terrain.</h2>
     </div>
     <div class="registre" data-stagger>
       <div class="ligne-m"><span class="an">2022 — AUJ.</span><span class="qui">Europcar Mobility Group<small>Technical Lead</small></span><span class="quoi">Événementiel Kafka, SSO Europcar / Goldcar, 3 M+ profils unifiés.</span></div>
@@ -1416,11 +1270,11 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </section>
 
 <!-- ============================ CONTACT ============================ -->
-<section class="finale encre panneau p-sauge" id="contact">
+<section class="finale encre panneau" id="contact">
   <div class="wrap">
     <div class="stete" style="margin-bottom:0">
       <div class="haut"><span class="para">§ 07 — Contact</span><span class="fig">réponse rapide</span></div>
-      <h2 class="rv" style="margin-top:clamp(18px,3vw,30px)">Parlons de <span class="accent">votre système.</span></h2>
+      <h2 style="margin-top:clamp(18px,3vw,30px)">Parlons de <span class="accent">votre système.</span></h2>
     </div>
     <p class="conclusion rv"><b>30 minutes suffisent</b> pour savoir si je peux vous aider. Je vous donne mon avis — même si la conclusion est que vous n'avez pas besoin de moi.</p>
     <div class="fin-ctas rv">
@@ -1447,6 +1301,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 </footer>
 
 <script>
+document.documentElement.classList.add('js');
 /* Atelier — commutation des figures d'architecture */
 (function(){
   var tabs=Array.prototype.slice.call(document.querySelectorAll('.onglets [role="tab"]'));
@@ -1491,18 +1346,21 @@ document.querySelectorAll('[data-stagger]').forEach(function(g){
   addEventListener('scroll',maj,{passive:true});maj();
 })();
 
-/* Révélations au scroll */
+/* Révélations au scroll — balayage déterministe : rien ne peut rester masqué */
 (function(){
-  if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')});
-    return;
-  }
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}
+  var enAttente=false;
+  function balayer(){
+    enAttente=false;
+    var h=innerHeight*.92;
+    document.querySelectorAll('.rv:not(.on)').forEach(function(e){
+      var r=e.getBoundingClientRect();
+      if(r.top<h&&r.bottom>0)e.classList.add('on');
     });
-  },{threshold:.12});
-  document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+  }
+  function planifier(){ if(!enAttente){enAttente=true;requestAnimationFrame(balayer)} }
+  addEventListener('scroll',planifier,{passive:true});
+  addEventListener('resize',planifier,{passive:true});
+  balayer();
 })();
 
 /* Compteurs — les nombres réels sont déjà dans le HTML.
