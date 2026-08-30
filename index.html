@@ -73,6 +73,7 @@
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a class="nav-cta" href="#tarifs">Prendre un dossard</a></li>
     </ul>
+    <div class="progres" aria-hidden="true"><i></i></div>
   </div>
 </header>
 
@@ -186,6 +187,42 @@
       <div class="bande temps-ligne">
         <span class="damier" aria-hidden="true"></span>
         <p>LA LIGNE N'EST PAS UNE FIN — <em>c'est là que l'impact commence.</em></p>
+      </div>
+    </div>
+
+    <!-- Le dossard : recto la course, verso le réseau. Le même objet des deux
+         côtés de la ligne — c'est la promesse du hero, rendue manipulable. -->
+    <div class="deux-faces reveal">
+      <button class="dossard" type="button" aria-pressed="false" aria-label="Dossard 001 — retourner pour voir la face profil">
+        <span class="d-inner">
+          <span class="d-face d-recto">
+            <span class="d-head">
+              <span class="d-logo">R<i></i>O<i></i>I</span>
+              <span class="d-ed">Édition 01</span>
+            </span>
+            <span class="d-num">001</span>
+            <span class="d-foot"><span>Paris La Défense</span><span>Sept. 2027</span></span>
+          </span>
+          <span class="d-face d-verso">
+            <span class="d-head">
+              <span class="d-logo">R<i></i>O<i></i>I</span>
+              <span class="d-ed">Profil</span>
+            </span>
+            <span class="d-champs">
+              <span class="d-champ"><b>Nom</b><span>Ton nom</span></span>
+              <span class="d-champ"><b>Fonction</b><span>Ce que tu décides</span></span>
+              <span class="d-champ"><b>Entreprise</b><span>Ce que tu construis</span></span>
+            </span>
+            <span class="d-actif">■ Accès réseau actif</span>
+          </span>
+        </span>
+      </button>
+
+      <div class="df-txt">
+        <h3>Le même objet,<br class="br-desk"> <span class="creuse">deux fois.</span></h3>
+        <p>Avant la ligne, c'est un dossard&nbsp;: un numéro, une puce, un chrono. Il ne sait rien de toi et c'est très bien ainsi — sur le bitume, personne ne demande ta fonction.</p>
+        <p>Après la ligne, <b>c'est le même carton qui t'ouvre le parvis</b> — nom, fonction, entreprise. Tu ne changes pas de badge&nbsp;: tu changes de conversation.</p>
+        <button class="d-retourne" type="button" tabindex="-1" aria-hidden="true">Retourne-le</button>
       </div>
     </div>
   </div>
@@ -391,15 +428,15 @@
         <span class="c-k">Quartier d'affaires d'Europe</span>
       </div>
       <div class="chiffre">
-        <span class="c-v">180&nbsp;000</span>
+        <span class="c-v" data-compte="180000" data-format="espace">180&nbsp;000</span>
         <span class="c-k">Salariés chaque jour</span>
       </div>
       <div class="chiffre">
-        <span class="c-v">500</span>
+        <span class="c-v" data-compte="500">500</span>
         <span class="c-k">Entreprises implantées</span>
       </div>
       <div class="chiffre">
-        <span class="c-v">3,5</span>
+        <span class="c-v" data-compte="3,5">3,5</span>
         <span class="c-k">Millions de m² de bureaux</span>
       </div>
     </div>

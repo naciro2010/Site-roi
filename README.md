@@ -14,6 +14,15 @@ Le site (refonte from scratch) reprend le système des affiches R.O.I. : deux fo
 
 Aucune dépendance externe (pas de Google Fonts, pas de JS tiers) — 100 % statique.
 
+## Les quatre gestes d'interface
+
+Tout part du même motif : **la ligne**. Rien n'est décoratif au sens strict — chaque élément dit quelque chose de l'événement.
+
+1. **La typo évidée.** Les titres marchent en deux temps : le premier plein, le second tracé au contour (`.creuse`, via `-webkit-text-stroke`). C'est le geste des affiches. En dessous de 620 px le corps devient trop petit pour qu'un contour reste lisible : on revient au plein.
+2. **La ligne de progression.** Le filet sous la nav se remplit d'orange à mesure qu'on descend, **damier d'arrivée en tête**. La largeur passe par la variable `--progres` posée en JS ; la nav surligne au passage la section courante.
+3. **Le dossard recto/verso.** « Un seul dossard : il te fait franchir la ligne, puis il devient ton profil » — la phrase existait, l'objet non. Recto la course (numéro, chrono, œillets d'épingle), verso le réseau (nom, fonction, entreprise). **Le même papier des deux côtés** : c'est justement l'argument. Retournable au clic et au clavier (`aria-pressed`).
+4. **Les compteurs.** Les chiffres de La Défense se composent à l'entrée dans le champ. La valeur finale est écrite en dur dans le HTML : sans JS, ou en `prefers-reduced-motion`, le chiffre reste juste — l'animation ne fait que retarder son affichage.
+
 ## Le positionnement : un réseau, pas une course avec afterwork
 
 R.O.I s'adresse aux **entrepreneurs, intrapreneurs, cadres dirigeants et commerciaux** — plus les investisseurs et conseils. L'accès au dossard est donc **vérifié**, par l'une de trois voies au choix : extrait **Kbis**, **avis de situation SIRENE**, ou **cooptation employeur**. Un seul critère : exercer — ni seuil de chiffre d'affaires, ni taille d'entreprise minimum, ni chrono à tenir.
