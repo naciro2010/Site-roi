@@ -127,7 +127,7 @@ img{max-width:100%}
 }
 .btn .arr{font-family:'JetBrains Mono',monospace;font-weight:700;transition:transform .15s ease}
 .btn:hover .arr{transform:translateX(5px)}
-.btn:focus-visible{outline:3px solid var(--impact);outline-offset:3px}
+.btn:focus-visible{outline:3px solid var(--texte);outline-offset:3px}
 .btn-impact{background:var(--impact);border-color:var(--impact);color:var(--craie)}
 .btn-impact:hover{background:var(--craie);border-color:var(--craie);color:var(--encre)}
 .btn-encre{background:var(--craie);border-color:var(--craie);color:var(--encre)}
@@ -139,6 +139,18 @@ img{max-width:100%}
 /* ---- Reveal ---- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:none}
+
+/* ---- Focus clavier ----
+   L'outil est var(--texte), pas l'orange : l'orange ne fait que 2,9:1
+   sur la craie, sous le seuil de 3:1 exigé pour un indicateur de focus.
+   --texte bascule avec le fond, donc le contraste tient sur les deux. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible{
+  outline:3px solid var(--texte);
+  outline-offset:3px;
+}
 
 /* ---- Saut au contenu (a11y) ---- */
 .skip{
@@ -296,7 +308,7 @@ section{padding:clamp(80px,10vw,140px) 0}
 .light{
   background:var(--craie);color:var(--encre);
   --muted:#57534A;
-  --beton:#7C7669;
+  --beton:#6B6558;
   --texte:#070707;
   --ligne-encre:rgba(14,13,12,.16);
 }
@@ -484,7 +496,7 @@ section{padding:clamp(80px,10vw,140px) 0}
   transition:transform .15s ease,background .15s ease,color .15s ease,border-color .15s ease;
 }
 .lien-page:hover .lp-go{transform:translateX(6px);background:var(--impact);border-color:var(--impact);color:#EFEBE2}
-.lien-page:focus-visible{outline:3px solid var(--impact);outline-offset:3px}
+.lien-page:focus-visible{outline:3px solid var(--texte);outline-offset:3px}
 
 /* ==========================================================================
    FORMATS
@@ -558,7 +570,7 @@ section{padding:clamp(80px,10vw,140px) 0}
   color:var(--impact);flex:none;
 }
 .faq details[open] summary::after{content:"–"}
-.faq summary:focus-visible{outline:2px solid var(--impact);outline-offset:4px}
+.faq summary:focus-visible{outline:3px solid var(--texte);outline-offset:4px}
 .faq .a{padding:0 0 26px;max-width:72ch;font-size:15.5px;font-weight:500;color:var(--muted)}
 .faq .a + .a{padding-top:0;margin-top:-10px}
 .faq .a b{color:var(--texte);font-weight:700}
@@ -599,7 +611,7 @@ section{padding:clamp(80px,10vw,140px) 0}
 /* La finale reprend l'affiche craie : fond papier, titre fin, barre orange */
 .finale{
   background:var(--craie);color:var(--encre);border-top:1px solid rgba(14,13,12,.16);
-  --muted:#57534A;--beton:#7C7669;--texte:#070707;--ligne-encre:rgba(14,13,12,.16);
+  --muted:#57534A;--beton:#6B6558;--texte:#070707;--ligne-encre:rgba(14,13,12,.16);
 }
 .finale h2{font-size:clamp(48px,8.5vw,140px)}
 .finale h2 .creuse{color:inherit}
@@ -617,7 +629,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 .foot-logo i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
 .foot-base{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--beton);margin-top:12px}
 .foot-cols{display:flex;gap:clamp(30px,6vw,90px);flex-wrap:wrap}
-.foot-cols h4{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--beton);margin-bottom:16px}
+.foot-cols h3{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--beton);margin-bottom:16px}
 .foot-cols ul{list-style:none}
 .foot-cols li{margin-bottom:10px}
 .foot-cols a{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
