@@ -4,459 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R.O.I — Run On Invest · L'impact après la ligne d'arrivée</title>
-<meta name="description" content="R.O.I — Run On Invest. Une course entre les tours de Paris La Défense (5, 10 ou 21,5 km), puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027. Un seul dossard.">
-<style>
-/* ==========================================================================
-   R.O.I — Identité « LA LIGNE »
-   Papier craie · Encre · Orange impact
-   Archivo variable (62–125% de chasse) · JetBrains Mono (chrono)
-   Convention de marque : T– = avant la ligne, T+ = après la ligne.
-   ========================================================================== */
+<meta name="description" content="R.O.I — Run On Invest. Une course entre les tours de Paris La Défense (5, 10 ou 21,1 km), le plus grand quartier d'affaires d'Europe, puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027. Un seul dossard.">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070707'/%3E%3Crect y='7' width='16' height='1' fill='%23EFEBE2' opacity='.45'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23FF4400'/%3E%3C/svg%3E">
 
-@font-face{
-  font-family:'Archivo VF';
-  src:url('fonts/archivo-latin-wdth-normal.woff2') format('woff2-variations');
-  font-weight:100 900;
-  font-stretch:62% 125%;
-  font-style:normal;
-  font-display:swap;
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'Archivo VF';
-  src:url('fonts/archivo-latin-ext-wdth-normal.woff2') format('woff2-variations');
-  font-weight:100 900;
-  font-stretch:62% 125%;
-  font-style:normal;
-  font-display:swap;
-  unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="R.O.I — Run On Invest">
+<meta property="og:title" content="R.O.I — Run On Invest · L'impact après la ligne d'arrivée">
+<meta property="og:description" content="Une course entre les tours de Paris La Défense, puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027. Un seul dossard.">
+<meta name="twitter:card" content="summary_large_image">
 
-:root{
-  --craie:#EFEBE2;
-  --craie-2:#E7E1D4;
-  --encre:#070707;
-  --encre-2:#101010;
-  --impact:#FF4400;
-  --beton:#8F897B;
-  --muted:#B0A99C;
-  --ligne-craie:rgba(239,235,226,.14);
-  --ligne-encre:rgba(239,235,226,.09);
-  --pad:clamp(20px,4vw,56px);
-}
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/roi.css">
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-::selection{background:var(--impact);color:var(--craie)}
-
-body{
-  position:relative;
-  font-family:'Archivo VF',Archivo,system-ui,sans-serif;
-  font-stretch:100%;
-  background:var(--encre);
-  color:var(--craie);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "R.O.I — Run On Invest · Édition 01",
+  "description": "Une course de 5, 10 ou 21,1 km entre les tours de Paris La Défense, suivie du plus grand événement de networking entre entrepreneurs de France.",
+  "sport": "Course à pied",
+  "startDate": "2027-09",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Paris La Défense — Grande Arche",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1 Parvis de la Défense",
+      "postalCode": "92044",
+      "addressLocality": "Paris La Défense",
+      "addressCountry": "FR"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "R.O.I — Run On Invest",
+    "email": "contact@runoninvest.fr",
+    "sameAs": ["https://www.instagram.com/runoninvest/"]
+  },
+  "offers": [
+    { "@type": "Offer", "name": "Early Bird", "price": "350", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "validThrough": "2026-11-30" },
+    { "@type": "Offer", "name": "Régulier", "price": "400", "priceCurrency": "EUR", "validThrough": "2027-01-31" },
+    { "@type": "Offer", "name": "Last Call", "price": "500", "priceCurrency": "EUR" }
+  ]
 }
-/* ---- Grain film (texture signature de l'affiche) ----
-   Une seule couche de bruit fin par pixel, sans seuillage : gris moyen
-   dont l'alpha suit le bruit — texture l'encre sans la délaver,
-   pique légèrement la craie. */
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;
-  z-index:999;opacity:.55;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.62  0 0 0 0 0.62  0 0 0 0 0.62  0.8 0 0 0 -0.3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
-/* ---- Types de marque ----
-   Titres : Archivo étendu (125%) en graisse FINE — le style affiche.
-   Labels : JetBrains Mono, majuscules, espacées. */
-.display{
-  font-stretch:125%;
-  font-weight:250;
-  text-transform:uppercase;
-  line-height:1.05;
-  letter-spacing:.005em;
-}
-.mono{
-  font-family:'JetBrains Mono',monospace;
-  font-weight:500;
-  text-transform:uppercase;
-}
-h1,h2,h3{font-stretch:125%;font-weight:250;text-transform:uppercase;line-height:1.05;letter-spacing:.005em}
-a{color:inherit}
-img{max-width:100%}
-.wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-
-/* ---- Étiquette chrono de section : T+01 / NOM ---- */
-.tmark{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:'JetBrains Mono',monospace;font-weight:500;
-  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted);
-}
-.tmark::before{content:"";width:8px;height:8px;background:var(--impact);flex:none}
-.tmark b{color:var(--impact);font-weight:700}
-
-/* ---- Barre d'impact (motif signature de l'affiche) ---- */
-.bar{position:relative;height:4px;width:140px;background:var(--impact);border:none}
-.laligne{position:relative;height:1px;background:var(--ligne-encre)}
-.laligne::after{
-  content:"";position:absolute;right:0;top:-6px;height:16px;width:112px;
-  background:
-    repeating-conic-gradient(var(--craie) 0% 25%, transparent 0% 50%) 0 0/16px 16px;
-  opacity:.85;
-}
-
-/* ---- Boutons (labels mono, bordure fine, héritent du contexte clair/sombre) ---- */
-.btn{
-  display:inline-flex;align-items:center;gap:14px;
-  font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
-  font-size:13px;text-decoration:none;cursor:pointer;
-  padding:17px 26px;border:1px solid currentColor;
-  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .15s ease;
-}
-.btn .arr{font-family:'JetBrains Mono',monospace;font-weight:700;transition:transform .15s ease}
-.btn:hover .arr{transform:translateX(5px)}
-.btn:focus-visible{outline:3px solid var(--impact);outline-offset:3px}
-.btn-impact{background:var(--impact);border-color:var(--impact);color:var(--craie)}
-.btn-impact:hover{background:var(--craie);border-color:var(--craie);color:var(--encre)}
-.btn-encre{background:var(--craie);border-color:var(--craie);color:var(--encre)}
-.btn-encre:hover{background:var(--impact);border-color:var(--impact);color:var(--craie)}
-.btn-ghost{background:transparent;color:inherit}
-.btn-ghost:hover{background:var(--craie);color:var(--encre)}
-.light .btn-ghost:hover{background:var(--encre);color:var(--craie)}
-
-/* ---- Reveal ---- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.on{opacity:1;transform:none}
-
-/* ==========================================================================
-   NAV
-   ========================================================================== */
-header{
-  position:sticky;top:0;z-index:200;
-  background:color-mix(in srgb, var(--encre) 88%, transparent);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--ligne-encre);
-}
-.nav-in{display:flex;align-items:stretch;justify-content:space-between;max-width:1360px;margin:0 auto;position:relative}
-.logo{
-  display:flex;align-items:center;gap:3px;
-  padding:16px var(--pad);text-decoration:none;
-  font-stretch:118%;font-weight:300;font-size:22px;letter-spacing:.04em;line-height:1;
-}
-.logo i{display:inline-block;width:6px;height:6px;background:var(--impact);margin:0 5px;align-self:flex-end;margin-bottom:3px}
-.nav-links{display:flex;list-style:none;align-items:stretch}
-.nav-links a{
-  display:flex;align-items:center;height:100%;padding:0 18px;
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
-  text-decoration:none;border-left:1px solid var(--ligne-encre);
-  transition:background .12s ease,color .12s ease;
-}
-.nav-links a:hover{background:var(--craie);color:var(--encre)}
-.nav-links a.nav-cta{background:var(--impact);color:var(--craie);border-left:none;padding:0 26px}
-.nav-links a.nav-cta:hover{background:var(--craie);color:var(--encre)}
-.burger{
-  display:none;background:none;border:none;cursor:pointer;
-  padding:0 var(--pad);font-family:'JetBrains Mono',monospace;font-weight:700;
-  font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--craie);
-}
-
-/* ==========================================================================
-   HERO
-   ========================================================================== */
-.hero{padding-top:clamp(48px,8vh,96px)}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:18px}
-.hero-chrono{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton)}
-.hero-chrono b{color:var(--impact);font-weight:700}
-
-.hero-roi{
-  font-stretch:125%;font-weight:250;line-height:.82;letter-spacing:0;
-  font-size:clamp(90px,20vw,300px);
-  display:flex;align-items:baseline;justify-content:space-between;width:100%;
-  user-select:none;
-}
-.hero-roi i{flex:none;width:.1em;height:.1em;background:var(--impact);align-self:flex-end;margin-bottom:.06em}
-
-.hero-strip{
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  border-top:1px solid var(--craie);border-bottom:1px solid var(--ligne-encre);
-  padding:14px 0;margin-top:clamp(18px,3vw,34px);flex-wrap:wrap;
-}
-.hero-strip .rsi{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(13px,1.7vw,18px);letter-spacing:.3em;text-transform:uppercase}
-.hero-strip .rsi em{font-style:normal;color:var(--impact)}
-.hero-strip .damier{
-  height:18px;flex:1;min-width:120px;max-width:420px;
-  background:repeating-conic-gradient(var(--craie) 0% 25%, transparent 0% 50%) 0 0/18px 18px;
-  opacity:.5;
-}
-.hero-strip .mono{font-size:12px;letter-spacing:.2em;color:var(--beton)}
-
-.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,80px);padding:clamp(36px,5vw,64px) 0}
-.hero-tagline{
-  font-stretch:125%;font-weight:250;text-transform:uppercase;line-height:1.08;letter-spacing:.005em;
-  font-size:clamp(28px,4.2vw,56px);
-}
-.hero-tagline .souligne{color:var(--impact);position:relative;white-space:nowrap}
-.hero-tagline .souligne::after{content:"";position:absolute;left:-2%;right:-6%;bottom:.02em;height:.06em;background:var(--impact)}
-.hero-right p{font-size:clamp(16px,1.5vw,19px);font-weight:500;max-width:46ch;color:var(--muted)}
-.hero-right p b{color:var(--craie)}
-.hero-right p + p{margin-top:14px}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-
-.hero-meta{border-top:1px solid var(--craie);display:grid;grid-template-columns:repeat(4,1fr)}
-.hero-meta>div{padding:20px var(--pad) 20px 0;border-right:1px solid var(--ligne-encre)}
-.hero-meta>div:last-child{border-right:none}
-.hero-meta .k{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton);display:block;margin-bottom:8px}
-.hero-meta .v{font-stretch:110%;font-weight:500;font-size:clamp(14px,1.4vw,18px);text-transform:uppercase;letter-spacing:.04em;line-height:1.25}
-
-/* ==========================================================================
-   MARQUEE
-   ========================================================================== */
-.marquee{background:var(--encre-2);color:var(--craie);overflow:hidden;border-top:1px solid var(--ligne-encre);border-bottom:1px solid var(--ligne-encre)}
-.marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite;padding:16px 0}
-.marquee span{
-  font-stretch:125%;font-weight:250;text-transform:uppercase;white-space:nowrap;
-  font-size:clamp(20px,2.6vw,34px);letter-spacing:.01em;padding:0 8px;line-height:1;
-}
-.marquee .sep{font-family:'JetBrains Mono',monospace;font-weight:500;padding:0 22px;font-size:clamp(16px,2vw,26px);align-self:center;color:var(--impact)}
-.marquee .out{color:var(--beton)}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ==========================================================================
-   SECTIONS COMMUNES — le site alterne les deux fonds de l'affiche :
-   encre grainée (défaut) et craie grainée (.light)
-   ========================================================================== */
-section{padding:clamp(80px,10vw,140px) 0}
-.dark{background:var(--encre-2)}
-.light{
-  background:var(--craie);color:var(--encre);
-  --muted:#57534A;
-  --beton:#7C7669;
-  --ligne-encre:rgba(14,13,12,.16);
-}
-.sec-head{margin-bottom:clamp(40px,6vw,72px)}
-.sec-head .tmark{margin-bottom:26px}
-.sec-head h2{font-size:clamp(42px,7vw,104px)}
-.sec-head h2 .creuse{color:inherit}
-/* La barre orange de l'affiche, sous chaque titre de section */
-.sec-head h2::after,.finale h2::after{
-  content:"";display:block;width:min(240px,34%);height:5px;
-  background:var(--impact);margin-top:clamp(26px,4vw,44px);
-}
-.sec-head .intro{margin-top:26px;max-width:62ch;font-size:17px;font-weight:500;color:var(--muted)}
-
-/* ==========================================================================
-   MANIFESTE
-   ========================================================================== */
-#manifeste .stances{max-width:880px}
-#manifeste .stance{
-  font-stretch:110%;font-weight:350;line-height:1.3;
-  font-size:clamp(22px,3.1vw,40px);
-  padding:clamp(22px,3vw,34px) 0;
-  border-bottom:1px solid var(--ligne-encre);
-  color:var(--muted);
-}
-#manifeste .stance b{color:var(--craie);font-weight:450}
-#manifeste .stance .imp{color:var(--impact)}
-#manifeste .stance:first-child{padding-top:0}
-#manifeste .sceau{
-  margin-top:clamp(40px,6vw,70px);
-  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
-}
-#manifeste .sceau .sig{font-stretch:125%;font-weight:250;font-size:clamp(48px,8vw,120px);line-height:.85;text-transform:uppercase}
-#manifeste .sceau .sig i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
-#manifeste .sceau .base{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);padding-bottom:10px}
-#manifeste .sceau .base b{color:var(--impact)}
-
-/* ==========================================================================
-   DEUX TEMPS (T– / T+)
-   ========================================================================== */
-.temps-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ligne-encre)}
-.temps{padding:clamp(30px,4vw,54px);position:relative}
-.temps:first-child{border-right:1px solid var(--ligne-encre)}
-.temps .t-chrono{
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(28px,3.4vw,44px);
-  letter-spacing:-.02em;margin-bottom:8px;
-}
-.temps.apres .t-chrono{color:var(--impact)}
-.temps h3{font-size:clamp(30px,3.6vw,52px);margin-bottom:18px}
-.temps .lead{font-size:16px;font-weight:500;color:var(--muted);margin-bottom:26px;max-width:44ch}
-.temps ul{list-style:none}
-.temps li{
-  display:flex;gap:14px;align-items:baseline;
-  padding:12px 0;border-top:1px solid var(--ligne-encre);
-  font-stretch:105%;font-weight:500;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;
-}
-.temps li .mono{flex:none;font-size:11px;color:var(--impact);letter-spacing:.1em;font-weight:700}
-.temps-ligne{
-  grid-column:1 / -1;
-  display:flex;align-items:center;gap:22px;
-  background:var(--encre);color:#EFEBE2;
-  padding:18px clamp(30px,4vw,54px);
-}
-.temps-ligne .damier{height:20px;width:100px;flex:none;background:repeating-conic-gradient(#EFEBE2 0% 25%, transparent 0% 50%) 0 0/20px 20px;opacity:.7}
-.temps-ligne p{font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)}
-.temps-ligne p em{font-style:normal;color:var(--impact)}
-
-/* ==========================================================================
-   FORMATS
-   ========================================================================== */
-.formats{border-top:1px solid var(--ligne-encre)}
-.format{
-  display:grid;grid-template-columns:minmax(160px,.9fr) 1.4fr 1fr auto;
-  gap:clamp(16px,3vw,44px);align-items:center;
-  padding:clamp(26px,3.5vw,40px) 0;border-bottom:1px solid var(--ligne-encre);
-  transition:background .15s ease,color .15s ease;
-  position:relative;text-decoration:none;
-}
-.format:hover{background:var(--craie);color:var(--encre)}
-.format:hover .f-why{color:#4A463E}
-.format .f-km{font-stretch:125%;font-weight:250;font-size:clamp(46px,6.5vw,90px);line-height:.85;text-transform:uppercase;white-space:nowrap}
-.format .f-km small{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.28em;letter-spacing:.14em;vertical-align:.25em;margin-left:.25em;color:var(--impact)}
-.format .f-name{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(13px,1.5vw,16px);text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px}
-.format .f-why{font-size:15px;font-weight:500;color:var(--muted);max-width:44ch}
-.format .f-data{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;line-height:2}
-.format .f-data b{color:var(--impact);font-weight:700}
-.format .f-go{
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;
-  border:1px solid currentColor;width:52px;height:52px;display:flex;align-items:center;justify-content:center;
-  transition:transform .15s ease;
-}
-.format:hover .f-go{transform:translateX(6px);border-color:var(--impact);color:var(--impact)}
-.formats-note{
-  display:flex;gap:16px;align-items:center;padding:20px 0;flex-wrap:wrap;
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--beton);
-}
-.formats-note b{color:var(--impact);font-weight:700}
-
-/* ==========================================================================
-   LIEU
-   ========================================================================== */
-#lieu h2 span{display:block}
-#lieu .arche{
-  font-size:clamp(50px,9vw,150px);
-}
-#lieu .arche .creuse{color:inherit}
-.lieu-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ligne-encre);margin-top:clamp(40px,6vw,70px)}
-.lieu-cell{padding:clamp(26px,3vw,42px);border-right:1px solid var(--ligne-encre)}
-.lieu-cell:last-child{border-right:none}
-.lieu-cell .n{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--impact);font-size:13px;letter-spacing:.2em;display:block;margin-bottom:14px}
-.lieu-cell h3{font-size:clamp(20px,2.2vw,30px);font-stretch:90%;margin-bottom:12px}
-.lieu-cell p{font-size:15px;color:var(--muted);font-weight:500}
-
-/* ==========================================================================
-   TARIFS
-   ========================================================================== */
-.vagues{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ligne-encre)}
-.vague{padding:clamp(28px,3.5vw,46px);border-right:1px solid var(--ligne-encre);display:flex;flex-direction:column;gap:18px;position:relative}
-.vague:last-child{border-right:none}
-.vague .v-tag{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton)}
-.vague h3{font-size:clamp(24px,2.6vw,36px);font-stretch:90%}
-.vague .v-prix{font-stretch:125%;font-weight:250;font-size:clamp(50px,5.6vw,80px);line-height:.85}
-.vague .v-prix small{font-size:.4em;vertical-align:.85em;font-stretch:100%}
-.vague .v-lim{font-size:14px;font-weight:500;color:var(--muted)}
-.vague .v-cta{margin-top:auto}
-.vague.hot{background:var(--encre);color:#EFEBE2}
-.vague.hot .v-tag,.vague.hot .v-lim{color:rgba(239,235,226,.72)}
-.vague.hot .btn{border-color:var(--impact);background:var(--impact);color:#EFEBE2}
-.vague.hot .btn:hover{background:#EFEBE2;border-color:#EFEBE2;color:var(--encre)}
-.vague .badge{
-  position:absolute;top:-16px;left:clamp(28px,3.5vw,46px);
-  background:var(--impact);color:#EFEBE2;
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  padding:7px 12px;
-}
-.tarif-note{margin-top:26px;font-size:15px;font-weight:500;color:var(--muted);max-width:70ch}
-.tarif-note b{color:var(--impact)}
-
-/* ==========================================================================
-   FINALE
-   ========================================================================== */
-/* La finale reprend l'affiche craie : fond papier, titre fin, barre orange */
-.finale{
-  background:var(--craie);color:var(--encre);border-top:1px solid rgba(14,13,12,.16);
-  --muted:#57534A;--beton:#7C7669;--ligne-encre:rgba(14,13,12,.16);
-}
-.finale h2{font-size:clamp(48px,8.5vw,140px)}
-.finale h2 .creuse{color:inherit}
-.finale .fin-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:40px}
-.finale p{font-size:clamp(16px,1.6vw,20px);font-weight:500;max-width:52ch;color:var(--muted)}
-.finale .btn{border-color:var(--impact);background:var(--impact);color:#EFEBE2;font-size:14px;padding:20px 32px}
-.finale .btn:hover{background:var(--encre);color:#EFEBE2;border-color:var(--encre)}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0 34px}
-.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid var(--ligne-encre)}
-.foot-logo{font-stretch:125%;font-weight:250;font-size:44px;line-height:.9;text-transform:uppercase}
-.foot-logo i{display:inline-block;width:.12em;height:.12em;background:var(--impact);margin:0 .05em}
-.foot-base{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--beton);margin-top:12px}
-.foot-cols{display:flex;gap:clamp(30px,6vw,90px);flex-wrap:wrap}
-.foot-cols h4{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--beton);margin-bottom:16px}
-.foot-cols ul{list-style:none}
-.foot-cols li{margin-bottom:10px}
-.foot-cols a{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
-.foot-cols a:hover{color:var(--impact)}
-.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--beton)}
-
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-@media (max-width:980px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-meta{grid-template-columns:repeat(2,1fr)}
-  .hero-meta>div{border-bottom:1px solid var(--ligne-encre)}
-  .temps-grid{grid-template-columns:1fr}
-  .temps:first-child{border-right:none;border-bottom:1px solid var(--ligne-encre)}
-  .format{grid-template-columns:1fr;gap:14px}
-  .format .f-go{display:none}
-  .lieu-grid{grid-template-columns:1fr}
-  .lieu-cell{border-right:none;border-bottom:1px solid var(--ligne-encre)}
-  .lieu-cell:last-child{border-bottom:none}
-  .vagues{grid-template-columns:1fr}
-  .vague{border-right:none;border-bottom:1px solid var(--ligne-encre)}
-  .vague:last-child{border-bottom:none}
-}
-@media (max-width:860px){
-  .nav-links{
-    display:none;position:absolute;top:100%;left:0;right:0;
-    flex-direction:column;background:var(--craie);border-bottom:1px solid var(--encre);
-  }
-  .nav-links.open{display:flex}
-  .nav-links a{padding:18px var(--pad);border-left:none;border-top:1px solid rgba(14,13,12,.14);height:auto;color:var(--encre)}
-  .nav-links a.nav-cta{color:var(--craie)}
-  .burger{display:block}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .marquee-track{animation:none}
-  .reveal{opacity:1;transform:none;transition:none}
-  .btn,.format,.f-go{transition:none}
-}
-</style>
+</script>
 </head>
 <body>
+
+<a class="skip" href="#top">Aller au contenu</a>
 
 <!-- ============================ NAV ============================ -->
 <header>
   <div class="nav-in">
     <a class="logo" href="#top" aria-label="R.O.I — Run On Invest">R<i></i>O<i></i>I</a>
-    <button class="burger" aria-expanded="false" aria-controls="nav-links" onclick="toggleNav(this)">Menu</button>
+    <button class="burger" aria-expanded="false" aria-controls="nav-links">Menu</button>
     <ul class="nav-links" id="nav-links">
       <li><a href="#manifeste">Manifeste</a></li>
       <li><a href="#temps">La journée</a></li>
-      <li><a href="#formats">Les formats</a></li>
+      <li><a href="#reseau">Le réseau</a></li>
+      <li><a href="pour-qui/">Pour qui</a></li>
+      <li><a href="#formats">Formats</a></li>
       <li><a href="#lieu">Le lieu</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a class="nav-cta" href="#tarifs">Prendre un dossard</a></li>
     </ul>
+    <div class="progres" aria-hidden="true"><i></i></div>
   </div>
 </header>
 
@@ -475,17 +92,17 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
     <div class="hero-strip">
       <span class="rsi">RUN <em>ON</em> INVEST</span>
       <span class="damier" aria-hidden="true"></span>
-      <span class="mono">FR · 5K — 10K — 21,5K</span>
+      <span class="mono">FR · 5K — 10K — 21,1K</span>
     </div>
 
     <div class="hero-grid">
       <p class="hero-tagline reveal">L'impact <span class="souligne">après</span> la ligne d'arrivée.</p>
       <div class="hero-right reveal">
-        <p>Une course au cœur de Paris La Défense — <b>5, 10 ou 21,5 km</b> entre les tours — suivie du <b>plus grand événement de networking entre entrepreneurs de France</b>.</p>
-        <p>Un seul dossard. Il te fait franchir la ligne, puis il devient ton profil pour tout ce qui commence après.</p>
+        <p>Une course au cœur de Paris La Défense — <b>5, 10 ou 21,1 km</b> entre les tours du <b>plus grand quartier d'affaires d'Europe</b>.</p>
+        <p>À l'arrivée, le <b>plus grand événement de networking entre entrepreneurs de France</b>. Un seul dossard&nbsp;: il te fait franchir la ligne, puis il devient ton profil pour tout ce qui commence après.</p>
         <div class="hero-ctas">
           <a class="btn btn-impact" href="#tarifs"><span>Prendre un dossard</span><span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="#manifeste"><span>Lire le manifeste</span><span class="arr">↓</span></a>
+          <a class="btn btn-ghost" href="pour-qui/"><span>C'est pour qui&nbsp;?</span><span class="arr">→</span></a>
         </div>
       </div>
     </div>
@@ -493,7 +110,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
     <div class="hero-meta">
       <div><span class="k">LIEU</span><span class="v">Paris La Défense — Grande Arche</span></div>
       <div><span class="k">DATE</span><span class="v">Septembre 2027</span></div>
-      <div><span class="k">DISTANCES</span><span class="v">5 · 10 · 21,5 KM</span></div>
+      <div><span class="k">DISTANCES</span><span class="v">5 · 10 · 21,1 KM</span></div>
       <div><span class="k">UN DOSSARD</span><span class="v">Course + Networking</span></div>
     </div>
   </div>
@@ -503,12 +120,12 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <span>L'impact après la ligne d'arrivée</span><span class="sep">//</span>
-    <span class="out">Run On Invest</span><span class="sep">//</span>
-    <span>Paris La Défense</span><span class="sep">//</span>
+    <span class="out">Le plus grand quartier d'affaires d'Europe</span><span class="sep">//</span>
+    <span>Run On Invest</span><span class="sep">//</span>
     <span class="out">Septembre 2027</span><span class="sep">//</span>
     <span>L'impact après la ligne d'arrivée</span><span class="sep">//</span>
-    <span class="out">Run On Invest</span><span class="sep">//</span>
-    <span>Paris La Défense</span><span class="sep">//</span>
+    <span class="out">Le plus grand quartier d'affaires d'Europe</span><span class="sep">//</span>
+    <span>Run On Invest</span><span class="sep">//</span>
     <span class="out">Septembre 2027</span><span class="sep">//</span>
   </div>
 </div>
@@ -548,10 +165,11 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
         <h3>La course</h3>
         <p class="lead">Un parcours fermé entre les tours de La Défense, départ et arrivée à la Grande Arche. Du bitume, du béton, du vertical — et un vrai chrono.</p>
         <ul>
-          <li><span class="mono">01</span> 5, 10 ou 21,5 km — même départ, même énergie</li>
+          <li><span class="mono">01</span> 5, 10 ou 21,1 km — même départ, même énergie</li>
           <li><span class="mono">02</span> Dossard chronométré + puce, classements officiels</li>
-          <li><span class="mono">03</span> T-shirt technique &amp; médaille finisher</li>
-          <li><span class="mono">04</span> Parcours entièrement privatisé</li>
+          <li><span class="mono">03</span> T-shirt R.O.I — porté sur la ligne, gardé après</li>
+          <li><span class="mono">04</span> Médaille finisher</li>
+          <li><span class="mono">05</span> Parcours entièrement privatisé</li>
         </ul>
       </div>
       <div class="temps apres">
@@ -560,26 +178,183 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
         <p class="lead">Passé la ligne, ton dossard devient ton profil. Place au plus grand networking d'entrepreneurs de France — endorphines comprises.</p>
         <ul>
           <li><span class="mono">01</span> Le plus grand networking d'entrepreneurs de France</li>
-          <li><span class="mono">02</span> Ton dossard = ton profil : il active ton accès</li>
-          <li><span class="mono">03</span> Des rencontres à hauteur d'effort, pas d'ascenseur</li>
-          <li><span class="mono">04</span> Des liens qui durent plus longtemps que les courbatures</li>
+          <li><span class="mono">02</span> Ton dossard = ton profil&nbsp;: il active ton accès</li>
+          <li><span class="mono">03</span> Des rencontres à hauteur d'efforts, pas d'ascenseur</li>
+          <li><span class="mono">04</span> Un réseau vérifié — chacun sait pourquoi l'autre est là</li>
+          <li><span class="mono">05</span> Des liens qui durent plus longtemps que les courbatures</li>
         </ul>
       </div>
-      <div class="temps-ligne">
+      <div class="bande temps-ligne">
         <span class="damier" aria-hidden="true"></span>
         <p>LA LIGNE N'EST PAS UNE FIN — <em>c'est là que l'impact commence.</em></p>
+      </div>
+    </div>
+
+    <!-- Le dossard : recto la course, verso le réseau. Le même objet des deux
+         côtés de la ligne — c'est la promesse du hero, rendue manipulable. -->
+    <div class="deux-faces reveal">
+      <button class="dossard" type="button" aria-pressed="false" aria-label="Dossard 001 — retourner pour voir la face profil">
+        <span class="d-inner">
+          <span class="d-face d-recto">
+            <span class="d-head">
+              <span class="d-logo">R<i></i>O<i></i>I</span>
+              <span class="d-ed">Édition 01</span>
+            </span>
+            <span class="d-num">001</span>
+            <span class="d-foot"><span>Paris La Défense</span><span>Sept. 2027</span></span>
+          </span>
+          <span class="d-face d-verso">
+            <span class="d-head">
+              <span class="d-logo">R<i></i>O<i></i>I</span>
+              <span class="d-ed">Profil</span>
+            </span>
+            <span class="d-champs">
+              <span class="d-champ"><b>Nom</b><span>Ton nom</span></span>
+              <span class="d-champ"><b>Fonction</b><span>Ce que tu décides</span></span>
+              <span class="d-champ"><b>Entreprise</b><span>Ce que tu construis</span></span>
+            </span>
+            <span class="d-actif">■ Accès réseau actif</span>
+          </span>
+        </span>
+      </button>
+
+      <div class="df-txt">
+        <h3>Le même objet,<br class="br-desk"> <span class="creuse">deux fois.</span></h3>
+        <p>Avant la ligne, c'est un dossard&nbsp;: un numéro, une puce, un chrono. Il ne sait rien de toi et c'est très bien ainsi — sur le bitume, personne ne demande ta fonction.</p>
+        <p>Après la ligne, <b>c'est le même carton qui t'ouvre le parvis</b> — nom, fonction, entreprise. Tu ne changes pas de badge&nbsp;: tu changes de conversation.</p>
+        <button class="d-retourne" type="button" tabindex="-1" aria-hidden="true">Retourne-le</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ FORMATS ============================ -->
-<section id="formats">
+<!-- ============================ LE RÉSEAU ============================
+     Le « laïus » demandé : ce qu'il y a derrière la course, en clair.
+     ================================================================= -->
+<section id="reseau">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+03</b> / LES FORMATS</span>
+      <span class="tmark"><b>T+03</b> / LE RÉSEAU</span>
+      <h2 class="h2-long">Une course d'entrepreneurs,<br class="br-desk"> <span class="creuse">pour les entrepreneurs.</span></h2>
+    </div>
+
+    <div class="laius reveal">
+      <div>
+        <p class="fort">R.O.I n'est pas une course grand public à laquelle on aurait ajouté un afterwork. C'est <span class="imp">un réseau professionnel</span> qui a choisi la course comme porte d'entrée.</p>
+        <p class="fort">Le dossard est vérifié. Pas pour filtrer les gens — pour garantir que celui qui court à côté de toi est là pour les mêmes raisons que toi.</p>
+      </div>
+      <div class="corps">
+        <p>Le jour J, sur le parvis de la Grande Arche, il n'y a que des gens qui décident&nbsp;: des fondateurs qui recrutent, des dirigeants qui arbitrent un budget, des intrapreneurs qui cherchent un partenaire, des commerciaux qui ouvrent des comptes. <b>Personne n'est là par hasard</b>, et tout le monde le sait — c'est ce qui change une conversation.</p>
+        <p>Et il y a la course. Quelques kilomètres d'effort partagé font tomber ce qu'un petit-déjeuner réseau met six mois à faire tomber&nbsp;: la posture, le titre sur la carte, la ligne hiérarchique. Après la ligne, la première question n'est pas «&nbsp;tu fais quoi&nbsp;?&nbsp;» mais «&nbsp;t'as fait quel temps&nbsp;?&nbsp;». <b>La suite vient toute seule, et elle vient vite.</b></p>
+        <p>C'est ça, le retour sur investissement&nbsp;: une matinée d'effort, et un carnet d'adresses qui ne ressemble à aucun autre — <b>parce qu'aucun salon ne fait courir ses participants ensemble avant de les faire parler.</b></p>
+      </div>
+    </div>
+
+    <div class="cadre profils reveal">
+      <div class="profil">
+        <span class="p-n">01</span>
+        <h3>Entrepreneurs &amp; fondateurs</h3>
+        <p>Tu diriges ta boîte — seul·e ou à trois cents. Tu viens chercher des pairs qui connaissent le même dilemme que toi, et parfois un client, un associé ou un tour de table.</p>
+        <p class="p-just">JUSTIFICATIF — <b>KBIS</b></p>
+      </div>
+      <div class="profil">
+        <span class="p-n">02</span>
+        <h3>Intrapreneurs</h3>
+        <p>Tu portes un projet à l'intérieur d'un groupe&nbsp;: un P&amp;L, une équipe, une roadmap et l'obligation de prouver. Les mêmes contraintes qu'un fondateur, avec un actionnaire de plus.</p>
+        <p class="p-just">JUSTIFICATIF — <b>COOPTATION EMPLOYEUR</b></p>
+      </div>
+      <div class="profil">
+        <span class="p-n">03</span>
+        <h3>Cadres dirigeants</h3>
+        <p>COMEX, CODIR, direction de BU ou de région. Tu arbitres, tu recrutes, tu signes. Ici, tu rencontres tes homologues sans passer par un salon ni par un cabinet.</p>
+        <p class="p-just">JUSTIFICATIF — <b>COOPTATION EMPLOYEUR</b></p>
+      </div>
+      <div class="profil">
+        <span class="p-n">04</span>
+        <h3>Commerciaux &amp; business developers</h3>
+        <p>Ouvrir des comptes, c'est ton métier. Sur le parvis, tu parles directement aux personnes qui décident — pas à un standard, pas à un formulaire. Le seul filtre, c'est la ligne.</p>
+        <p class="p-just">JUSTIFICATIF — <b>COOPTATION EMPLOYEUR</b></p>
+      </div>
+    </div>
+    <p class="profils-note">Investisseurs, business angels, avocats, experts-comptables et banquiers d'affaires&nbsp;: tu entres par la même porte, avec le même justificatif. <b>■</b> <a href="pour-qui/" style="color:inherit">Voir le détail par profil →</a></p>
+  </div>
+</section>
+
+<!-- ============================ L'ACCÈS ============================
+     « Pour qui et comment » — le process de vérification.
+     À VALIDER AVANT MISE EN LIGNE : délai de réponse (48 h ouvrées),
+     durée de validité du Kbis (3 mois) et politique de suppression des
+     justificatifs sont des propositions, pas encore des engagements actés.
+     ================================================================= -->
+<section id="acces" class="light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T+04</b> / L'ACCÈS</span>
+      <h2>Pour qui,<br><span class="creuse">et comment.</span></h2>
+      <p class="intro">Le dossard ouvre la course <b>et</b> le réseau. On vérifie donc une seule chose&nbsp;: que tu exerces bien une activité professionnelle qui te met à ta place sur le parvis. Trois justificatifs possibles — un seul suffit.</p>
+    </div>
+
+    <div class="cadre cadre-3 reveal">
+      <div class="cell">
+        <span class="n">01 — EXTRAIT KBIS</span>
+        <h3>Tu diriges ou tu détiens une société</h3>
+        <p>Un extrait Kbis de moins de trois mois, à ton nom ou à celui de ta société. C'est la voie la plus directe pour les fondateurs, dirigeants et associés.</p>
+        <p class="note">PRÉSIDENT · GÉRANT · DIRECTEUR GÉNÉRAL · ASSOCIÉ</p>
+      </div>
+      <div class="cell">
+        <span class="n">02 — AVIS SIRENE</span>
+        <h3>Tu es indépendant·e</h3>
+        <p>Ton avis de situation SIRENE (INSEE) fait foi — il s'obtient en ligne, gratuitement, en deux minutes. Pas de société, pas de problème.</p>
+        <p class="note">FREELANCE · PROFESSION LIBÉRALE · CONSULTANT · MICRO-ENTREPRISE</p>
+      </div>
+      <div class="cell">
+        <span class="n">03 — COOPTATION</span>
+        <h3>Tu es salarié·e</h3>
+        <p>Une attestation de ton employeur précisant ta fonction, ou la cooptation d'un participant déjà inscrit. C'est la voie des intrapreneurs, cadres dirigeants et commerciaux.</p>
+        <p class="note">ATTESTATION EMPLOYEUR · MAIL DU N+1 · PARRAINAGE</p>
+      </div>
+    </div>
+
+    <div class="cadre etapes reveal">
+      <div class="etape">
+        <span class="e-n" aria-hidden="true">01</span>
+        <h4>Tu demandes</h4>
+        <p>Tu choisis ta vague et ta distance, et tu envoies ta demande de dossard.</p>
+      </div>
+      <div class="etape">
+        <span class="e-n" aria-hidden="true">02</span>
+        <h4>Tu justifies</h4>
+        <p>Tu joins l'une des trois pièces ci-dessus. Une seule, et rien d'autre.</p>
+      </div>
+      <div class="etape">
+        <span class="e-n" aria-hidden="true">03</span>
+        <h4>On valide</h4>
+        <p>Réponse sous 48 h ouvrées. Ton tarif est gardé pendant l'instruction.</p>
+      </div>
+      <div class="etape">
+        <span class="e-n" aria-hidden="true">04</span>
+        <h4>Tu es sur la ligne</h4>
+        <p>Paiement après validation, jamais avant. Dossier refusé, rien n'est débité.</p>
+      </div>
+    </div>
+
+    <a class="lien-page reveal" href="pour-qui/">
+      <div>
+        <div class="lp-t">Pour qui, en détail</div>
+        <div class="lp-s">PROFILS · JUSTIFICATIFS · CAS PARTICULIERS · FAQ ÉLIGIBILITÉ</div>
+      </div>
+      <span class="lp-go" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================ FORMATS ============================ -->
+<section id="formats" class="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T+05</b> / LES FORMATS</span>
       <h2>Choisis ta distance.<br><span class="creuse">Pas ton impact.</span></h2>
-      <p class="intro">Du 5 km au semi, tu franchis la même ligne et tu accèdes exactement au même événement. La distance ne change que l'effort — jamais l'après.</p>
+      <p class="intro">Du 5 km au semi-marathon, tu franchis la même ligne et tu accèdes exactement au même événement. La distance ne change que l'effort — jamais l'après.</p>
     </div>
 
     <div class="formats reveal">
@@ -596,18 +371,18 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
         <div class="f-km">10<small>KM</small></div>
         <div>
           <div class="f-name">La Référence</div>
-          <p class="f-why">Le format signature : assez long pour se dépasser, assez court pour arriver frais sur le parvis.</p>
+          <p class="f-why">Le format signature&nbsp;: assez long pour se dépasser, assez court pour arriver frais sur le parvis.</p>
         </div>
         <div class="f-data">ENTRE LES TOURS<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
         <span class="f-go" aria-hidden="true">→</span>
       </a>
       <a class="format" href="#tarifs">
-        <div class="f-km">21,5<small>KM</small></div>
+        <div class="f-km">21,1<small>KM</small></div>
         <div>
           <div class="f-name">Le Grand Format</div>
-          <p class="f-why">Le semi de La Défense, mesuré et fermé. Pour celles et ceux qui ne font pas les choses à moitié.</p>
+          <p class="f-why">Le semi-marathon de La Défense&nbsp;: 21,0975&nbsp;km mesurés, sur un parcours entièrement fermé. Pour celles et ceux qui ne font pas les choses à moitié.</p>
         </div>
-        <div class="f-data">PARCOURS MESURÉ · FERMÉ<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <div class="f-data">21,0975 KM · DISTANCE OFFICIELLE<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
         <span class="f-go" aria-hidden="true">→</span>
       </a>
     </div>
@@ -619,31 +394,53 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 </section>
 
 <!-- ============================ LIEU ============================ -->
-<section class="dark" id="lieu">
+<section id="lieu">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+04</b> / LE LIEU</span>
+      <span class="tmark"><b>T+06</b> / LE LIEU</span>
       <h2 class="arche"><span>Paris</span><span class="creuse">La Défense</span></h2>
-      <p class="intro">Le plus grand quartier d'affaires d'Europe, rendu aux coureurs le temps d'une journée. On court là où l'on signe, et on signe là où l'on court.</p>
+      <p class="intro"><b>Le plus grand quartier d'affaires d'Europe</b>, rendu aux coureurs le temps d'une journée. On court là où l'on signe, et on signe là où l'on court.</p>
     </div>
     <div class="laligne reveal" aria-hidden="true"></div>
-    <div class="lieu-grid reveal">
-      <div class="lieu-cell">
-        <span class="n">04.1 — DÉPART / ARRIVÉE</span>
+    <div class="cadre cadre-3 lieu-grid reveal">
+      <div class="cell">
+        <span class="n">06.1 — DÉPART / ARRIVÉE</span>
         <h3>La Grande Arche</h3>
         <p>Départ et arrivée au pied de l'Arche. Une ligne de départ à la hauteur du symbole — et une ligne d'arrivée qui n'en est pas une.</p>
       </div>
-      <div class="lieu-cell">
-        <span class="n">04.2 — LE PARCOURS</span>
+      <div class="cell">
+        <span class="n">06.2 — LE PARCOURS</span>
         <h3>Entre les tours</h3>
-        <p>Un tracé fermé et privatisé entre les tours : esplanade, parvis, perspectives. Le béton comme terrain de jeu.</p>
+        <p>Un tracé fermé et privatisé entre les tours&nbsp;: esplanade, parvis, perspectives. Le béton comme terrain de jeu.</p>
       </div>
-      <div class="lieu-cell">
-        <span class="n">04.3 — L'APRÈS</span>
+      <div class="cell">
+        <span class="n">06.3 — L'APRÈS</span>
         <h3>Le parvis, privatisé</h3>
         <p>Passé la ligne, le quartier devient le plus grand espace de networking de France. Village, scène, rencontres — jusqu'au soir.</p>
       </div>
     </div>
+
+    <!-- Chiffres Paris La Défense — À CONFIRMER sur la source officielle
+         (parisladefense.com) avant mise en ligne. -->
+    <div class="cadre cadre-4 chiffres reveal">
+      <div class="chiffre">
+        <span class="c-v">1<sup>er</sup></span>
+        <span class="c-k">Quartier d'affaires d'Europe</span>
+      </div>
+      <div class="chiffre">
+        <span class="c-v" data-compte="180000" data-format="espace">180&nbsp;000</span>
+        <span class="c-k">Salariés chaque jour</span>
+      </div>
+      <div class="chiffre">
+        <span class="c-v" data-compte="500">500</span>
+        <span class="c-k">Entreprises implantées</span>
+      </div>
+      <div class="chiffre">
+        <span class="c-v" data-compte="3,5">3,5</span>
+        <span class="c-k">Millions de m² de bureaux</span>
+      </div>
+    </div>
+    <p class="chiffres-src">SOURCE — PARIS LA DÉFENSE ■ C'EST LÀ QUE TU COURS.</p>
   </div>
 </section>
 
@@ -651,9 +448,9 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 <section id="tarifs" class="light">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+05</b> / LES DOSSARDS</span>
+      <span class="tmark"><b>T+07</b> / LES DOSSARDS</span>
       <h2>Un dossard.<br><span class="creuse">Trois vagues.</span></h2>
-      <p class="intro">Tarif unique 5 km · 10 km · 21,5 km — même prix, même accès. Plus tu t'inscris tôt, moins tu paies. Chaque vague est limitée.</p>
+      <p class="intro">Tarif unique 5 km · 10 km · 21,1 km — même prix, même accès. Plus tu t'inscris tôt, moins tu paies. Chaque vague est limitée.</p>
     </div>
 
     <div class="vagues reveal">
@@ -662,14 +459,14 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
         <span class="v-tag">VAGUE 01 — JUSQU'AU 30 NOV. 2026</span>
         <h3>Early Bird</h3>
         <div class="v-prix">350<small>€</small></div>
-        <p class="v-lim">Quantité limitée. Économise 150€ sur le tarif final — tarif garanti 48h après réservation.</p>
+        <p class="v-lim">Quantité limitée. Économise 150 € sur le tarif final — tarif gardé le temps que ton dossier soit validé.</p>
         <a class="btn v-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20Early%20Bird%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
       </div>
       <div class="vague">
         <span class="v-tag">VAGUE 02 — JUSQU'À FIN JANVIER 2027</span>
         <h3>Régulier</h3>
         <div class="v-prix">400<small>€</small></div>
-        <p class="v-lim">Le tarif standard, tant qu'il reste des dossards. Toujours 100€ de moins que le jour J.</p>
+        <p class="v-lim">Le tarif standard, tant qu'il reste des dossards. Toujours 100 € de moins que le jour J.</p>
         <a class="btn btn-ghost v-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20R.O.I%20%E2%80%94%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
       </div>
       <div class="vague">
@@ -680,7 +477,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
         <a class="btn btn-ghost v-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20Last%20Call%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
       </div>
     </div>
-    <p class="tarif-note"><b>Le dossard n'est pas un ticket de course.</b> C'est ton accès à la journée entière : course chronométrée, t-shirt technique, médaille finisher — et le networking d'après. Il est transférable à une autre personne jusqu'au jour J.</p>
+    <p class="tarif-note"><b>Le dossard n'est pas un ticket de course.</b> C'est ton accès à la journée entière&nbsp;: course chronométrée, t-shirt R.O.I, médaille finisher — et le networking d'après. Il est transférable à une autre personne jusqu'au jour J, à condition qu'elle passe la même <a href="pour-qui/#acces" style="color:inherit">vérification d'accès</a>.</p>
   </div>
 </section>
 
@@ -689,7 +486,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   <div class="wrap">
     <h2 class="reveal">Prends ta place<br><span class="creuse">sur la ligne.</span></h2>
     <div class="fin-grid reveal">
-      <p>Édition 01 — Paris La Défense, septembre 2027. Les dossards Early Bird sont ouverts, et ils partiront avant la date précise. La suite s'écrit après la ligne.</p>
+      <p>Édition 01 — Paris La Défense, septembre 2027. Les dossards Early Bird sont ouverts, et ils partiront tous. La suite s'écrit après la ligne.</p>
       <a class="btn" href="mailto:contact@runoninvest.fr?subject=Dossard%20Early%20Bird%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Prendre un dossard</span><span class="arr">→</span></a>
     </div>
   </div>
@@ -706,16 +503,26 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
       </div>
       <div class="foot-cols">
         <div>
-          <h4>ÉVÉNEMENT</h4>
+          <h3>ÉVÉNEMENT</h3>
           <ul>
             <li><a href="#manifeste">Manifeste</a></li>
             <li><a href="#temps">La journée</a></li>
+            <li><a href="#reseau">Le réseau</a></li>
             <li><a href="#formats">Les formats</a></li>
+            <li><a href="#lieu">Le lieu</a></li>
             <li><a href="#tarifs">Tarifs</a></li>
           </ul>
         </div>
         <div>
-          <h4>CONTACT</h4>
+          <h3>ACCÈS</h3>
+          <ul>
+            <li><a href="pour-qui/">Pour qui&nbsp;?</a></li>
+            <li><a href="pour-qui/#acces">Comment ça marche</a></li>
+            <li><a href="pour-qui/#faq">FAQ éligibilité</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>CONTACT</h3>
           <ul>
             <li><a href="mailto:contact@runoninvest.fr">Contact</a></li>
             <li><a href="mailto:partenariats@runoninvest.fr">Partenariats</a></li>
@@ -725,9 +532,10 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
           </ul>
         </div>
         <div>
-          <h4>SUIVRE</h4>
+          <h3>SUIVRE</h3>
           <ul>
-            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.instagram.com/runoninvest/" target="_blank" rel="noopener">Instagram</a></li>
+            <!-- TODO : renseigner l'URL de la page LinkedIn R.O.I — en l'état ce lien renvoie en haut de page. -->
             <li><a href="#" rel="noopener">LinkedIn</a></li>
           </ul>
         </div>
@@ -741,48 +549,6 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   </div>
 </footer>
 
-<script>
-/* Chrono T+ : après la ligne, le temps continue de compter. */
-(function(){
-  var el=document.getElementById('chrono');
-  if(!el)return;
-  var t0=Date.now();
-  function pad(n){return String(n).padStart(2,'0')}
-  setInterval(function(){
-    var s=Math.floor((Date.now()-t0)/1000);
-    el.textContent='T+'+pad(Math.floor(s/3600))+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60);
-  },1000);
-})();
-
-/* Reveal au scroll */
-(function(){
-  if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('on')});
-    return;
-  }
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}
-    });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
-})();
-
-/* Nav mobile */
-function toggleNav(btn){
-  var l=document.getElementById('nav-links');
-  var open=l.classList.toggle('open');
-  btn.setAttribute('aria-expanded',open?'true':'false');
-  btn.textContent=open?'Fermer':'Menu';
-}
-document.querySelectorAll('.nav-links a').forEach(function(a){
-  a.addEventListener('click',function(){
-    var l=document.getElementById('nav-links');
-    l.classList.remove('open');
-    var b=document.querySelector('.burger');
-    b.setAttribute('aria-expanded','false');b.textContent='Menu';
-  });
-});
-</script>
+<script src="assets/roi.js"></script>
 </body>
 </html>
