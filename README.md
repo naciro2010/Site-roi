@@ -22,6 +22,8 @@ Ce discours vit à deux endroits : les sections `T+03 / LE RÉSEAU` et `T+04 / L
 
 > ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle.
 
+> **Reste à renseigner** : le lien LinkedIn du footer pointe encore sur `#` (marqué en commentaire dans les deux pages). Instagram est branché sur [@runoninvest](https://www.instagram.com/runoninvest/).
+
 ## Accessibilité — un point ouvert sur l'orange
 
 Le contraste a été mesuré sur toute la palette. Tout passe le seuil AA (4,5:1) **sauf l'orange de marque `#FF4400`**, qui est un héritage des affiches :
