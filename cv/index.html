@@ -407,12 +407,6 @@ section{padding:clamp(72px,9vw,128px) 0}
   font-family:'Plex Mono',monospace;font-weight:500;font-size:10px;letter-spacing:.16em;
   padding:5px 10px;border-radius:2px;
 }
-.offres-pied{
-  margin-top:clamp(28px,4vw,44px);padding-top:22px;border-top:1px solid var(--ligne);
-  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:baseline;
-}
-.offres-pied p{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(18px,2vw,23px);max-width:44ch}
-.offres-pied .mono{color:var(--sourdine)}
 
 /* ==========================================================================
    § 03 — MÉTHODE
@@ -499,12 +493,6 @@ section{padding:clamp(72px,9vw,128px) 0}
 /* ==========================================================================
    § 06 — AU-DELÀ DES MISSIONS
    ========================================================================== */
-.projets{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ligne);border-left:1px solid var(--ligne)}
-.projet{padding:clamp(24px,3vw,38px);border-right:1px solid var(--ligne);border-bottom:1px solid var(--ligne);transition:background .25s ease}
-.projet:hover{background:#FCFAF4}
-.projet .k{font-family:'Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--vert);display:block;margin-bottom:12px}
-.projet h3{font-size:clamp(20px,2.1vw,26px);margin-bottom:10px;font-variation-settings:'opsz' 100}
-.projet p{font-size:15px;color:var(--sourdine)}
 .mot-fin{
   margin-top:clamp(26px,3.6vw,40px);padding-left:22px;border-left:2px solid var(--vert);
   font-family:'Fraunces',serif;font-style:italic;font-size:clamp(18px,2.1vw,24px);line-height:1.45;max-width:52ch;
@@ -646,8 +634,8 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 }
 
 /* Cartes : élévation discrète au survol */
-.exp,.projet,.cas,.offre{transition:background .3s ease,border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease}
-.exp:hover,.projet:hover{transform:translateY(-2px)}
+.exp,.cas,.offre{transition:background .3s ease,border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease}
+.exp:hover{transform:translateY(-2px)}
 .cas:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,.18)}
 .btn{transition:background .25s ease,color .25s ease,border-color .25s ease,box-shadow .35s ease,transform .3s cubic-bezier(.16,1,.3,1)}
 .btn:hover{transform:translateY(-1px)}
@@ -658,7 +646,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 }
 @media (max-width:600px){ .pas{grid-template-columns:1fr} }
 @media (prefers-reduced-motion:reduce){
-  .exp:hover,.projet:hover,.cas:hover,.btn:hover{transform:none}
+  .exp:hover,.cas:hover,.btn:hover{transform:none}
 }
 
 /* ==========================================================================
@@ -673,7 +661,6 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   .offre{border-right:none;border-bottom:1px solid var(--ligne)}
   .offre:last-child{border-bottom:none}
   .offre.phare{border-top:14px solid transparent}
-  .projets{grid-template-columns:1fr}
 }
 @media (max-width:860px){
   .chiffres{grid-template-columns:repeat(2,1fr)}
@@ -724,7 +711,6 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
       <li><a href="#expertise">Expertises</a></li>
       <li><a href="#engagements">Intervention</a></li>
       <li><a href="#references">Références</a></li>
-      <li><a href="#ia">Ingénierie IA</a></li>
       <li><a class="nav-lkd" href="https://linkedin.com/in/mohamed-ennaciri" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       <li><a class="nav-cta" href="mailto:ennaciri.md@gmail.com?subject=Diagnostic%20d%27architecture%20%E2%80%94%20demande">Demander un diagnostic</a></li>
     </ul>
@@ -1195,60 +1181,11 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
   </div>
 </section>
 
-<!-- ============================ § 05 — INGÉNIERIE AUGMENTÉE ============================ -->
-<section id="ia" class="encre panneau">
-  <div class="wrap">
-    <div class="stete">
-      <div class="haut"><span class="para">§ 05 — Ingénierie augmentée</span><span class="fig">agents de code · état de l'art</span></div>
-      <h2>L'IA dans la boucle, <span class="accent">sous contrôle.</span></h2>
-      <p class="intro rv">Le gain ne vient pas du modèle, il vient du <b>cadre qu'on met autour</b> — et ce cadre est du fichier versionné, relu comme du code.</p>
-    </div>
-
-    <div class="projets" data-stagger>
-      <div class="projet">
-        <span class="k">01 — Contexte</span>
-        <h3>Ce que l'agent lit</h3>
-        <p>Des instructions courtes et versionnées, chargées seulement quand elles servent. Un contexte saturé dégrade la qualité du résultat.</p>
-      </div>
-      <div class="projet">
-        <span class="k">02 — Skills</span>
-        <h3>Le savoir-faire à la demande</h3>
-        <p>Les procédures répétées deviennent des compétences appelées à la demande, pas des consignes permanentes.</p>
-      </div>
-      <div class="projet">
-        <span class="k">03 — Hooks</span>
-        <h3>Ce qui ne se négocie pas</h3>
-        <p>Formatage, garde-fous, tests : exécutés automatiquement à chaque fois, pas laissés au modèle.</p>
-      </div>
-      <div class="projet">
-        <span class="k">04 — Subagents</span>
-        <h3>Le regard extérieur</h3>
-        <p>Exploration et relecture en contexte isolé. Celui qui relit le code n'est pas celui qui l'a écrit.</p>
-      </div>
-      <div class="projet">
-        <span class="k">05 — Permissions</span>
-        <h3>Les limites dures</h3>
-        <p>Secrets et production hors de portée par configuration — la seule couche réellement contraignante.</p>
-      </div>
-      <div class="projet">
-        <span class="k">06 — Vérification</span>
-        <h3>La preuve, pas l'affirmation</h3>
-        <p>Un agent s'arrête quand le travail a l'air fini. Les tests tranchent à sa place.</p>
-      </div>
-    </div>
-
-    <div class="offres-pied rv">
-      <p>En équipe, le même comportement pour tout le monde.</p>
-      <a class="btn btn-linkedin" href="claude-code/"><span>Ma configuration complète</span><span class="fl">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ § 06 — PARCOURS ============================ -->
+<!-- ============================ § 05 — PARCOURS ============================ -->
 <section id="parcours">
   <div class="wrap">
     <div class="stete">
-      <div class="haut"><span class="para">§ 06 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
+      <div class="haut"><span class="para">§ 05 — Parcours</span><span class="fig">2011 → aujourd'hui</span></div>
       <h2>15 ans de terrain.</h2>
     </div>
     <div class="registre" data-stagger>
@@ -1273,7 +1210,7 @@ footer{border-top:1px solid var(--ligne);padding:30px 0}
 <section class="finale encre panneau" id="contact">
   <div class="wrap">
     <div class="stete" style="margin-bottom:0">
-      <div class="haut"><span class="para">§ 07 — Contact</span><span class="fig">réponse rapide</span></div>
+      <div class="haut"><span class="para">§ 06 — Contact</span><span class="fig">réponse rapide</span></div>
       <h2 style="margin-top:clamp(18px,3vw,30px)">Parlons de <span class="accent">votre système.</span></h2>
     </div>
     <p class="conclusion rv"><b>30 minutes suffisent</b> pour savoir si je peux vous aider. Je vous donne mon avis — même si la conclusion est que vous n'avez pas besoin de moi.</p>

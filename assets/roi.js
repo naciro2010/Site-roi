@@ -6,19 +6,6 @@
 (function () {
   'use strict';
 
-  var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- Chrono T+ : après la ligne, le temps continue de compter. ---- */
-  var chrono = document.getElementById('chrono');
-  if (chrono) {
-    var t0 = Date.now();
-    var pad = function (n) { return String(n).padStart(2, '0'); };
-    setInterval(function () {
-      var s = Math.floor((Date.now() - t0) / 1000);
-      chrono.textContent = 'T+' + pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
-    }, 1000);
-  }
-
   /* ---- Reveal au scroll ---- */
   var reveals = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -90,45 +77,6 @@
     // l'état — mais il reste une cible cliquable à la souris.
     var rappel = document.querySelector('.d-retourne');
     if (rappel) { rappel.addEventListener('click', retourne); }
-  }
-
-  /* ---- Compteurs ----
-     La valeur finale est déjà dans le HTML : sans JS, ou en mouvement réduit,
-     le chiffre reste juste. L'animation ne fait que retarder son affichage. */
-  var compteurs = document.querySelectorAll('[data-compte]');
-  if (compteurs.length && !sobre && 'IntersectionObserver' in window) {
-    var format = function (el, v, dec) {
-      var s = v.toFixed(dec).replace('.', ',');
-      if (el.dataset.format === 'espace') {
-        s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-      }
-      return s;
-    };
-
-    var ioC = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) { return; }
-        ioC.unobserve(en.target);
-        var el = en.target;
-        var brut = el.dataset.compte;
-        var dec = (brut.split(',')[1] || '').length;
-        var cible = parseFloat(brut.replace(',', '.'));
-        var debut = null;
-        var pas = function (t) {
-          if (debut === null) { debut = t; }
-          var p = Math.min((t - debut) / 1100, 1);
-          el.textContent = format(el, cible * (1 - Math.pow(1 - p, 3)), dec);
-          if (p < 1) { requestAnimationFrame(pas); }
-        };
-        requestAnimationFrame(pas);
-      });
-    }, { threshold: .4 });
-
-    compteurs.forEach(function (el) {
-      var brut = el.dataset.compte;
-      el.textContent = format(el, 0, (brut.split(',')[1] || '').length);
-      ioC.observe(el);
-    });
   }
 
   /* ---- Nav mobile ---- */
