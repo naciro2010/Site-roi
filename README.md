@@ -60,7 +60,6 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 | `assets/roi.css` | **Design system partagé** par `/` et `/pour-qui` (les URL de fontes y sont relatives au fichier CSS, donc en `../fonts/`) |
 | `assets/roi.js` | Comportements partagés : chrono `T+`, reveal au scroll, nav mobile. Chaque bloc ne s'active que si son élément est présent. |
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
-| `cv/claude-code/` | **Configuration Claude Code** — sous-page méthode : mémoire (CLAUDE.md, règles ciblées), skills, hooks, subagents, permissions et bonnes pratiques. Contenu vérifié sur la documentation officielle. Accessible sur `/cv/claude-code` |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |
 | `fonts/` | Fontes auto-hébergées (Archivo variable + JetBrains Mono) |
 
