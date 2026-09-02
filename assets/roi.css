@@ -5,6 +5,9 @@
    Convention de marque : T– = avant la ligne, T+ = après la ligne.
 
    Feuille partagée par toutes les pages du site (/ et /pour-qui).
+   Parti pris : peu de cartes, des listes, de l'air, et deux affiches de
+   campagne posées à côté du texte. Une page d'événement se lit comme
+   une fiche de course, pas comme une plaquette.
    Les URL de fontes sont relatives à CE fichier → ../fonts/
    ========================================================================== */
 
@@ -219,8 +222,8 @@ header{
    ========================================================================== */
 .hero{padding-top:clamp(48px,8vh,96px)}
 .hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:18px}
-.hero-chrono{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton)}
-.hero-chrono b{color:var(--impact);font-weight:700}
+.hero-etat{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton)}
+.hero-etat b{color:var(--impact);font-weight:700;margin-right:6px}
 
 .hero-roi{
   font-stretch:125%;font-weight:250;line-height:.82;letter-spacing:0;
@@ -305,19 +308,6 @@ header{
 .sommaire a b{color:var(--impact);font-weight:700;margin-right:8px}
 
 /* ==========================================================================
-   MARQUEE
-   ========================================================================== */
-.marquee{background:var(--encre-2);color:var(--craie);overflow:hidden;border-top:1px solid var(--ligne-encre);border-bottom:1px solid var(--ligne-encre)}
-.marquee-track{display:flex;width:max-content;animation:mq 32s linear infinite;padding:16px 0}
-.marquee span{
-  font-stretch:125%;font-weight:250;text-transform:uppercase;white-space:nowrap;
-  font-size:clamp(20px,2.6vw,34px);letter-spacing:.01em;padding:0 8px;line-height:1;
-}
-.marquee .sep{font-family:'JetBrains Mono',monospace;font-weight:500;padding:0 22px;font-size:clamp(16px,2vw,26px);align-self:center;color:var(--impact)}
-.marquee .out{color:var(--beton)}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ==========================================================================
    SECTIONS COMMUNES — le site alterne les deux fonds de l'affiche :
    encre grainée (défaut) et craie grainée (.light)
    ========================================================================== */
@@ -389,6 +379,7 @@ section{padding:clamp(80px,10vw,140px) 0}
 /* ==========================================================================
    MANIFESTE
    ========================================================================== */
+#manifeste .manif{display:grid;grid-template-columns:minmax(260px,.72fr) 1.28fr;gap:clamp(28px,5vw,80px);align-items:start}
 #manifeste .stances{max-width:880px}
 #manifeste .stance{
   font-stretch:110%;font-weight:350;line-height:1.3;
@@ -441,12 +432,13 @@ section{padding:clamp(80px,10vw,140px) 0}
 .bande .damier{height:20px;width:100px;flex:none;background:repeating-conic-gradient(#EFEBE2 0% 25%, transparent 0% 50%) 0 0/20px 20px;opacity:.7}
 .bande p{font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)}
 .bande p em{font-style:normal;color:var(--impact)}
-.temps-ligne{grid-column:1 / -1}
 
 /* ==========================================================================
    RÉSEAU — le laïus + les profils
    ========================================================================== */
 .laius{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+/* Sur l'accueil, la colonne de droite est une affiche, pas du texte. */
+.laius.avec-affiche{grid-template-columns:1.3fr minmax(260px,.7fr);gap:clamp(28px,5vw,80px)}
 .laius .fort{
   font-stretch:110%;font-weight:350;line-height:1.24;
   font-size:clamp(23px,2.9vw,38px);
@@ -457,31 +449,6 @@ section{padding:clamp(80px,10vw,140px) 0}
 .laius .corps p + p{margin-top:18px}
 .laius .corps p b{color:var(--texte);font-weight:700}
 
-.profils{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(44px,6vw,76px)}
-.profil{padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px;position:relative}
-.profil::before{
-  content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:3px;
-  background:var(--impact);transform:scaleX(0);transform-origin:left;
-  transition:transform .35s ease;
-}
-.profil:hover::before,.profil:focus-within::before{transform:scaleX(1)}
-.profil .p-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;color:var(--impact)}
-.profil h3{font-size:clamp(19px,1.9vw,25px);font-stretch:90%;line-height:1.15}
-.profil p{font-size:14.5px;font-weight:500;color:var(--muted)}
-.profil .p-just{
-  margin-top:auto;padding-top:16px;border-top:1px solid var(--ligne-encre);
-  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:10.5px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--beton);line-height:1.7;
-  /* Réserve deux lignes : les filets s'alignent d'une carte à l'autre,
-     que le justificatif tienne sur une ligne ou sur deux. */
-  min-height:calc(3.4em + 16px);
-}
-.profil .p-just b{color:var(--impact);font-weight:700}
-
-.profils-note{
-  margin-top:26px;font-size:15px;font-weight:500;color:var(--muted);max-width:74ch;
-}
-.profils-note b{color:var(--impact)}
 
 /* ==========================================================================
    ACCÈS — les voies de vérification + les étapes
@@ -553,21 +520,6 @@ section{padding:clamp(80px,10vw,140px) 0}
 #lieu .arche{font-size:clamp(50px,9vw,150px)}
 .lieu-grid{margin-top:clamp(40px,6vw,70px)}
 
-/* Bandeau de chiffres — La Défense en quatre nombres */
-.chiffres{grid-template-columns:repeat(4,1fr);margin-top:clamp(34px,4.5vw,56px)}
-.chiffre{padding:clamp(22px,2.6vw,36px)}
-.chiffre .c-v{display:block;font-stretch:125%;font-weight:250;font-size:clamp(36px,4.6vw,66px);line-height:.9}
-.chiffre .c-v sup{font-size:.4em;vertical-align:.95em;font-stretch:100%;font-weight:400}
-.chiffre .c-v small{font-size:.36em;vertical-align:.28em;font-stretch:100%;font-weight:400;margin-left:.12em}
-.chiffre .c-k{
-  display:block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-weight:500;
-  font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--beton);line-height:1.7;
-}
-.chiffres-src{
-  margin-top:18px;font-family:'JetBrains Mono',monospace;font-weight:500;
-  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--beton);
-}
-
 /* ==========================================================================
    FAQ
    ========================================================================== */
@@ -592,34 +544,85 @@ section{padding:clamp(80px,10vw,140px) 0}
 .faq .a b{color:var(--texte);font-weight:700}
 .faq .a a{color:var(--impact)}
 
+
 /* ==========================================================================
-   TARIFS
+   AFFICHE — les visuels de campagne
+   Le texte est dans l'image : on ne recadre jamais, on pose le portrait
+   entier à côté du texte, en colonne. Un filet, pas de cadre.
    ========================================================================== */
-.vagues{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ligne-encre)}
-.vague{padding:clamp(28px,3.5vw,46px);border-right:1px solid var(--ligne-encre);display:flex;flex-direction:column;gap:18px;position:relative}
-.vague:last-child{border-right:none}
-.vague .v-tag{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton)}
-.vague h3{font-size:clamp(24px,2.6vw,36px);font-stretch:90%}
-.vague .v-prix{font-stretch:125%;font-weight:250;font-size:clamp(50px,5.6vw,80px);line-height:.85}
-.vague .v-prix small{font-size:.4em;vertical-align:.85em;font-stretch:100%}
-.vague .v-lim{font-size:14px;font-weight:500;color:var(--muted)}
-.vague .v-cta{margin-top:auto}
-.vague.hot{background:var(--encre);color:#EFEBE2}
-.vague.hot .v-tag,.vague.hot .v-lim{color:rgba(239,235,226,.72)}
-.vague.hot .btn{border-color:var(--impact);background:var(--impact);color:#EFEBE2}
-.vague.hot .btn:hover{background:#EFEBE2;border-color:#EFEBE2;color:var(--encre)}
-.vague .badge{
-  position:absolute;top:-16px;left:clamp(28px,3.5vw,46px);
-  background:var(--impact);color:#EFEBE2;
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  padding:7px 12px;
+.affiche{margin:0;position:relative}
+.affiche img{display:block;width:100%;height:auto;aspect-ratio:1290/1592;object-fit:cover;border:1px solid var(--ligne-encre)}
+.affiche figcaption{
+  margin-top:12px;font-family:'JetBrains Mono',monospace;font-weight:500;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--beton);
 }
-.tarif-note{margin-top:26px;font-size:15px;font-weight:500;color:var(--muted);max-width:70ch}
-.tarif-note b{color:var(--impact)}
-.tarif-note a{text-decoration-color:var(--impact);text-underline-offset:3px}
-.tarif-note a:hover{color:var(--impact)}
+@media (min-width:981px){.affiche.colle{position:sticky;top:88px}}
+
+/* ==========================================================================
+   REGISTRE — liste éditoriale (les publics, sur l'accueil)
+   Une ligne par public : numéro, qui, ce qu'il vient chercher.
+   Se lit comme une liste de départ, pas comme une grille de cartes.
+   ========================================================================== */
+.registre{margin-top:clamp(44px,6vw,76px);border-top:1px solid var(--texte)}
+.rg-row{
+  display:grid;grid-template-columns:48px 1fr 1.5fr;
+  gap:clamp(14px,2.6vw,40px);align-items:baseline;
+  padding:clamp(18px,2.2vw,28px) 0;border-bottom:1px solid var(--ligne-encre);
+}
+.rg-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;color:var(--impact)}
+.rg-qui{font-stretch:110%;font-weight:400;font-size:clamp(17px,1.8vw,24px);line-height:1.15;text-transform:uppercase}
+.rg-quoi{font-size:15.5px;font-weight:500;color:var(--muted);max-width:56ch}
+.rg-quoi a{color:inherit;text-decoration-color:var(--impact);text-underline-offset:3px}
+.rg-quoi a:hover{color:var(--impact)}
+.profils-note{margin-top:26px;font-size:15px;font-weight:500;color:var(--muted);max-width:74ch}
 .profils-note a{text-decoration-color:var(--impact);text-underline-offset:3px}
 .profils-note a:hover{color:var(--impact)}
+
+/* ==========================================================================
+   FICHE — clé / valeur (accès, lieu)
+   ========================================================================== */
+.fiche{border-top:1px solid var(--texte)}
+.fiche>div{
+  display:grid;grid-template-columns:minmax(150px,.5fr) 1.5fr;gap:clamp(14px,3vw,56px);
+  padding:clamp(18px,2.2vw,28px) 0;border-bottom:1px solid var(--ligne-encre);
+}
+.fiche dt{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--impact);padding-top:.3em}
+.fiche dd{font-size:clamp(15.5px,1.5vw,18px);font-weight:500;color:var(--muted);max-width:62ch}
+.fiche dd b{color:var(--texte);font-weight:700}
+.fiche .src{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--beton)}
+#lieu .fiche{margin-top:clamp(34px,4.5vw,56px)}
+
+/* ==========================================================================
+   TARIFS — un tableau de vagues, la vague ouverte en encre
+   ========================================================================== */
+.grille-tarifs{border-top:1px solid var(--texte)}
+.tarif{
+  display:grid;align-items:center;
+  grid-template-columns:.9fr 1fr 1.2fr auto minmax(180px,auto);
+  grid-template-areas:"vague nom date prix cta";
+  gap:clamp(14px,3vw,44px);
+  padding:clamp(22px,3vw,36px) clamp(18px,2.6vw,36px);
+  border-bottom:1px solid var(--ligne-encre);
+}
+.t-vague{grid-area:vague;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--beton)}
+.t-vague b{color:var(--impact);display:block;margin-top:6px}
+.t-nom{grid-area:nom;font-stretch:110%;font-weight:400;font-size:clamp(20px,2.4vw,32px);line-height:1.1;text-transform:uppercase}
+.t-date{grid-area:date;font-size:15px;font-weight:500;color:var(--muted)}
+.t-prix{grid-area:prix;font-stretch:125%;font-weight:250;font-size:clamp(40px,5vw,72px);line-height:.85;white-space:nowrap;text-align:right}
+.t-prix small{font-size:.4em;vertical-align:.85em;font-stretch:100%}
+.t-prix.devis{font-size:clamp(18px,1.8vw,24px);font-stretch:110%;font-weight:400;text-transform:uppercase;line-height:1.1}
+.t-cta{grid-area:cta;justify-self:end}
+.t-etat{grid-area:cta;justify-self:end;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--beton);text-align:right}
+a.t-etat{text-decoration:none;color:var(--texte)}
+a.t-etat:hover{color:var(--impact)}
+.tarif.ouvert{
+  background:var(--encre);color:#EFEBE2;
+  --muted:#B0A99C;--beton:#8F897B;--texte:#EFEBE2;
+}
+.tarif-note{margin-top:26px;font-size:15px;font-weight:500;color:var(--muted);max-width:70ch}
+.tarif-note b{color:var(--texte)}
+.tarif-note a{text-decoration-color:var(--impact);text-underline-offset:3px}
+.tarif-note a:hover{color:var(--impact)}
 
 /* ==========================================================================
    FINALE
@@ -655,7 +658,6 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
    RESPONSIVE
    ========================================================================== */
 @media (max-width:1180px){
-  .profils{grid-template-columns:repeat(2,1fr)}
   .etapes{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:980px){
@@ -667,11 +669,23 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   .format{grid-template-columns:1fr;gap:14px}
   .format .f-go{display:none}
   .cadre-3{grid-template-columns:1fr}
-  .chiffres{grid-template-columns:repeat(2,1fr)}
   .laius{grid-template-columns:1fr}
-  .vagues{grid-template-columns:1fr}
-  .vague{border-right:none;border-bottom:1px solid var(--ligne-encre)}
-  .vague:last-child{border-bottom:none}
+}
+@media (max-width:980px){
+  #manifeste .manif{grid-template-columns:1fr}
+  #manifeste .affiche{max-width:440px}
+  .laius .affiche{max-width:440px}
+  .rg-row{grid-template-columns:40px 1fr;row-gap:8px}
+  .rg-quoi{grid-column:2}
+  .tarif{
+    grid-template-columns:1fr auto;
+    grid-template-areas:"vague prix" "nom prix" "date prix" "cta cta";
+    row-gap:10px;
+  }
+  .t-cta,.t-etat{justify-self:start;text-align:left;margin-top:8px}
+}
+@media (max-width:640px){
+  .fiche>div{grid-template-columns:1fr;gap:8px}
 }
 @media (max-width:860px){
   .cadre-2{grid-template-columns:1fr}
@@ -695,17 +709,14 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   #lieu .arche{font-size:clamp(34px,10.6vw,50px)}
 }
 @media (max-width:640px){
-  .profils{grid-template-columns:1fr}
   .etapes{grid-template-columns:1fr}
   .cadre-2,.cadre-4{grid-template-columns:1fr}
-  .chiffres{grid-template-columns:1fr}
   .lien-page .lp-go{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .marquee-track{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
-  .btn,.format,.f-go,.profil::before,.lien-page,.lien-page .lp-go{transition:none}
+  .btn,.format,.f-go,.lien-page,.lien-page .lp-go{transition:none}
 }
 
 /* ==========================================================================

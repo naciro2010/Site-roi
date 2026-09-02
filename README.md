@@ -21,15 +21,14 @@ Tout part du même motif : **la ligne**. Rien n'est décoratif au sens strict �
 1. **La typo évidée.** Les titres marchent en deux temps : le premier plein, le second tracé au contour (`.creuse`, via `-webkit-text-stroke`). C'est le geste des affiches. En dessous de 620 px le corps devient trop petit pour qu'un contour reste lisible : on revient au plein.
 2. **La ligne de progression.** Le filet sous la nav se remplit d'orange à mesure qu'on descend, **damier d'arrivée en tête**. La largeur passe par la variable `--progres` posée en JS ; la nav surligne au passage la section courante.
 3. **Le dossard recto/verso.** « Un seul dossard : il te fait franchir la ligne, puis il devient ton profil » — la phrase existait, l'objet non. Recto la course (numéro, chrono, œillets d'épingle), verso le réseau (nom, fonction, entreprise). **Le même papier des deux côtés** : c'est justement l'argument. Retournable au clic et au clavier (`aria-pressed`).
-4. **Les compteurs.** Les chiffres de La Défense se composent à l'entrée dans le champ. La valeur finale est écrite en dur dans le HTML : sans JS, ou en `prefers-reduced-motion`, le chiffre reste juste — l'animation ne fait que retarder son affichage.
 
 ## Le positionnement : un réseau, pas une course avec afterwork
 
 R.O.I s'adresse aux **entrepreneurs, intrapreneurs, cadres dirigeants et commerciaux** — plus les investisseurs et conseils. L'accès au dossard est donc **vérifié**, par l'une de trois voies au choix : extrait **Kbis**, **avis de situation SIRENE**, ou **cooptation employeur**. Un seul critère : exercer — ni seuil de chiffre d'affaires, ni taille d'entreprise minimum, ni chrono à tenir.
 
-Ce discours vit à deux endroits : les sections `T+03 / LE RÉSEAU` et `T+04 / L'ACCÈS` de la page d'accueil, et la page dédiée `/pour-qui` qui déroule les six familles de profils, les justificatifs, le parcours du dossier et une FAQ d'éligibilité.
+Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `T+03.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, les justificatifs, le parcours du dossier et une FAQ d'éligibilité.
 
-> ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle.
+> ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Ce document parle de « Run On Invest**ment** » ; le site et le domaine disent « Run On Invest » — à trancher.
 
 > **Reste à renseigner** : le lien LinkedIn du footer pointe encore sur `#` (marqué en commentaire dans les deux pages). Instagram est branché sur [@runoninvest](https://www.instagram.com/runoninvest/).
 
@@ -51,6 +50,10 @@ Sur fond sombre l'orange est conforme ; c'est **sur fond clair** qu'il ne l'est 
 
 Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de `#7C7669` (3,79:1) à `#6B6558` (4,87:1). L'anneau de focus clavier utilise `var(--texte)` et non l'orange, précisément parce que l'orange ne tient pas les 3:1 exigés pour un indicateur de focus sur la craie.
 
+## La page d'accueil, en cinq temps
+
+`T+01` Manifeste (affiche « Au 3e km » + trois phrases) · `T+02` La journée (T– la course / T+ le réseau, puis le dossard recto/verso) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, puis le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur). Pas de bandeau défilant, pas de compteurs, pas de grille de cartes : des listes, deux images, de l'air.
+
 ## Structure
 
 | Chemin | Contenu |
@@ -58,7 +61,8 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 | `index.html` | **Site officiel** — identité « La Ligne » — servi à la racine `/` |
 | `pour-qui/` | **Page « Pour qui, et comment »** — le réseau derrière la course, les six familles de profils, les trois justificatifs d'accès, le parcours du dossier et la FAQ d'éligibilité. Accessible sur `/pour-qui` |
 | `assets/roi.css` | **Design system partagé** par `/` et `/pour-qui` (les URL de fontes y sont relatives au fichier CSS, donc en `../fonts/`) |
-| `assets/roi.js` | Comportements partagés : chrono `T+`, reveal au scroll, nav mobile. Chaque bloc ne s'active que si son élément est présent. |
+| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile. Chaque bloc ne s'active que si son élément est présent. |
+| `assets/img/` | Les deux affiches de campagne (« Personne ne vend en montée », « Au 3e km, plus personne ne joue un rôle »), en 1200 px et 640 px. Le texte est dans l'image : elles se posent entières, jamais recadrées. |
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |
 | `fonts/` | Fontes auto-hébergées (Archivo variable + JetBrains Mono) |
