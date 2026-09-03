@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- R.O.I — « la ligne » : encre, point d'impact orange, trait craie, damier d'arrivée -->
+  <rect width="64" height="64" fill="#070707"/>
+  <rect x="10" y="12" width="22" height="22" fill="#FF4400"/>
+  <rect x="8" y="40" width="48" height="3" fill="#EFEBE2"/>
+  <rect x="8" y="46" width="6" height="6" fill="#EFEBE2"/><rect x="20" y="46" width="6" height="6" fill="#EFEBE2"/><rect x="32" y="46" width="6" height="6" fill="#EFEBE2"/><rect x="44" y="46" width="6" height="6" fill="#EFEBE2"/>
+  <rect x="14" y="52" width="6" height="6" fill="#EFEBE2"/><rect x="26" y="52" width="6" height="6" fill="#EFEBE2"/><rect x="38" y="52" width="6" height="6" fill="#EFEBE2"/><rect x="50" y="52" width="6" height="6" fill="#EFEBE2"/>
+</svg>

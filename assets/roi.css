@@ -48,6 +48,7 @@
   --ligne-craie:rgba(239,235,226,.14);
   --ligne-encre:rgba(239,235,226,.09);
   --pad:clamp(20px,4vw,56px);
+  --nav-h:54px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -121,12 +122,14 @@ img{max-width:100%}
 
 /* ---- Étiquette chrono de section : T+01 / NOM ---- */
 .tmark{
-  display:inline-flex;align-items:center;gap:12px;
+  display:inline-block;position:relative;padding-left:20px;
   font-family:'JetBrains Mono',monospace;font-weight:500;
-  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;line-height:1.7;
   color:var(--muted);
 }
-.tmark::before{content:"";width:8px;height:8px;background:var(--impact);flex:none}
+/* Le carré est positionné, pas en flex : quand le libellé se replie sur
+   deux lignes (mobile), le texte coule normalement sous lui. */
+.tmark::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--impact)}
 .tmark b{color:var(--impact);font-weight:700}
 
 /* ---- Barre d'impact (motif signature de l'affiche) ---- */
@@ -161,6 +164,15 @@ img{max-width:100%}
 /* ---- Reveal ---- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:none}
+/* Sans JavaScript, rien ne doit rester invisible : la classe .no-js est
+   retirée de <html> par un script en tête de page. */
+.no-js .reveal{opacity:1;transform:none}
+
+/* ---- Texte réservé aux lecteurs d'écran ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Les ancres s'arrêtent sous le header sticky, pas derrière lui. */
+[id]{scroll-margin-top:calc(var(--nav-h) + 24px)}
 
 /* ---- Focus clavier ----
    L'outil est var(--texte), pas l'orange : l'orange ne fait que 2,9:1
@@ -258,6 +270,7 @@ header{
 .hero-right p b{color:var(--craie)}
 .hero-right p + p{margin-top:14px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+@media (max-width:520px){.hero-ctas .btn,.page-hero .ctas .btn{flex:1 1 100%;justify-content:space-between}}
 
 .hero-meta{border-top:1px solid var(--craie);display:grid;grid-template-columns:repeat(4,1fr)}
 .hero-meta>div{padding:20px var(--pad) 20px 0;border-right:1px solid var(--ligne-encre)}
@@ -420,6 +433,37 @@ section{padding:clamp(80px,10vw,140px) 0}
   font-stretch:105%;font-weight:500;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;
 }
 .temps li .mono{flex:none;font-size:11px;color:var(--impact);letter-spacing:.1em;font-weight:700}
+
+/* ---- Le déroulé : la journée heure par heure, en convention T– / T+.
+   Une seule ligne, des repères posés dessus — la ligne, encore. ---- */
+.deroule{margin-top:clamp(48px,7vw,84px)}
+.deroule-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.deroule h3{font-size:clamp(26px,3.2vw,44px)}
+.deroule .note{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);padding-bottom:6px}
+.deroule ol{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--texte)}
+.deroule li{position:relative;padding:22px 18px 8px 18px;border-left:1px solid var(--ligne-encre)}
+.deroule li:first-child{border-left:none;padding-left:0}
+.deroule li::before{content:"";position:absolute;top:-2px;left:-1px;width:10px;height:10px;background:var(--texte)}
+.deroule li:first-child::before{left:0}
+.deroule li.ligne::before{background:var(--impact);width:14px;height:14px}
+.deroule .t{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.deroule .t.plus{color:var(--impact)}
+.deroule .w{font-stretch:105%;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin-top:10px;line-height:1.3}
+.deroule .d{font-size:13.5px;font-weight:500;color:var(--muted);margin-top:8px;max-width:26ch}
+@media (max-width:980px){
+  .deroule ol{grid-template-columns:repeat(3,1fr)}
+  .deroule li{padding-bottom:26px}
+  .deroule li:nth-child(4){border-left:none;padding-left:0}
+  .deroule li:nth-child(4)::before{left:0}
+}
+@media (max-width:600px){
+  /* Sur mobile, la ligne devient verticale */
+  .deroule ol{grid-template-columns:1fr;border-top:none;border-left:2px solid var(--texte)}
+  .deroule li,.deroule li:first-child,.deroule li:nth-child(4){border-left:none;padding:0 0 26px 22px}
+  .deroule li::before,.deroule li:first-child::before,.deroule li:nth-child(4)::before{top:4px;left:-6px}
+  .deroule li.ligne::before{left:-8px;top:2px}
+  .deroule .d{max-width:none}
+}
 
 /* ==========================================================================
    BANDE — statement pleine largeur sur fond encre
@@ -669,7 +713,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   .format{grid-template-columns:1fr;gap:14px}
   .format .f-go{display:none}
   .cadre-3{grid-template-columns:1fr}
-  .laius{grid-template-columns:1fr}
+  .laius,.laius.avec-affiche{grid-template-columns:1fr}
 }
 @media (max-width:980px){
   #manifeste .manif{grid-template-columns:1fr}
@@ -696,7 +740,8 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   .nav-links.open{display:flex}
   .nav-links a{padding:18px var(--pad);border-left:none;border-top:1px solid rgba(14,13,12,.14);height:auto;color:var(--encre)}
   .nav-links a[aria-current="page"]{color:var(--impact)}
-  .nav-links a.nav-cta{color:var(--craie)}
+  .nav-links a.nav-cta{color:var(--craie);padding:18px var(--pad)}
+  .nav-links a.on{box-shadow:inset 4px 0 0 var(--impact)}
   .burger{display:block}
 }
 /* Très petits écrans : à la chasse 125 %, un mot comme ENTREPRENEURS,
@@ -713,10 +758,27 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   .cadre-2,.cadre-4{grid-template-columns:1fr}
   .lien-page .lp-go{display:none}
 }
+/* ---- Barre CTA mobile : apparaît une fois le hero passé, s'efface sur les
+   tarifs, la finale et le footer pour ne jamais couvrir un bouton. ---- */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:150;
+  display:none;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px var(--pad);
+  background:color-mix(in srgb, var(--encre) 92%, transparent);backdrop-filter:blur(8px);
+  border-top:1px solid var(--ligne-craie);color:var(--craie);
+  transform:translateY(100%);visibility:hidden;transition:transform .25s ease,visibility 0s .25s;
+}
+.sticky-cta.show{transform:none;visibility:visible;transition:transform .25s ease}
+.sticky-cta .mono{font-size:11px;letter-spacing:.14em;line-height:1.4;color:var(--beton)}
+.sticky-cta .mono b{color:var(--craie);font-weight:700}
+.sticky-cta .btn{padding:12px 16px;font-size:12px;letter-spacing:.1em;gap:10px;white-space:nowrap;flex:none}
+@media (max-width:860px){.sticky-cta{display:flex}}
+@media (max-width:360px){.sticky-cta .mono{display:none}.sticky-cta{justify-content:flex-end}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .btn,.format,.f-go,.lien-page,.lien-page .lp-go{transition:none}
+  .btn,.format,.f-go,.lien-page,.lien-page .lp-go,.sticky-cta{transition:none}
 }
 
 /* ==========================================================================

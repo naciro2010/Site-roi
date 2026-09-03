@@ -52,7 +52,16 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 
 ## La page d'accueil, en cinq temps
 
-`T+01` Manifeste (affiche « Au 3e km » + trois phrases) · `T+02` La journée (T– la course / T+ le réseau, puis le dossard recto/verso) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, puis le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur). Pas de bandeau défilant, pas de compteurs, pas de grille de cartes : des listes, deux images, de l'air.
+`T+01` Manifeste (affiche « Au 3e km » + trois phrases) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis **le déroulé heure par heure** en convention T– / T+ — horaires indicatifs, marqués en commentaire HTML) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, puis le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur). Pas de bandeau défilant, pas de compteurs, pas de grille de cartes : des listes, deux images, de l'air.
+
+## SEO, partage & confort
+
+- **Image de partage** `og.png` (1200 × 630, générée depuis le design system) branchée en `og:image` / `twitter:image` sur les deux pages, avec `canonical` et `og:url`.
+- **Icônes** : `favicon.svg` (motif « la ligne » : point d'impact, trait, damier), `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png`, `site.webmanifest`.
+- `robots.txt` (exclut `/v2/`) et `sitemap.xml` (`/` et `/pour-qui/`). Domaine de référence : `https://runoninvest.fr/` — à ajuster si le domaine final diffère.
+- `serve.json` : cache long sur `fonts/` et les images, revalidation sur le HTML.
+- **Mobile** : barre CTA sticky (« Vague 01 · 350€ → Prendre un dossard ») une fois le hero passé, masquée sur les tarifs, la finale et le footer ; boutons du hero pleine largeur ; menu qui se referme à Échap et au clic extérieur.
+- **Robustesse** : ancres décalées sous le header sticky (`scroll-margin-top`), contenu visible sans JavaScript (`.no-js`), classe `.sr-only` pour le `<h1>` d'accueil.
 
 ## Structure
 
@@ -66,6 +75,8 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |
 | `fonts/` | Fontes auto-hébergées (Archivo variable + JetBrains Mono) |
+| `og.png`, `favicon*.{svg,png}`, `apple-touch-icon.png`, `icon-512.png` | Image de partage et icônes |
+| `site.webmanifest`, `robots.txt`, `sitemap.xml`, `serve.json` | Manifest, indexation, config du serveur statique |
 
 ## Déploiement sur Railway
 

@@ -1,0 +1,15 @@
+{
+  "name": "R.O.I — Run On Invest",
+  "short_name": "R.O.I",
+  "description": "Une course entre les tours de Paris La Défense, puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027.",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "fr",
+  "background_color": "#070707",
+  "theme_color": "#070707",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

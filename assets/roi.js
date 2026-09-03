@@ -97,5 +97,33 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && links.classList.contains('open')) { setNav(false); burger.focus(); }
     });
+    // Un clic hors du header referme le menu déplié.
+    document.addEventListener('click', function (e) {
+      if (links.classList.contains('open') && !e.target.closest('header')) { setNav(false); }
+    });
+  }
+
+  /* ---- Barre CTA mobile ----
+     Visible une fois le hero passé, masquée dès qu'une zone qui porte déjà
+     son propre bouton (tarifs, finale, footer) entre dans l'écran. */
+  var sticky = document.getElementById('sticky-cta');
+  var hero = document.querySelector('.hero, .page-hero');
+  if (sticky && hero && 'IntersectionObserver' in window) {
+    var heroPasse = false, surCible = false;
+    var visibles = {};
+    var synchro = function () { sticky.classList.toggle('show', heroPasse && !surCible); };
+    new IntersectionObserver(function (en) {
+      heroPasse = !en[0].isIntersecting && en[0].boundingClientRect.top < 0;
+      synchro();
+    }, { threshold: 0 }).observe(hero);
+    var cache = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { visibles[en.target.id || en.target.tagName] = en.isIntersecting; });
+      surCible = Object.keys(visibles).some(function (k) { return visibles[k]; });
+      synchro();
+    }, { threshold: 0 });
+    ['#tarifs', '#dossards', '.finale', 'footer'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) { cache.observe(el); }
+    });
   }
 })();
