@@ -1,6 +1,6 @@
-# R.O.I — Run On Invest
+# R.O.I — Run On Investment
 
-Site officiel de **R.O.I — Run On Invest** : une course (5 / 10 / 21,1 km) au cœur de Paris La Défense, puis un après-midi entier dans l'Arena pour rencontrer celles et ceux qui viennent de courir à côté de soi. Le rendez-vous d'affaires qui a choisi la course comme porte d'entrée. Septembre 2027.
+Site officiel de **R.O.I — Run On Investment** : une course (5 / 10 / 21,1 km) au cœur de Paris La Défense, puis un après-midi entier dans l'Arena pour rencontrer celles et ceux qui viennent de courir à côté de soi. Le rendez-vous d'affaires qui a choisi la course comme porte d'entrée. Septembre 2027.
 
 > **R.O.I — L'impact après la ligne d'arrivée.**
 
@@ -46,10 +46,12 @@ Le programme horaire de l'après-midi est **indicatif**, signalé en commentaire
 Section `T+04.1 / LES FORMULES` (ancre `#formules`). Aucune formule n'achète une meilleure course — elle change *quand* le réseau commence et combien de portes s'ouvrent après :
 
 - **Dossard** (tarif de la vague) : la journée entière.
-- **Premium** (+ 290 €) : l'annuaire ouvert dès validation, six rencontres réservées à l'avance, le Salon de l'Arena, le dîner des fondateurs. Passage possible à tout moment depuis l'espace personnel.
-- **Cercle** (+ 1 140 €, quarante places) : Premium, plus la table des investisseurs, trois dossards invités, la place reconduite. Sur demande depuis l'espace, ou sur cooptation de deux membres.
+- **Premium** (sur demande) : l'annuaire ouvert dès validation, six rencontres réservées à l'avance, le Salon de l'Arena, le dîner des fondateurs. Demande possible à tout moment depuis l'espace personnel.
+- **Cercle** (sur cooptation, quarante places) : Premium, plus la table des investisseurs, trois dossards invités, la place reconduite. Sur demande depuis l'espace, ou sur cooptation de deux membres.
 
-> ⚠️ Montants, contenus et jauge du Cercle sont des **propositions** à arbitrer (commentaire HTML dans `index.html`). Les mêmes montants vivent dans `assets/compte.js` (`SUPPLEMENT`) et dans les libellés des trois pages de compte — à changer ensemble.
+**Les seuls prix affichés sur le site sont ceux des vagues** (350 / 400 / 500 €, entreprises sur devis), inchangés. Premium et Cercle n'ont pas de montant : leurs conditions « sont précisées à la validation ». Les dates des vagues vivent à deux endroits — `index.html` et `vagueCourante()` dans `server.js` (doublée dans `assets/compte.js` pour le mode local) — à garder alignées.
+
+> ⚠️ Contenus des formules et jauge du Cercle sont des **propositions** à arbitrer (commentaire HTML dans `index.html`).
 
 ## Le compte : s'inscrire avant, se connecter, suivre son dossier
 
@@ -67,7 +69,7 @@ R.O.I s'adresse aux **entrepreneurs, intrapreneurs, cadres dirigeants et commerc
 
 Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `T+03.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, les justificatifs, le parcours du dossier et une FAQ d'éligibilité.
 
-> ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Ce document parle de « Run On Invest**ment** » ; le site et le domaine disent « Run On Invest » — à trancher.
+> ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Le site dit désormais « Run On Investment », comme ce document ; le domaine, les adresses e-mail et le compte Instagram restent sur `runoninvest`.
 
 > **Reste à renseigner** : le lien LinkedIn du footer pointe encore sur `#` (marqué en commentaire dans les deux pages). Instagram est branché sur [@runoninvest](https://www.instagram.com/runoninvest/).
 

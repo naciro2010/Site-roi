@@ -1,5 +1,5 @@
 /* ==========================================================================
-   R.O.I — RUN ON INVEST · serveur
+   R.O.I — RUN ON INVESTMENT · serveur
    Sert le site statique et expose une petite API de compte (inscription,
    connexion, espace personnel). Zéro dépendance : Node ≥ 18 suffit.
 
@@ -319,7 +319,7 @@ const serveur = http.createServer(function (req, res) {
 
 if (require.main === module) {
   serveur.listen(PORT, '0.0.0.0', function () {
-    console.log('R.O.I — Run On Invest · http://localhost:' + PORT + ' · données : ' + FICHIER);
+    console.log('R.O.I — Run On Investment · http://localhost:' + PORT + ' · données : ' + FICHIER);
   });
 }
 

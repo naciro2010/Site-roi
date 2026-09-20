@@ -32,7 +32,7 @@ function appel(base, methode, chemin, corps, cookie) {
     const r = await appel(base, 'GET', '/');
     assert.equal(r.status, 200);
     assert.match(r.headers.get('content-type'), /text\/html/);
-    assert.match(await r.text(), /Run On Invest/);
+    assert.match(await r.text(), /Run On Investment/);
   });
   await t('/pour-qui redirige vers /pour-qui/', async function () {
     const r = await appel(base, 'GET', '/pour-qui');

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   R.O.I — RUN ON INVEST · comportements partagés
+   R.O.I — RUN ON INVESTMENT · comportements partagés
    Aucune dépendance. Chaque bloc est optionnel : il ne s'active que si
    l'élément correspondant est présent sur la page.
    ========================================================================== */

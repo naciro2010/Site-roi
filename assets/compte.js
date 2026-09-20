@@ -1,5 +1,5 @@
 /* ==========================================================================
-   R.O.I — RUN ON INVEST · le compte
+   R.O.I — RUN ON INVESTMENT · le compte
    Inscription, connexion, espace personnel. Parle à /api/… (server.js).
    Si le site est servi sans serveur (aperçu statique), on bascule sur un
    mode local : les comptes vivent dans le navigateur, et on le dit.
@@ -243,7 +243,6 @@
       profil: { entrepreneur: 'Entrepreneur·e / indépendant·e', intrapreneur: 'Intrapreneur·e', dirigeant: 'Cadre dirigeant·e', commercial: 'Commercial·e / business developer', investisseur: 'Investisseur / conseil', autre: 'Autre' },
       etat: { demande: 1, justificatif: 2, valide: 3, paye: 4 }
     };
-    var SUPPLEMENT = { dossard: 0, premium: 290, cercle: 1140 };
 
     var rend = function (c) {
       espace.hidden = false;
@@ -262,9 +261,10 @@
       $('#es-formule').textContent = LIBELLES.formule[c.formule] || c.formule;
       $('#es-voie').textContent = LIBELLES.voie[c.voie] || c.voie;
       $('#es-profil').textContent = LIBELLES.profil[c.profil] || c.profil;
-      var base = c.vague ? c.vague.prix : 0;
-      var total = base + (SUPPLEMENT[c.formule] || 0);
-      $('#es-prix').textContent = total + ' €' + (c.formule !== 'dossard' ? ' (' + base + ' € + ' + SUPPLEMENT[c.formule] + ' €)' : '');
+      // Seul le tarif de la vague est affiché : les conditions d'une formule
+      // Premium ou Cercle sont précisées à la validation, pas ici.
+      $('#es-prix').textContent = c.vague ? c.vague.prix + ' € — vague ' + c.vague.nom : '—';
+      $('#es-prix-note').textContent = (c.formule !== 'dossard' ? 'Tarif de la vague. Les conditions de la formule ' + (LIBELLES.formule[c.formule] || c.formule) + ' te sont précisées à la validation. ' : '') + 'Débité après validation, jamais avant. Dossier refusé, rien n\'est débité.';
       $('#es-cercle-note').hidden = c.formule !== 'cercle';
 
       // Les quatre étapes du dossier.

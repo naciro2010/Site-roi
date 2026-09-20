@@ -1,5 +1,5 @@
 /* ==========================================================================
-   R.O.I — RUN ON INVEST · Identité « LA LIGNE »
+   R.O.I — RUN ON INVESTMENT · Identité « LA LIGNE »
    Papier craie · Encre · Orange impact
    Archivo variable (62–125% de chasse) · JetBrains Mono (chrono)
    Convention de marque : T– = avant la ligne, T+ = après la ligne.
@@ -917,6 +917,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 .formule .fo-prix{font-stretch:125%;font-weight:250;font-size:clamp(40px,4.6vw,66px);line-height:.85;white-space:nowrap;margin-bottom:6px}
 .formule .fo-prix small{font-size:.4em;vertical-align:.85em;font-stretch:100%}
 .formule .fo-prix .plus{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.3em;vertical-align:1.1em;color:var(--impact);letter-spacing:.06em;margin-right:.3em}
+.formule .fo-prix.devis{font-size:clamp(20px,2vw,28px);font-stretch:110%;font-weight:400;text-transform:uppercase;line-height:1.1;white-space:normal;padding:.35em 0 .3em}
 .formule .fo-base{font-size:14px;font-weight:500;color:var(--muted);margin-bottom:22px;min-height:2.6em}
 .formule ul{list-style:none;flex:1}
 /* Puce posée en absolu, pas en flex : un <b> dans la ligne doit rester
