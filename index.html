@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R.O.I — Run On Invest · L'impact après la ligne d'arrivée</title>
-<meta name="description" content="R.O.I — Run On Invest. Une course de 5, 10 ou 21,1 km entre les tours de Paris La Défense, une arrivée dans l'Arena, puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027. Un seul dossard.">
+<meta name="description" content="R.O.I — Run On Invest. Une course de 5, 10 ou 21,1 km entre les tours de Paris La Défense, puis un après-midi entier dans l'Arena pour rencontrer celles et ceux qui viennent de courir à côté de toi : fondateurs, dirigeants, investisseurs. Le rendez-vous où l'effort ouvre la conversation. Septembre 2027.">
 <meta name="theme-color" content="#070707">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070707'/%3E%3Crect y='7' width='16' height='1' fill='%23EFEBE2' opacity='.45'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23FF4400'/%3E%3C/svg%3E">
 
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="R.O.I — Run On Invest">
 <meta property="og:title" content="R.O.I — Run On Invest · L'impact après la ligne d'arrivée">
-<meta property="og:description" content="Une course entre les tours de Paris La Défense, puis le plus grand événement de networking entre entrepreneurs de France. Septembre 2027. Un seul dossard.">
+<meta property="og:description" content="Une course entre les tours de Paris La Défense, puis un après-midi pour rencontrer ceux qui ont couru à côté de toi. Le rendez-vous des entrepreneurs où l'effort ouvre la conversation. Septembre 2027.">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -24,7 +24,7 @@
   "@context": "https://schema.org",
   "@type": "SportsEvent",
   "name": "R.O.I — Run On Invest · Édition 01",
-  "description": "Une course de 5, 10 ou 21,1 km entre les tours de Paris La Défense, suivie du plus grand événement de networking entre entrepreneurs de France.",
+  "description": "Une course de 5, 10 ou 21,1 km entre les tours de Paris La Défense, suivie d'un après-midi de rencontres entre entrepreneurs, dirigeants et investisseurs dans Paris La Défense Arena.",
   "sport": "Course à pied",
   "startDate": "2027-09",
   "eventStatus": "https://schema.org/EventScheduled",
@@ -47,14 +47,15 @@
     "sameAs": ["https://www.instagram.com/runoninvest/"]
   },
   "offers": [
-    { "@type": "Offer", "name": "Early Bird", "price": "350", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "validThrough": "2026-11-30" },
-    { "@type": "Offer", "name": "Régulier", "price": "400", "priceCurrency": "EUR", "validThrough": "2027-01-31" },
-    { "@type": "Offer", "name": "Last Call", "price": "500", "priceCurrency": "EUR" }
+    { "@type": "Offer", "name": "Dossard — Early Bird", "price": "350", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "validThrough": "2026-11-30", "url": "https://runoninvest.fr/inscription/" },
+    { "@type": "Offer", "name": "Dossard — Régulier", "price": "400", "priceCurrency": "EUR", "validThrough": "2027-01-31", "url": "https://runoninvest.fr/inscription/" },
+    { "@type": "Offer", "name": "Dossard — Last Call", "price": "500", "priceCurrency": "EUR", "url": "https://runoninvest.fr/inscription/" },
+    { "@type": "Offer", "name": "Supplément Premium", "price": "290", "priceCurrency": "EUR", "url": "https://runoninvest.fr/inscription/?formule=premium" }
   ]
 }
 </script>
 </head>
-<body>
+<body data-racine="./">
 
 <a class="skip" href="#top">Aller au contenu</a>
 
@@ -70,7 +71,8 @@
       <li><a href="pour-qui/">Pour qui</a></li>
       <li><a href="#dossards">Dossards</a></li>
       <li><a href="#lieu">Le lieu</a></li>
-      <li><a class="nav-cta" href="#dossards">Prendre un dossard</a></li>
+      <li><a class="nav-compte" href="connexion/">Connexion</a></li>
+      <li><a class="nav-cta" href="inscription/">Prendre un dossard</a></li>
     </ul>
     <div class="progres" aria-hidden="true"><i></i></div>
   </div>
@@ -82,7 +84,7 @@
   <div class="wrap">
     <div class="hero-top">
       <span class="tmark"><b>ÉDITION 01</b> — PARIS LA DÉFENSE — SEPTEMBRE 2027</span>
-      <span class="hero-etat"><b>■</b> DOSSARDS EARLY BIRD OUVERTS JUSQU'AU 30 NOV. 2026</span>
+      <span class="hero-etat"><b>■</b> INSCRIPTIONS OUVERTES — EARLY BIRD JUSQU'AU 30 NOV. 2026</span>
     </div>
 
     <div class="hero-roi" aria-hidden="true">R<i></i>O<i></i>I</div>
@@ -91,16 +93,16 @@
     <div class="hero-strip">
       <span class="rsi">RUN <em>ON</em> INVEST</span>
       <span class="damier" aria-hidden="true"></span>
-      <span class="mono">FR · 5K — 10K — 21,1K</span>
+      <span class="mono">FR · 5K — 10K — 21,1K · COURSE &amp; RÉSEAU</span>
     </div>
 
     <div class="hero-grid">
       <p class="hero-tagline reveal">L'impact <span class="souligne">après</span> la ligne d'arrivée.</p>
       <div class="hero-right reveal">
-        <p>Une course de <b>5, 10 ou 21,1 km</b> entre les tours de Paris La Défense, une arrivée dans l'Arena, puis <b>le plus grand événement de networking entre entrepreneurs de France</b>.</p>
-        <p>Un seul dossard pour la course et pour la suite.</p>
+        <p>Une course de <b>5, 10 ou 21,1 km</b> entre les tours de Paris La Défense. Puis, dans l'Arena, <b>un après-midi entier pour rencontrer celles et ceux qui viennent de courir à côté de toi</b>&nbsp;: fondateurs, dirigeants, investisseurs.</p>
+        <p>Le rendez-vous où l'effort ouvre la conversation. Un seul dossard pour les deux.</p>
         <div class="hero-ctas">
-          <a class="btn btn-impact" href="#dossards"><span>Prendre un dossard</span><span class="arr">→</span></a>
+          <a class="btn btn-impact" href="inscription/"><span>Prendre un dossard</span><span class="arr">→</span></a>
           <a class="btn btn-ghost" href="pour-qui/"><span>C'est pour qui&nbsp;?</span><span class="arr">→</span></a>
         </div>
       </div>
@@ -110,7 +112,7 @@
       <div><span class="k">LIEU</span><span class="v">Paris La Défense</span></div>
       <div><span class="k">DATE</span><span class="v">Septembre 2027</span></div>
       <div><span class="k">DISTANCES</span><span class="v">5 · 10 · 21,1 KM</span></div>
-      <div><span class="k">PARTICIPANTS</span><span class="v">10 000 attendus</span></div>
+      <div><span class="k">PARTICIPANTS</span><span class="v">10 000 décideurs attendus</span></div>
     </div>
   </div>
 </section>
@@ -127,8 +129,9 @@
         <img src="assets/img/affiche-3e-km.jpg" srcset="assets/img/affiche-3e-km-640.jpg 640w, assets/img/affiche-3e-km.jpg 1200w" sizes="(max-width:980px) 440px, 34vw" width="1200" height="1481" alt="Affiche R.O.I. Des coureurs montent les escaliers de La Défense au petit matin. Texte : « Au 3e km, plus personne ne joue un rôle. L'effort crée le lien. »" loading="lazy">
       </figure>
       <div class="stances">
-        <p class="stance reveal">Les qualités qui font progresser dans le sport sont celles qui construisent les réussites durables&nbsp;: <b>l'effort, la discipline, la constance, l'audace</b>.</p>
-        <p class="stance reveal">Run On Invest, c'est la rencontre entre l'investissement personnel consenti pendant l'épreuve et <b>la valeur créée après la ligne</b>&nbsp;: des rencontres, des opportunités, un collectif.</p>
+        <p class="stance reveal">On ne se rencontre jamais aussi bien qu'essoufflé. Au troisième kilomètre, il ne reste que l'essentiel&nbsp;: <b>le souffle, la foulée, et la personne qui tient l'allure à côté de toi.</b></p>
+        <p class="stance reveal">Les qualités qui font tenir une course sont celles qui font tenir une entreprise&nbsp;: <b>l'effort, la constance, l'audace de partir quand rien n'est certain</b>.</p>
+        <p class="stance reveal">Run On Invest part d'une idée simple&nbsp;: la meilleure façon de commencer une relation d'affaires, c'est de partager d'abord quelque chose qui ne s'achète pas. Quelques kilomètres. <b>Puis une conversation qui commence au bon endroit.</b></p>
         <p class="stance reveal">Ici, la ligne d'arrivée n'est pas une fin. <b class="imp">C'est l'endroit précis où l'impact commence.</b></p>
         <div class="sceau reveal">
           <div class="sig">R<i></i>O<i></i>I</div>
@@ -148,16 +151,16 @@
     <div class="sec-head">
       <span class="tmark"><b>T+02</b> / LA JOURNÉE</span>
       <h2>La course le matin,<br class="br-desk"> le réseau l'après-midi.</h2>
-      <p class="intro">Tout se passe le même jour, au même endroit. Le dossard qui te fait passer la ligne est celui qui t'ouvre la salle ensuite.</p>
+      <p class="intro">Tout se passe le même jour, au même endroit. Le dossard qui te fait passer la ligne est celui qui t'ouvre la salle ensuite — <b>et la conversation, souvent, a commencé sur le parcours</b>.</p>
     </div>
 
     <div class="temps-grid reveal">
       <div class="temps avant">
         <div class="t-chrono" aria-hidden="true">T–</div>
         <h3>La course</h3>
-        <p class="lead">Village au pied de la Grande Arche, départs par vagues, parcours fermé entre les tours.</p>
+        <p class="lead">Village au pied de la Grande Arche, départs par vagues d'allure, parcours fermé entre les tours.</p>
         <ul>
-          <li><span class="mono">01</span> 5, 10 ou 21,1 km, départs par vagues</li>
+          <li><span class="mono">01</span> 5, 10 ou 21,1 km — départs par vagues d'allure, du rythme de conversation au chrono</li>
           <li><span class="mono">02</span> Dossard à puce, chronométrage et classements officiels</li>
           <li><span class="mono">03</span> Ravitaillements, signaleurs et secours sur tout le tracé</li>
           <li><span class="mono">04</span> Village&nbsp;: retrait des dossards, consignes, échauffement</li>
@@ -166,12 +169,12 @@
       <div class="temps apres">
         <div class="t-chrono" aria-hidden="true">T+</div>
         <h3>Le réseau</h3>
-        <p class="lead">L'arrivée se fait en salle, dans Paris La Défense Arena. Puis place au networking, jusqu'au soir.</p>
+        <p class="lead">La ligne est dans Paris La Défense Arena. On reprend son souffle, et la journée continue, jusqu'au soir.</p>
         <ul>
-          <li><span class="mono">01</span> Finale et arrivée scénarisée dans l'Arena</li>
+          <li><span class="mono">01</span> Arrivée scénarisée dans l'Arena, café des finishers</li>
           <li><span class="mono">02</span> Ton dossard porte ton nom, ta fonction, ton entreprise</li>
-          <li><span class="mono">03</span> Le plus grand networking d'entrepreneurs de France</li>
-          <li><span class="mono">04</span> Célébration, restauration et rencontres jusqu'au soir</li>
+          <li><span class="mono">03</span> Déjeuner par tables, rencontres courtes, conversations debout</li>
+          <li><span class="mono">04</span> Dîner des fondateurs et soirée, jusqu'au soir</li>
         </ul>
       </div>
     </div>
@@ -211,6 +214,45 @@
         <button class="d-retourne" type="button" tabindex="-1" aria-hidden="true">Retourne-le</button>
       </div>
     </div>
+
+    <!-- Programme indicatif de l'après-midi — À ARBITRER avec la production.
+         Il reprend ce qui marche dans les formats existants : les clubs de
+         fondateurs qui courent « à allure de conversation » puis enchaînent
+         café et prises de parole courtes ; les rencontres flash de six
+         minutes des salons d'entrepreneurs à l'Arena ; le verre d'après des
+         sorties mensuelles de dirigeants, sans badge ni slide. -->
+    <div class="sub-head" id="programme">
+      <span class="tmark"><b>T+02.1</b> / APRÈS LA LIGNE</span>
+      <h3>Le programme de l'après-midi.</h3>
+      <p>On a gardé ce qui marche déjà chez ceux qui courent ensemble&nbsp;: <b>on court d'abord, on parle pendant, on prolonge après.</b> Pas de stand, pas de slide, pas de pitch imposé.</p>
+    </div>
+    <div class="programme reveal">
+      <div class="pg-row">
+        <span class="pg-h">T+00<small>DÈS 11 H</small></span>
+        <span class="pg-quoi">L'arrivée</span>
+        <p class="pg-txt">La ligne est dans l'Arena. On reprend son souffle, on prend un café, et les premières conversations commencent là&nbsp;: <b>en sueur, sans carte de visite</b>.</p>
+      </div>
+      <div class="pg-row">
+        <span class="pg-h">T+01<small>12 H 30</small></span>
+        <span class="pg-quoi">Le déjeuner des finishers</span>
+        <p class="pg-txt">Tables par distance d'abord&nbsp;: on s'assoit avec ceux qui ont couru la même chose. Puis par secteur, si tu préfères. <b>Personne ne déjeune seul.</b></p>
+      </div>
+      <div class="pg-row">
+        <span class="pg-h">T+02<small>14 H</small></span>
+        <span class="pg-quoi">Les rencontres</span>
+        <p class="pg-txt">Des rendez-vous de huit minutes, proposés depuis ton profil&nbsp;: <b>recruter, lever, vendre, s'associer</b>. Tu choisis qui, on s'occupe du où. En Premium, tu les réserves des semaines à l'avance.</p>
+      </div>
+      <div class="pg-row">
+        <span class="pg-h">T+03<small>16 H</small></span>
+        <span class="pg-quoi">Les conversations debout</span>
+        <p class="pg-txt">Trois prises de parole de quinze minutes, par des fondateurs qui ont couru le matin. <b>Zéro slide.</b> Puis on repart marcher, on repart parler.</p>
+      </div>
+      <div class="pg-row">
+        <span class="pg-h">T+04<small>18 H</small></span>
+        <span class="pg-quoi">La soirée</span>
+        <p class="pg-txt">Le dîner des fondateurs pour les formules Premium et Cercle, la soirée pour tout le monde. <b>Jusqu'au soir</b>, et un peu après.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -227,11 +269,11 @@
 
     <div class="laius avec-affiche reveal">
       <div>
-        <p class="fort">R.O.I n'est pas une course grand public avec un afterwork. C'est <span class="imp">un réseau professionnel</span> qui a choisi la course comme porte d'entrée.</p>
+        <p class="fort">R.O.I n'est pas une course à laquelle on aurait ajouté un afterwork. C'est <span class="imp">un rendez-vous d'affaires</span> qui a choisi la course comme porte d'entrée.</p>
         <div class="corps" style="margin-top:clamp(22px,3vw,34px)">
-          <p>Le sport est le point de rencontre, le dépassement de soi le langage commun. Après la ligne, les échanges et les opportunités prolongent l'expérience dans le champ professionnel.</p>
-          <p>Personne ne pitche à 12 km/h. Quelques kilomètres d'effort partagé font tomber la posture, le titre sur la carte et la hiérarchie. <b>Après la ligne, la conversation commence au bon endroit.</b></p>
-          <p>Le dossard est vérifié, pour que la personne qui court à côté de toi soit là pour les mêmes raisons que toi.</p>
+          <p>Des fondateurs courent déjà ensemble le samedi matin dans une soixantaine de villes du monde. Des dirigeants se retrouvent chaque mois pour dix kilomètres sans chrono, suivis d'un verre. Tous font le même constat&nbsp;: <b>ce qui se dit après l'effort ne se dit nulle part ailleurs.</b></p>
+          <p>Personne ne pitche à 12 km/h. Quelques kilomètres partagés font tomber ce qu'un petit-déjeuner réseau met six mois à faire tomber&nbsp;: la posture, le titre sur la carte, la hiérarchie. Après la ligne, la première question n'est pas «&nbsp;tu fais quoi&nbsp;?&nbsp;» mais «&nbsp;t'as fait quel temps&nbsp;?&nbsp;». La suite vient toute seule.</p>
+          <p>R.O.I prend ce constat et lui donne une échelle&nbsp;: <b>dix mille personnes qui décident, un quartier d'affaires entier, une seule journée.</b> Et un dossard vérifié, pour que la personne qui court à côté de toi soit là pour les mêmes raisons que toi.</p>
         </div>
       </div>
       <figure class="affiche">
@@ -239,26 +281,34 @@
       </figure>
     </div>
 
+    <!-- Quatre principes empruntés aux formats qui existent déjà. -->
+    <div class="principes reveal">
+      <div><span class="p-n">01</span><h4>Zéro pitch en course</h4><p>On court, on parle si on veut, on ne vend rien. Ça vient après — et ça vient mieux.</p></div>
+      <div><span class="p-n">02</span><h4>Zéro slide l'après-midi</h4><p>Des tables, des rendez-vous courts, des conversations debout. Pas de stand, pas d'écran.</p></div>
+      <div><span class="p-n">03</span><h4>Toutes les allures</h4><p>Aucun temps à tenir. Le 5 km existe pour ça, et personne ne regarde les classements en salle.</p></div>
+      <div><span class="p-n">04</span><h4>L'après compte autant</h4><p>Le café d'arrivée, le déjeuner, la soirée&nbsp;: c'est là que se fait l'essentiel du retour sur investissement.</p></div>
+    </div>
+
     <div class="registre reveal">
       <div class="rg-row">
         <span class="rg-n">01</span>
         <span class="rg-qui">Indépendants &amp; entrepreneurs</span>
-        <span class="rg-quoi">Rompre l'isolement, élargir son réseau et partager l'énergie de ceux qui entreprennent.</span>
+        <span class="rg-quoi">Rompre l'isolement, élargir son cercle, et retrouver l'énergie de ceux qui entreprennent au même moment que toi.</span>
       </div>
       <div class="rg-row">
         <span class="rg-n">02</span>
         <span class="rg-qui">Intrapreneurs &amp; cadres</span>
-        <span class="rg-quoi">Se challenger, rencontrer des profils différents et nourrir sa capacité d'initiative.</span>
+        <span class="rg-quoi">Se challenger, rencontrer des profils qu'on ne croise jamais en interne, et nourrir sa capacité d'initiative.</span>
       </div>
       <div class="rg-row">
         <span class="rg-n">03</span>
         <span class="rg-qui">Dirigeants &amp; décideurs</span>
-        <span class="rg-quoi">Fédérer, incarner une culture de l'effort et développer des relations de confiance.</span>
+        <span class="rg-quoi">Rencontrer ses homologues sans salon ni intermédiaire, incarner une culture de l'effort, tisser des relations de confiance.</span>
       </div>
       <div class="rg-row">
         <span class="rg-n">04</span>
         <span class="rg-qui">Entreprises &amp; équipes</span>
-        <span class="rg-quoi">Mobiliser ses équipes autour d'une expérience qui a du sens. Dossards groupés et packs entreprises&nbsp;: <a href="mailto:entreprises@runoninvest.fr">entreprises@runoninvest.fr</a>.</span>
+        <span class="rg-quoi">Mobiliser ses équipes autour d'une expérience qui a du sens, et courir aux couleurs de l'entreprise. Dossards groupés et packs&nbsp;: <a href="mailto:entreprises@runoninvest.fr">entreprises@runoninvest.fr</a>.</span>
       </div>
     </div>
 
@@ -282,43 +332,99 @@
     <div class="sec-head">
       <span class="tmark"><b>T+04</b> / LES DOSSARDS</span>
       <h2>Trois distances,<br class="br-desk"> un seul dossard.</h2>
-      <p class="intro">Même prix quelle que soit la distance, et le même accès à la suite. Plus tu t'inscris tôt, moins tu paies.</p>
+      <p class="intro">Même prix quelle que soit la distance, et le même accès à la suite. <b>La formule, elle, change ce qu'il y a autour de la course.</b></p>
     </div>
 
     <div class="formats reveal">
-      <a class="format" href="#tarifs">
+      <a class="format" href="inscription/?distance=5">
         <div class="f-km">5<small>KM</small></div>
         <div>
           <div class="f-name">Le Sprint</div>
           <p class="f-why">Pour se lancer, courir accompagné·e, ou garder du souffle pour l'après-midi.</p>
         </div>
-        <div class="f-data">BOUCLE ESPLANADE<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <div class="f-data">BOUCLE ESPLANADE<br>ACCÈS RÉSEAU <b>■ TOTAL</b></div>
         <span class="f-go" aria-hidden="true">→</span>
       </a>
-      <a class="format" href="#tarifs">
+      <a class="format" href="inscription/?distance=10">
         <div class="f-km">10<small>KM</small></div>
         <div>
           <div class="f-name">La Référence</div>
           <p class="f-why">Le format central&nbsp;: un vrai effort, et de l'énergie pour la suite.</p>
         </div>
-        <div class="f-data">ENTRE LES TOURS<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <div class="f-data">ENTRE LES TOURS<br>ACCÈS RÉSEAU <b>■ TOTAL</b></div>
         <span class="f-go" aria-hidden="true">→</span>
       </a>
-      <a class="format" href="#tarifs">
+      <a class="format" href="inscription/?distance=21">
         <div class="f-km">21,1<small>KM</small></div>
         <div>
           <div class="f-name">Le Grand Format</div>
           <p class="f-why">Le semi-marathon de La Défense&nbsp;: 21,0975&nbsp;km mesurés, sur un parcours entièrement fermé.</p>
         </div>
-        <div class="f-data">21,0975 KM · DISTANCE OFFICIELLE<br>ACCÈS NETWORKING <b>■ TOTAL</b></div>
+        <div class="f-data">21,0975 KM · DISTANCE OFFICIELLE<br>ACCÈS RÉSEAU <b>■ TOTAL</b></div>
         <span class="f-go" aria-hidden="true">→</span>
       </a>
     </div>
 
+    <!-- Formules — montants et contenus À ARBITRER avant mise en ligne. Le
+         supplément Premium et le Cercle (40 places, cooptation) sont des
+         propositions. Le passage à Premium se fait depuis l'espace personnel,
+         jusqu'au jour J. -->
+    <div class="sub-head" id="formules">
+      <span class="tmark"><b>T+04.1</b> / LES FORMULES</span>
+      <h3>La course est la même.<br>Le réseau, non.</h3>
+      <p>Le Dossard donne déjà tout&nbsp;: la course et la journée entière. <b>Premium ouvre le réseau avant le jour J.</b> Le Cercle, quarante places, se confirme sur cooptation.</p>
+    </div>
+    <div class="formules reveal" style="margin-top:0">
+      <div class="formule">
+        <div class="fo-n"><span>FORMULE 01</span><b>■ INCLUS</b></div>
+        <h3>Dossard</h3>
+        <p class="fo-pour">LA JOURNÉE ENTIÈRE</p>
+        <div class="fo-prix">350<small>€</small></div>
+        <p class="fo-base">Tarif de la vague en cours. Il monte à 400 € en décembre, 500 € en février.</p>
+        <ul>
+          <li>Course chronométrée, t-shirt R.O.I, médaille finisher</li>
+          <li>L'arrivée dans l'Arena et le déjeuner des finishers</li>
+          <li>Tout l'après-midi&nbsp;: rencontres de huit minutes, conversations debout, soirée</li>
+          <li>Ton profil dans l'annuaire des participants, le jour J</li>
+        </ul>
+        <div class="fo-cta"><a class="btn btn-ghost" href="inscription/?formule=dossard"><span>Prendre un dossard</span><span class="arr">→</span></a></div>
+      </div>
+      <div class="formule mise">
+        <div class="fo-n"><span>FORMULE 02</span><b>+ 290 €</b></div>
+        <h3>Premium</h3>
+        <p class="fo-pour">LE RÉSEAU COMMENCE AVANT LA LIGNE</p>
+        <div class="fo-prix"><span class="plus">TARIF +</span>290<small>€</small></div>
+        <p class="fo-base">S'ajoute au tarif de ta vague. Passage possible à tout moment depuis ton espace.</p>
+        <ul>
+          <li class="herite">Tout le Dossard, et</li>
+          <li><b>L'annuaire ouvert dès validation</b>&nbsp;: tu sais qui court, des mois avant le départ</li>
+          <li><b>Six rencontres réservées</b> à l'avance, depuis ton espace</li>
+          <li>Le Salon de l'Arena, vestiaire et douches sans attente, sas de départ dédié</li>
+          <li>Le dîner des fondateurs, le soir</li>
+        </ul>
+        <div class="fo-cta"><a class="btn btn-impact" href="inscription/?formule=premium"><span>Prendre un dossard Premium</span><span class="arr">→</span></a></div>
+      </div>
+      <div class="formule">
+        <div class="fo-n"><span>FORMULE 03</span><b>+ 1 140 €</b></div>
+        <h3>Cercle</h3>
+        <p class="fo-pour">QUARANTE PLACES · SUR COOPTATION</p>
+        <div class="fo-prix"><span class="plus">TARIF +</span>1 140<small>€</small></div>
+        <p class="fo-base">Sur demande depuis ton espace, ou sur cooptation de deux membres.</p>
+        <ul>
+          <li class="herite">Tout le Premium, et</li>
+          <li><b>La table des investisseurs</b> au déjeuner, un rendez-vous garanti avec les fonds présents</li>
+          <li><b>Trois dossards invités</b> pour ton équipe ou tes associés</li>
+          <li>Ta place au Cercle, reconduite les éditions suivantes</li>
+        </ul>
+        <div class="fo-cta"><a class="btn btn-ghost" href="inscription/?formule=cercle"><span>Demander une place</span><span class="arr">→</span></a></div>
+      </div>
+    </div>
+    <p class="formules-note">Aucune formule n'achète une meilleure course&nbsp;: <b>même parcours, même chrono, même ligne.</b> Ce qui change, c'est le temps que le réseau commence avant, et le nombre de portes ouvertes après.</p>
+
     <div class="sub-head" id="tarifs">
-      <span class="tmark"><b>T+04.1</b> / LES VAGUES</span>
+      <span class="tmark"><b>T+04.2</b> / LES VAGUES</span>
       <h3>Trois vagues, un tarif qui monte.</h3>
-      <p>Chaque vague est limitée en nombre. Le tarif est gardé le temps que ton dossier soit validé.</p>
+      <p>Chaque vague est limitée en nombre. <b>Ta vague et son tarif sont gardés dès la création de ton compte</b>, le temps que ton dossier soit lu.</p>
     </div>
     <div class="grille-tarifs reveal">
       <div class="tarif ouvert">
@@ -326,7 +432,7 @@
         <span class="t-nom">Early Bird</span>
         <span class="t-date">Jusqu'au 30 novembre 2026</span>
         <span class="t-prix">350<small>€</small></span>
-        <a class="btn btn-impact t-cta" href="mailto:contact@runoninvest.fr?subject=Dossard%20Early%20Bird%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Réserver</span><span class="arr">→</span></a>
+        <a class="btn btn-impact t-cta" href="inscription/"><span>Réserver</span><span class="arr">→</span></a>
       </div>
       <div class="tarif">
         <span class="t-vague">Vague 02</span>
@@ -345,12 +451,12 @@
       <div class="tarif">
         <span class="t-vague">Entreprises</span>
         <span class="t-nom">Équipes &amp; packs</span>
-        <span class="t-date">Dossards groupés, au nom de l'entreprise</span>
+        <span class="t-date">Dossards groupés, au nom de l'entreprise — à partir de quatre coureurs</span>
         <span class="t-prix devis">Sur devis</span>
         <a class="t-etat" href="mailto:entreprises@runoninvest.fr?subject=Pack%20entreprise%20%E2%80%94%20R.O.I%20%C3%89dition%2001">Nous écrire →</a>
       </div>
     </div>
-    <p class="tarif-note"><b>Le dossard donne accès à la journée entière</b>&nbsp;: course chronométrée, t-shirt R.O.I, médaille finisher, l'arrivée dans l'Arena et le networking de l'après-midi. Il est transférable jusqu'au jour J, à condition que la personne passe la même <a href="pour-qui/#acces" style="color:inherit">vérification d'accès</a>.</p>
+    <p class="tarif-note"><b>Le dossard donne accès à la journée entière</b>&nbsp;: course chronométrée, t-shirt R.O.I, médaille finisher, l'arrivée dans l'Arena, le déjeuner et tout l'après-midi. Il est transférable jusqu'au jour J, à condition que la personne passe la même <a href="pour-qui/#acces" style="color:inherit">vérification d'accès</a>. Déjà inscrit·e&nbsp;? <a href="connexion/" style="color:inherit">Retrouve ton dossier</a>.</p>
   </div>
 </section>
 
@@ -363,14 +469,14 @@
     <div class="sec-head">
       <span class="tmark"><b>T+05</b> / LE LIEU</span>
       <h2 class="arche"><span>Paris</span><span class="creuse">La Défense</span></h2>
-      <p class="intro"><b>Le plus grand quartier d'affaires d'Europe.</b> Une course entre les tours, une arrivée en salle.</p>
+      <p class="intro"><b>Le plus grand quartier d'affaires d'Europe.</b> On court entre les tours où ces conversations se poursuivront le reste de l'année.</p>
     </div>
     <div class="laligne reveal" aria-hidden="true"></div>
     <dl class="fiche reveal">
       <div><dt>Départ</dt><dd>Village et sas de départ au pied de la Grande Arche.</dd></div>
       <div><dt>Parcours</dt><dd>Un tracé fermé entre les tours&nbsp;: esplanade, parvis et dalles. Une ou plusieurs boucles selon la distance.</dd></div>
       <div><dt>Arrivée</dt><dd>En salle, dans Paris La Défense Arena. La ligne est à l'intérieur.</dd></div>
-      <div><dt>Après la ligne</dt><dd>Le networking dans l'Arena, jusqu'au soir.</dd></div>
+      <div><dt>Après la ligne</dt><dd>Déjeuner, rencontres et soirée dans l'Arena, jusqu'au soir.</dd></div>
       <div><dt>Venir</dt><dd>Métro ligne 1, RER A, Transilien L, station La Défense Grande Arche.</dd></div>
       <div><dt>Le quartier</dt><dd>180&nbsp;000 salariés, 500 entreprises, 3,5 millions de m² de bureaux. <span class="src">Source — Paris La Défense</span></dd></div>
     </dl>
@@ -382,8 +488,11 @@
   <div class="wrap">
     <h2 class="reveal">Prends ta place<br><span class="creuse">sur la ligne.</span></h2>
     <div class="fin-grid reveal">
-      <p>Édition 01, Paris La Défense, septembre 2027. Les dossards Early Bird sont ouverts jusqu'au 30 novembre 2026, dans la limite des places.</p>
-      <a class="btn" href="mailto:contact@runoninvest.fr?subject=Dossard%20Early%20Bird%20%E2%80%94%20R.O.I%20%C3%89dition%2001"><span>Prendre un dossard</span><span class="arr">→</span></a>
+      <p>Édition 01, Paris La Défense, septembre 2027. Un compte, une distance, une formule&nbsp;: cinq minutes, et ta vague est gardée. Les dossards Early Bird sont ouverts jusqu'au 30 novembre 2026, dans la limite des places.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+        <a class="btn" href="inscription/"><span>Prendre un dossard</span><span class="arr">→</span></a>
+        <a href="connexion/" class="mono" style="font-size:11.5px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--beton)">Déjà inscrit·e&nbsp;? Se connecter</a>
+      </div>
     </div>
   </div>
 </section>
@@ -403,14 +512,17 @@
           <ul>
             <li><a href="#manifeste">Manifeste</a></li>
             <li><a href="#temps">La journée</a></li>
+            <li><a href="#programme">Le programme</a></li>
             <li><a href="#reseau">Le réseau</a></li>
-            <li><a href="#dossards">Dossards &amp; tarifs</a></li>
+            <li><a href="#dossards">Dossards &amp; formules</a></li>
             <li><a href="#lieu">Le lieu</a></li>
           </ul>
         </div>
         <div>
           <h3>ACCÈS</h3>
           <ul>
+            <li><a href="inscription/">Prendre un dossard</a></li>
+            <li><a href="connexion/">Connexion</a></li>
             <li><a href="pour-qui/">Pour qui&nbsp;?</a></li>
             <li><a href="pour-qui/#acces">Comment ça marche</a></li>
             <li><a href="pour-qui/#faq">FAQ éligibilité</a></li>
