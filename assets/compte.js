@@ -10,6 +10,8 @@
   var CLE_LOCAL = 'roi.local.comptes';
   var CLE_SESSION_LOCALE = 'roi.local.session';
   var CLE_NAV = 'roi.connecte'; // lu par roi.js pour basculer « Connexion » → « Mon espace »
+  // L'app R.O.I vit sur une autre origine : data-app sur <body> pour la changer (voir README).
+  var APP = (document.body.getAttribute('data-app') || 'https://roi-mvp.up.railway.app').replace(/\/+$/, '');
 
   /* ---------------------------------------------------------------- API ---- */
   var api = {
@@ -280,6 +282,16 @@
         mailto.href = 'mailto:dossiers@runoninvest.fr?subject=' + encodeURIComponent('Justificatif — dossier ' + c.reference) +
           '&body=' + encodeURIComponent('Bonjour,\n\nCi-joint mon justificatif (' + (LIBELLES.voie[c.voie] || c.voie) + ') pour le dossier ' + c.reference + '.\n\n' + c.prenom + ' ' + c.nom + '\n' + c.fonction + ' — ' + c.entreprise);
       }
+
+      // Le pont vers l'app : le même dossard, sur une autre origine. Elle
+      // relit le dossier avec la référence et l'e-mail (GET /api/dossier).
+      var lienApp = $('#es-app');
+      if (lienApp) {
+        lienApp.href = APP + '/?dossier=' + encodeURIComponent(c.reference) + '&email=' + encodeURIComponent(c.email);
+        lienApp.target = '_blank';
+      }
+      var refApp = $('#es-app-ref');
+      if (refApp) { refApp.textContent = c.reference; }
 
       // Formules : la carte de la formule courante est marquée.
       $$('.formule-choix', espace).forEach(function (el) {

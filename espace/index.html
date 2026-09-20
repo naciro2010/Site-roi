@@ -44,7 +44,7 @@
       <h1>Bonjour<br><span class="creuse" id="es-prenom">—</span>.</h1>
       <p class="es-ref">DOSSIER <b id="es-ref">—</b><br>VAGUE <b id="es-vague">—</b> · ÉDITION 01</p>
     </div>
-    <p class="bienvenue" id="es-bienvenue" hidden><b>Ta place est gardée.</b> Ta vague et son tarif sont bloqués le temps qu'on lise ton dossier. Il reste une chose à faire, la deuxième étape ci-dessous&nbsp;: nous envoyer ton justificatif.</p>
+    <p class="bienvenue" id="es-bienvenue" hidden><b>Ta place est gardée.</b> Ta vague et son tarif sont bloqués le temps qu'on lise ton dossier. Il reste une chose à faire, la deuxième étape ci-dessous&nbsp;: nous envoyer ton justificatif. Et ton dossard vit déjà dans l'app&nbsp;: <a href="#app" style="color:inherit">ouvre-le ci-dessous</a>.</p>
     <p class="note-local" hidden><b>APERÇU SANS SERVEUR</b> — ce dossier est enregistré dans ce navigateur seulement.</p>
   </div>
 </section>
@@ -94,6 +94,42 @@
         </button>
         <p class="dossard-legende">Ton numéro définitif arrive avec la validation. <b>Le verso, lui, est déjà le tien</b>&nbsp;: c'est ce que liront les autres après la ligne. Clique pour le retourner.</p>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ L'APP ============================
+     Le pont vers l'app R.O.I (origine séparée) : le lien profond
+     /?dossier=&email= est posé par compte.js. L'adresse de l'app se règle
+     avec data-app sur <body> — sinon https://roi-mvp.up.railway.app (l'app sur Railway).
+     ================================================================= -->
+<section id="app">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T+</b> / L'APP — TOUTE L'ANNÉE</span>
+      <h2>Une course par an.<br class="br-desk"> <span class="creuse">Un réseau toute l'année.</span></h2>
+      <p class="intro">Le même dossard, dans ta poche&nbsp;: l'annuaire de celles et ceux qui courent, des rencontres de huit minutes à réserver, des sorties entre deux éditions. <b>Ton dossier s'y ouvre tout seul.</b></p>
+    </div>
+    <div class="cadre cadre-3">
+      <div class="cell">
+        <span class="n">01</span>
+        <h3>L'annuaire</h3>
+        <p>Qui court cette année&nbsp;: nom, fonction, entreprise — le verso de chaque dossard. <b>En Premium, il s'ouvre dès la validation</b>, des mois avant la ligne.</p>
+      </div>
+      <div class="cell">
+        <span class="n">02</span>
+        <h3>Les rencontres</h3>
+        <p>Huit minutes, un sujet&nbsp;: recruter, lever, vendre, s'associer. <b>Six réservées à l'avance en Premium</b>, les autres se prennent le jour même.</p>
+      </div>
+      <div class="cell">
+        <span class="n">03</span>
+        <h3>Les sorties</h3>
+        <p>Courir ensemble entre deux lignes, à allure de conversation. <b>Le réseau ne dort pas onze mois sur douze.</b></p>
+      </div>
+    </div>
+    <div class="es-actions">
+      <a class="btn btn-impact" id="es-app" href="#" rel="noopener"><span>Ouvrir mon dossard dans l'app</span><span class="arr">→</span></a>
+      <span class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--beton)">Ton dossier&nbsp;: <b id="es-app-ref" style="color:var(--texte)">—</b> — l'app le retrouve avec ton e-mail.</span>
     </div>
   </div>
 </section>

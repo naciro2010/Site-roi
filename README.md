@@ -12,7 +12,7 @@ Le site (refonte from scratch) reprend le système des affiches R.O.I. : deux fo
 
 - **Palette** : encre `#0A0A0A` et craie `#EFEBE2`, tous deux recouverts d'un grain photographique — les sections alternent les deux fonds comme les affiches alternent noir et papier. Orange impact `#FF4400` en accent unique : la barre sous les titres, les puces, quelques CTA.
 - **Typographies** (100 % auto-hébergées, dossier `fonts/`) : Archivo variable en **graisse fine (250) et chasse étendue (125 %)** pour tous les titres — le style « CE N'EST PAS UN CLUB DE RUNNING. » — + JetBrains Mono pour les labels, la nav, les boutons et toute la data (`COURSE & NETWORKING — ENTREPRENEURS`).
-- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange, et la convention chrono **T– / T+** (avant la ligne = la course, après la ligne = le networking). Les sections sont numérotées `T+01…T+07` sur l'accueil, `T–01…T–04` sur `/pour-qui` (l'accès se règle *avant* la ligne).
+- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange, et la convention chrono **T– / T+** (avant la ligne = la course, après la ligne = le networking). Les sections sont numérotées `T+01…T+06` sur l'accueil, `T–01…T–04` sur `/pour-qui` (l'accès se règle *avant* la ligne).
 
 Aucune dépendance externe (pas de Google Fonts, pas de JS tiers, pas de paquet npm).
 
@@ -57,11 +57,11 @@ Section `T+04.1 / LES FORMULES` (ancre `#formules`). Aucune formule n'achète un
 
 Le parcours est de bout en bout : **`/inscription/`** (compte + distance + formule + ce que portera le dossard, avec l'aperçu du verso qui se remplit en tapant) → **`/espace/`** (les quatre étapes du dossier, la fiche, le dossard recto/verso, changement de formule, modification du profil) → **`/connexion/`** pour y revenir. Le lien « Connexion » de la nav devient « Mon espace » dès qu'une session est ouverte.
 
-- **`server.js`** — Node ≥ 18, zéro dépendance. Sert le statique (redirection `/pour-qui` → `/pour-qui/`, types MIME, cache) et l'API : `POST /api/inscription`, `POST /api/connexion`, `POST /api/deconnexion`, `GET|PATCH /api/moi`, `GET /api/sante`. Mots de passe en **scrypt** (sel par compte), session en cookie **HttpOnly / SameSite=Lax** (Secure derrière HTTPS), 10 essais de connexion par minute et par IP, corps limité à 64 Ko. Les fichiers `server.js`, `package.json`, `data/` et les dotfiles ne sont jamais servis.
+- **`server.js`** — Node ≥ 18, zéro dépendance. Sert le statique (redirection `/pour-qui` → `/pour-qui/`, types MIME, cache) et l'API : `POST /api/inscription`, `POST /api/connexion`, `POST /api/deconnexion`, `GET|PATCH /api/moi`, `GET /api/sante`, plus `GET /api/dossier` — le pont vers l'app (voir plus bas). Mots de passe en **scrypt** (sel par compte), session en cookie **HttpOnly / SameSite=Lax** (Secure derrière HTTPS), 10 essais de connexion par minute et par IP, corps limité à 64 Ko. Les fichiers `server.js`, `package.json`, `data/` et les dotfiles ne sont jamais servis.
 - **Données** : `data/comptes.json` (gitignoré), écriture atomique. `ROI_DATA_DIR` déplace le dossier — **sur Railway, monter un volume dessus**, sinon les comptes disparaissent au redéploiement.
 - **`assets/compte.js`** — le client. Si le site est servi sans serveur (aperçu statique, GitHub Pages), il bascule en **mode local** : les comptes vivent dans le `localStorage` du navigateur, et un bandeau « aperçu sans serveur » le dit. Ce mode ne sert qu'à l'aperçu.
 - **Ce que le serveur ne fait pas** (volontairement, pour l'instant) : la réception du justificatif (un `mailto:dossiers@runoninvest.fr` pré-rempli avec la référence du dossier), la validation (l'état `demande → justificatif → valide → paye` est dans les données mais ne change pas depuis le site), le paiement, la réinitialisation de mot de passe (par mail à contact@). Le SIREN est facultatif et n'est pas vérifié.
-- **Tests** : `npm test` déroule le parcours complet contre le serveur (statique, inscription, doublon, session, modification, déconnexion, reconnexion, hachage sur disque).
+- **Tests** : `npm test` déroule le parcours complet contre le serveur (statique, inscription, doublon, le pont vers l'app, session, modification, déconnexion, reconnexion, hachage sur disque, garde-fou 429).
 
 > ⚠️ **RGPD** : le compte stocke nom, e-mail, fonction, entreprise, SIREN facultatif et un hachage de mot de passe. Il manque encore une politique de confidentialité liée depuis le formulaire, et la case de consentement renvoie pour l'instant à `/pour-qui/#acces`.
 
@@ -72,6 +72,22 @@ Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'a
 > ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Le site dit désormais « Run On Investment », comme ce document ; le domaine, les adresses e-mail et le compte Instagram restent sur `runoninvest`.
 
 > **Reste à renseigner** : le lien LinkedIn du footer pointe encore sur `#` (marqué en commentaire dans les deux pages). Instagram est branché sur [@runoninvest](https://www.instagram.com/runoninvest/).
+
+## Le pont vers l'app
+
+À côté du site vit **l'app R.O.I** — une application React séparée, sur sa propre origine, où le réseau continue toute l'année : l'annuaire de celles et ceux qui courent, les rencontres de huit minutes à réserver, les sorties entre deux éditions. Le site ne la contient pas ; il lui tend un pont dans les deux sens. **L'app lit le dossier, elle ne l'écrit jamais** : tout ce qui change un dossier (formule, profil, mot de passe) passe par `/espace/` et la session du site.
+
+**Adresse de l'app** : par défaut `https://roi-mvp.up.railway.app` (l'app déployée sur Railway), partout — `assets/roi.js`, `assets/compte.js`, et en dur dans les `href` de `index.html` pour le cas sans JS. Pour la changer sans toucher au code (domaine définitif, environnement de recette) : poser `data-app="https://…"` sur le `<body>` de la page — le JS le lit et retombe sur la valeur par défaut sinon.
+
+- **Depuis le site vers l'app.** Sur l'accueil, la section `T+06 / L'APP` et le lien « L'app » du footer (classe `lien-app`, cible réglée par `roi.js`, `target="_blank"`). Depuis l'espace, la section `T+ / L'APP — TOUTE L'ANNÉE` porte le bouton « Ouvrir mon dossard dans l'app » : `compte.js` y pose le **lien profond** `{app}/?dossier={reference}&email={email}` (les deux valeurs encodées) — c'est avec ce couple que l'app retrouve le dossard. Le formulaire d'inscription l'annonce d'une ligne sous le consentement.
+- **Depuis l'app vers le site : `GET /api/dossier?reference=E01-000123&email=x@y.z`** (répond aussi en `HEAD`). Les deux paramètres sont **obligatoires** ; la référence est comparée sans tenir compte de la casse ni des espaces, l'e-mail en minuscules.
+  - `200` → `{ dossier: { reference, prenom, nom, fonction, entreprise, profil, distance, formule, vague, etat, edition: '01' } }`.
+  - `400` → `{ erreur: 'Référence et e-mail requis.' }` s'il manque l'un des deux.
+  - `404` → `{ erreur: 'Aucun dossier avec cette référence et cet e-mail.' }` — **le même message** que la référence ou l'e-mail soit faux, pour ne rien laisser énumérer.
+  - `429` → même garde-fou que la connexion, **10 essais par minute et par IP** (compteur partagé avec `POST /api/connexion`).
+  - `405` pour toute autre méthode : l'app lit, elle n'écrit pas.
+  - **Ce que la réponse ne contient jamais** : l'e-mail, l'`id`, le SIREN, la voie de justificatif, le hachage de mot de passe, les dates de création et de mise à jour.
+- **CORS.** L'endpoint est fait pour être appelé depuis une autre origine : `Access-Control-Allow-Origin: *` et `Vary: Origin` sur toutes ses réponses, et `OPTIONS /api/dossier` répond `204` avec `Access-Control-Allow-Methods: GET, HEAD, OPTIONS` et `Access-Control-Max-Age: 86400`. Aucun cookie n'entre en jeu : la session du site reste `SameSite=Lax`, hors de portée de l'app.
 
 ## Accessibilité — un point ouvert sur l'orange
 
@@ -91,9 +107,9 @@ Sur fond sombre l'orange est conforme ; c'est **sur fond clair** qu'il ne l'est 
 
 Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de `#7C7669` (3,79:1) à `#6B6558` (4,87:1). L'anneau de focus clavier utilise `var(--texte)` et non l'orange, précisément parce que l'orange ne tient pas les 3:1 exigés pour un indicateur de focus sur la craie.
 
-## La page d'accueil, en cinq temps
+## La page d'accueil, en six temps
 
-`T+01` Manifeste (affiche « Au 3e km » + quatre phrases) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis `T+02.1` le programme horaire de l'après-midi) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur). Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
+`T+01` Manifeste (affiche « Au 3e km » + quatre phrases) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis `T+02.1` le programme horaire de l'après-midi) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur) · `T+06` L'app (une course par an, un réseau toute l'année : annuaire, rencontres, sorties — et le lien vers l'app). Puis la finale « Prends ta place », sans numéro. Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
 
 ## Structure
 
@@ -101,11 +117,11 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 |---|---|
 | `index.html` | **Site officiel** — identité « La Ligne » — servi à la racine `/` |
 | `inscription/` · `connexion/` · `espace/` | **Le compte** — créer son dossier, y revenir, le suivre. Pages `noindex`, même design system, `assets/compte.js` en plus |
-| `server.js` | **Serveur** statique + API de compte, zéro dépendance (`npm start`) · `test/serveur.test.js` (`npm test`) |
+| `server.js` | **Serveur** statique + API de compte, zéro dépendance (`npm start`), plus `GET /api/dossier`, le pont en lecture seule vers l'app · `test/serveur.test.js` (`npm test`) |
 | `pour-qui/` | **Page « Pour qui, et comment »** — le réseau derrière la course, les six familles de profils, les trois justificatifs d'accès, le parcours du dossier et la FAQ d'éligibilité. Accessible sur `/pour-qui` |
 | `assets/roi.css` | **Design system partagé** par `/` et `/pour-qui` (les URL de fontes y sont relatives au fichier CSS, donc en `../fonts/`) |
-| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile, bascule « Connexion » → « Mon espace ». Chaque bloc ne s'active que si son élément est présent. |
-| `assets/compte.js` | Le client du compte (inscription, connexion, espace) avec repli en mode local sans serveur. |
+| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile, bascule « Connexion » → « Mon espace », adresse de l'app sur les liens `.lien-app` (`data-app`). Chaque bloc ne s'active que si son élément est présent. |
+| `assets/compte.js` | Le client du compte (inscription, connexion, espace) avec repli en mode local sans serveur. Pose le lien profond vers l'app depuis l'espace. |
 | `assets/img/` | Les deux affiches de campagne (« Personne ne vend en montée », « Au 3e km, plus personne ne joue un rôle »), en 1200 px et 640 px. Le texte est dans l'image : elles se posent entières, jamais recadrées. |
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |

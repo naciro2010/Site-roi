@@ -9,7 +9,8 @@
 
    Ce n'est pas la billetterie : le paiement arrive après la validation du
    dossier, hors de ce serveur. Ici on crée le compte, on garde la vague,
-   on suit le dossier.
+   on suit le dossier. Et on tend un pont vers l'app R.O.I (GET /api/dossier) :
+   elle lit le dossier, elle ne l'écrit jamais.
    ========================================================================== */
 'use strict';
 
@@ -101,7 +102,7 @@ function compteCourant(req) {
   return b.comptes.find(function (c) { return c.id === s.id; }) || null;
 }
 
-/* ---- Garde-fou sur la connexion : 10 essais / minute / IP ---- */
+/* ---- Garde-fou sur la connexion et la lecture du dossier : 10 essais / minute / IP ---- */
 const essais = new Map();
 function tropDEssais(req) {
   const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim();
@@ -157,6 +158,17 @@ function publie(c) {
     fonction: c.fonction, entreprise: c.entreprise, profil: c.profil, voie: c.voie, siren: c.siren,
     distance: c.distance, formule: c.formule, vague: c.vague, etat: c.etat,
     cree: c.cree, maj: c.maj
+  };
+}
+
+/* Ce que l'app a le droit de voir d'un dossier : ni e-mail, ni id, ni SIREN,
+   ni hachage, ni dates. De quoi reconnaître un dossard, rien de plus. */
+function publieDossier(c) {
+  return {
+    reference: c.reference, prenom: c.prenom, nom: c.nom,
+    fonction: c.fonction, entreprise: c.entreprise, profil: c.profil,
+    distance: c.distance, formule: c.formule, vague: c.vague, etat: c.etat,
+    edition: '01'
   };
 }
 
@@ -253,6 +265,38 @@ async function api(req, res, url) {
     c.maj = new Date().toISOString();
     sauve();
     return json(res, 200, { compte: publie(c) });
+  }
+
+  /* ---- Le pont vers l'app ----
+     L'app R.O.I (annuaire, rencontres, sorties — toute l'année) vit sur une
+     autre origine. Elle lit le dossier, elle ne l'écrit jamais : un seul
+     point d'entrée public, en lecture, verrouillé par le couple
+     référence + e-mail. Jamais l'e-mail, l'id, le SIREN, le hachage ni les
+     dates dans la réponse — le strict nécessaire pour reconnaître un dossard. */
+  if (url.pathname === '/api/dossier') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Vary', 'Origin');
+    if (req.method === 'OPTIONS') {
+      res.writeHead(204, {
+        'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+        'Access-Control-Max-Age': '86400'
+      });
+      return res.end();
+    }
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.setHeader('Allow', 'GET, HEAD, OPTIONS');
+      return json(res, 405, { erreur: 'Méthode non autorisée.' }, req);
+    }
+    if (tropDEssais(req)) { return json(res, 429, { erreur: 'Trop d\'essais. Reprends dans une minute.' }, req); }
+    const reference = texte(url.searchParams.get('reference'), 20).toUpperCase();
+    const email = texte(url.searchParams.get('email'), 160).toLowerCase();
+    if (!reference || !email) { return json(res, 400, { erreur: 'Référence et e-mail requis.' }, req); }
+    const c = charge().comptes.find(function (x) {
+      return String(x.reference).toUpperCase() === reference && x.email === email;
+    });
+    // Même message que la référence ou l'e-mail soit faux : on n'énumère pas.
+    if (!c) { return json(res, 404, { erreur: 'Aucun dossier avec cette référence et cet e-mail.' }, req); }
+    return json(res, 200, { dossier: publieDossier(c) }, req);
   }
 
   return json(res, 404, { erreur: 'Route inconnue.' });
