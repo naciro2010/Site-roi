@@ -1,8 +1,10 @@
-# R.O.I — Run On Invest
+# R.O.I — Run On Investment
 
-Site officiel de **R.O.I — Run On Invest** : une course (5 / 10 / 21,1 km) au cœur de Paris La Défense suivie du plus grand événement de networking entre entrepreneurs de France. Septembre 2027.
+Site officiel de **R.O.I — Run On Investment** : une course (5 / 10 / 21,1 km) au cœur de Paris La Défense, puis un après-midi entier dans l'Arena pour rencontrer celles et ceux qui viennent de courir à côté de soi. Le rendez-vous d'affaires qui a choisi la course comme porte d'entrée. Septembre 2027.
 
 > **R.O.I — L'impact après la ligne d'arrivée.**
+
+Le site n'est plus 100 % statique : un petit serveur Node sans dépendance (`server.js`) le sert **et** porte l'inscription, la connexion et l'espace personnel. Voir « Le compte » plus bas.
 
 ## Identité visuelle « La Ligne »
 
@@ -12,7 +14,7 @@ Le site (refonte from scratch) reprend le système des affiches R.O.I. : deux fo
 - **Typographies** (100 % auto-hébergées, dossier `fonts/`) : Archivo variable en **graisse fine (250) et chasse étendue (125 %)** pour tous les titres — le style « CE N'EST PAS UN CLUB DE RUNNING. » — + JetBrains Mono pour les labels, la nav, les boutons et toute la data (`COURSE & NETWORKING — ENTREPRENEURS`).
 - **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange, et la convention chrono **T– / T+** (avant la ligne = la course, après la ligne = le networking). Les sections sont numérotées `T+01…T+07` sur l'accueil, `T–01…T–04` sur `/pour-qui` (l'accès se règle *avant* la ligne).
 
-Aucune dépendance externe (pas de Google Fonts, pas de JS tiers) — 100 % statique.
+Aucune dépendance externe (pas de Google Fonts, pas de JS tiers, pas de paquet npm).
 
 ## Les quatre gestes d'interface
 
@@ -22,13 +24,52 @@ Tout part du même motif : **la ligne**. Rien n'est décoratif au sens strict �
 2. **La ligne de progression.** Le filet sous la nav se remplit d'orange à mesure qu'on descend, **damier d'arrivée en tête**. La largeur passe par la variable `--progres` posée en JS ; la nav surligne au passage la section courante.
 3. **Le dossard recto/verso.** « Un seul dossard : il te fait franchir la ligne, puis il devient ton profil » — la phrase existait, l'objet non. Recto la course (numéro, chrono, œillets d'épingle), verso le réseau (nom, fonction, entreprise). **Le même papier des deux côtés** : c'est justement l'argument. Retournable au clic et au clavier (`aria-pressed`).
 
-## Le positionnement : un réseau, pas une course avec afterwork
+## Le positionnement : un rendez-vous d'affaires, pas une course avec afterwork
+
+Le discours est construit pour que le réseau soit évident sans être martelé : la course reste le sujet visible (distances, vagues, parcours), le réseau est ce qu'on lit entre les lignes — puis noir sur blanc dans `T+03`. Le ton vise le poétique et le professionnel à la fois (« On ne se rencontre jamais aussi bien qu'essoufflé. »).
+
+### Ce qu'on a emprunté aux formats qui existent déjà
+
+Le contenu de l'accueil (programme de l'après-midi `T+02.1`, les quatre principes de `T+03`, le laïus) adapte ce qui marche chez ceux qui courent déjà ensemble — sans les nommer sur le site :
+
+| Format | Ce qu'on en garde |
+|---|---|
+| [Founders Running Club](https://foundersrc.com/) — 5–10 km « easy », puis café et *talks*, dans une soixantaine de villes | Départs par vagues d'allure « du rythme de conversation au chrono », le café d'arrivée, les « conversations debout » de quinze minutes par des fondateurs qui ont couru le matin, **zéro slide** |
+| [Entrep'runners](https://www.entreprunners.fr/) (Lyon) — sortie mensuelle de dirigeants, 8–10 km sans chrono, apéro ensuite, « pas de badge, pas de slides, pas de chrono » | Les principes 01–04 (zéro pitch en course, toutes les allures, « l'après compte autant »), et l'argument que l'essentiel du retour se fait après l'effort |
+| [GO Entrepreneurs](https://www.go-entrepreneurs.com/fr/paris) (Paris La Défense Arena) — rencontres flash de 6 minutes, networking par secteur | Les « rencontres » de huit minutes proposées depuis le profil (recruter, lever, vendre, s'associer), les tables par secteur au déjeuner |
+| [JPMorgan Corporate Challenge](https://www.jpmorganchasecc.com/en/home), [B2RUN](https://sporsora.com/b2run-le-1er-evenement-de-running-des-entreprises/), [L'Afterwork Running](https://afterwork-running.fr/lyon) — courses d'entreprise, équipes de 4, village et soirée après la ligne | Les packs entreprises « à partir de quatre coureurs », la soirée qui prolonge la journée |
+
+Le programme horaire de l'après-midi est **indicatif**, signalé en commentaire HTML : à arbitrer avec la production.
+
+### Les formules : Dossard · Premium · Cercle
+
+Section `T+04.1 / LES FORMULES` (ancre `#formules`). Aucune formule n'achète une meilleure course — elle change *quand* le réseau commence et combien de portes s'ouvrent après :
+
+- **Dossard** (tarif de la vague) : la journée entière.
+- **Premium** (sur demande) : l'annuaire ouvert dès validation, six rencontres réservées à l'avance, le Salon de l'Arena, le dîner des fondateurs. Demande possible à tout moment depuis l'espace personnel.
+- **Cercle** (sur cooptation, quarante places) : Premium, plus la table des investisseurs, trois dossards invités, la place reconduite. Sur demande depuis l'espace, ou sur cooptation de deux membres.
+
+**Les seuls prix affichés sur le site sont ceux des vagues** (350 / 400 / 500 €, entreprises sur devis), inchangés. Premium et Cercle n'ont pas de montant : leurs conditions « sont précisées à la validation ». Les dates des vagues vivent à deux endroits — `index.html` et `vagueCourante()` dans `server.js` (doublée dans `assets/compte.js` pour le mode local) — à garder alignées.
+
+> ⚠️ Contenus des formules et jauge du Cercle sont des **propositions** à arbitrer (commentaire HTML dans `index.html`).
+
+## Le compte : s'inscrire avant, se connecter, suivre son dossier
+
+Le parcours est de bout en bout : **`/inscription/`** (compte + distance + formule + ce que portera le dossard, avec l'aperçu du verso qui se remplit en tapant) → **`/espace/`** (les quatre étapes du dossier, la fiche, le dossard recto/verso, changement de formule, modification du profil) → **`/connexion/`** pour y revenir. Le lien « Connexion » de la nav devient « Mon espace » dès qu'une session est ouverte.
+
+- **`server.js`** — Node ≥ 18, zéro dépendance. Sert le statique (redirection `/pour-qui` → `/pour-qui/`, types MIME, cache) et l'API : `POST /api/inscription`, `POST /api/connexion`, `POST /api/deconnexion`, `GET|PATCH /api/moi`, `GET /api/sante`. Mots de passe en **scrypt** (sel par compte), session en cookie **HttpOnly / SameSite=Lax** (Secure derrière HTTPS), 10 essais de connexion par minute et par IP, corps limité à 64 Ko. Les fichiers `server.js`, `package.json`, `data/` et les dotfiles ne sont jamais servis.
+- **Données** : `data/comptes.json` (gitignoré), écriture atomique. `ROI_DATA_DIR` déplace le dossier — **sur Railway, monter un volume dessus**, sinon les comptes disparaissent au redéploiement.
+- **`assets/compte.js`** — le client. Si le site est servi sans serveur (aperçu statique, GitHub Pages), il bascule en **mode local** : les comptes vivent dans le `localStorage` du navigateur, et un bandeau « aperçu sans serveur » le dit. Ce mode ne sert qu'à l'aperçu.
+- **Ce que le serveur ne fait pas** (volontairement, pour l'instant) : la réception du justificatif (un `mailto:dossiers@runoninvest.fr` pré-rempli avec la référence du dossier), la validation (l'état `demande → justificatif → valide → paye` est dans les données mais ne change pas depuis le site), le paiement, la réinitialisation de mot de passe (par mail à contact@). Le SIREN est facultatif et n'est pas vérifié.
+- **Tests** : `npm test` déroule le parcours complet contre le serveur (statique, inscription, doublon, session, modification, déconnexion, reconnexion, hachage sur disque).
+
+> ⚠️ **RGPD** : le compte stocke nom, e-mail, fonction, entreprise, SIREN facultatif et un hachage de mot de passe. Il manque encore une politique de confidentialité liée depuis le formulaire, et la case de consentement renvoie pour l'instant à `/pour-qui/#acces`.
 
 R.O.I s'adresse aux **entrepreneurs, intrapreneurs, cadres dirigeants et commerciaux** — plus les investisseurs et conseils. L'accès au dossard est donc **vérifié**, par l'une de trois voies au choix : extrait **Kbis**, **avis de situation SIRENE**, ou **cooptation employeur**. Un seul critère : exercer — ni seuil de chiffre d'affaires, ni taille d'entreprise minimum, ni chrono à tenir.
 
 Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `T+03.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, les justificatifs, le parcours du dossier et une FAQ d'éligibilité.
 
-> ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Ce document parle de « Run On Invest**ment** » ; le site et le domaine disent « Run On Invest » — à trancher.
+> ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Le site dit désormais « Run On Investment », comme ce document ; le domaine, les adresses e-mail et le compte Instagram restent sur `runoninvest`.
 
 > **Reste à renseigner** : le lien LinkedIn du footer pointe encore sur `#` (marqué en commentaire dans les deux pages). Instagram est branché sur [@runoninvest](https://www.instagram.com/runoninvest/).
 
@@ -52,16 +93,19 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 
 ## La page d'accueil, en cinq temps
 
-`T+01` Manifeste (affiche « Au 3e km » + trois phrases) · `T+02` La journée (T– la course / T+ le réseau, puis le dossard recto/verso) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, puis le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur). Pas de bandeau défilant, pas de compteurs, pas de grille de cartes : des listes, deux images, de l'air.
+`T+01` Manifeste (affiche « Au 3e km » + quatre phrases) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis `T+02.1` le programme horaire de l'après-midi) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur). Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
 
 ## Structure
 
 | Chemin | Contenu |
 |---|---|
 | `index.html` | **Site officiel** — identité « La Ligne » — servi à la racine `/` |
+| `inscription/` · `connexion/` · `espace/` | **Le compte** — créer son dossier, y revenir, le suivre. Pages `noindex`, même design system, `assets/compte.js` en plus |
+| `server.js` | **Serveur** statique + API de compte, zéro dépendance (`npm start`) · `test/serveur.test.js` (`npm test`) |
 | `pour-qui/` | **Page « Pour qui, et comment »** — le réseau derrière la course, les six familles de profils, les trois justificatifs d'accès, le parcours du dossier et la FAQ d'éligibilité. Accessible sur `/pour-qui` |
 | `assets/roi.css` | **Design system partagé** par `/` et `/pour-qui` (les URL de fontes y sont relatives au fichier CSS, donc en `../fonts/`) |
-| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile. Chaque bloc ne s'active que si son élément est présent. |
+| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile, bascule « Connexion » → « Mon espace ». Chaque bloc ne s'active que si son élément est présent. |
+| `assets/compte.js` | Le client du compte (inscription, connexion, espace) avec repli en mode local sans serveur. |
 | `assets/img/` | Les deux affiches de campagne (« Personne ne vend en montée », « Au 3e km, plus personne ne joue un rôle »), en 1200 px et 640 px. Le texte est dans l'image : elles se posent entières, jamais recadrées. |
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |
@@ -70,13 +114,13 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 ## Déploiement sur Railway
 
 1. Créer un nouveau projet Railway → **Deploy from GitHub repo** → sélectionner ce repo.
-2. Railway détecte le `package.json` et lance `npm start` automatiquement (serveur statique [`serve`](https://www.npmjs.com/package/serve), qui écoute sur `$PORT`).
-3. Générer un domaine dans **Settings → Networking → Generate Domain**.
+2. Railway détecte le `package.json` et lance `npm start` automatiquement (`node server.js`, qui écoute sur `$PORT`). Aucun `npm install` nécessaire.
+3. **Ajouter un volume** (Settings → Volumes) monté sur `/data`, et poser la variable `ROI_DATA_DIR=/data` : c'est là que vivent les comptes.
+4. Générer un domaine dans **Settings → Networking → Generate Domain**.
 
 ## Développement local
 
 ```bash
-npm install
-npm start
-# → http://localhost:3000
+npm start          # → http://localhost:3000 — les comptes vont dans ./data/comptes.json
+npm test           # parcours complet contre le serveur, sur un dossier jetable
 ```

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prendre un dossard — R.O.I · Run On Investment</title>
+<meta name="description" content="Crée ton compte R.O.I, choisis ta distance et ta formule, garde ta vague. La vérification d'accès vient ensuite, le paiement après la validation, jamais avant.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070707'/%3E%3Crect y='7' width='16' height='1' fill='%23EFEBE2' opacity='.45'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23FF4400'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/jetbrains-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/roi.css">
+</head>
+<body data-racine="../">
+
+<a class="skip" href="#top">Aller au contenu</a>
+
+<header>
+  <div class="nav-in">
+    <a class="logo" href="../" aria-label="R.O.I — Run On Investment">R<i></i>O<i></i>I</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../#manifeste">Manifeste</a></li>
+      <li><a href="../#temps">La journée</a></li>
+      <li><a href="../#reseau">Le réseau</a></li>
+      <li><a href="../pour-qui/">Pour qui</a></li>
+      <li><a href="../#dossards">Dossards</a></li>
+      <li><a class="nav-compte" href="../connexion/">Connexion</a></li>
+      <li><a class="nav-cta" href="./" aria-current="page">Prendre un dossard</a></li>
+    </ul>
+    <div class="progres" aria-hidden="true"><i></i></div>
+  </div>
+</header>
+
+<main id="top">
+<section class="page-hero court">
+  <div class="wrap">
+    <a class="retour" href="../">← Retour à l'accueil</a>
+    <div class="page-hero-in" style="padding-top:clamp(24px,3vw,40px)">
+      <span class="tmark"><b>T–</b> / AVANT LA LIGNE — ÉTAPE 01</span>
+      <h1>Prends ta place<br><span class="creuse">sur la ligne.</span></h1>
+      <p class="chapeau">Un compte, une distance, une formule&nbsp;: cinq minutes. <b>Ta vague est gardée</b> dès l'envoi, le temps que ton dossier soit lu. Le paiement vient après la validation, jamais avant.</p>
+    </div>
+  </div>
+</section>
+
+<section class="light" style="padding-top:clamp(40px,5vw,64px)">
+  <div class="wrap compte-grid">
+
+    <div>
+      <p class="note-local" hidden><b>APERÇU SANS SERVEUR</b> — ce site est servi en statique&nbsp;: ton compte est enregistré dans ce navigateur seulement. Sur runoninvest.fr, il est enregistré pour de bon.</p>
+
+      <form class="roi" id="f-inscription" novalidate autocomplete="on">
+        <p class="form-msg" role="alert"></p>
+
+        <fieldset>
+          <legend><span class="tmark"><b>01</b></span> Toi</legend>
+          <div class="champs">
+            <div class="champ">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" autocomplete="given-name" required>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" autocomplete="family-name" required>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ">
+              <label for="mdp">Mot de passe</label>
+              <input id="mdp" name="mdp" type="password" autocomplete="new-password" minlength="8" required>
+              <span class="champ-err" aria-live="polite"></span>
+              <span class="aide">Huit caractères au moins. C'est la clé de ton espace, et de ton profil le jour J.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="tmark"><b>02</b></span> Ce que portera ton dossard</legend>
+          <div class="champs">
+            <div class="champ">
+              <label for="fonction">Fonction</label>
+              <input id="fonction" name="fonction" type="text" autocomplete="organization-title" placeholder="Fondatrice, DG, Directeur commercial…" required>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ">
+              <label for="entreprise">Entreprise</label>
+              <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ">
+              <label for="profil">Tu es plutôt</label>
+              <select id="profil" name="profil">
+                <option value="entrepreneur">Entrepreneur·e, fondateur·rice, indépendant·e</option>
+                <option value="intrapreneur">Intrapreneur·e</option>
+                <option value="dirigeant">Cadre dirigeant·e</option>
+                <option value="commercial">Commercial·e, business developer</option>
+                <option value="investisseur">Investisseur, conseil</option>
+                <option value="autre">Autre — on en parle</option>
+              </select>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ">
+              <label for="voie">Ton justificatif</label>
+              <select id="voie" name="voie">
+                <option value="kbis">Extrait Kbis — je dirige ou détiens une société</option>
+                <option value="sirene">Avis SIRENE — j'exerce en indépendant·e</option>
+                <option value="cooptation">Cooptation — attestation employeur ou parrainage</option>
+              </select>
+              <span class="champ-err" aria-live="polite"></span>
+              <span class="aide">Un seul suffit. Tu l'envoies après, depuis ton espace — <a href="../pour-qui/#acces" style="color:inherit">comment on vérifie</a>.</span>
+            </div>
+            <div class="champ large">
+              <label for="siren">SIREN <span class="opt">FACULTATIF</span></label>
+              <input id="siren" name="siren" type="text" inputmode="numeric" placeholder="9 chiffres — accélère la lecture de ton dossier">
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="tmark"><b>03</b></span> Ta course</legend>
+          <div class="champ">
+            <span class="lbl" id="lbl-distance">Distance — même prix, même accès</span>
+            <div class="choix" role="radiogroup" aria-labelledby="lbl-distance">
+              <label><input type="radio" name="distance" value="5"><span class="c-t">5<small>KM</small></span><span class="c-s">Le Sprint. Pour se lancer, ou garder du souffle pour l'après-midi.</span></label>
+              <label><input type="radio" name="distance" value="10" checked><span class="c-t">10<small>KM</small></span><span class="c-s">La Référence. Un vrai effort, de l'énergie pour la suite.</span></label>
+              <label><input type="radio" name="distance" value="21"><span class="c-t">21,1<small>KM</small></span><span class="c-s">Le Grand Format. Le semi de La Défense, mesuré.</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="tmark"><b>04</b></span> Ta formule</legend>
+          <div class="champ">
+            <span class="lbl" id="lbl-formule">La course est la même. La formule change ce qu'il y a autour.</span>
+            <div class="choix" role="radiogroup" aria-labelledby="lbl-formule">
+              <label><input type="radio" name="formule" value="dossard" checked><span class="c-t">Dossard</span><span class="c-s">La journée entière&nbsp;: course, arrivée dans l'Arena, déjeuner des finishers, tout l'après-midi.</span><span class="c-p">TARIF DE LA VAGUE</span></label>
+              <label><input type="radio" name="formule" value="premium"><span class="c-t">Premium</span><span class="c-s">L'annuaire ouvert avant le jour J, tes rencontres réservées à l'avance, le Salon, le dîner des fondateurs.</span><span class="c-p">SUR DEMANDE</span></label>
+              <label><input type="radio" name="formule" value="cercle"><span class="c-t">Cercle</span><span class="c-s">Quarante places. Premium, plus la table des investisseurs et trois dossards pour ton équipe. Sur cooptation.</span><span class="c-p">SUR COOPTATION</span></label>
+            </div>
+            <span class="aide" style="margin-top:10px">Tu pourras changer de formule depuis ton espace, jusqu'au jour J. <a href="../#formules" style="color:inherit">Le détail des formules →</a></span>
+          </div>
+        </fieldset>
+
+        <div class="champ" style="margin-bottom:28px">
+          <label class="consent"><input type="checkbox" name="consent" value="1" required><span>J'exerce une activité professionnelle et je fournirai l'un des trois justificatifs. Mes justificatifs servent uniquement à valider mon accès et sont <a href="../pour-qui/#acces">supprimés une fois le dossard confirmé</a>. Seuls mon nom, ma fonction et mon entreprise figurent sur mon dossard.</span></label>
+          <span class="champ-err" aria-live="polite"></span>
+        </div>
+
+        <div class="form-pied">
+          <button class="btn btn-impact" type="submit"><span>Créer mon compte et garder ma vague</span><span class="arr">→</span></button>
+          <p class="alt">Déjà un compte&nbsp;? <a href="../connexion/">Se connecter</a></p>
+        </div>
+      </form>
+    </div>
+
+    <aside class="colle" aria-label="Aperçu de ton dossard">
+      <div class="dossard" aria-pressed="true" role="img" aria-label="Aperçu du verso de ton dossard, avec ton nom, ta fonction et ton entreprise">
+        <span class="d-inner">
+          <span class="d-face d-recto">
+            <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Édition 01</span></span>
+            <span class="d-num">···</span>
+            <span class="d-foot"><span>Paris La Défense</span><span>Sept. 2027</span></span>
+          </span>
+          <span class="d-face d-verso">
+            <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Profil</span></span>
+            <span class="d-champs">
+              <span class="d-champ"><b>Nom</b><span id="ap-nomcomplet">Ton nom</span></span>
+              <span class="d-champ"><b>Fonction</b><span id="ap-fonction">Ta fonction</span></span>
+              <span class="d-champ"><b>Entreprise</b><span id="ap-entreprise">Ton entreprise</span></span>
+            </span>
+            <span class="d-actif" id="ap-formule">■ Accès réseau</span>
+          </span>
+        </span>
+      </div>
+      <p class="dossard-legende">C'est le verso de ton dossard&nbsp;: <b>ce que les autres liront après la ligne.</b> Le numéro, la puce et le chrono sont de l'autre côté.</p>
+      <p class="dossard-legende">Il se remplit pendant que tu écris. Tu pourras le modifier depuis ton espace, jusqu'au jour J.</p>
+    </aside>
+
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="padding-top:0">
+      <span>© R.O.I — RUN ON INVESTMENT · ÉDITION 01 · 2027</span>
+      <span><a href="mailto:contact@runoninvest.fr" style="text-decoration:none">CONTACT@RUNONINVEST.FR</a></span>
+      <span>PARIS LA DÉFENSE — GRANDE ARCHE</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/roi.js"></script>
+<script src="../assets/compte.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   R.O.I — RUN ON INVEST · comportements partagés
+   R.O.I — RUN ON INVESTMENT · comportements partagés
    Aucune dépendance. Chaque bloc est optionnel : il ne s'active que si
    l'élément correspondant est présent sur la page.
    ========================================================================== */
@@ -77,6 +77,28 @@
     // l'état — mais il reste une cible cliquable à la souris.
     var rappel = document.querySelector('.d-retourne');
     if (rappel) { rappel.addEventListener('click', retourne); }
+  }
+
+  /* ---- Le lien de compte dans la nav ----
+     « Connexion » devient « Mon espace » dès qu'une session est ouverte.
+     On lit un simple drapeau posé par compte.js : pas d'appel réseau à
+     chaque page, la vérité reste côté serveur quand on ouvre l'espace. */
+  var lienCompte = document.querySelector('.nav-compte');
+  if (lienCompte) {
+    var hrefConnexion = lienCompte.getAttribute('href');
+    var hrefEspace = hrefConnexion.replace(/connexion\/$/, 'espace/');
+    window.roiNavCompte = function () {
+      var prenom = null;
+      try { prenom = localStorage.getItem('roi.connecte'); } catch (e) { /* stockage indisponible */ }
+      if (prenom) {
+        lienCompte.textContent = 'Mon espace';
+        lienCompte.setAttribute('href', hrefEspace);
+      } else {
+        lienCompte.textContent = 'Connexion';
+        lienCompte.setAttribute('href', hrefConnexion);
+      }
+    };
+    window.roiNavCompte();
   }
 
   /* ---- Nav mobile ---- */
