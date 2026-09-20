@@ -58,6 +58,7 @@ function appel(base, methode, chemin, corps, cookie) {
 
   console.log('api');
   let cookie = null;
+  let reference = null;
   const email = 'test+' + Date.now() + '@runoninvest.fr';
   await t('inscription incomplète → 422 avec les champs', async function () {
     const r = await appel(base, 'POST', '/api/inscription', { email: 'pas-un-mail', mdp: 'court' });
@@ -77,6 +78,7 @@ function appel(base, methode, chemin, corps, cookie) {
     assert.match(j.compte.reference, /^E01-\d{6}$/);
     assert.equal(j.compte.etat, 'demande');
     assert.equal(j.compte.mdp, undefined, 'le hachage ne sort jamais');
+    reference = j.compte.reference;
     cookie = (r.headers.get('set-cookie') || '').split(';')[0];
     assert.match(cookie, /^roi_session=[0-9a-f]{64}$/);
   });
@@ -86,6 +88,63 @@ function appel(base, methode, chemin, corps, cookie) {
     });
     assert.equal(r.status, 409);
   });
+
+  console.log('le pont vers l\'app');
+  await t('GET /api/dossier → 200, le dossard sans rien de privé, CORS ouvert', async function () {
+    // Référence en minuscules et e-mail en majuscules avec des espaces : le serveur normalise.
+    const r = await appel(base, 'GET', '/api/dossier?reference=' + encodeURIComponent(' ' + reference.toLowerCase()) + '&email=' + encodeURIComponent(email.toUpperCase() + ' '));
+    assert.equal(r.status, 200);
+    assert.equal(r.headers.get('access-control-allow-origin'), '*');
+    assert.match(r.headers.get('vary') || '', /Origin/);
+    const j = await r.json();
+    assert.equal(j.dossier.reference, reference);
+    assert.equal(j.dossier.prenom, 'Léa');
+    assert.equal(j.dossier.nom, 'Martin');
+    assert.equal(j.dossier.fonction, 'Fondatrice');
+    assert.equal(j.dossier.entreprise, 'Nordwind');
+    assert.equal(j.dossier.profil, 'entrepreneur');
+    assert.equal(j.dossier.distance, '10');
+    assert.equal(j.dossier.formule, 'premium');
+    assert.equal(j.dossier.etat, 'demande');
+    assert.equal(j.dossier.edition, '01');
+    assert.ok(j.dossier.vague && j.dossier.vague.code, 'la vague est là');
+    ['email', 'mdp', 'id', 'siren', 'voie', 'cree', 'maj'].forEach(function (k) {
+      assert.equal(j.dossier[k], undefined, k + ' ne sort jamais');
+    });
+  });
+  await t('HEAD /api/dossier → 200 sans corps', async function () {
+    const r = await appel(base, 'HEAD', '/api/dossier?reference=' + reference + '&email=' + encodeURIComponent(email));
+    assert.equal(r.status, 200);
+    assert.equal(await r.text(), '');
+  });
+  await t('GET /api/dossier mauvais e-mail → 404, même message', async function () {
+    const r = await appel(base, 'GET', '/api/dossier?reference=' + reference + '&email=autre%40runoninvest.fr');
+    assert.equal(r.status, 404);
+    assert.equal((await r.json()).erreur, 'Aucun dossier avec cette référence et cet e-mail.');
+    const r2 = await appel(base, 'GET', '/api/dossier?reference=E01-999999&email=' + encodeURIComponent(email));
+    assert.equal(r2.status, 404);
+    assert.equal((await r2.json()).erreur, 'Aucun dossier avec cette référence et cet e-mail.');
+  });
+  await t('GET /api/dossier sans référence ou sans e-mail → 400', async function () {
+    for (const q of ['', '?reference=' + reference, '?email=' + encodeURIComponent(email)]) {
+      const r = await appel(base, 'GET', '/api/dossier' + q);
+      assert.equal(r.status, 400, q || '(vide)');
+      assert.equal((await r.json()).erreur, 'Référence et e-mail requis.');
+    }
+  });
+  await t('OPTIONS /api/dossier → 204 + en-têtes CORS', async function () {
+    const r = await appel(base, 'OPTIONS', '/api/dossier');
+    assert.equal(r.status, 204);
+    assert.equal(r.headers.get('access-control-allow-origin'), '*');
+    assert.equal(r.headers.get('access-control-allow-methods'), 'GET, HEAD, OPTIONS');
+    assert.equal(r.headers.get('access-control-max-age'), '86400');
+  });
+  await t('POST /api/dossier → 405 : l\'app lit, elle n\'écrit jamais', async function () {
+    const r = await appel(base, 'POST', '/api/dossier', { reference: reference });
+    assert.equal(r.status, 405);
+  });
+
+  console.log('session');
   await t('GET /api/moi avec le cookie', async function () {
     const r = await appel(base, 'GET', '/api/moi', null, cookie);
     assert.equal(r.status, 200);
@@ -122,6 +181,13 @@ function appel(base, methode, chemin, corps, cookie) {
     const b = JSON.parse(fs.readFileSync(path.join(process.env.ROI_DATA_DIR, 'comptes.json'), 'utf8'));
     assert.equal(b.comptes.length, 1);
     assert.match(b.comptes[0].mdp, /^[0-9a-f]{32}:[0-9a-f]{128}$/);
+  });
+  await t('au-delà de dix lectures par minute → 429', async function () {
+    let dernier = 0;
+    for (let i = 0; i < 12 && dernier !== 429; i++) {
+      dernier = (await appel(base, 'GET', '/api/dossier?reference=' + reference + '&email=' + encodeURIComponent(email))).status;
+    }
+    assert.equal(dernier, 429);
   });
   await t('route inconnue → 404 JSON', async function () {
     const r = await appel(base, 'GET', '/api/rien');

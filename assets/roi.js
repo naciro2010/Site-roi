@@ -101,6 +101,16 @@
     window.roiNavCompte();
   }
 
+  /* ---- Le pont vers l'app ----
+     L'app R.O.I vit sur une autre origine. Tous les liens .lien-app prennent
+     leur adresse ici : data-app sur <body> pour la changer, sinon la valeur
+     par défaut, l'app sur Railway (voir README). */
+  var liensApp = document.querySelectorAll('a.lien-app');
+  if (liensApp.length) {
+    var app = (document.body.dataset.app || 'https://roi-mvp.up.railway.app').replace(/\/+$/, '');
+    liensApp.forEach(function (a) { a.setAttribute('href', app + '/'); });
+  }
+
   /* ---- Nav mobile ---- */
   var burger = document.querySelector('.burger');
   var links = document.getElementById('nav-links');
