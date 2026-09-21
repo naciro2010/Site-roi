@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — R.O.I · Run On Investment</title>
+<meta name="description" content="Retrouvez votre dossier R.O.I : votre dossard, votre formule et l'avancement de votre validation.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070707'/%3E%3Crect y='7' width='16' height='1' fill='%23EFEBE2' opacity='.45'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23FF4400'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/jetbrains-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/roi.css">
+</head>
+<body data-racine="../">
+
+<a class="skip" href="#top">Aller au contenu</a>
+
+<header>
+  <div class="nav-in">
+    <a class="logo" href="../" aria-label="R.O.I — Run On Investment">R<i></i>O<i></i>I</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../#manifeste">Le concept</a></li>
+      <li><a href="../#temps">La journée</a></li>
+      <li><a href="../#reseau">Le réseau</a></li>
+      <li><a href="../pour-qui/">Pour qui</a></li>
+      <li><a href="../#dossards">Dossards</a></li>
+      <li><a class="nav-compte" href="./" aria-current="page">Connexion</a></li>
+      <li><a class="nav-cta" href="../inscription/">Prendre un dossard</a></li>
+    </ul>
+    <div class="progres" aria-hidden="true"><i></i></div>
+  </div>
+</header>
+
+<main id="top">
+<section class="page-hero court">
+  <div class="wrap">
+    <a class="retour" href="../">← Retour à l'accueil</a>
+    <div class="page-hero-in" style="padding-top:clamp(24px,3vw,40px)">
+      <span class="tmark"><b>T–</b> / VOTRE DOSSIER</span>
+      <h1>Reprenez<br><span class="creuse">votre place.</span></h1>
+      <p class="chapeau">Votre dossard, votre formule et l'avancement de votre validation sont réunis dans votre espace.</p>
+    </div>
+  </div>
+</section>
+
+<section class="light" style="padding-top:clamp(40px,5vw,64px)">
+  <div class="wrap compte-grid">
+    <div>
+      <p class="note-local" hidden><b>APERÇU SANS SERVEUR</b> — les comptes créés ici n'existent que dans ce navigateur.</p>
+      <form class="roi etroit" id="f-connexion" novalidate>
+        <p class="form-msg" role="alert"></p>
+        <fieldset>
+          <legend><span class="tmark"><b>01</b></span> Se connecter</legend>
+          <div class="champs">
+            <div class="champ large">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="username" inputmode="email" required>
+              <span class="champ-err" aria-live="polite"></span>
+            </div>
+            <div class="champ large">
+              <label for="mdp">Mot de passe</label>
+              <input id="mdp" name="mdp" type="password" autocomplete="current-password" required>
+              <span class="champ-err" aria-live="polite"></span>
+              <span class="aide">Mot de passe oublié&nbsp;? Écrivez-nous à <a href="mailto:contact@runoninvest.fr?subject=Mot%20de%20passe%20%E2%80%94%20R.O.I" style="color:inherit">contact@runoninvest.fr</a>, nous vous renvoyons un accès.</span>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-pied">
+          <button class="btn btn-impact" type="submit"><span>Ouvrir mon espace</span><span class="arr">→</span></button>
+          <p class="alt">Pas encore de dossard&nbsp;? <a href="../inscription/">Prendre un dossard</a></p>
+        </div>
+      </form>
+    </div>
+
+    <aside class="colle" aria-hidden="true">
+      <div class="dossard" aria-pressed="false">
+        <span class="d-inner">
+          <span class="d-face d-recto">
+            <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Édition 01</span></span>
+            <span class="d-num">···</span>
+            <span class="d-foot"><span>Paris La Défense</span><span>Sept. 2027</span></span>
+          </span>
+          <span class="d-face d-verso">
+            <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Profil</span></span>
+            <span class="d-champs">
+              <span class="d-champ"><b>Nom</b><span>Votre nom</span></span>
+              <span class="d-champ"><b>Fonction</b><span>Votre fonction</span></span>
+              <span class="d-champ"><b>Entreprise</b><span>Votre entreprise</span></span>
+            </span>
+            <span class="d-actif">■ Accès réseau actif</span>
+          </span>
+        </span>
+      </div>
+      <p class="dossard-legende">Un seul dossard. Côté course, un numéro et un temps. Côté réseau, <b>vos nom, fonction et entreprise.</b></p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="padding-top:0">
+      <span>© R.O.I — RUN ON INVESTMENT · ÉDITION 01 · 2027</span>
+      <span><a href="mailto:contact@runoninvest.fr" style="text-decoration:none">CONTACT@RUNONINVEST.FR</a></span>
+      <span>PARIS LA DÉFENSE — GRANDE ARCHE</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/roi.js"></script>
+<script src="../assets/compte.js"></script>
+</body>
+</html>
