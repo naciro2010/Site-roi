@@ -2,7 +2,7 @@
    R.O.I — RUN ON INVESTMENT · Identité « LA LIGNE »
    Papier craie · Encre · Orange impact
    Archivo variable (62–125% de chasse) · JetBrains Mono (chrono)
-   Convention de marque : T– = avant la ligne, T+ = après la ligne.
+   Sections numérotées 01…06, étiquette mono au carré orange.
 
    Feuille partagée par toutes les pages du site (/ et /pour-qui).
    Parti pris : peu de cartes, des listes, de l'air, et deux affiches de
@@ -120,7 +120,7 @@ a{color:inherit}
 img{max-width:100%}
 .wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 
-/* ---- Étiquette chrono de section : T+01 / NOM ---- */
+/* ---- Étiquette de section : 01 / NOM ---- */
 .tmark{
   display:inline-block;position:relative;padding-left:20px;
   font-family:'JetBrains Mono',monospace;font-weight:500;
@@ -414,14 +414,16 @@ section{padding:clamp(80px,10vw,140px) 0}
 #manifeste .sceau .base b{color:var(--impact)}
 
 /* ==========================================================================
-   DEUX TEMPS (T– / T+)
+   DEUX TEMPS — MATIN / APRÈS-MIDI
    ========================================================================== */
 .temps-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ligne-encre)}
 .temps{padding:clamp(30px,4vw,54px);position:relative}
 .temps:first-child{border-right:1px solid var(--ligne-encre)}
+/* Petit libellé au-dessus du titre : la moitié de journée dont il s'agit. */
 .temps .t-chrono{
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(28px,3.4vw,44px);
-  letter-spacing:-.02em;margin-bottom:8px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--beton);
+  margin-bottom:14px;
 }
 .temps.apres .t-chrono{color:var(--impact)}
 .temps h3{font-size:clamp(30px,3.6vw,52px);margin-bottom:18px}
@@ -434,36 +436,6 @@ section{padding:clamp(80px,10vw,140px) 0}
 }
 .temps li .mono{flex:none;font-size:11px;color:var(--impact);letter-spacing:.1em;font-weight:700}
 
-/* ---- Le déroulé : la journée heure par heure, en convention T– / T+.
-   Une seule ligne, des repères posés dessus — la ligne, encore. ---- */
-.deroule{margin-top:clamp(48px,7vw,84px)}
-.deroule-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
-.deroule h3{font-size:clamp(26px,3.2vw,44px)}
-.deroule .note{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);padding-bottom:6px}
-.deroule ol{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--texte)}
-.deroule li{position:relative;padding:22px 18px 8px 18px;border-left:1px solid var(--ligne-encre)}
-.deroule li:first-child{border-left:none;padding-left:0}
-.deroule li::before{content:"";position:absolute;top:-2px;left:-1px;width:10px;height:10px;background:var(--texte)}
-.deroule li:first-child::before{left:0}
-.deroule li.ligne::before{background:var(--impact);width:14px;height:14px}
-.deroule .t{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
-.deroule .t.plus{color:var(--impact)}
-.deroule .w{font-stretch:105%;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin-top:10px;line-height:1.3}
-.deroule .d{font-size:13.5px;font-weight:500;color:var(--muted);margin-top:8px;max-width:26ch}
-@media (max-width:980px){
-  .deroule ol{grid-template-columns:repeat(3,1fr)}
-  .deroule li{padding-bottom:26px}
-  .deroule li:nth-child(4){border-left:none;padding-left:0}
-  .deroule li:nth-child(4)::before{left:0}
-}
-@media (max-width:600px){
-  /* Sur mobile, la ligne devient verticale */
-  .deroule ol{grid-template-columns:1fr;border-top:none;border-left:2px solid var(--texte)}
-  .deroule li,.deroule li:first-child,.deroule li:nth-child(4){border-left:none;padding:0 0 26px 22px}
-  .deroule li::before,.deroule li:first-child::before,.deroule li:nth-child(4)::before{top:4px;left:-6px}
-  .deroule li.ligne::before{left:-8px;top:2px}
-  .deroule .d{max-width:none}
-}
 
 /* ==========================================================================
    BANDE — statement pleine largeur sur fond encre
@@ -815,11 +787,11 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
 
 /* ==========================================================================
    LE DOSSARD
-   « Un seul dossard : il te fait franchir la ligne, puis il devient ton
-   profil. » La phrase existait ; l'objet, non. Recto = la course,
-   verso = le réseau. On le retourne.
+   Une seule carte, statique : le numéro pour la course et le profil pour
+   l'après-midi, sur la même face — comme sur un dossard imprimé. Pas de
+   bascule recto/verso, donc rien à cliquer et aucun rôle ARIA à porter.
    ========================================================================== */
-.deux-faces{
+.bloc-dossard{
   display:grid;grid-template-columns:auto 1fr;
   gap:clamp(28px,5vw,72px);align-items:center;
   background:var(--encre);color:#EFEBE2;
@@ -828,73 +800,47 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   padding:clamp(28px,4vw,56px);
   margin-top:clamp(28px,4vw,48px);
 }
-.deux-faces .df-txt h3{font-size:clamp(26px,3.2vw,44px);margin-bottom:18px}
-.deux-faces .df-txt p{font-size:clamp(15.5px,1.5vw,17.5px);font-weight:500;color:var(--muted);max-width:48ch}
-.deux-faces .df-txt p + p{margin-top:14px}
-.deux-faces .df-txt p b{color:#EFEBE2;font-weight:700}
+.bloc-dossard .df-txt h3{font-size:clamp(26px,3.2vw,44px);margin-bottom:18px}
+.bloc-dossard .df-txt p{font-size:clamp(15.5px,1.5vw,17.5px);font-weight:500;color:var(--muted);max-width:48ch}
+.bloc-dossard .df-txt p + p{margin-top:14px}
+.bloc-dossard .df-txt p b{color:#EFEBE2;font-weight:700}
 
+/* Le papier du dossard, œillets d'épingle en haut et en bas. */
 .dossard{
-  flex:none;width:clamp(240px,30vw,330px);aspect-ratio:5/4;
-  background:none;border:0;padding:0;cursor:pointer;
-  perspective:1400px;
-}
-.dossard:focus-visible{outline:3px solid #EFEBE2;outline-offset:6px}
-.d-inner{
-  position:relative;display:block;width:100%;height:100%;
-  transform-style:preserve-3d;
-  transition:transform .75s cubic-bezier(.2,.8,.2,1);
-}
-.dossard[aria-pressed="true"] .d-inner{transform:rotateY(180deg)}
-.dossard:hover .d-inner{transform:rotateY(12deg)}
-.dossard[aria-pressed="true"]:hover .d-inner{transform:rotateY(168deg)}
-
-.d-face{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:clamp(14px,1.6vw,20px);
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  position:relative;flex:none;
+  width:clamp(240px,30vw,320px);
+  display:flex;flex-direction:column;gap:clamp(12px,1.4vw,16px);
+  padding:clamp(18px,2vw,24px);
+  background:var(--craie);color:var(--encre);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
   text-align:left;
 }
-/* Recto — le papier du dossard, œillets d'épingle aux quatre coins. */
-.d-recto{
-  background:var(--craie);color:var(--encre);
-  box-shadow:0 18px 40px rgba(0,0,0,.45);
-}
-.d-recto::before,.d-recto::after{
+.dossard::before,.dossard::after{
   content:"";position:absolute;left:12px;right:12px;height:7px;
   background:
     radial-gradient(circle 3.5px at 3.5px 3.5px, rgba(7,7,7,.28) 99%, transparent 100%) left  center/50% 100% no-repeat,
     radial-gradient(circle 3.5px at calc(100% - 3.5px) 3.5px, rgba(7,7,7,.28) 99%, transparent 100%) right center/50% 100% no-repeat;
 }
-.d-recto::before{top:10px}
-.d-recto::after{bottom:10px}
+.dossard::before{top:9px}
+.dossard::after{bottom:9px}
 
-.d-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.d-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  border-bottom:2px solid var(--impact);padding-bottom:9px;
+}
 .d-logo{font-stretch:118%;font-weight:300;font-size:17px;letter-spacing:.04em;line-height:1;display:inline-flex;align-items:center}
 .d-logo i{display:inline-block;width:4px;height:4px;background:var(--impact);margin:0 4px;align-self:flex-end;margin-bottom:2px}
-.d-ed,.d-chip,.d-foot span{
+.d-ed,.d-foot span{
   font-family:'JetBrains Mono',monospace;font-weight:700;
   font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
 }
 .d-ed{color:var(--impact)}
 .d-num{
   font-stretch:125%;font-weight:250;line-height:.82;
-  font-size:clamp(76px,10vw,116px);text-align:center;
+  font-size:clamp(64px,7.5vw,92px);text-align:center;
   letter-spacing:-.01em;
 }
-.d-foot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid rgba(7,7,7,.2);padding-top:9px}
-.d-foot span{color:#57534A}
-.d-chip{position:absolute;left:0;right:0;bottom:-1px;display:none}
-
-/* Verso — le même papier. On ne change pas d'objet en le retournant :
-   c'est tout l'argument. Seule la face lue change. */
-.d-verso{
-  background:var(--craie);color:var(--encre);
-  transform:rotateY(180deg);
-  box-shadow:0 18px 40px rgba(0,0,0,.45);
-}
-.d-verso .d-head{border-bottom:2px solid var(--impact);padding-bottom:9px}
-.d-champs{display:flex;flex-direction:column;gap:clamp(9px,1.2vw,14px);flex:1;justify-content:center}
+.d-champs{display:flex;flex-direction:column;gap:clamp(8px,1vw,11px)}
 .d-champ{border-bottom:1px dashed rgba(7,7,7,.28);padding-bottom:6px}
 .d-champ b{
   display:block;font-family:'JetBrains Mono',monospace;font-weight:500;
@@ -905,39 +851,17 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
   font-size:clamp(12px,1.3vw,14.5px);text-transform:uppercase;letter-spacing:.04em;
   color:#57534A;
 }
-/* Pastille orange, texte encre : 5,83:1 — l'inverse ne passerait pas. */
-.d-actif{
-  align-self:flex-start;
-  background:var(--impact);color:var(--encre);
-  font-family:'JetBrains Mono',monospace;font-weight:700;
-  font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-  padding:5px 9px;
-}
-
-.d-retourne{
-  margin-top:22px;display:inline-flex;align-items:center;gap:10px;
-  background:none;border:0;padding:0;cursor:pointer;
-  transition:color .15s ease;
-  font-family:'JetBrains Mono',monospace;font-weight:700;
-  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--beton);
-}
-.d-retourne::before{content:"↻";color:var(--impact);font-size:14px;transition:transform .4s ease;display:inline-block}
-.d-retourne:hover{color:#EFEBE2}
-.d-retourne:hover::before{transform:rotate(180deg)}
+.d-foot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid rgba(7,7,7,.2);padding-top:9px}
+.d-foot span{color:#57534A}
 
 @media (max-width:860px){
-  .deux-faces{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .deux-faces .df-txt p{max-width:none}
-  .d-retourne{justify-content:center}
-}
-@media (prefers-reduced-motion:reduce){
-  .d-inner{transition:none}
-  .dossard:hover .d-inner{transform:none}
-  .dossard[aria-pressed="true"]:hover .d-inner{transform:rotateY(180deg)}
+  .bloc-dossard{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .bloc-dossard .df-txt p{max-width:none}
+  .dossard{text-align:left}
 }
 
 /* ==========================================================================
-   LE PROGRAMME DE L'APRÈS-MIDI — une liste horaire, T+ en tête de ligne.
+   LE DÉROULÉ — une liste horaire pour toute la journée, l'heure en tête.
    Les formats dont on s'inspire (clubs de fondateurs, sorties de dirigeants,
    rencontres flash en salon) tiennent tous en trois mots : courir, puis
    parler, sans slide. On les aligne comme des passages de relais.
@@ -1015,9 +939,7 @@ footer{background:var(--encre);color:var(--craie);padding:clamp(48px,6vw,80px) 0
    ========================================================================== */
 .compte-grid{display:grid;grid-template-columns:1.15fr minmax(280px,.85fr);gap:clamp(30px,6vw,96px);align-items:start}
 .compte-grid .colle{position:sticky;top:96px}
-.compte-grid .colle .dossard{cursor:default;width:clamp(240px,26vw,340px)}
-.compte-grid .colle .dossard:hover .d-inner{transform:none}
-.compte-grid .colle .dossard[aria-pressed="true"]:hover .d-inner{transform:rotateY(180deg)}
+.compte-grid .colle .dossard{width:clamp(240px,26vw,330px)}
 .compte-grid .colle .dossard-legende{margin-top:18px;font-size:14.5px;font-weight:500;color:var(--muted);max-width:40ch}
 .compte-grid .colle .dossard-legende b{color:var(--texte)}
 @media (max-width:980px){

@@ -137,7 +137,7 @@
 <section class="dark" id="manifeste">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+01</b> / LE CONCEPT</span>
+      <span class="tmark"><b>01</b> / LE CONCEPT</span>
       <h2>Pourquoi courir <span class="creuse">avant</span> de parler affaires.</h2>
     </div>
     <div class="manif">
@@ -165,14 +165,14 @@
 <section id="temps" class="light">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+02</b> / LA JOURNÉE</span>
+      <span class="tmark"><b>02</b> / LA JOURNÉE</span>
       <h2>La course le matin,<br class="br-desk"> le réseau l'après-midi.</h2>
       <p class="intro">Tout se déroule le même jour, sur le même site. <b>Le dossard qui sert à courir le matin donne accès à l'Arena l'après-midi.</b></p>
     </div>
 
     <div class="temps-grid reveal">
       <div class="temps avant">
-        <div class="t-chrono" aria-hidden="true">T–</div>
+        <div class="t-chrono" aria-hidden="true">Matin</div>
         <h3>La course</h3>
         <p class="lead">Départ au pied de la Grande Arche, parcours fermé entre les tours, arrivée dans Paris La Défense Arena.</p>
         <ul>
@@ -183,7 +183,7 @@
         </ul>
       </div>
       <div class="temps apres">
-        <div class="t-chrono" aria-hidden="true">T+</div>
+        <div class="t-chrono" aria-hidden="true">Après-midi</div>
         <h3>Le réseau</h3>
         <p class="lead">L'arrivée est à l'intérieur de l'Arena. La journée se poursuit sur place, jusqu'au soir.</p>
         <ul>
@@ -195,109 +195,69 @@
       </div>
     </div>
 
-    <!-- Le déroulé du matin, en convention T– / T+. L'après-midi est détaillé
-         plus bas dans « T+02.1 / APRÈS LA LIGNE » — les deux blocs ne se
-         recoupent pas. Horaires indicatifs, à caler sur le plan de course
-         définitif avant mise en ligne. -->
-    <div class="deroule reveal">
-      <div class="deroule-head">
-        <h3>Le matin, <span class="creuse">heure par heure.</span></h3>
-        <p class="note">Programme indicatif. Les horaires définitifs seront communiqués à l'ouverture des inscriptions.</p>
+    <!-- Le dossard : une seule carte. Le numéro pour la course, le nom et la
+         fonction pour l'après-midi — les deux sur la même face, comme sur un
+         dossard imprimé. Aucune interaction : c'est une illustration. -->
+    <div class="bloc-dossard reveal">
+      <div class="dossard" aria-hidden="true">
+        <div class="d-head">
+          <span class="d-logo">R<i></i>O<i></i>I</span>
+          <span class="d-ed">Édition 01</span>
+        </div>
+        <div class="d-num">001</div>
+        <div class="d-champs">
+          <span class="d-champ"><b>Nom</b><span>Votre nom</span></span>
+          <span class="d-champ"><b>Fonction</b><span>Votre fonction</span></span>
+          <span class="d-champ"><b>Entreprise</b><span>Votre entreprise</span></span>
+        </div>
+        <div class="d-foot"><span>Paris La Défense</span><span>Sept. 2027</span></div>
       </div>
-      <ol>
-        <li>
-          <span class="t">T–02:00</span>
-          <p class="w">Village ouvert</p>
-          <p class="d">Retrait des dossards au pied de la Grande Arche, consigne, échauffement.</p>
-        </li>
-        <li>
-          <span class="t">T–00:15</span>
-          <p class="w">Sas de départ</p>
-          <p class="d">Briefing et mise en place des vagues d'allure. Une seule ligne de départ pour les trois distances.</p>
-        </li>
-        <li class="ligne">
-          <span class="t plus">T+00:00</span>
-          <p class="w">Départ</p>
-          <p class="d">Départ des vagues entre les tours. Le chronométrage commence.</p>
-        </li>
-        <li>
-          <span class="t plus">T+00:15 → T+02:30</span>
-          <p class="w">Arrivées dans l'Arena</p>
-          <p class="d">La ligne d'arrivée est à l'intérieur&nbsp;: médaille, ravitaillement, récupération.</p>
-        </li>
-      </ol>
-    </div>
-
-    <!-- Le dossard : recto la course, verso le réseau. Le même objet des deux
-         côtés de la ligne. -->
-    <div class="deux-faces reveal">
-      <button class="dossard" type="button" aria-pressed="false" aria-label="Dossard 001 — retourner pour voir la face profil">
-        <span class="d-inner">
-          <span class="d-face d-recto">
-            <span class="d-head">
-              <span class="d-logo">R<i></i>O<i></i>I</span>
-              <span class="d-ed">Édition 01</span>
-            </span>
-            <span class="d-num">001</span>
-            <span class="d-foot"><span>Paris La Défense</span><span>Sept. 2027</span></span>
-          </span>
-          <span class="d-face d-verso">
-            <span class="d-head">
-              <span class="d-logo">R<i></i>O<i></i>I</span>
-              <span class="d-ed">Profil</span>
-            </span>
-            <span class="d-champs">
-              <span class="d-champ"><b>Nom</b><span>Votre nom</span></span>
-              <span class="d-champ"><b>Fonction</b><span>Votre fonction</span></span>
-              <span class="d-champ"><b>Entreprise</b><span>Votre entreprise</span></span>
-            </span>
-            <span class="d-actif">■ Accès réseau actif</span>
-          </span>
-        </span>
-      </button>
 
       <div class="df-txt">
-        <h3>Un dossard,<br class="br-desk"> deux faces.</h3>
-        <p>Côté course&nbsp;: un numéro, une puce, un temps. Sur le parcours, la fonction de chacun n'a pas d'importance.</p>
-        <p>Côté réseau&nbsp;: <b>le même dossard</b> affiche vos nom, fonction et entreprise. Il fait office de badge pour l'après-midi.</p>
-        <button class="d-retourne" type="button" tabindex="-1" aria-hidden="true">Retourner le dossard</button>
+        <h3>Un seul dossard.</h3>
+        <p>Il porte votre numéro pour la course, et vos nom, fonction et entreprise pour l'après-midi.</p>
+        <p><b>Il n'y a rien d'autre à retirer ni à porter.</b> Le même dossard vous fait passer la ligne et entrer dans l'Arena.</p>
       </div>
     </div>
 
-    <!-- Programme indicatif de l'après-midi — À ARBITRER avec la production.
-         Il reprend ce qui marche dans les formats existants : les clubs de
-         fondateurs qui courent « à allure de conversation » puis enchaînent
-         café et prises de parole courtes ; les rencontres flash de six
-         minutes des salons d'entrepreneurs à l'Arena ; le verre d'après des
-         sorties mensuelles de dirigeants, sans badge ni slide. -->
     <div class="sub-head" id="programme">
-      <span class="tmark"><b>T+02.1</b> / APRÈS LA LIGNE</span>
-      <h3>Le programme de l'après-midi.</h3>
-      <p>Un format repris des clubs de course d'entrepreneurs&nbsp;: <b>la course d'abord, les échanges ensuite.</b> Ni stand, ni présentation projetée, ni prise de parole imposée.</p>
+      <span class="tmark"><b>02.1</b> / LE DÉROULÉ</span>
+      <h3>Le déroulé de la journée.</h3>
+      <p>Un format repris des clubs de course d'entrepreneurs&nbsp;: <b>la course d'abord, les échanges ensuite.</b> Ni stand, ni présentation projetée, ni prise de parole imposée. Horaires indicatifs, précisés à l'ouverture des inscriptions.</p>
     </div>
     <div class="programme reveal">
       <div class="pg-row">
-        <span class="pg-h">T+00<small>DÈS 11 H</small></span>
-        <span class="pg-quoi">L'arrivée</span>
-        <p class="pg-txt">La ligne d'arrivée est dans l'Arena. Café, récupération, et les premiers échanges entre participants qui viennent de terminer.</p>
+        <span class="pg-h">Matin</span>
+        <span class="pg-quoi">Le village</span>
+        <p class="pg-txt">Retrait des dossards au pied de la Grande Arche, consigne, échauffement. Le village ouvre deux heures avant le premier départ.</p>
       </div>
       <div class="pg-row">
-        <span class="pg-h">T+01<small>12 H 30</small></span>
+        <span class="pg-h">Matin</span>
+        <span class="pg-quoi">Le départ</span>
+        <p class="pg-txt">Une seule ligne de départ pour les trois distances, puis des vagues d'allure entre les tours. <b>Le chronométrage commence au passage du sas.</b></p>
+      </div>
+      <div class="pg-row">
+        <span class="pg-h">Dès 11 h</span>
+        <span class="pg-quoi">L'arrivée</span>
+        <p class="pg-txt">La ligne d'arrivée est à l'intérieur de l'Arena&nbsp;: médaille, ravitaillement, récupération. Puis le café des finishers, et les premiers échanges.</p>
+      </div>
+      <div class="pg-row">
+        <span class="pg-h">12 h 30</span>
         <span class="pg-quoi">Le déjeuner</span>
         <p class="pg-txt">Des tables organisées par distance, puis par secteur d'activité. <b>Le placement est prévu pour que personne ne déjeune seul.</b></p>
       </div>
       <div class="pg-row">
-        <span class="pg-h">T+02<small>14 H</small></span>
+        <span class="pg-h">14 h</span>
         <span class="pg-quoi">Les rendez-vous</span>
         <p class="pg-txt">Des rendez-vous de huit minutes, proposés depuis votre profil, avec un objectif déclaré&nbsp;: <b>recruter, lever des fonds, vendre ou s'associer</b>. Vous choisissez vos interlocuteurs, nous gérons le planning. En Premium, ils se réservent à l'avance.</p>
       </div>
       <div class="pg-row">
-        <span class="pg-h">T+03<small>16 H</small></span>
+        <span class="pg-h">16 h</span>
         <span class="pg-quoi">Les prises de parole</span>
         <p class="pg-txt">Trois interventions de quinze minutes, par des fondateurs qui ont couru le matin, sans support projeté. Les échanges reprennent ensuite.</p>
       </div>
       <div class="pg-row">
-        <span class="pg-h">T+04<small>18 H</small></span>
+        <span class="pg-h">18 h</span>
         <span class="pg-quoi">La soirée</span>
         <p class="pg-txt">La soirée est ouverte à tous les participants. Le dîner des fondateurs est réservé aux formules Premium et Cercle.</p>
       </div>
@@ -312,7 +272,7 @@
 <section id="reseau">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+03</b> / LE RÉSEAU</span>
+      <span class="tmark"><b>03</b> / LE RÉSEAU</span>
       <h2>Pourquoi une course<br class="br-desk"> pour faire du réseau.</h2>
     </div>
 
@@ -362,7 +322,7 @@
     </div>
 
     <div class="sub-head">
-      <span class="tmark"><b>T+03.1</b> / L'ACCÈS</span>
+      <span class="tmark"><b>03.1</b> / L'ACCÈS</span>
       <h3>L'accès est vérifié.</h3>
       <p>Une seule condition&nbsp;: exercer une activité professionnelle. Trois justificatifs possibles, <b>un seul suffit</b>. Le paiement n'intervient qu'après la validation du dossier.</p>
     </div>
@@ -379,7 +339,7 @@
 <section id="dossards" class="light">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+04</b> / LES DOSSARDS</span>
+      <span class="tmark"><b>04</b> / LES DOSSARDS</span>
       <h2>Trois distances,<br class="br-desk"> un seul dossard.</h2>
       <p class="intro">Le tarif ne dépend pas de la distance choisie, et l'accès à l'après-midi est identique pour tous. <b>Seule la formule change ce qui entoure la course.</b></p>
     </div>
@@ -419,7 +379,7 @@
          propositions. Le passage à Premium se fait depuis l'espace personnel,
          jusqu'au jour de l'événement. -->
     <div class="sub-head" id="formules">
-      <span class="tmark"><b>T+04.1</b> / LES FORMULES</span>
+      <span class="tmark"><b>04.1</b> / LES FORMULES</span>
       <h3>La course est la même.<br>Le réseau, non.</h3>
       <p>La formule Dossard comprend la course et toute la journée, au tarif de la vague en cours. <b>Premium ouvre le réseau avant l'événement.</b> Le Cercle est limité à quarante places, sur cooptation. Ces deux formules se demandent depuis votre espace personnel.</p>
     </div>
@@ -471,7 +431,7 @@
     <p class="formules-note">Aucune formule ne modifie la course&nbsp;: <b>même parcours, même chronométrage, même ligne d'arrivée.</b> Ce qui change, c'est le moment où l'accès au réseau s'ouvre. Le prix affiché reste celui de la vague en cours.</p>
 
     <div class="sub-head" id="tarifs">
-      <span class="tmark"><b>T+04.2</b> / LES VAGUES</span>
+      <span class="tmark"><b>04.2</b> / LES VAGUES</span>
       <h3>Trois vagues, un tarif qui augmente.</h3>
       <p>Chaque vague est limitée en nombre de dossards. <b>La vague et son tarif sont réservés dès la création du compte</b>, pendant l'instruction du dossier.</p>
     </div>
@@ -516,7 +476,7 @@
 <section id="lieu" class="dark">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+05</b> / LE LIEU</span>
+      <span class="tmark"><b>05</b> / LE LIEU</span>
       <h2 class="arche"><span>Paris</span><span class="creuse">La Défense</span></h2>
       <p class="intro"><b>Le premier quartier d'affaires d'Europe.</b> La course passe entre les tours où travaillent les participants que vous rencontrez l'après-midi.</p>
     </div>
@@ -540,7 +500,7 @@
 <section id="app">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tmark"><b>T+06</b> / L'APP</span>
+      <span class="tmark"><b>06</b> / L'APP</span>
       <h2>Une course par an.<br class="br-desk"> <span class="creuse">Un réseau toute l'année.</span></h2>
       <p class="intro">R.O.I a lieu une fois par an. L'application prend le relais entre deux éditions&nbsp;: annuaire des participants, réservation des rendez-vous, sorties de course en groupe. <b>Votre dossard y apparaît dès l'inscription.</b></p>
     </div>

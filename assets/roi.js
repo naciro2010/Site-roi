@@ -65,20 +65,6 @@
     mesure();
   }
 
-  /* ---- Le dossard se retourne ---- */
-  var dossard = document.querySelector('.dossard');
-  if (dossard) {
-    var retourne = function () {
-      var ouvert = dossard.getAttribute('aria-pressed') === 'true';
-      dossard.setAttribute('aria-pressed', ouvert ? 'false' : 'true');
-    };
-    dossard.addEventListener('click', retourne);
-    // Le rappel « Retourne-le » est masqué à l'AT — le dossard porte déjà
-    // l'état — mais il reste une cible cliquable à la souris.
-    var rappel = document.querySelector('.d-retourne');
-    if (rappel) { rappel.addEventListener('click', retourne); }
-  }
-
   /* ---- Le lien de compte dans la nav ----
      « Connexion » devient « Mon espace » dès qu'une session est ouverte.
      On lit un simple drapeau posé par compte.js : pas d'appel réseau à

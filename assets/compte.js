@@ -165,20 +165,20 @@
   /* -------------------------------------------------------- Inscription ---- */
   var fInscription = $('#f-inscription');
   if (fInscription) {
-    // Le dossard d'aperçu se remplit en tapant : on voit tout de suite ce qu'il portera.
+    // Le dossard d'aperçu se remplit à la saisie : on voit ce qu'il portera.
     var lie = function (nom, cible, defaut) {
       var i = fInscription.elements[nom], c = $(cible);
       if (!i || !c) { return; }
       var maj = function () { c.textContent = i.value.trim() || defaut; };
       i.addEventListener('input', maj); maj();
     };
-    lie('prenom', '#ap-prenom', 'Ton prénom');
-    lie('nom', '#ap-nom', 'Ton nom');
-    lie('fonction', '#ap-fonction', 'Ta fonction');
-    lie('entreprise', '#ap-entreprise', 'Ton entreprise');
+    lie('prenom', '#ap-prenom', 'Votre prénom');
+    lie('nom', '#ap-nom', 'Votre nom');
+    lie('fonction', '#ap-fonction', 'Votre fonction');
+    lie('entreprise', '#ap-entreprise', 'Votre entreprise');
     var apNom = function () {
       var p = fInscription.elements.prenom.value.trim(), n = fInscription.elements.nom.value.trim();
-      $('#ap-nomcomplet').textContent = (p || n) ? (p + ' ' + n).trim() : 'Ton nom';
+      $('#ap-nomcomplet').textContent = (p || n) ? (p + ' ' + n).trim() : 'Votre nom';
     };
     fInscription.elements.prenom.addEventListener('input', apNom);
     fInscription.elements.nom.addEventListener('input', apNom);
@@ -187,7 +187,7 @@
     var majFormule = function () {
       var f = fInscription.elements.formule.value;
       var e = $('#ap-formule');
-      if (e) { e.textContent = f === 'premium' ? '■ Premium' : f === 'cercle' ? '■ Cercle' : '■ Accès réseau'; }
+      if (e) { e.textContent = f === 'premium' ? 'Premium' : f === 'cercle' ? 'Cercle' : 'Accès réseau'; }
     };
     $$('input[name=formule]', fInscription).forEach(function (r) { r.addEventListener('change', majFormule); });
     majFormule();
@@ -251,12 +251,12 @@
       $('#es-prenom').textContent = c.prenom;
       $('#es-ref').textContent = c.reference;
       $('#es-vague').textContent = c.vague ? c.vague.nom : '—';
-      // Le dossard : recto la course, verso le profil — le même objet qu'à l'accueil.
+      // Le dossard : une seule carte, la même qu'à l'accueil.
       $('#es-d-nom').textContent = (c.prenom + ' ' + c.nom).trim();
       $('#es-d-fonction').textContent = c.fonction;
       $('#es-d-entreprise').textContent = c.entreprise;
       $('#es-d-dist').textContent = (c.distance === '21' ? '21,1' : c.distance) + ' KM';
-      $('#es-d-formule').textContent = c.formule === 'premium' ? '■ Premium' : c.formule === 'cercle' ? '■ Cercle' : '■ Accès réseau actif';
+      $('#es-d-formule').textContent = c.formule === 'premium' ? 'Premium' : c.formule === 'cercle' ? 'Cercle' : 'Accès réseau';
       $('#es-d-num').textContent = c.reference.slice(-3);
 
       $('#es-distance').textContent = LIBELLES.distance[c.distance] || c.distance;
@@ -354,7 +354,7 @@
           rend(rep.compte);
           if (fProfil.elements.mdp) { fProfil.elements.mdp.value = ''; }
           afficheErreurs(fProfil, {});
-          var m = $('.form-msg', fProfil); m.textContent = 'Enregistré. Ton dossard est à jour.'; m.className = 'form-msg ok on';
+          var m = $('.form-msg', fProfil); m.textContent = 'Enregistré. Votre dossard est à jour.'; m.className = 'form-msg ok on';
         });
       });
     }
