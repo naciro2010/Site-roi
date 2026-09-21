@@ -1,8 +1,8 @@
 # R.O.I — Run On Investment
 
-Site officiel de **R.O.I — Run On Investment** : une course (5 / 10 / 21,1 km) au cœur de Paris La Défense, puis un après-midi entier dans l'Arena pour rencontrer celles et ceux qui viennent de courir à côté de soi. Le rendez-vous d'affaires qui a choisi la course comme porte d'entrée. Septembre 2027.
+Site officiel de **R.O.I — Run On Investment** : un événement de networking pour entrepreneurs, dirigeants, commerciaux et investisseurs. Le matin, une course de 5, 10 ou 21,1 km entre les tours de Paris La Défense. L'après-midi, des rencontres d'affaires dans Paris La Défense Arena, avec celles et ceux qui viennent de courir. Un seul dossard pour les deux. Première édition en septembre 2027.
 
-> **R.O.I — L'impact après la ligne d'arrivée.**
+> **R.O.I — Une course le matin. Des affaires l'après-midi.**
 
 Le site n'est plus 100 % statique : un petit serveur Node sans dépendance (`server.js`) le sert **et** porte l'inscription, la connexion et l'espace personnel. Voir « Le compte » plus bas.
 
@@ -24,9 +24,9 @@ Tout part du même motif : **la ligne**. Rien n'est décoratif au sens strict �
 2. **La ligne de progression.** Le filet sous la nav se remplit d'orange à mesure qu'on descend, **damier d'arrivée en tête**. La largeur passe par la variable `--progres` posée en JS ; la nav surligne au passage la section courante.
 3. **Le dossard recto/verso.** « Un seul dossard : il te fait franchir la ligne, puis il devient ton profil » — la phrase existait, l'objet non. Recto la course (numéro, chrono, œillets d'épingle), verso le réseau (nom, fonction, entreprise). **Le même papier des deux côtés** : c'est justement l'argument. Retournable au clic et au clavier (`aria-pressed`).
 
-## Le positionnement : un rendez-vous d'affaires, pas une course avec afterwork
+## Le positionnement : un événement de networking, pas une course avec afterwork
 
-Le discours est construit pour que le réseau soit évident sans être martelé : la course reste le sujet visible (distances, vagues, parcours), le réseau est ce qu'on lit entre les lignes — puis noir sur blanc dans `T+03`. Le ton vise le poétique et le professionnel à la fois (« On ne se rencontre jamais aussi bien qu'essoufflé. »).
+Le contenu dit d'abord ce qu'est R.O.I, en une phrase, dès le haut de page : un événement de networking pour entrepreneurs, dirigeants, commerciaux et investisseurs, qui commence par une course. Le ton est direct et professionnel : phrases courtes, peu de métaphores, une idée par paragraphe. La baseline des affiches (« L'impact après la ligne d'arrivée ») reste sur le sceau du concept ; la nav appelle la première section « Le concept ».
 
 ### Ce qu'on a emprunté aux formats qui existent déjà
 
@@ -109,7 +109,7 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 
 ## La page d'accueil, en six temps
 
-`T+01` Manifeste (affiche « Au 3e km » + quatre phrases) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis `T+02.1` le programme horaire de l'après-midi) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur) · `T+06` L'app (une course par an, un réseau toute l'année : annuaire, rencontres, sorties — et le lien vers l'app). Puis la finale « Prends ta place », sans numéro. Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
+`T+01` Le concept (affiche « Au 3e km » + quatre phrases qui expliquent pourquoi courir avant de parler affaires) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis `T+02.1` le programme horaire de l'après-midi) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur) · `T+06` L'app (une course par an, un réseau toute l'année : annuaire, rencontres, sorties — et le lien vers l'app). Puis la finale « Prends ta place », sans numéro. Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
 
 ## Structure
 

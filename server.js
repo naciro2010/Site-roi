@@ -191,7 +191,7 @@ async function api(req, res, url) {
     if (!nom) { erreurs.nom = 'Ton nom.'; }
     if (!emailValide(email)) { erreurs.email = 'Une adresse e-mail valide.'; }
     if (mdp.length < 8) { erreurs.mdp = 'Huit caractères au moins.'; }
-    if (!fonction) { erreurs.fonction = 'Ta fonction — c\'est ce que portera ton dossard.'; }
+    if (!fonction) { erreurs.fonction = 'Ta fonction. C\'est ce qui figurera sur ton dossard.'; }
     if (!entreprise) { erreurs.entreprise = 'Ton entreprise, ou ton nom si tu exerces en propre.'; }
     if (!d.consent) { erreurs.consent = 'Il faut accepter les conditions de participation.'; }
     if (Object.keys(erreurs).length) { return json(res, 422, { erreur: 'Quelques champs à revoir.', champs: erreurs }); }

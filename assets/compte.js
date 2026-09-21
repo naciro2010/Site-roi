@@ -66,7 +66,7 @@
         if (!d.nom) { erreurs.nom = 'Ton nom.'; }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { erreurs.email = 'Une adresse e-mail valide.'; }
         if (String(d.mdp || '').length < 8) { erreurs.mdp = 'Huit caractères au moins.'; }
-        if (!d.fonction) { erreurs.fonction = 'Ta fonction — c\'est ce que portera ton dossard.'; }
+        if (!d.fonction) { erreurs.fonction = 'Ta fonction. C\'est ce qui figurera sur ton dossard.'; }
         if (!d.entreprise) { erreurs.entreprise = 'Ton entreprise, ou ton nom si tu exerces en propre.'; }
         if (!d.consent) { erreurs.consent = 'Il faut accepter les conditions de participation.'; }
         if (Object.keys(erreurs).length) { return rep(422, { erreur: 'Quelques champs à revoir.', champs: erreurs }); }
@@ -211,7 +211,7 @@
         marqueNav(rep.compte);
         location.href = racine() + 'espace/' + (rep._local ? '?local=1' : '') + '#bienvenue';
       }).catch(function () {
-        afficheErreurs(fInscription, { erreur: 'Le serveur ne répond pas. Réessaie, ou écris-nous : contact@runoninvest.fr' });
+        afficheErreurs(fInscription, { erreur: 'Le serveur ne répond pas. Réessaie dans un instant, ou écris-nous à contact@runoninvest.fr.' });
         enCours(fInscription, false);
       });
     });
@@ -266,7 +266,7 @@
       // Seul le tarif de la vague est affiché : les conditions d'une formule
       // Premium ou Cercle sont précisées à la validation, pas ici.
       $('#es-prix').textContent = c.vague ? c.vague.prix + ' € — vague ' + c.vague.nom : '—';
-      $('#es-prix-note').textContent = (c.formule !== 'dossard' ? 'Tarif de la vague. Les conditions de la formule ' + (LIBELLES.formule[c.formule] || c.formule) + ' te sont précisées à la validation. ' : '') + 'Débité après validation, jamais avant. Dossier refusé, rien n\'est débité.';
+      $('#es-prix-note').textContent = (c.formule !== 'dossard' ? 'Tarif de la vague. Les conditions de la formule ' + (LIBELLES.formule[c.formule] || c.formule) + ' te sont précisées à la validation. ' : '') + 'Débité après validation, jamais avant. Si le dossier est refusé, rien n\'est débité.';
       $('#es-cercle-note').hidden = c.formule !== 'cercle';
 
       // Les quatre étapes du dossier.
@@ -335,7 +335,7 @@
         var f = b.closest('.formule-choix').getAttribute('data-formule');
         b.disabled = true;
         api.appel('PATCH', '/api/moi', { formule: f }).then(function (rep) {
-          if (rep._status < 400) { rend(rep.compte); var m = $('#es-formule-msg'); if (m) { m.textContent = f === 'cercle' ? 'Demande transmise — le Cercle se confirme sur cooptation, on te répond sous 48 h ouvrées.' : 'Formule mise à jour.'; m.className = 'form-msg ok on'; } }
+          if (rep._status < 400) { rend(rep.compte); var m = $('#es-formule-msg'); if (m) { m.textContent = f === 'cercle' ? 'Demande transmise. Le Cercle se confirme sur cooptation, on te répond sous 48 h ouvrées.' : 'Formule mise à jour.'; m.className = 'form-msg ok on'; } }
         });
       });
     });
