@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /v2/
+
+Sitemap: https://runoninvest.fr/sitemap.xml

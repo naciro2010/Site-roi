@@ -187,18 +187,18 @@ async function api(req, res, url) {
     const prenom = texte(d.prenom, 60), nom = texte(d.nom, 60);
     const fonction = texte(d.fonction, 80), entreprise = texte(d.entreprise, 80);
     const erreurs = {};
-    if (!prenom) { erreurs.prenom = 'Ton prénom.'; }
-    if (!nom) { erreurs.nom = 'Ton nom.'; }
+    if (!prenom) { erreurs.prenom = 'Votre prénom.'; }
+    if (!nom) { erreurs.nom = 'Votre nom.'; }
     if (!emailValide(email)) { erreurs.email = 'Une adresse e-mail valide.'; }
-    if (mdp.length < 8) { erreurs.mdp = 'Huit caractères au moins.'; }
-    if (!fonction) { erreurs.fonction = 'Ta fonction. C\'est ce qui figurera sur ton dossard.'; }
-    if (!entreprise) { erreurs.entreprise = 'Ton entreprise, ou ton nom si tu exerces en propre.'; }
+    if (mdp.length < 8) { erreurs.mdp = 'Huit caractères au minimum.'; }
+    if (!fonction) { erreurs.fonction = 'Votre fonction, telle qu\'elle figurera sur le dossard.'; }
+    if (!entreprise) { erreurs.entreprise = 'Votre entreprise, ou votre nom si vous exercez en propre.'; }
     if (!d.consent) { erreurs.consent = 'Il faut accepter les conditions de participation.'; }
     if (Object.keys(erreurs).length) { return json(res, 422, { erreur: 'Quelques champs à revoir.', champs: erreurs }); }
 
     const b = charge();
     if (b.comptes.some(function (c) { return c.email === email; })) {
-      return json(res, 409, { erreur: 'Un compte existe déjà avec cette adresse.', champs: { email: 'Déjà inscrit·e ? Connecte-toi.' } });
+      return json(res, 409, { erreur: 'Un compte existe déjà avec cette adresse.', champs: { email: 'Adresse déjà utilisée. Connectez-vous.' } });
     }
     const n = b.suite++;
     const now = new Date().toISOString();
@@ -259,7 +259,7 @@ async function api(req, res, url) {
     if (d.distance != null) { c.distance = dansListe(String(d.distance), DISTANCES, c.distance); }
     if (d.formule != null) { c.formule = dansListe(d.formule, FORMULES, c.formule); }
     if (d.mdp) {
-      if (String(d.mdp).length < 8) { return json(res, 422, { erreur: 'Huit caractères au moins.', champs: { mdp: 'Huit caractères au moins.' } }); }
+      if (String(d.mdp).length < 8) { return json(res, 422, { erreur: 'Huit caractères au minimum.', champs: { mdp: 'Huit caractères au minimum.' } }); }
       c.mdp = hache(String(d.mdp));
     }
     c.maj = new Date().toISOString();

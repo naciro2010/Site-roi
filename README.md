@@ -89,6 +89,26 @@ Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'a
   - **Ce que la réponse ne contient jamais** : l'e-mail, l'`id`, le SIREN, la voie de justificatif, le hachage de mot de passe, les dates de création et de mise à jour.
 - **CORS.** L'endpoint est fait pour être appelé depuis une autre origine : `Access-Control-Allow-Origin: *` et `Vary: Origin` sur toutes ses réponses, et `OPTIONS /api/dossier` répond `204` avec `Access-Control-Allow-Methods: GET, HEAD, OPTIONS` et `Access-Control-Max-Age: 86400`. Aucun cookie n'entre en jeu : la session du site reste `SameSite=Lax`, hors de portée de l'app.
 
+## SEO, partage & confort
+
+- **Image de partage** `og.png` (1200 × 630, générée depuis le design system) branchée en `og:image` / `twitter:image` sur `/` et `/pour-qui`, avec `canonical` et `og:url`.
+- **Icônes** : `favicon.svg` (motif « la ligne » : point d'impact, trait, damier), `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png`, `site.webmanifest`.
+- `robots.txt` (exclut `/v2/`) et `sitemap.xml` (`/` et `/pour-qui/`). Les pages de compte sont en `noindex`. Domaine de référence : `https://runoninvest.fr/`.
+- **JSON-LD** : `url`, `image`, `inLanguage` sur l'événement, `url` sur les offres.
+- **Robustesse** : contenu visible sans JavaScript (`.no-js`), `.sr-only` pour le `<h1>` d'accueil, ancres décalées sous le header sticky.
+
+## Le registre : vouvoiement, phrases factuelles
+
+Tout le contenu visible est au **vouvoiement** — accueil, `/pour-qui`, les trois pages de compte, et les messages de validation de `assets/compte.js` et `server.js`, qui sont identiques de part et d'autre. L'audience est composée de dirigeants, d'investisseurs et de cadres dirigeants, pour un dossard à 350–500 €.
+
+Trois règles tenues sur l'ensemble des pages :
+
+1. **Pas de superlatif invérifiable.** Pour une première édition, « le plus grand événement de networking de France » n'est pas démontrable : le site décrit ce qui se passe (une course, puis une après-midi de rencontres) et annonce la jauge attendue (10 000 décideurs).
+2. **Pas de formule d'accroche à la place d'une information.** Les antithèses (« tu ne changes pas de badge, tu changes de conversation »), les phrases nominales de relance (« Sans slide. », « Personne ne déjeune seul. ») et les tirets cadratins en incise ont été remplacés par des phrases qui disent ce qui est prévu.
+3. **Pas de points médians.** `salarié·e`, `fondateur·rice` : formulations neutres ou masculin générique à la place. La graphie était appliquée de façon inégale, et les lecteurs d'écran épellent le point. À rétablir si c'est un choix de marque.
+
+Reste volontairement en place : la signature « L'impact après la ligne d'arrivée » et le texte des deux affiches de campagne (« Au 3e km, plus personne ne joue un rôle », « Personne ne vend en montée · Zéro pitch »), qui sont dans l'image.
+
 ## Accessibilité — un point ouvert sur l'orange
 
 Le contraste a été mesuré sur toute la palette. Tout passe le seuil AA (4,5:1) **sauf l'orange de marque `#FF4400`**, qui est un héritage des affiches :
@@ -109,7 +129,7 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 
 ## La page d'accueil, en six temps
 
-`T+01` Le concept (affiche « Au 3e km » + quatre phrases qui expliquent pourquoi courir avant de parler affaires) · `T+02` La journée (T– la course / T+ le réseau, le dossard recto/verso, puis `T+02.1` le programme horaire de l'après-midi) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur) · `T+06` L'app (une course par an, un réseau toute l'année : annuaire, rencontres, sorties — et le lien vers l'app). Puis la finale « Prends ta place », sans numéro. Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
+`T+01` Le concept (affiche « Au 3e km » + quatre phrases qui expliquent pourquoi courir avant de parler affaires) · `T+02` La journée (T– la course / T+ le réseau, **le déroulé du matin heure par heure** en convention T– / T+, le dossard recto/verso, puis `T+02.1` le programme de l'après-midi — les deux blocs horaires ne se recoupent pas : l'un s'arrête aux arrivées, l'autre y commence) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur) · `T+06` L'app (une course par an, un réseau toute l'année : annuaire, rencontres, sorties — et le lien vers l'app). Puis la finale « Prends ta place », sans numéro. Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
 
 ## Structure
 
@@ -126,6 +146,8 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |
 | `v2/index.html` | Ancienne piste « Roadbook » — accessible sur `/v2` |
 | `fonts/` | Fontes auto-hébergées (Archivo variable + JetBrains Mono) |
+| `og.png`, `favicon*.{svg,png}`, `apple-touch-icon.png`, `icon-512.png` | Image de partage (1200 × 630) et icônes, en remplacement du favicon data-URI |
+| `site.webmanifest`, `robots.txt`, `sitemap.xml`, `serve.json` | Manifest, indexation (`robots.txt` exclut `/v2/`, `sitemap.xml` couvre `/` et `/pour-qui/`), cache du serveur statique |
 
 ## Déploiement sur Railway
 

@@ -62,15 +62,15 @@
       if (methode === 'POST' && chemin === '/api/inscription') {
         var email = String(d.email || '').trim().toLowerCase();
         var erreurs = {};
-        if (!d.prenom) { erreurs.prenom = 'Ton prénom.'; }
-        if (!d.nom) { erreurs.nom = 'Ton nom.'; }
+        if (!d.prenom) { erreurs.prenom = 'Votre prénom.'; }
+        if (!d.nom) { erreurs.nom = 'Votre nom.'; }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { erreurs.email = 'Une adresse e-mail valide.'; }
-        if (String(d.mdp || '').length < 8) { erreurs.mdp = 'Huit caractères au moins.'; }
-        if (!d.fonction) { erreurs.fonction = 'Ta fonction. C\'est ce qui figurera sur ton dossard.'; }
-        if (!d.entreprise) { erreurs.entreprise = 'Ton entreprise, ou ton nom si tu exerces en propre.'; }
+        if (String(d.mdp || '').length < 8) { erreurs.mdp = 'Huit caractères au minimum.'; }
+        if (!d.fonction) { erreurs.fonction = 'Votre fonction, telle qu\'elle figurera sur le dossard.'; }
+        if (!d.entreprise) { erreurs.entreprise = 'Votre entreprise, ou votre nom si vous exercez en propre.'; }
         if (!d.consent) { erreurs.consent = 'Il faut accepter les conditions de participation.'; }
         if (Object.keys(erreurs).length) { return rep(422, { erreur: 'Quelques champs à revoir.', champs: erreurs }); }
-        if (l.some(function (c) { return c.email === email; })) { return rep(409, { erreur: 'Un compte existe déjà avec cette adresse.', champs: { email: 'Déjà inscrit·e ? Connecte-toi.' } }); }
+        if (l.some(function (c) { return c.email === email; })) { return rep(409, { erreur: 'Un compte existe déjà avec cette adresse.', champs: { email: 'Adresse déjà utilisée. Connectez-vous.' } }); }
         var now = new Date().toISOString();
         var c = {
           id: 'l-' + Date.now().toString(36), reference: 'E01-L' + String(l.length + 1).padStart(5, '0'),
@@ -266,7 +266,7 @@
       // Seul le tarif de la vague est affiché : les conditions d'une formule
       // Premium ou Cercle sont précisées à la validation, pas ici.
       $('#es-prix').textContent = c.vague ? c.vague.prix + ' € — vague ' + c.vague.nom : '—';
-      $('#es-prix-note').textContent = (c.formule !== 'dossard' ? 'Tarif de la vague. Les conditions de la formule ' + (LIBELLES.formule[c.formule] || c.formule) + ' te sont précisées à la validation. ' : '') + 'Débité après validation, jamais avant. Si le dossier est refusé, rien n\'est débité.';
+      $('#es-prix-note').textContent = (c.formule !== 'dossard' ? 'Tarif de la vague. Les conditions de la formule ' + (LIBELLES.formule[c.formule] || c.formule) + ' vous sont précisées à la validation. ' : '') + 'Prélevé après validation. En cas de refus, aucun montant n\'est prélevé.';
       $('#es-cercle-note').hidden = c.formule !== 'cercle';
 
       // Les quatre étapes du dossier.
@@ -335,7 +335,7 @@
         var f = b.closest('.formule-choix').getAttribute('data-formule');
         b.disabled = true;
         api.appel('PATCH', '/api/moi', { formule: f }).then(function (rep) {
-          if (rep._status < 400) { rend(rep.compte); var m = $('#es-formule-msg'); if (m) { m.textContent = f === 'cercle' ? 'Demande transmise. Le Cercle se confirme sur cooptation, on te répond sous 48 h ouvrées.' : 'Formule mise à jour.'; m.className = 'form-msg ok on'; } }
+          if (rep._status < 400) { rend(rep.compte); var m = $('#es-formule-msg'); if (m) { m.textContent = f === 'cercle' ? 'Demande transmise. Le Cercle se confirme sur cooptation, réponse sous 48 heures ouvrées.' : 'Formule mise à jour.'; m.className = 'form-msg ok on'; } }
         });
       });
     });
