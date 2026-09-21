@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon espace — R.O.I · Run On Investment</title>
+<meta name="description" content="Ton dossier R.O.I : dossard, formule, et avancement de la validation.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070707'/%3E%3Crect y='7' width='16' height='1' fill='%23EFEBE2' opacity='.45'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23FF4400'/%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/jetbrains-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/roi.css">
+</head>
+<body data-racine="../">
+
+<a class="skip" href="#top">Aller au contenu</a>
+
+<header>
+  <div class="nav-in">
+    <a class="logo" href="../" aria-label="R.O.I — Run On Investment">R<i></i>O<i></i>I</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../#manifeste">Le concept</a></li>
+      <li><a href="../#temps">La journée</a></li>
+      <li><a href="../#reseau">Le réseau</a></li>
+      <li><a href="../pour-qui/">Pour qui</a></li>
+      <li><a href="../#dossards">Dossards</a></li>
+      <li><a class="nav-compte" href="../connexion/" aria-current="page">Connexion</a></li>
+      <li><a class="nav-cta deconnexion" href="../">Se déconnecter</a></li>
+    </ul>
+    <div class="progres" aria-hidden="true"><i></i></div>
+  </div>
+</header>
+
+<main id="top">
+<div id="espace" hidden>
+
+<!-- ============================ EN-TÊTE ============================ -->
+<section class="page-hero court">
+  <div class="wrap">
+    <span class="tmark"><b>T–</b> / VOTRE DOSSIER</span>
+    <div class="es-head" style="margin-top:22px">
+      <h1>Bonjour<br><span class="creuse" id="es-prenom">—</span>.</h1>
+      <p class="es-ref">DOSSIER <b id="es-ref">—</b><br>VAGUE <b id="es-vague">—</b> · ÉDITION 01</p>
+    </div>
+    <p class="bienvenue" id="es-bienvenue" hidden><b>Votre place est réservée.</b> Votre vague et son tarif sont bloqués pendant l'instruction du dossier. Il reste une étape, la deuxième ci-dessous&nbsp;: nous transmettre votre justificatif. Votre dossard existe déjà dans l'application&nbsp;: <a href="#app" style="color:inherit">l'ouvrir ci-dessous</a>.</p>
+    <p class="note-local" hidden><b>APERÇU SANS SERVEUR</b> — ce dossier n'existe que dans ce navigateur.</p>
+  </div>
+</section>
+
+<!-- ============================ LE SUIVI ============================ -->
+<section class="light" style="padding-top:clamp(40px,5vw,64px)">
+  <div class="wrap">
+    <div class="sub-head" style="margin-top:0">
+      <span class="tmark"><b>T–01</b> / OÙ EN EST VOTRE DOSSIER</span>
+      <h3>Quatre étapes,<br>une semaine au plus.</h3>
+    </div>
+    <ol class="suivi" style="list-style:none">
+      <li class="etape-suivi"><span class="e-n">01</span><h4>Demande reçue</h4><p>Votre compte est créé, votre vague et votre distance sont enregistrées. Le tarif est réservé.</p></li>
+      <li class="etape-suivi"><span class="e-n">02</span><h4>Justificatif</h4><p>Transmettez votre pièce par courriel. La référence du dossier figure déjà dans l'objet&nbsp;: <a id="es-justif" href="mailto:dossiers@runoninvest.fr">envoyer mon justificatif →</a></p></li>
+      <li class="etape-suivi"><span class="e-n">03</span><h4>Validation</h4><p>Réponse sous 48 heures ouvrées. Si une pièce manque, nous vous indiquons laquelle.</p></li>
+      <li class="etape-suivi"><span class="e-n">04</span><h4>Paiement</h4><p>Après validation seulement. Le lien de paiement est envoyé par courriel, et le dossard devient définitif.</p></li>
+    </ol>
+
+    <div class="compte-grid" style="margin-top:clamp(40px,5vw,64px)">
+      <div>
+        <dl class="es-fiche" style="margin-top:0">
+          <div><dt>Distance</dt><dd id="es-distance">—</dd></div>
+          <div><dt>Formule</dt><dd><span id="es-formule">—</span><small id="es-cercle-note" hidden>Le Cercle se confirme sur cooptation. Votre demande est enregistrée, réponse sous 48 heures ouvrées.</small></dd></div>
+          <div><dt>Tarif</dt><dd><span id="es-prix">—</span><small id="es-prix-note">Prélevé après validation. En cas de refus, aucun montant n'est prélevé.</small></dd></div>
+          <div><dt>Profil</dt><dd id="es-profil">—</dd></div>
+          <div><dt>Justificatif</dt><dd id="es-voie">—</dd></div>
+        </dl>
+      </div>
+      <aside class="colle" aria-label="Votre dossard">
+        <button class="dossard" type="button" aria-pressed="true" aria-label="Votre dossard — retourner pour voir la face course">
+          <span class="d-inner">
+            <span class="d-face d-recto">
+              <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Édition 01</span></span>
+              <span class="d-num" id="es-d-num">···</span>
+              <span class="d-foot"><span id="es-d-dist">— KM</span><span>Sept. 2027</span></span>
+            </span>
+            <span class="d-face d-verso">
+              <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Profil</span></span>
+              <span class="d-champs">
+                <span class="d-champ"><b>Nom</b><span id="es-d-nom">—</span></span>
+                <span class="d-champ"><b>Fonction</b><span id="es-d-fonction">—</span></span>
+                <span class="d-champ"><b>Entreprise</b><span id="es-d-entreprise">—</span></span>
+              </span>
+              <span class="d-actif" id="es-d-formule">■ Accès réseau actif</span>
+            </span>
+          </span>
+        </button>
+        <p class="dossard-legende">Ton numéro définitif arrive avec la validation. <b>Le verso est déjà le tien</b>&nbsp;: c'est ce que liront les autres après la ligne. Clique pour le retourner.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ L'APP ============================
+     Le pont vers l'app R.O.I (origine séparée) : le lien profond
+     /?dossier=&email= est posé par compte.js. L'adresse de l'app se règle
+     avec data-app sur <body> — sinon https://roi-mvp.up.railway.app (l'app sur Railway).
+     ================================================================= -->
+<section id="app">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T+</b> / L'APP — TOUTE L'ANNÉE</span>
+      <h2>Une course par an.<br class="br-desk"> <span class="creuse">Un réseau toute l'année.</span></h2>
+      <p class="intro">Le même dossard, dans l'application&nbsp;: annuaire des participants, rendez-vous de huit minutes à réserver, sorties de course entre deux éditions. <b>Votre dossier y est reporté automatiquement.</b></p>
+    </div>
+    <div class="cadre cadre-3">
+      <div class="cell">
+        <span class="n">01</span>
+        <h3>L'annuaire</h3>
+        <p>Qui participe cette année&nbsp;: nom, fonction, entreprise. <b>En Premium, l'annuaire s'ouvre dès la validation</b>, des mois avant la course.</p>
+      </div>
+      <div class="cell">
+        <span class="n">02</span>
+        <h3>Les rendez-vous</h3>
+        <p>Huit minutes, un objectif déclaré&nbsp;: recruter, lever des fonds, vendre, s'associer. <b>Six réservables à l'avance en Premium</b>, les autres le jour même.</p>
+      </div>
+      <div class="cell">
+        <span class="n">03</span>
+        <h3>Les sorties</h3>
+        <p>Des courses en groupe entre deux éditions, à allure tranquille, pour garder le réseau actif toute l'année.</p>
+      </div>
+    </div>
+    <div class="es-actions">
+      <a class="btn btn-impact" id="es-app" href="#" rel="noopener"><span>Ouvrir mon dossard dans l'app</span><span class="arr">→</span></a>
+      <span class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--beton)">Votre dossier&nbsp;: <b id="es-app-ref" style="color:var(--texte)">—</b>. L'application le retrouve avec votre adresse e-mail.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LA FORMULE ============================ -->
+<section id="formule">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tmark"><b>T–02</b> / VOTRE FORMULE</span>
+      <h2>La course est la même.<br class="br-desk"> <span class="creuse">Le réseau, non.</span></h2>
+      <p class="intro">La formule reste modifiable jusqu'au jour de l'événement, sans effet sur le tarif de votre vague. Les conditions de chaque formule sont précisées à la validation.</p>
+    </div>
+    <p class="form-msg" id="es-formule-msg" role="status"></p>
+    <div class="formules" style="margin-top:0">
+      <div class="formule formule-choix" data-formule="dossard">
+        <div class="fo-n"><span>FORMULE 01</span><b>■ INCLUS</b></div>
+        <h3>Dossard</h3>
+        <p class="fo-pour">LA JOURNÉE ENTIÈRE</p>
+        <ul>
+          <li>Course chronométrée, t-shirt, médaille finisher</li>
+          <li>Arrivée dans l'Arena et déjeuner des finishers</li>
+          <li>Tout l'après-midi&nbsp;: rendez-vous, prises de parole, soirée</li>
+          <li>Votre profil dans l'annuaire des participants, le jour de l'événement</li>
+        </ul>
+        <div class="fo-cta"><button class="btn btn-ghost" type="button"><span>Revenir au Dossard</span><span class="arr">→</span></button></div>
+      </div>
+      <div class="formule formule-choix mise" data-formule="premium">
+        <div class="fo-n"><span>FORMULE 02</span><b>■ SUR DEMANDE</b></div>
+        <h3>Premium</h3>
+        <p class="fo-pour">LE RÉSEAU COMMENCE AVANT L'ÉVÉNEMENT</p>
+        <ul>
+          <li class="herite">Tout le Dossard, et</li>
+          <li><b>L'annuaire ouvert dès la validation</b>&nbsp;: vous savez qui court, des mois avant</li>
+          <li><b>Six rendez-vous réservés</b> à l'avance, depuis votre espace</li>
+          <li>Le Salon de l'Arena, vestiaires et douches sans attente</li>
+          <li>Le dîner des fondateurs, le soir</li>
+        </ul>
+        <div class="fo-cta"><button class="btn btn-impact" type="button"><span>Passer en Premium</span><span class="arr">→</span></button></div>
+      </div>
+      <div class="formule formule-choix" data-formule="cercle">
+        <div class="fo-n"><span>FORMULE 03</span><b>■ SUR COOPTATION</b></div>
+        <h3>Cercle</h3>
+        <p class="fo-pour">QUARANTE PLACES</p>
+        <ul>
+          <li class="herite">Tout le Premium, et</li>
+          <li><b>La table des investisseurs</b> au déjeuner, avec un rendez-vous garanti avec les fonds présents</li>
+          <li><b>Trois dossards invités</b> pour votre équipe ou vos associés</li>
+          <li>Votre place au Cercle, reconduite aux éditions suivantes</li>
+        </ul>
+        <div class="fo-cta"><button class="btn btn-ghost" type="button"><span>Demander une place</span><span class="arr">→</span></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LE PROFIL ============================ -->
+<section class="light" id="profil">
+  <div class="wrap compte-grid">
+    <div>
+      <div class="sub-head" style="margin-top:0">
+        <span class="tmark"><b>T–03</b> / VOTRE DOSSARD</span>
+        <h3>Ce que liront<br>les autres.</h3>
+        <p>Nom, fonction, entreprise&nbsp;: le verso ne porte rien d'autre, et c'est vous qui le renseignez. Modifiable jusqu'au jour de l'événement.</p>
+      </div>
+      <form class="roi" id="f-profil" novalidate>
+        <p class="form-msg" role="status"></p>
+        <div class="champs">
+          <div class="champ"><label for="p-prenom">Prénom</label><input id="p-prenom" name="prenom" type="text" autocomplete="given-name"><span class="champ-err"></span></div>
+          <div class="champ"><label for="p-nom">Nom</label><input id="p-nom" name="nom" type="text" autocomplete="family-name"><span class="champ-err"></span></div>
+          <div class="champ"><label for="p-fonction">Fonction</label><input id="p-fonction" name="fonction" type="text" autocomplete="organization-title"><span class="champ-err"></span></div>
+          <div class="champ"><label for="p-entreprise">Entreprise</label><input id="p-entreprise" name="entreprise" type="text" autocomplete="organization"><span class="champ-err"></span></div>
+          <div class="champ">
+            <label for="p-profil">Votre profil</label>
+            <select id="p-profil" name="profil">
+              <option value="entrepreneur">Entrepreneur, fondateur, indépendant</option>
+              <option value="intrapreneur">Intrapreneur</option>
+              <option value="dirigeant">Cadre dirigeant</option>
+              <option value="commercial">Commercial, business developer</option>
+              <option value="investisseur">Investisseur, conseil</option>
+              <option value="autre">Autre</option>
+            </select>
+            <span class="champ-err"></span>
+          </div>
+          <div class="champ">
+            <label for="p-voie">Votre justificatif</label>
+            <select id="p-voie" name="voie">
+              <option value="kbis">Extrait Kbis</option>
+              <option value="sirene">Avis SIRENE</option>
+              <option value="cooptation">Cooptation employeur</option>
+            </select>
+            <span class="champ-err"></span>
+          </div>
+          <div class="champ"><label for="p-siren">SIREN <span class="opt">FACULTATIF</span></label><input id="p-siren" name="siren" type="text" inputmode="numeric"><span class="champ-err"></span></div>
+          <div class="champ"><label for="p-mdp">Nouveau mot de passe <span class="opt">FACULTATIF</span></label><input id="p-mdp" name="mdp" type="password" autocomplete="new-password" minlength="8" placeholder="Laisser vide pour ne rien changer"><span class="champ-err"></span></div>
+          <div class="champ large">
+            <span class="lbl" id="lbl-p-distance">Distance</span>
+            <div class="choix" role="radiogroup" aria-labelledby="lbl-p-distance">
+              <label><input type="radio" name="distance" value="5"><span class="c-t">5<small>KM</small></span><span class="c-s">Le Sprint</span></label>
+              <label><input type="radio" name="distance" value="10"><span class="c-t">10<small>KM</small></span><span class="c-s">La Référence</span></label>
+              <label><input type="radio" name="distance" value="21"><span class="c-t">21,1<small>KM</small></span><span class="c-s">Le Grand Format</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-pied" style="margin-top:28px">
+          <button class="btn btn-impact" type="submit"><span>Enregistrer</span><span class="arr">→</span></button>
+        </div>
+      </form>
+    </div>
+    <aside>
+      <div class="sub-head" style="margin-top:0">
+        <span class="tmark"><b>T–04</b> / BESOIN D'AIDE</span>
+        <h3>Une question&nbsp;?</h3>
+        <p>Un doute sur votre justificatif, un dossard à transférer, une équipe à inscrire&nbsp;: <a href="mailto:dossiers@runoninvest.fr" style="color:inherit">dossiers@runoninvest.fr</a>. Réponse sous 48 heures ouvrées.</p>
+        <p style="margin-top:14px"><a href="../pour-qui/#faq" style="color:inherit">Les questions qui reviennent →</a></p>
+      </div>
+    </aside>
+  </div>
+  <div class="wrap">
+    <div class="es-actions">
+      <span class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--beton)">UN SEUL DOSSARD&nbsp;: LA COURSE AU RECTO, LE PROFIL AU VERSO.</span>
+      <button class="lien-nu deconnexion" type="button">Se déconnecter →</button>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="padding-top:0">
+      <span>© R.O.I — RUN ON INVESTMENT · ÉDITION 01 · 2027</span>
+      <span><a href="mailto:contact@runoninvest.fr" style="text-decoration:none">CONTACT@RUNONINVEST.FR</a></span>
+      <span>PARIS LA DÉFENSE — GRANDE ARCHE</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/roi.js"></script>
+<script src="../assets/compte.js"></script>
+</body>
+</html>
