@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prendre un dossard — R.O.I · Run On Investment</title>
-<meta name="description" content="Créez votre compte R.O.I, choisissez votre distance et votre formule, et réservez votre vague. La vérification d'accès intervient ensuite, et le paiement après la validation.">
+<title>Demander un dossard — R.O.I · Run On Investment</title>
+<meta name="description" content="Demandez votre dossard R.O.I : distance, temps visé, formule et ce que vous venez chercher. Le tarif de la vague est réservé dès l'envoi ; le paiement intervient après la validation du dossier.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#070707">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070707'/%3E%3Crect y='7' width='16' height='1' fill='%23EFEBE2' opacity='.45'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23FF4400'/%3E%3C/svg%3E">
@@ -21,13 +21,13 @@
     <a class="logo" href="../" aria-label="R.O.I — Run On Investment">R<i></i>O<i></i>I</a>
     <button class="burger" aria-expanded="false" aria-controls="nav-links">Menu</button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="../#manifeste">Le concept</a></li>
-      <li><a href="../#temps">La journée</a></li>
-      <li><a href="../#reseau">Le réseau</a></li>
+      <li><a href="../#comment">Comment ça marche</a></li>
+      <li><a href="../#course">La course</a></li>
+      <li><a href="../#arena">L'Arena</a></li>
       <li><a href="../pour-qui/">Pour qui</a></li>
       <li><a href="../#dossards">Dossards</a></li>
       <li><a class="nav-compte" href="../connexion/">Connexion</a></li>
-      <li><a class="nav-cta" href="./" aria-current="page">Prendre un dossard</a></li>
+      <li><a class="nav-cta" href="./" aria-current="page">Demander un dossard</a></li>
     </ul>
     <div class="progres" aria-hidden="true"><i></i></div>
   </div>
@@ -38,9 +38,9 @@
   <div class="wrap">
     <a class="retour" href="../">← Retour à l'accueil</a>
     <div class="page-hero-in" style="padding-top:clamp(24px,3vw,40px)">
-      <span class="tmark"><b>T–</b> / AVANT LA LIGNE — ÉTAPE 01</span>
-      <h1>Prenez votre place<br><span class="creuse">sur la ligne.</span></h1>
-      <p class="chapeau">Un compte, une distance, une formule. <b>Votre vague est réservée</b> dès l'envoi, pendant l'instruction du dossier. Le paiement intervient après la validation.</p>
+      <span class="tmark"><b>DEMANDE DE DOSSARD</b> / ÉDITION 01</span>
+      <h1>Votre demande<br><span class="creuse">de dossard.</span></h1>
+      <p class="chapeau">Quatre parties&nbsp;: vous, votre dossard, votre course, votre formule. <b>Le tarif de la vague en cours est réservé dès l'envoi.</b> Vous ne payez qu'après la validation de votre dossier.</p>
     </div>
   </div>
 </section>
@@ -94,6 +94,18 @@
               <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required>
               <span class="champ-err" aria-live="polite"></span>
             </div>
+            <div class="champ large">
+              <label for="objectif">Ce que vous venez chercher</label>
+              <select id="objectif" name="objectif">
+                <option value="recruter">Recruter</option>
+                <option value="financer">Lever des fonds</option>
+                <option value="vendre">Vendre</option>
+                <option value="associer">S'associer</option>
+                <option value="pairs" selected>Échanger entre pairs</option>
+              </select>
+              <span class="champ-err" aria-live="polite"></span>
+              <span class="aide">Imprimé au verso du dossard. Il détermine aussi le quartier de l'Arena où auront lieu vos rendez-vous. Modifiable depuis votre espace.</span>
+            </div>
             <div class="champ">
               <label for="profil">Votre profil</label>
               <select id="profil" name="profil">
@@ -118,7 +130,7 @@
             </div>
             <div class="champ large">
               <label for="siren">SIREN <span class="opt">FACULTATIF</span></label>
-              <input id="siren" name="siren" type="text" inputmode="numeric" placeholder="9 chiffres. Accélère l'instruction du dossier.">
+              <input id="siren" name="siren" type="text" inputmode="numeric" placeholder="9 chiffres. Il accélère l'examen du dossier.">
               <span class="champ-err" aria-live="polite"></span>
             </div>
           </div>
@@ -127,46 +139,67 @@
         <fieldset>
           <legend><span class="tmark"><b>03</b></span> Votre course</legend>
           <div class="champ">
-            <span class="lbl" id="lbl-distance">Distance. Tarif et accès identiques pour les trois.</span>
+            <span class="lbl" id="lbl-distance">Distance. Le tarif et l'après-midi sont les mêmes pour les trois.</span>
             <div class="choix" role="radiogroup" aria-labelledby="lbl-distance">
-              <label><input type="radio" name="distance" value="5"><span class="c-t">5<small>KM</small></span><span class="c-s">Le Sprint. Pour une première participation, ou pour garder de l'énergie pour l'après-midi.</span></label>
-              <label><input type="radio" name="distance" value="10" checked><span class="c-t">10<small>KM</small></span><span class="c-s">La Référence. Le format principal, sur un parcours rapide entre les tours.</span></label>
-              <label><input type="radio" name="distance" value="21"><span class="c-t">21,1<small>KM</small></span><span class="c-s">Le Grand Format. Le semi-marathon de La Défense, distance mesurée.</span></label>
+              <label><input type="radio" name="distance" value="5"><span class="c-t">5<small>KM</small></span><span class="c-s">Sans temps minimum, course ou marche rapide. Départs à 10&nbsp;h&nbsp;30 ou 10&nbsp;h&nbsp;45.</span></label>
+              <label><input type="radio" name="distance" value="10" checked><span class="c-t">10<small>KM</small></span><span class="c-s">Le format principal, entre les tours. Départs de 9&nbsp;h&nbsp;55 à 10&nbsp;h&nbsp;25.</span></label>
+              <label><input type="radio" name="distance" value="21"><span class="c-t">21,1<small>KM</small></span><span class="c-s">Semi-marathon, distance officielle. Départs de 8&nbsp;h&nbsp;45 à 9&nbsp;h&nbsp;35.</span></label>
             </div>
+          </div>
+          <div class="champ" style="margin-top:22px">
+            <label for="sas">Temps visé</label>
+            <select id="sas" name="sas">
+              <optgroup label="5 km">
+                <option value="C1" data-distance="5">30 à 50 min, marche rapide comprise · sas C1, départ 10 h 30</option>
+                <option value="C2" data-distance="5">Moins de 30 min · sas C2, départ 10 h 45</option>
+              </optgroup>
+              <optgroup label="10 km">
+                <option value="D1" data-distance="10">1 h 05 à 1 h 25 · sas D1, départ 9 h 55</option>
+                <option value="D2" data-distance="10" selected>45 min à 1 h 05 · sas D2, départ 10 h 15</option>
+                <option value="D3" data-distance="10">Moins de 45 min · sas D3, départ 10 h 25</option>
+              </optgroup>
+              <optgroup label="Semi-marathon">
+                <option value="S1" data-distance="21">2 h 15 à 2 h 40 · sas S1, départ 8 h 45</option>
+                <option value="S2" data-distance="21">1 h 50 à 2 h 15 · sas S2, départ 9 h 10</option>
+                <option value="S3" data-distance="21">Moins de 1 h 50 · sas S3, départ 9 h 35</option>
+              </optgroup>
+            </select>
+            <span class="champ-err" aria-live="polite"></span>
+            <span class="aide">Un temps récent ou réaliste sur cette distance. Il fixe votre sas et votre heure de départ, pour une arrivée dans l'Arena entre 11&nbsp;h et 11&nbsp;h&nbsp;30. Modifiable depuis votre espace. <a href="../#course" style="color:inherit">Le plan des départs →</a></span>
           </div>
         </fieldset>
 
         <fieldset>
           <legend><span class="tmark"><b>04</b></span> Votre formule</legend>
           <div class="champ">
-            <span class="lbl" id="lbl-formule">La course est identique dans les trois cas. Seul change ce qui l'entoure.</span>
+            <span class="lbl" id="lbl-formule">La course est la même dans les trois cas. La formule change le moment où le réseau s'ouvre.</span>
             <div class="choix" role="radiogroup" aria-labelledby="lbl-formule">
-              <label><input type="radio" name="formule" value="dossard" checked><span class="c-t">Dossard</span><span class="c-s">La journée entière&nbsp;: course, arrivée dans l'Arena, déjeuner des finishers, tout l'après-midi.</span><span class="c-p">TARIF DE LA VAGUE</span></label>
-              <label><input type="radio" name="formule" value="premium"><span class="c-t">Premium</span><span class="c-s">L'annuaire ouvert avant l'événement, les rendez-vous réservés à l'avance, le Salon, le dîner des fondateurs.</span><span class="c-p">SUR DEMANDE</span></label>
-              <label><input type="radio" name="formule" value="cercle"><span class="c-t">Cercle</span><span class="c-s">Quarante places. Premium, plus la table des investisseurs et trois dossards pour votre équipe. Sur cooptation.</span><span class="c-p">SUR COOPTATION</span></label>
+              <label><input type="radio" name="formule" value="dossard" checked><span class="c-t">Dossard</span><span class="c-s">La journée entière&nbsp;: la course, l'arrivée dans l'Arena, le déjeuner, les rendez-vous et la soirée.</span><span class="c-p">TARIF DE LA VAGUE</span></label>
+              <label><input type="radio" name="formule" value="premium"><span class="c-t">Premium</span><span class="c-s">L'annuaire ouvert dès la validation, six demandes de rendez-vous à envoyer avant l'événement, le Salon de l'Arena, le dîner des fondateurs.</span><span class="c-p">SUR DEMANDE</span></label>
+              <label><input type="radio" name="formule" value="cercle"><span class="c-t">Cercle</span><span class="c-s">Quarante places, sur cooptation. Tout le Premium, la table des investisseurs au déjeuner et trois dossards invités.</span><span class="c-p">SUR COOPTATION</span></label>
             </div>
             <span class="aide" style="margin-top:10px">La formule reste modifiable depuis votre espace, jusqu'au jour de l'événement. <a href="../#formules" style="color:inherit">Le détail des formules →</a></span>
           </div>
         </fieldset>
 
         <div class="champ" style="margin-bottom:28px">
-          <label class="consent"><input type="checkbox" name="consent" value="1" required><span>J'exerce une activité professionnelle et je fournirai l'un des trois justificatifs. Mes justificatifs servent uniquement à valider mon accès et sont <a href="../pour-qui/#acces">supprimés une fois le dossard confirmé</a>. Seuls mon nom, ma fonction et mon entreprise figurent sur mon dossard.</span></label>
+          <label class="consent"><input type="checkbox" name="consent" value="1" required><span>J'exerce une activité professionnelle et je fournirai l'un des trois justificatifs. Mes justificatifs servent uniquement à valider mon accès et sont <a href="../pour-qui/#acces">supprimés une fois le dossard confirmé</a>. Seuls mon nom, ma fonction, mon entreprise et ce que je viens chercher figurent sur mon dossard.</span></label>
           <span class="champ-err" aria-live="polite"></span>
         </div>
 
         <div class="champ" style="margin-bottom:28px">
-          <p class="aide">Dès la création du compte, votre dossard apparaît également dans l'application R.O.I.</p>
+          <p class="aide">Votre dossard apparaît dans l'app R.O.I dès la création du compte. Vos coordonnées n'y sont jamais visibles des autres participants.</p>
         </div>
 
         <div class="form-pied">
-          <button class="btn btn-impact" type="submit"><span>Créer mon compte et réserver ma vague</span><span class="arr">→</span></button>
+          <button class="btn btn-impact" type="submit"><span>Envoyer ma demande</span><span class="arr">→</span></button>
           <p class="alt">Déjà un compte&nbsp;? <a href="../connexion/">Se connecter</a></p>
         </div>
       </form>
     </div>
 
     <aside class="colle" aria-label="Aperçu du dossard">
-      <div class="dossard" aria-pressed="true" role="img" aria-label="Aperçu du verso du dossard, avec vos nom, fonction et entreprise">
+      <div class="dossard" aria-pressed="true" role="img" aria-label="Aperçu du verso du dossard : nom, fonction, entreprise et ce que vous venez chercher">
         <span class="d-inner">
           <span class="d-face d-recto">
             <span class="d-head"><span class="d-logo">R<i></i>O<i></i>I</span><span class="d-ed">Édition 01</span></span>
@@ -180,12 +213,12 @@
               <span class="d-champ"><b>Fonction</b><span id="ap-fonction">Votre fonction</span></span>
               <span class="d-champ"><b>Entreprise</b><span id="ap-entreprise">Votre entreprise</span></span>
             </span>
-            <span class="d-actif" id="ap-formule">■ Accès réseau</span>
+            <span class="d-actif" id="ap-objectif">■ Échanger entre pairs</span>
           </span>
         </span>
       </div>
-      <p class="dossard-legende">Voici le verso du dossard&nbsp;: <b>ce que les autres participants liront après la ligne.</b> Le numéro, la puce et le chronométrage sont au recto.</p>
-      <p class="dossard-legende">Il se remplit au fil de la saisie, et reste modifiable depuis votre espace jusqu'au jour de l'événement.</p>
+      <p class="dossard-legende">Le verso du dossard&nbsp;: <b>ce que les autres participants liront après la ligne.</b> Le numéro et la puce de chronométrage sont au recto.</p>
+      <p class="dossard-legende">Il se remplit pendant la saisie et reste modifiable depuis votre espace jusqu'au jour de l'événement.</p>
     </aside>
 
   </div>

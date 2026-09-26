@@ -69,11 +69,13 @@ function appel(base, methode, chemin, corps, cookie) {
   await t('inscription complète → 201 + cookie de session', async function () {
     const r = await appel(base, 'POST', '/api/inscription', {
       prenom: 'Léa', nom: 'Martin', email: email, mdp: 'motdepasse1', fonction: 'Fondatrice', entreprise: 'Nordwind',
-      profil: 'entrepreneur', voie: 'kbis', distance: '10', formule: 'premium', consent: true
+      profil: 'entrepreneur', voie: 'kbis', objectif: 'financer', distance: '10', sas: 'D2', formule: 'premium', consent: true
     });
     assert.equal(r.status, 201);
     const j = await r.json();
     assert.equal(j.compte.email, email);
+    assert.equal(j.compte.objectif, 'financer');
+    assert.equal(j.compte.sas, 'D2');
     assert.equal(j.compte.formule, 'premium');
     assert.match(j.compte.reference, /^E01-\d{6}$/);
     assert.equal(j.compte.etat, 'demande');
@@ -104,6 +106,8 @@ function appel(base, methode, chemin, corps, cookie) {
     assert.equal(j.dossier.entreprise, 'Nordwind');
     assert.equal(j.dossier.profil, 'entrepreneur');
     assert.equal(j.dossier.distance, '10');
+    assert.equal(j.dossier.objectif, 'financer');
+    assert.equal(j.dossier.sas, 'D2');
     assert.equal(j.dossier.formule, 'premium');
     assert.equal(j.dossier.etat, 'demande');
     assert.equal(j.dossier.edition, '01');
@@ -160,6 +164,20 @@ function appel(base, methode, chemin, corps, cookie) {
     assert.equal(c.formule, 'cercle');
     assert.equal(c.distance, '10');
     assert.equal(c.fonction, 'CEO');
+    assert.equal(c.sas, 'D2', 'une distance refusée ne touche pas au sas');
+  });
+  await t('PATCH /api/moi : le sas suit la distance, un objectif hors liste est ignoré', async function () {
+    let r = await appel(base, 'PATCH', '/api/moi', { distance: '21', objectif: 'spéculer' }, cookie);
+    let c = (await r.json()).compte;
+    assert.equal(c.distance, '21');
+    assert.equal(c.sas, 'S1', 'nouvelle distance sans sas → premier sas, le départ le plus tôt');
+    assert.equal(c.objectif, 'financer');
+    r = await appel(base, 'PATCH', '/api/moi', { sas: 'C2' }, cookie);
+    assert.equal((await r.json()).compte.sas, 'S1', 'un sas d\'une autre distance est refusé');
+    r = await appel(base, 'PATCH', '/api/moi', { distance: '10', sas: 'D3', objectif: 'recruter' }, cookie);
+    c = (await r.json()).compte;
+    assert.equal(c.sas, 'D3');
+    assert.equal(c.objectif, 'recruter');
   });
   await t('déconnexion puis /api/moi → 401', async function () {
     const r = await appel(base, 'POST', '/api/deconnexion', null, cookie);

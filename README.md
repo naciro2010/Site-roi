@@ -12,7 +12,7 @@ Le site (refonte from scratch) reprend le système des affiches R.O.I. : deux fo
 
 - **Palette** : encre `#0A0A0A` et craie `#EFEBE2`, tous deux recouverts d'un grain photographique — les sections alternent les deux fonds comme les affiches alternent noir et papier. Orange impact `#FF4400` en accent unique : la barre sous les titres, les puces, quelques CTA.
 - **Typographies** (100 % auto-hébergées, dossier `fonts/`) : Archivo variable en **graisse fine (250) et chasse étendue (125 %)** pour tous les titres — le style « CE N'EST PAS UN CLUB DE RUNNING. » — + JetBrains Mono pour les labels, la nav, les boutons et toute la data (`COURSE & NETWORKING — ENTREPRENEURS`).
-- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange, et la convention chrono **T– / T+** (avant la ligne = la course, après la ligne = le networking). Les sections sont numérotées `T+01…T+06` sur l'accueil, `T–01…T–04` sur `/pour-qui` (l'accès se règle *avant* la ligne).
+- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange. Les sections sont numérotées `01…08` sur l'accueil et `01…05` sur `/pour-qui`, avec de vraies heures dans les programmes ; la convention chrono **T– / T+** ne subsiste que dans `/espace`.
 
 Aucune dépendance externe (pas de Google Fonts, pas de JS tiers, pas de paquet npm).
 
@@ -30,24 +30,24 @@ Le contenu dit d'abord ce qu'est R.O.I, en une phrase, dès le haut de page : un
 
 ### Ce qu'on a emprunté aux formats qui existent déjà
 
-Le contenu de l'accueil (programme de l'après-midi `T+02.1`, les quatre principes de `T+03`, le laïus) adapte ce qui marche chez ceux qui courent déjà ensemble — sans les nommer sur le site :
+Le contenu de l'accueil (programme de l'après-midi `04.2`, les règles de `04.3`, le laïus de `06`) adapte ce qui marche chez ceux qui courent déjà ensemble — sans les nommer sur le site :
 
 | Format | Ce qu'on en garde |
 |---|---|
 | [Founders Running Club](https://foundersrc.com/) — 5–10 km « easy », puis café et *talks*, dans une soixantaine de villes | Départs par vagues d'allure « du rythme de conversation au chrono », le café d'arrivée, les « conversations debout » de quinze minutes par des fondateurs qui ont couru le matin, **zéro slide** |
 | [Entrep'runners](https://www.entreprunners.fr/) (Lyon) — sortie mensuelle de dirigeants, 8–10 km sans chrono, apéro ensuite, « pas de badge, pas de slides, pas de chrono » | Les principes 01–04 (zéro pitch en course, toutes les allures, « l'après compte autant »), et l'argument que l'essentiel du retour se fait après l'effort |
-| [GO Entrepreneurs](https://www.go-entrepreneurs.com/fr/paris) (Paris La Défense Arena) — rencontres flash de 6 minutes, networking par secteur | Les « rencontres » de huit minutes proposées depuis le profil (recruter, lever, vendre, s'associer), les tables par secteur au déjeuner |
+| [GO Entrepreneurs](https://www.go-entrepreneurs.com/fr/paris) (Paris La Défense Arena) — rencontres flash de 6 minutes, networking par secteur | Les rendez-vous proposés avec un objet (recruter, lever, vendre, s'associer), les tables par secteur au déjeuner. **Pas** la durée fixe ni le chrono : un rendez-vous a un lieu et une heure, et n'existe que s'il est accepté des deux côtés |
 | [JPMorgan Corporate Challenge](https://www.jpmorganchasecc.com/en/home), [B2RUN](https://sporsora.com/b2run-le-1er-evenement-de-running-des-entreprises/), [L'Afterwork Running](https://afterwork-running.fr/lyon) — courses d'entreprise, équipes de 4, village et soirée après la ligne | Les packs entreprises « à partir de quatre coureurs », la soirée qui prolonge la journée |
 
 Le programme horaire de l'après-midi est **indicatif**, signalé en commentaire HTML : à arbitrer avec la production.
 
 ### Les formules : Dossard · Premium · Cercle
 
-Section `T+04.1 / LES FORMULES` (ancre `#formules`). Aucune formule n'achète une meilleure course — elle change *quand* le réseau commence et combien de portes s'ouvrent après :
+Section `07.1 / LES FORMULES` (ancre `#formules`). Aucune formule n'achète une meilleure course — elle change *quand* le réseau commence et combien de portes s'ouvrent après :
 
 - **Dossard** (tarif de la vague) : la journée entière.
-- **Premium** (sur demande) : l'annuaire ouvert dès validation, six rencontres réservées à l'avance, le Salon de l'Arena, le dîner des fondateurs. Demande possible à tout moment depuis l'espace personnel.
-- **Cercle** (sur cooptation, quarante places) : Premium, plus la table des investisseurs, trois dossards invités, la place reconduite. Sur demande depuis l'espace, ou sur cooptation de deux membres.
+- **Premium** (sur demande) : l'annuaire ouvert dès validation, six demandes de rendez-vous à envoyer avant l'événement, le Salon de l'Arena, le dîner des fondateurs. Demande possible à tout moment depuis l'espace personnel.
+- **Cercle** (sur cooptation, quarante places) : Premium, plus la table des investisseurs (avec les fonds présents, sans rendez-vous garanti : ce serait contraire à la règle de l'accord des deux), trois dossards invités, la place reconduite. Sur demande depuis l'espace, ou sur cooptation de deux membres.
 
 **Les seuls prix affichés sur le site sont ceux des vagues** (350 / 400 / 500 €, entreprises sur devis), inchangés. Premium et Cercle n'ont pas de montant : leurs conditions « sont précisées à la validation ». Les dates des vagues vivent à deux endroits — `index.html` et `vagueCourante()` dans `server.js` (doublée dans `assets/compte.js` pour le mode local) — à garder alignées.
 
@@ -55,9 +55,10 @@ Section `T+04.1 / LES FORMULES` (ancre `#formules`). Aucune formule n'achète un
 
 ## Le compte : s'inscrire avant, se connecter, suivre son dossier
 
-Le parcours est de bout en bout : **`/inscription/`** (compte + distance + formule + ce que portera le dossard, avec l'aperçu du verso qui se remplit en tapant) → **`/espace/`** (les quatre étapes du dossier, la fiche, le dossard recto/verso, changement de formule, modification du profil) → **`/connexion/`** pour y revenir. Le lien « Connexion » de la nav devient « Mon espace » dès qu'une session est ouverte.
+Le parcours est de bout en bout : **`/inscription/`** (compte + ce que portera le dossard, dont **ce que vous venez chercher** + distance et **temps visé** + formule, avec l'aperçu du verso qui se remplit en tapant) → **`/espace/`** (les quatre étapes du dossier, la fiche, le dossard recto/verso, changement de formule, modification du profil) → **`/connexion/`** pour y revenir. Le lien « Connexion » de la nav devient « Mon espace » dès qu'une session est ouverte.
 
 - **`server.js`** — Node ≥ 18, zéro dépendance. Sert le statique (redirection `/pour-qui` → `/pour-qui/`, types MIME, cache) et l'API : `POST /api/inscription`, `POST /api/connexion`, `POST /api/deconnexion`, `GET|PATCH /api/moi`, `GET /api/sante`, plus `GET /api/dossier` — le pont vers l'app (voir plus bas). Mots de passe en **scrypt** (sel par compte), session en cookie **HttpOnly / SameSite=Lax** (Secure derrière HTTPS), 10 essais de connexion par minute et par IP, corps limité à 64 Ko. Les fichiers `server.js`, `package.json`, `data/` et les dotfiles ne sont jamais servis.
+- **Deux champs liés à l'accueil** : `objectif` (`recruter`, `financer`, `vendre`, `associer`, `pairs` ; imprimé au verso du dossard et quartier de l'Arena) et `sas` (le temps visé, qui fixe le groupe et l'heure de départ). Les sas dépendent de la distance (`5` → C1–C2, `10` → D1–D3, `21` → S1–S3) : un sas qui n'appartient pas à la distance, ou un changement de distance sans sas, retombe sur le premier sas de la distance, le départ le plus tôt. Les listes vivent dans `server.js` et `assets/compte.js` (mode local), à garder alignées avec les horaires de `index.html`. Les comptes créés avant l'ajout n'ont ni l'un ni l'autre : l'espace l'affiche sans erreur et les propose à la modification.
 - **Données** : `data/comptes.json` (gitignoré), écriture atomique. `ROI_DATA_DIR` déplace le dossier — **sur Railway, monter un volume dessus**, sinon les comptes disparaissent au redéploiement.
 - **`assets/compte.js`** — le client. Si le site est servi sans serveur (aperçu statique, GitHub Pages), il bascule en **mode local** : les comptes vivent dans le `localStorage` du navigateur, et un bandeau « aperçu sans serveur » le dit. Ce mode ne sert qu'à l'aperçu.
 - **Ce que le serveur ne fait pas** (volontairement, pour l'instant) : la réception du justificatif (un `mailto:dossiers@runoninvest.fr` pré-rempli avec la référence du dossier), la validation (l'état `demande → justificatif → valide → paye` est dans les données mais ne change pas depuis le site), le paiement, la réinitialisation de mot de passe (par mail à contact@). Le SIREN est facultatif et n'est pas vérifié.
@@ -67,7 +68,7 @@ Le parcours est de bout en bout : **`/inscription/`** (compte + distance + formu
 
 R.O.I s'adresse aux **entrepreneurs, intrapreneurs, cadres dirigeants et commerciaux** — plus les investisseurs et conseils. L'accès au dossard est donc **vérifié**, par l'une de trois voies au choix : extrait **Kbis**, **avis de situation SIRENE**, ou **cooptation employeur**. Un seul critère : exercer — ni seuil de chiffre d'affaires, ni taille d'entreprise minimum, ni chrono à tenir.
 
-Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `T+03.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, les justificatifs, le parcours du dossier et une FAQ d'éligibilité.
+Ce discours vit à deux endroits : la section `06 / POUR QUI` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `06.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, l'admission (justificatifs, parcours du dossier, données), `04 / VOS RENCONTRES, VOS RÈGLES` (ce que les autres voient ou non, une demande qui expire sans notification, la borne du jour J) et une FAQ de douze questions. Le JSON-LD `FAQPage` a été régénéré à partir des questions affichées : les garder alignés.
 
 > ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Le site dit désormais « Run On Investment », comme ce document ; le domaine, les adresses e-mail et le compte Instagram restent sur `runoninvest`.
 
@@ -75,13 +76,13 @@ Ce discours vit à deux endroits : la section `T+03 / LE RÉSEAU` de la page d'a
 
 ## Le pont vers l'app
 
-À côté du site vit **l'app R.O.I** — une application React séparée, sur sa propre origine, où le réseau continue toute l'année : l'annuaire de celles et ceux qui courent, les rencontres de huit minutes à réserver, les sorties entre deux éditions. Le site ne la contient pas ; il lui tend un pont dans les deux sens. **L'app lit le dossier, elle ne l'écrit jamais** : tout ce qui change un dossier (formule, profil, mot de passe) passe par `/espace/` et la session du site.
+À côté du site vit **l'app R.O.I** — une application React séparée, sur sa propre origine, où le réseau continue toute l'année : l'annuaire de celles et ceux qui courent, les rendez-vous acceptés des deux côtés, la messagerie sans échange de coordonnées, les sorties entre deux éditions. Le site ne la contient pas ; il lui tend un pont dans les deux sens. **L'app lit le dossier, elle ne l'écrit jamais** : tout ce qui change un dossier (formule, profil, mot de passe) passe par `/espace/` et la session du site.
 
 **Adresse de l'app** : par défaut `https://roi-mvp.up.railway.app` (l'app déployée sur Railway), partout — `assets/roi.js`, `assets/compte.js`, et en dur dans les `href` de `index.html` pour le cas sans JS. Pour la changer sans toucher au code (domaine définitif, environnement de recette) : poser `data-app="https://…"` sur le `<body>` de la page — le JS le lit et retombe sur la valeur par défaut sinon.
 
-- **Depuis le site vers l'app.** Sur l'accueil, la section `T+06 / L'APP` et le lien « L'app » du footer (classe `lien-app`, cible réglée par `roi.js`, `target="_blank"`). Depuis l'espace, la section `T+ / L'APP — TOUTE L'ANNÉE` porte le bouton « Ouvrir mon dossard dans l'app » : `compte.js` y pose le **lien profond** `{app}/?dossier={reference}&email={email}` (les deux valeurs encodées) — c'est avec ce couple que l'app retrouve le dossard. Le formulaire d'inscription l'annonce d'une ligne sous le consentement.
+- **Depuis le site vers l'app.** Sur l'accueil, la section `05 / L'APP` et le lien « L'app » du footer (classe `lien-app`, cible réglée par `roi.js`, `target="_blank"`). Depuis l'espace, la section `T+ / L'APP — TOUTE L'ANNÉE` porte le bouton « Ouvrir mon dossard dans l'app » : `compte.js` y pose le **lien profond** `{app}/?dossier={reference}&email={email}` (les deux valeurs encodées) — c'est avec ce couple que l'app retrouve le dossard. Le formulaire d'inscription l'annonce d'une ligne sous le consentement.
 - **Depuis l'app vers le site : `GET /api/dossier?reference=E01-000123&email=x@y.z`** (répond aussi en `HEAD`). Les deux paramètres sont **obligatoires** ; la référence est comparée sans tenir compte de la casse ni des espaces, l'e-mail en minuscules.
-  - `200` → `{ dossier: { reference, prenom, nom, fonction, entreprise, profil, distance, formule, vague, etat, edition: '01' } }`.
+  - `200` → `{ dossier: { reference, prenom, nom, fonction, entreprise, profil, objectif, distance, sas, formule, vague, etat, edition: '01' } }`.
   - `400` → `{ erreur: 'Référence et e-mail requis.' }` s'il manque l'un des deux.
   - `404` → `{ erreur: 'Aucun dossier avec cette référence et cet e-mail.' }` — **le même message** que la référence ou l'e-mail soit faux, pour ne rien laisser énumérer.
   - `429` → même garde-fou que la connexion, **10 essais par minute et par IP** (compteur partagé avec `POST /api/connexion`).
@@ -119,7 +120,7 @@ Le contraste a été mesuré sur toute la palette. Tout passe le seuil AA (4,5:1
 | Craie sur orange (bouton principal, `nav-cta`, badge « vague ouverte ») | 2,90 | ✗ |
 | Orange sur encre (sections sombres) | 5,83 | ✓ |
 
-Sur fond sombre l'orange est conforme ; c'est **sur fond clair** qu'il ne l'est pas. Trois sorties possibles, à trancher côté marque :
+Sur fond sombre l'orange est conforme ; c'est **sur fond clair** qu'il ne l'est pas. **Tranché avec la refonte « La Ligne, affûtée » : sorties 2 et 3 combinées.** Les boutons orange portent un texte encre, et le texte orange sur la craie passe par `--accent` (`#C63500` dans `.light`, `#FF4400` ailleurs). Pour mémoire, les trois sorties étudiées :
 
 1. **Ne rien changer** — assumé, mais le CTA principal reste sous le seuil.
 2. **Texte encre sur les boutons orange** (`#070707` sur `#FF4400` = 5,83:1) — conforme, et graphiquement très proche de l'affiche.
@@ -127,9 +128,46 @@ Sur fond sombre l'orange est conforme ; c'est **sur fond clair** qu'il ne l'est 
 
 Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de `#7C7669` (3,79:1) à `#6B6558` (4,87:1). L'anneau de focus clavier utilise `var(--texte)` et non l'orange, précisément parce que l'orange ne tient pas les 3:1 exigés pour un indicateur de focus sur la craie.
 
-## La page d'accueil, en six temps
+## La page d'accueil, en huit temps
 
-`T+01` Le concept (affiche « Au 3e km » + quatre phrases qui expliquent pourquoi courir avant de parler affaires) · `T+02` La journée (T– la course / T+ le réseau, **le déroulé du matin heure par heure** en convention T– / T+, le dossard recto/verso, puis `T+02.1` le programme de l'après-midi — les deux blocs horaires ne se recoupent pas : l'un s'arrête aux arrivées, l'autre y commence) · `T+03` Le réseau (le laïus, affiche « Personne ne vend en montée », les quatre principes, les quatre publics, l'accès en trois lignes) · `T+04` Les dossards (trois distances, `T+04.1` les trois formules, `T+04.2` le tableau des vagues + packs entreprises) · `T+05` Le lieu (une fiche clé/valeur) · `T+06` L'app (une course par an, un réseau toute l'année : annuaire, rencontres, sorties — et le lien vers l'app). Puis la finale « Prends ta place », sans numéro. Pas de bandeau défilant, pas de compteurs : des listes, deux images, de l'air.
+`01` Le principe (affiche « Au 3e km » + quatre phrases) · `02` Comment ça marche (le parcours en cinq étapes, du dossier à l'app, chacune renvoie à sa section) · `03` La course (le plan des départs animé, puis les cinq règles qui tiennent la fenêtre d'arrivée) · `04` L'Arena (le dossard recto/verso, le plan animé de l'après-midi, le programme, les règles) · `05` L'app (un téléphone manipulable : courses, rendez-vous, rencontres) · `06` Pour qui (le laïus, les quatre publics, l'accès sur justificatif) · `07` Les dossards (distances, formules, vagues tarifaires) · `08` Le lieu. Puis la finale « Prenez votre place sur la ligne ».
+
+### Les animations explicatives
+
+Cinq animations, toutes en CSS pilotées par `roi.js`. Elles ne tournent que lorsqu'elles sont à l'écran, ont un bouton Pause et restent lisibles sans JavaScript. Avec `prefers-reduced-motion`, rien ne bouge seul :
+
+| Où | Ce qu'elle explique |
+|---|---|
+| Accueil `02.1` (`[data-journee]`) | La journée de 7 h à 20 h en 24 s : l'heure, le lieu (Grande Arche → parcours → Arena), une phrase par moment. Cliquer un segment y amène. |
+| Accueil `03` (`[data-departs]`) | Les départs échelonnés et l'arrivée commune (détail ci-dessous). |
+| Accueil `04.1` (`[data-arena]`) | Un rendez-vous dans l'Arena en cinq temps (détail ci-dessous). |
+| Accueil `04.3` (`[data-accord]`) | Une demande de rendez-vous vue des deux côtés, dans les deux issues : acceptée (borne et horaire réservés) ou laissée à expirer (aucune notification, aucune coordonnée transmise). |
+| `/pour-qui` `03.1` (`[data-dossier]`) | Le dossier qui avance, synchronisé avec la grille des étapes : le montant prélevé reste à 0 € jusqu'à la validation. |
+
+Les trois dernières partagent un petit séquenceur (`sequence()` dans `roi.js`) : des étapes à durée fixe, un attribut `data-etape` posé sur la racine, et le CSS fait le reste.
+
+### Les départs échelonnés (`#course`)
+
+Trois distances (5 km, 10 km, semi-marathon), un seul départ au pied de la Grande Arche, une seule arrivée à l'intérieur de Paris La Défense Arena. Pour que l'après-midi commence au même moment pour tous, **les distances longues et les allures lentes partent en premier** : huit sas de 8 h 45 à 10 h 45, calculés pour que toutes les arrivées tombent entre 11 h et 11 h 30. Le mot « sas » désigne les groupes de départ ; « vague » reste réservé aux vagues tarifaires (Early Bird, Régulier, Last Call).
+
+- **Les horaires vivent dans le HTML**, sur chaque ligne `.dp-row` : `data-dep`, `data-a1`, `data-a2` en minutes depuis minuit (525 = 8 h 45), `data-km`. Le libellé affiché à côté doit dire la même chose. `roi.js` n'invente rien : il place les barres sur l'axe 8 h 30 → 11 h 45 et fait avancer l'horloge (18 s pour la matinée, en boucle, uniquement quand le bloc est à l'écran). Un curseur permet de se placer à une heure précise ; il arrête la lecture.
+- Les cinq règles affichées dessous (temps visé, horaire par sas, meneurs d'allure, temps net, ligne ouverte jusqu'à 11 h 45) sont ce qui rend la fenêtre crédible.
+
+> ⚠️ **Plan indicatif** (commentaire HTML) : jauges des sas, horaires et fermeture des routes à valider avec l'organisateur technique. Le temps visé est demandé à l'inscription (champ `sas`) et modifiable depuis l'espace.
+
+### L'après-midi dans l'Arena (`#arena`, `#plan`)
+
+Aucun stand d'exposant. L'Arena est découpée en **cinq quartiers, un par objectif** (Recruter, Financer, Vendre, S'associer, Entre pairs), chacun avec des **bornes numérotées** (`F-07` = quartier Financer, borne 7). Le plan animé déroule un rendez-vous en cinq temps :
+
+1. **L'arrivée** : le café des finishers est organisé par sas, on y retrouve ceux qui ont couru à la même allure.
+2. **La demande** : proposée depuis l'app avec son objet, elle n'existe que si l'autre l'accepte ; l'app réserve alors une borne et un horaire.
+3. **Le tableau des rencontres** : à l'entrée des quartiers, les rendez-vous de l'heure s'affichent **par numéro de dossard, jamais par nom**.
+4. **La borne** : on s'y retrouve. Pas de chrono.
+5. **Les stands d'hôtes** : un participant admis (entreprise qui recrute, fonds, acheteur) tient une borne une heure, sujet affiché ; on demande un passage, l'hôte accepte ou non. Aucun emplacement n'est vendu.
+
+Le mouvement est **entièrement en CSS** (`data-etape` sur `.ar-scene`, la classe `.joue` relancée à chaque étape) ; le JS ne fait que changer d'étape, générer les 40 bornes et la foule du café, et mettre en pause hors écran. Avec `prefers-reduced-motion`, rien ne bouge seul : les étapes restent cliquables et s'affichent dans leur état final.
+
+> ⚠️ **Proposition à valider** avec la production et le lieu (commentaire HTML) : quartiers, bornes, tableau et stands d'hôtes. Les noms et numéros de dossard de l'animation et du téléphone sont fictifs.
 
 ## Structure
 
@@ -140,7 +178,7 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 | `server.js` | **Serveur** statique + API de compte, zéro dépendance (`npm start`), plus `GET /api/dossier`, le pont en lecture seule vers l'app · `test/serveur.test.js` (`npm test`) |
 | `pour-qui/` | **Page « Pour qui, et comment »** — le réseau derrière la course, les six familles de profils, les trois justificatifs d'accès, le parcours du dossier et la FAQ d'éligibilité. Accessible sur `/pour-qui` |
 | `assets/roi.css` | **Design system partagé** par `/` et `/pour-qui` (les URL de fontes y sont relatives au fichier CSS, donc en `../fonts/`) |
-| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile, bascule « Connexion » → « Mon espace », adresse de l'app sur les liens `.lien-app` (`data-app`). Chaque bloc ne s'active que si son élément est présent. |
+| `assets/roi.js` | Comportements partagés : reveal au scroll, ligne de progression et section courante dans la nav, dossard recto/verso, nav mobile, bascule « Connexion » → « Mon espace », adresse de l'app sur les liens `.lien-app` (`data-app`), et sur l'accueil le plan des départs, le plan de l'Arena et le téléphone de démonstration. Chaque bloc ne s'active que si son élément est présent. |
 | `assets/compte.js` | Le client du compte (inscription, connexion, espace) avec repli en mode local sans serveur. Pose le lien profond vers l'app depuis l'espace. |
 | `assets/img/` | Les deux affiches de campagne (« Personne ne vend en montée », « Au 3e km, plus personne ne joue un rôle »), en 1200 px et 640 px. Le texte est dans l'image : elles se posent entières, jamais recadrées. |
 | `cv/` | **Site indépendant** de Mohamed Ennaciri (Architecte Backend · Tech Lead · Engineering Partner) — hébergé ici temporairement sur `/cv`, destiné à être extrait dans son propre repo. Design system propre (« Le Dossier » : papier ivoire, encre vert nuit, accent émeraude, Fraunces/Instrument Sans/Plex Mono, schéma d'architecture animé en SVG). Positionnement cabinet d'ingénierie : expertise, engagements (renfort / forfait / squad), méthode en 5 temps, études de cas détaillées. Fontes auto-hébergées dans `cv/fonts/` — le dossier est 100 % autonome. |

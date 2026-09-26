@@ -30,6 +30,16 @@ const DISTANCES = ['5', '10', '21'];
 const FORMULES = ['dossard', 'premium', 'cercle'];
 const PROFILS = ['entrepreneur', 'intrapreneur', 'dirigeant', 'commercial', 'investisseur', 'autre'];
 const VOIES = ['kbis', 'sirene', 'cooptation'];
+// Ce que le participant vient chercher : imprimé au verso du dossard, et
+// quartier de l'Arena où ses rendez-vous auront lieu.
+const OBJECTIFS = ['recruter', 'financer', 'vendre', 'associer', 'pairs'];
+// Les sas de départ, par distance, du plus lent au plus rapide. Le temps
+// visé choisit le sas ; le sas fixe l'heure de départ (voir index.html #course).
+const SAS = { '5': ['C1', 'C2'], '10': ['D1', 'D2', 'D3'], '21': ['S1', 'S2', 'S3'] };
+/* Un sas qui n'appartient pas à la distance retombe sur le premier sas de
+   celle-ci (le plus lent, donc le départ le plus tôt) : on n'arrive jamais
+   après la fenêtre à cause d'une incohérence de formulaire. */
+function sasPour(distance, sas) { return dansListe(sas, SAS[distance], SAS[distance][0]); }
 
 /* ---- Stockage : lecture/écriture atomique du fichier JSON ---- */
 let base = null;
@@ -156,7 +166,7 @@ function publie(c) {
   return {
     id: c.id, reference: c.reference, prenom: c.prenom, nom: c.nom, email: c.email,
     fonction: c.fonction, entreprise: c.entreprise, profil: c.profil, voie: c.voie, siren: c.siren,
-    distance: c.distance, formule: c.formule, vague: c.vague, etat: c.etat,
+    objectif: c.objectif, distance: c.distance, sas: c.sas, formule: c.formule, vague: c.vague, etat: c.etat,
     cree: c.cree, maj: c.maj
   };
 }
@@ -166,8 +176,8 @@ function publie(c) {
 function publieDossier(c) {
   return {
     reference: c.reference, prenom: c.prenom, nom: c.nom,
-    fonction: c.fonction, entreprise: c.entreprise, profil: c.profil,
-    distance: c.distance, formule: c.formule, vague: c.vague, etat: c.etat,
+    fonction: c.fonction, entreprise: c.entreprise, profil: c.profil, objectif: c.objectif,
+    distance: c.distance, sas: c.sas, formule: c.formule, vague: c.vague, etat: c.etat,
     edition: '01'
   };
 }
@@ -200,6 +210,7 @@ async function api(req, res, url) {
     if (b.comptes.some(function (c) { return c.email === email; })) {
       return json(res, 409, { erreur: 'Un compte existe déjà avec cette adresse.', champs: { email: 'Adresse déjà utilisée. Connectez-vous.' } });
     }
+    const distance = dansListe(String(d.distance), DISTANCES, '10');
     const n = b.suite++;
     const now = new Date().toISOString();
     const c = {
@@ -210,7 +221,9 @@ async function api(req, res, url) {
       profil: dansListe(d.profil, PROFILS, 'autre'),
       voie: dansListe(d.voie, VOIES, 'kbis'),
       siren: texte(d.siren, 20).replace(/\s+/g, ''),
-      distance: dansListe(String(d.distance), DISTANCES, '10'),
+      objectif: dansListe(d.objectif, OBJECTIFS, 'pairs'),
+      distance: distance,
+      sas: sasPour(distance, d.sas),
       formule: dansListe(d.formule, FORMULES, 'dossard'),
       vague: vagueCourante(),
       etat: 'demande',           // demande → justificatif → valide → paye
@@ -223,7 +236,7 @@ async function api(req, res, url) {
   }
 
   if (route === 'POST /api/connexion') {
-    if (tropDEssais(req)) { return json(res, 429, { erreur: 'Trop d\'essais. Reprends dans une minute.' }); }
+    if (tropDEssais(req)) { return json(res, 429, { erreur: 'Trop d\'essais. Réessayez dans une minute.' }); }
     let d; try { d = await litCorps(req); } catch (e) { return json(res, 400, { erreur: 'Requête illisible.' }); }
     const email = texte(d.email, 160).toLowerCase();
     const c = charge().comptes.find(function (x) { return x.email === email; });
@@ -256,7 +269,10 @@ async function api(req, res, url) {
     if (d.profil != null) { c.profil = dansListe(d.profil, PROFILS, c.profil); }
     if (d.voie != null) { c.voie = dansListe(d.voie, VOIES, c.voie); }
     if (d.siren != null) { c.siren = texte(d.siren, 20).replace(/\s+/g, ''); }
+    if (d.objectif != null) { c.objectif = dansListe(d.objectif, OBJECTIFS, c.objectif || 'pairs'); }
     if (d.distance != null) { c.distance = dansListe(String(d.distance), DISTANCES, c.distance); }
+    // Changer de distance sans préciser le sas ramène au premier sas de la nouvelle distance.
+    if (d.sas != null || d.distance != null) { c.sas = sasPour(c.distance, d.sas != null ? d.sas : c.sas); }
     if (d.formule != null) { c.formule = dansListe(d.formule, FORMULES, c.formule); }
     if (d.mdp) {
       if (String(d.mdp).length < 8) { return json(res, 422, { erreur: 'Huit caractères au minimum.', champs: { mdp: 'Huit caractères au minimum.' } }); }
@@ -287,7 +303,7 @@ async function api(req, res, url) {
       res.setHeader('Allow', 'GET, HEAD, OPTIONS');
       return json(res, 405, { erreur: 'Méthode non autorisée.' }, req);
     }
-    if (tropDEssais(req)) { return json(res, 429, { erreur: 'Trop d\'essais. Reprends dans une minute.' }, req); }
+    if (tropDEssais(req)) { return json(res, 429, { erreur: 'Trop d\'essais. Réessayez dans une minute.' }, req); }
     const reference = texte(url.searchParams.get('reference'), 20).toUpperCase();
     const email = texte(url.searchParams.get('email'), 160).toLowerCase();
     if (!reference || !email) { return json(res, 400, { erreur: 'Référence et e-mail requis.' }, req); }

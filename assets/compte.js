@@ -13,6 +13,31 @@
   // L'app R.O.I vit sur une autre origine : data-app sur <body> pour la changer (voir README).
   var APP = (document.body.getAttribute('data-app') || 'https://roi-mvp.up.railway.app').replace(/\/+$/, '');
 
+  /* Les listes partagées avec server.js : à garder alignées. */
+  var OBJECTIFS = { recruter: 'Recruter', financer: 'Lever des fonds', vendre: 'Vendre', associer: 'S\'associer', pairs: 'Échanger entre pairs' };
+  var SAS = { '5': ['C1', 'C2'], '10': ['D1', 'D2', 'D3'], '21': ['S1', 'S2', 'S3'] };
+  var DEPARTS = { S1: '8 h 45', S2: '9 h 10', S3: '9 h 35', D1: '9 h 55', D2: '10 h 15', D3: '10 h 25', C1: '10 h 30', C2: '10 h 45' };
+  var sasPour = function (distance, sas) { var l = SAS[distance] || SAS['10']; return l.indexOf(sas) >= 0 ? sas : l[0]; };
+  // Le bandeau du verso : ce que la personne vient chercher.
+  var bandeau = function (objectif) {
+    if (objectif === 'pairs') { return '■ Échanger entre pairs'; }
+    return OBJECTIFS[objectif] ? '■ Cherche : ' + OBJECTIFS[objectif].toLowerCase() : '■ Ce que vous cherchez';
+  };
+  /* Le choix du sas suit la distance : seuls les sas de la distance cochée
+     restent proposés. Sans JS, toutes les options restent visibles et le
+     serveur corrige une combinaison incohérente. */
+  var filtreSas = function (form) {
+    var sel = form.elements.sas;
+    if (!sel) { return; }
+    var coche = form.querySelector('input[name=distance]:checked');
+    var dist = coche ? coche.value : '10';
+    [].slice.call(sel.options).forEach(function (o) {
+      var ok = o.getAttribute('data-distance') === dist;
+      o.hidden = !ok; o.disabled = !ok;
+    });
+    sel.value = sasPour(dist, sel.value);
+  };
+
   /* ---------------------------------------------------------------- API ---- */
   var api = {
     modeLocal: false,
@@ -76,7 +101,8 @@
           id: 'l-' + Date.now().toString(36), reference: 'E01-L' + String(l.length + 1).padStart(5, '0'),
           email: email, mdp: local.hache(String(d.mdp)), prenom: d.prenom, nom: d.nom,
           fonction: d.fonction, entreprise: d.entreprise, profil: d.profil || 'autre', voie: d.voie || 'kbis',
-          siren: d.siren || '', distance: String(d.distance || '10'), formule: d.formule || 'dossard',
+          siren: d.siren || '', objectif: OBJECTIFS[d.objectif] ? d.objectif : 'pairs',
+          distance: String(d.distance || '10'), sas: sasPour(String(d.distance || '10'), d.sas), formule: d.formule || 'dossard',
           vague: local.vague(), etat: 'demande', cree: now, maj: now
         };
         l.push(c); local.ecrit(l);
@@ -98,9 +124,10 @@
         var moi = local.courant();
         if (!moi) { return rep(401, { erreur: 'Pas de session.' }); }
         if (methode === 'PATCH') {
-          ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'distance', 'formule'].forEach(function (k) {
+          ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'objectif', 'distance', 'formule'].forEach(function (k) {
             if (d[k] != null && (d[k] !== '' || k === 'siren')) { moi[k] = String(d[k]); }
           });
+          if (d.sas != null || d.distance != null) { moi.sas = sasPour(moi.distance, d.sas != null ? d.sas : moi.sas); }
           if (d.mdp) { moi.mdp = local.hache(String(d.mdp)); }
           moi.maj = new Date().toISOString();
           local.ecrit(l);
@@ -172,25 +199,23 @@
       var maj = function () { c.textContent = i.value.trim() || defaut; };
       i.addEventListener('input', maj); maj();
     };
-    lie('prenom', '#ap-prenom', 'Ton prénom');
-    lie('nom', '#ap-nom', 'Ton nom');
-    lie('fonction', '#ap-fonction', 'Ta fonction');
-    lie('entreprise', '#ap-entreprise', 'Ton entreprise');
+    lie('fonction', '#ap-fonction', 'Votre fonction');
+    lie('entreprise', '#ap-entreprise', 'Votre entreprise');
     var apNom = function () {
       var p = fInscription.elements.prenom.value.trim(), n = fInscription.elements.nom.value.trim();
-      $('#ap-nomcomplet').textContent = (p || n) ? (p + ' ' + n).trim() : 'Ton nom';
+      $('#ap-nomcomplet').textContent = (p || n) ? (p + ' ' + n).trim() : 'Votre nom';
     };
     fInscription.elements.prenom.addEventListener('input', apNom);
     fInscription.elements.nom.addEventListener('input', apNom);
 
-    // Formule choisie → étiquette sur le dossard d'aperçu.
-    var majFormule = function () {
-      var f = fInscription.elements.formule.value;
-      var e = $('#ap-formule');
-      if (e) { e.textContent = f === 'premium' ? '■ Premium' : f === 'cercle' ? '■ Cercle' : '■ Accès réseau'; }
+    // Ce que vous venez chercher → bandeau du verso.
+    var majObjectif = function () {
+      var e = $('#ap-objectif');
+      if (e) { e.textContent = bandeau(fInscription.elements.objectif.value); }
     };
-    $$('input[name=formule]', fInscription).forEach(function (r) { r.addEventListener('change', majFormule); });
-    majFormule();
+    fInscription.elements.objectif.addEventListener('change', majObjectif);
+    majObjectif();
+    $$('input[name=distance]', fInscription).forEach(function (r) { r.addEventListener('change', function () { filtreSas(fInscription); }); });
 
     // Une formule peut être pré-choisie depuis la page d'accueil (?formule=premium&distance=10).
     var q = new URLSearchParams(location.search);
@@ -200,7 +225,7 @@
         $$('input[name=' + k + ']', fInscription).forEach(function (r) { r.checked = (r.value === v); });
       }
     });
-    majFormule();
+    filtreSas(fInscription);
 
     fInscription.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -211,7 +236,7 @@
         marqueNav(rep.compte);
         location.href = racine() + 'espace/' + (rep._local ? '?local=1' : '') + '#bienvenue';
       }).catch(function () {
-        afficheErreurs(fInscription, { erreur: 'Le serveur ne répond pas. Réessaie dans un instant, ou écris-nous à contact@runoninvest.fr.' });
+        afficheErreurs(fInscription, { erreur: 'Le serveur ne répond pas. Réessayez dans un instant, ou écrivez-nous à contact@runoninvest.fr.' });
         enCours(fInscription, false);
       });
     });
@@ -229,7 +254,7 @@
         var suite = new URLSearchParams(location.search).get('suite');
         location.href = racine() + (suite && /^[a-z-]+\/$/.test(suite) ? suite : 'espace/');
       }).catch(function () {
-        afficheErreurs(fConnexion, { erreur: 'Le serveur ne répond pas. Réessaie dans un instant.' });
+        afficheErreurs(fConnexion, { erreur: 'Le serveur ne répond pas. Réessayez dans un instant.' });
         enCours(fConnexion, false);
       });
     });
@@ -239,10 +264,10 @@
   var espace = $('#espace');
   if (espace) {
     var LIBELLES = {
-      distance: { '5': '5 km — Le Sprint', '10': '10 km — La Référence', '21': '21,1 km — Le Grand Format' },
+      distance: { '5': '5 km', '10': '10 km', '21': 'Semi-marathon, 21,1 km' },
       formule: { dossard: 'Dossard', premium: 'Dossard Premium', cercle: 'Cercle R.O.I' },
       voie: { kbis: 'Extrait Kbis', sirene: 'Avis de situation SIRENE', cooptation: 'Cooptation employeur' },
-      profil: { entrepreneur: 'Entrepreneur·e / indépendant·e', intrapreneur: 'Intrapreneur·e', dirigeant: 'Cadre dirigeant·e', commercial: 'Commercial·e / business developer', investisseur: 'Investisseur / conseil', autre: 'Autre' },
+      profil: { entrepreneur: 'Entrepreneur, fondateur, indépendant', intrapreneur: 'Intrapreneur', dirigeant: 'Cadre dirigeant', commercial: 'Commercial, business developer', investisseur: 'Investisseur, conseil', autre: 'Autre' },
       etat: { demande: 1, justificatif: 2, valide: 3, paye: 4 }
     };
 
@@ -256,10 +281,13 @@
       $('#es-d-fonction').textContent = c.fonction;
       $('#es-d-entreprise').textContent = c.entreprise;
       $('#es-d-dist').textContent = (c.distance === '21' ? '21,1' : c.distance) + ' KM';
-      $('#es-d-formule').textContent = c.formule === 'premium' ? '■ Premium' : c.formule === 'cercle' ? '■ Cercle' : '■ Accès réseau actif';
+      $('#es-d-objectif').textContent = bandeau(c.objectif);
       $('#es-d-num').textContent = c.reference.slice(-3);
 
       $('#es-distance').textContent = LIBELLES.distance[c.distance] || c.distance;
+      var sas = sasPour(c.distance, c.sas);
+      $('#es-sas').textContent = 'Sas ' + sas + ', départ ' + DEPARTS[sas];
+      $('#es-objectif').textContent = OBJECTIFS[c.objectif] || '—';
       $('#es-formule').textContent = LIBELLES.formule[c.formule] || c.formule;
       $('#es-voie').textContent = LIBELLES.voie[c.voie] || c.voie;
       $('#es-profil').textContent = LIBELLES.profil[c.profil] || c.profil;
@@ -300,15 +328,16 @@
         var b = $('button', el);
         if (b) {
           b.disabled = (f === c.formule);
-          b.textContent = f === c.formule ? 'Ta formule' : (f === 'cercle' ? 'Demander une place' : f === 'premium' ? 'Passer en Premium' : 'Revenir au Dossard');
+          b.textContent = f === c.formule ? 'Votre formule' : (f === 'cercle' ? 'Demander une place' : f === 'premium' ? 'Passer en Premium' : 'Revenir au Dossard');
         }
       });
 
       // Formulaire de profil pré-rempli.
       var fp = $('#f-profil');
       if (fp) {
-        ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren'].forEach(function (k) { if (fp.elements[k]) { fp.elements[k].value = c[k] || ''; } });
+        ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'objectif'].forEach(function (k) { if (fp.elements[k]) { fp.elements[k].value = c[k] || ''; } });
         $$('input[name=distance]', fp).forEach(function (r) { r.checked = (r.value === c.distance); });
+        if (fp.elements.sas) { fp.elements.sas.value = sasPour(c.distance, c.sas); filtreSas(fp); }
       }
       marqueNav(c);
     };
@@ -343,6 +372,7 @@
     // Mettre à jour le profil.
     var fProfil = $('#f-profil');
     if (fProfil) {
+      $$('input[name=distance]', fProfil).forEach(function (r) { r.addEventListener('change', function () { filtreSas(fProfil); }); });
       fProfil.addEventListener('submit', function (e) {
         e.preventDefault();
         enCours(fProfil, true);
@@ -354,7 +384,7 @@
           rend(rep.compte);
           if (fProfil.elements.mdp) { fProfil.elements.mdp.value = ''; }
           afficheErreurs(fProfil, {});
-          var m = $('.form-msg', fProfil); m.textContent = 'Enregistré. Ton dossard est à jour.'; m.className = 'form-msg ok on';
+          var m = $('.form-msg', fProfil); m.textContent = 'Enregistré. Votre dossard est à jour.'; m.className = 'form-msg ok on';
         });
       });
     }
