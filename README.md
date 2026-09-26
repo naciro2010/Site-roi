@@ -12,7 +12,7 @@ Le site (refonte from scratch) reprend le système des affiches R.O.I. : deux fo
 
 - **Palette** : encre `#0A0A0A` et craie `#EFEBE2`, tous deux recouverts d'un grain photographique — les sections alternent les deux fonds comme les affiches alternent noir et papier. Orange impact `#FF4400` en accent unique : la barre sous les titres, les puces, quelques CTA.
 - **Typographies** (100 % auto-hébergées, dossier `fonts/`) : Archivo variable en **graisse fine (250) et chasse étendue (125 %)** pour tous les titres — le style « CE N'EST PAS UN CLUB DE RUNNING. » — + JetBrains Mono pour les labels, la nav, les boutons et toute la data (`COURSE & NETWORKING — ENTREPRENEURS`).
-- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange. Les sections de l'accueil sont numérotées `01…08` avec de vraies heures dans les programmes ; la convention chrono **T– / T+** reste sur `/pour-qui` et `/espace` (l'accès se règle *avant* la ligne).
+- **Motifs signature** : la ligne (trait fin + damier d'arrivée), le logotype `R■O■I` à points carrés orange. Les sections sont numérotées `01…08` sur l'accueil et `01…05` sur `/pour-qui`, avec de vraies heures dans les programmes ; la convention chrono **T– / T+** ne subsiste que dans `/espace`.
 
 Aucune dépendance externe (pas de Google Fonts, pas de JS tiers, pas de paquet npm).
 
@@ -67,7 +67,7 @@ Le parcours est de bout en bout : **`/inscription/`** (compte + distance + formu
 
 R.O.I s'adresse aux **entrepreneurs, intrapreneurs, cadres dirigeants et commerciaux** — plus les investisseurs et conseils. L'accès au dossard est donc **vérifié**, par l'une de trois voies au choix : extrait **Kbis**, **avis de situation SIRENE**, ou **cooptation employeur**. Un seul critère : exercer — ni seuil de chiffre d'affaires, ni taille d'entreprise minimum, ni chrono à tenir.
 
-Ce discours vit à deux endroits : la section `06 / POUR QUI` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `06.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, les justificatifs, le parcours du dossier et une FAQ d'éligibilité.
+Ce discours vit à deux endroits : la section `06 / POUR QUI` de la page d'accueil (le laïus, les quatre publics du cahier des charges, et le bloc `06.1 / L'ACCÈS` qui résume les trois justificatifs), et la page dédiée `/pour-qui` qui déroule les six familles de profils, l'admission (justificatifs, parcours du dossier, données), `04 / VOS RENCONTRES, VOS RÈGLES` (ce que les autres voient ou non, une demande qui expire sans notification, la borne du jour J) et une FAQ de douze questions. Le JSON-LD `FAQPage` a été régénéré à partir des questions affichées : les garder alignés.
 
 > ⚠️ **À arbitrer avant mise en ligne** (signalé en commentaire HTML dans les deux pages) : le délai de réponse annoncé (48 h ouvrées), la validité du Kbis (3 mois), la politique de suppression des justificatifs — à faire relire côté RGPD — et les chiffres Paris La Défense, à confirmer sur la source officielle. L'arrivée en salle dans **Paris La Défense Arena** et la jauge de **10 000 participants** viennent du cahier des charges de consultation (v1.0, sept. 2026), où le site indoor est encore « à confirmer ». Le site dit désormais « Run On Investment », comme ce document ; le domaine, les adresses e-mail et le compte Instagram restent sur `runoninvest`.
 
