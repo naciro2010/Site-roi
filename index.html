@@ -191,6 +191,35 @@
         <a class="pc-go" href="#app">L'app →</a>
       </li>
     </ol>
+
+    <div class="sub-head">
+      <span class="tmark"><b>02.1</b> / LA JOURNÉE EN 24 SECONDES</span>
+      <h3>De 7 h 30 à la soirée,<br class="br-desk"> au même endroit.</h3>
+      <p>La matinée se passe entre la Grande Arche et le parcours, tout le reste dans l'Arena. <b>Cliquez sur un moment pour y aller.</b></p>
+    </div>
+    <div class="journee reveal" data-journee>
+      <div class="jr-head">
+        <div><span class="dp-k">Heure</span><b class="jr-heure" data-jr-heure>20:00</b></div>
+        <div><span class="jr-lieu" data-jr-lieu>Paris La Défense Arena</span><p class="jr-legende" data-jr-legende>Soirée ouverte à tous. Dîner des fondateurs pour les formules Premium et Cercle.</p></div>
+        <button class="dp-btn" type="button" data-jr-play hidden>Pause</button>
+      </div>
+      <div class="jr-lieux" aria-hidden="true">
+        <span data-debut="420" data-fin="525">Grande Arche</span>
+        <span data-debut="525" data-fin="660">Parcours</span>
+        <span data-debut="660" data-fin="1200">Paris La Défense Arena</span>
+      </div>
+      <ol class="jr-piste">
+        <li data-debut="450" data-fin="525" data-legende="Village au pied de la Grande Arche : retrait des dossards, consigne, échauffement."><button type="button" aria-label="Village, 7 h 30"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Village<small>7 h 30</small></span></li>
+        <li data-debut="525" data-fin="660" data-legende="Les sas partent l'un après l'autre, du semi-marathon au 5 km. Chacun court à son allure."><button type="button" aria-label="Départs et course, 8 h 45 – 11 h"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Départs et course<small>8 h 45 – 11 h</small></span></li>
+        <li data-debut="660" data-fin="690" data-legende="Toutes les distances arrivent dans l'Arena dans la même demi-heure. Le dossard se retourne : il devient votre badge."><button type="button" aria-label="Arrivée, 11 h"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Arrivée<small>11 h</small></span></li>
+        <li data-debut="690" data-fin="750" data-legende="Café des finishers, tables par sas : premières conversations avec ceux qui ont couru à votre allure."><button type="button" aria-label="Café, 11 h 30"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Café<small>11 h 30</small></span></li>
+        <li data-debut="750" data-fin="840" data-legende="Déjeuner par secteur d'activité. Le placement est préparé à partir des profils."><button type="button" aria-label="Déjeuner, 12 h 30"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Déjeuner<small>12 h 30</small></span></li>
+        <li data-debut="840" data-fin="1020" data-legende="Rendez-vous acceptés des deux côtés, aux bornes des cinq quartiers et aux stands d'hôtes."><button type="button" aria-label="Rendez-vous, 14 h – 17 h"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Rendez-vous<small>14 h – 17 h</small></span></li>
+        <li data-debut="1035" data-fin="1080" data-legende="Trois fondateurs qui ont couru le matin prennent la parole, sans support projeté."><button type="button" aria-label="Scène, 17 h 15"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Scène<small>17 h 15</small></span></li>
+        <li data-debut="1110" data-fin="1200" data-legende="Soirée ouverte à tous. Dîner des fondateurs pour les formules Premium et Cercle."><button type="button" aria-label="Soirée, 18 h 30"><i class="jr-rempli"></i></button><span class="jr-l" aria-hidden="true">Soirée<small>18 h 30</small></span></li>
+      </ol>
+      <div class="jr-axe" aria-hidden="true"><span style="left:0.00%;transform:none">7 h</span><span class="demi" style="left:7.69%">8 h</span><span style="left:15.38%">9 h</span><span class="demi" style="left:23.08%">10 h</span><span style="left:30.77%">11 h</span><span class="demi" style="left:38.46%">12 h</span><span style="left:46.15%">13 h</span><span class="demi" style="left:53.85%">14 h</span><span style="left:61.54%">15 h</span><span class="demi" style="left:69.23%">16 h</span><span style="left:76.92%">17 h</span><span class="demi" style="left:84.62%">18 h</span><span class="demi" style="left:92.31%">19 h</span><span style="left:100.00%;transform:translateX(-100%)">20 h</span></div>
+    </div>
   </div>
 </section>
 
@@ -505,7 +534,46 @@
     <div class="sub-head">
       <span class="tmark"><b>04.3</b> / LES RÈGLES</span>
       <h3>Rien ne s'ouvre<br class="br-desk"> <span class="creuse">sans l'accord des deux.</span></h3>
+      <p>Une demande ne devient un rendez-vous que si l'autre personne l'accepte. <b>Voici les deux issues possibles, côté expéditeur et côté destinataire.</b></p>
     </div>
+    <div class="accord reveal" data-accord data-scenario="oui" data-etape="3">
+      <div class="ac-top">
+        <div class="ac-choix" role="group" aria-label="Choisir l'issue de la demande">
+          <button type="button" data-ac-scenario="oui" aria-pressed="true">Julien accepte</button>
+          <button type="button" data-ac-scenario="non" aria-pressed="false">Julien laisse expirer</button>
+        </div>
+        <button class="dp-btn" type="button" data-seq-play hidden>Pause</button>
+      </div>
+      <div class="ac-scene" aria-hidden="true">
+        <div class="ac-tel">
+          <div class="ac-tel-h"><span>Vous · <b>0412</b></span><span>Rendez-vous</span></div>
+          <div class="ac-carte">
+            <strong>Demande à Julien Arnaud</strong>
+            <small>Associé, fonds de série A · a couru le semi</small>
+            <q>Objet : lever des fonds. Nous étions dans le même sas.</q>
+          </div>
+          <span class="ac-st gris st-attente">Envoyée · en attente de réponse</span>
+          <span class="ac-st ok st-ok">✓ Acceptée des deux côtés<br>Borne F-07 · 14 h 30</span>
+          <span class="ac-st gris st-exp">Sans réponse · la demande a expiré<br>Aucun motif, aucune relance</span>
+        </div>
+        <div class="ac-lien"><i class="ac-paquet"></i><span class="ac-lien-l l-oui">Contact ouvert</span><span class="ac-lien-l l-non">Aucune notification</span></div>
+        <div class="ac-tel ac-julien">
+          <div class="ac-tel-h"><span>Julien · <b>1187</b></span><span>Demandes reçues</span></div>
+          <span class="ac-st gris st-vide">Aucune demande</span>
+          <div class="ac-carte">
+            <strong>Claire Martin · 0412</strong>
+            <small>Directrice financière · Nordvik Logistique</small>
+            <q>Objet : lever des fonds. Nous étions dans le même sas.</q>
+            <div class="ac-btns"><span class="ac-b-oui">Accepter</span><span class="ac-b-non">Laisser expirer</span></div>
+          </div>
+          <span class="ac-st gris st-plus-tard">Pas de réponse pour l'instant</span>
+          <span class="ac-st ok st-ok">✓ Rendez-vous ajouté · borne F-07</span>
+          <span class="ac-st gris st-exp">Demande expirée<br>Rien à justifier</span>
+        </div>
+      </div>
+      <div class="ac-legende"><span class="n" data-ac-n>04 / 04</span><p data-ac-legende>Le rendez-vous existe des deux côtés&nbsp;: une borne et un horaire sont réservés, la messagerie s'ouvre.</p></div>
+    </div>
+
     <div class="principes reveal">
       <div><span class="p-n">01</span><h4>Rien sans accord</h4><p>Un rendez-vous, un passage chez un hôte ou un contact n'existe que si les deux personnes l'acceptent.</p></div>
       <div><span class="p-n">02</span><h4>Un refus ne se voit pas</h4><p>Une demande non acceptée expire sans notification. Personne n'a à se justifier.</p></div>

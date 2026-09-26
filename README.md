@@ -132,6 +132,20 @@ Le reste de la palette a été corrigé : `--beton` sur fond clair est passé de
 
 `01` Le principe (affiche « Au 3e km » + quatre phrases) · `02` Comment ça marche (le parcours en cinq étapes, du dossier à l'app, chacune renvoie à sa section) · `03` La course (le plan des départs animé, puis les cinq règles qui tiennent la fenêtre d'arrivée) · `04` L'Arena (le dossard recto/verso, le plan animé de l'après-midi, le programme, les règles) · `05` L'app (un téléphone manipulable : courses, rendez-vous, rencontres) · `06` Pour qui (le laïus, les quatre publics, l'accès sur justificatif) · `07` Les dossards (distances, formules, vagues tarifaires) · `08` Le lieu. Puis la finale « Prenez votre place sur la ligne ».
 
+### Les animations explicatives
+
+Cinq animations, toutes en CSS pilotées par `roi.js`. Elles ne tournent que lorsqu'elles sont à l'écran, ont un bouton Pause et restent lisibles sans JavaScript. Avec `prefers-reduced-motion`, rien ne bouge seul :
+
+| Où | Ce qu'elle explique |
+|---|---|
+| Accueil `02.1` (`[data-journee]`) | La journée de 7 h à 20 h en 24 s : l'heure, le lieu (Grande Arche → parcours → Arena), une phrase par moment. Cliquer un segment y amène. |
+| Accueil `03` (`[data-departs]`) | Les départs échelonnés et l'arrivée commune (détail ci-dessous). |
+| Accueil `04.1` (`[data-arena]`) | Un rendez-vous dans l'Arena en cinq temps (détail ci-dessous). |
+| Accueil `04.3` (`[data-accord]`) | Une demande de rendez-vous vue des deux côtés, dans les deux issues : acceptée (borne et horaire réservés) ou laissée à expirer (aucune notification, aucune coordonnée transmise). |
+| `/pour-qui` `03.1` (`[data-dossier]`) | Le dossier qui avance, synchronisé avec la grille des étapes : le montant prélevé reste à 0 € jusqu'à la validation. |
+
+Les trois dernières partagent un petit séquenceur (`sequence()` dans `roi.js`) : des étapes à durée fixe, un attribut `data-etape` posé sur la racine, et le CSS fait le reste.
+
 ### Les départs échelonnés (`#course`)
 
 Trois distances (5 km, 10 km, semi-marathon), un seul départ au pied de la Grande Arche, une seule arrivée à l'intérieur de Paris La Défense Arena. Pour que l'après-midi commence au même moment pour tous, **les distances longues et les allures lentes partent en premier** : huit sas de 8 h 45 à 10 h 45, calculés pour que toutes les arrivées tombent entre 11 h et 11 h 30. Le mot « sas » désigne les groupes de départ ; « vague » reste réservé aux vagues tarifaires (Early Bird, Régulier, Last Call).

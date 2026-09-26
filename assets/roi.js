@@ -382,6 +382,160 @@
     });
   }
 
+  /* ---- Séquenceur partagé ----
+     Une suite d'étapes à durée fixe : rendu(i) pose l'état, la classe
+     .joue est relancée pour rejouer les animations CSS de l'étape.
+     Lecture auto seulement à l'écran ; en mouvement réduit, on affiche
+     l'état « initial » et rien ne bascule seul. */
+  var sequence = function (racine, n, durees, rendu, initial) {
+    var i = initial, lecture = !reduit, vu = false, deja = false, minuteur = null;
+    var bouton = racine.querySelector('[data-seq-play]');
+    var planifie = function () {
+      clearTimeout(minuteur); minuteur = null;
+      if (lecture && vu) { minuteur = setTimeout(function () { va((i + 1) % n); }, durees[i]); }
+    };
+    var va = function (k) {
+      i = k; rendu(k);
+      racine.classList.remove('joue'); void racine.offsetWidth; racine.classList.add('joue');
+      planifie();
+    };
+    if (bouton) {
+      bouton.hidden = false;
+      bouton.textContent = lecture ? 'Pause' : 'Lecture';
+      bouton.addEventListener('click', function () {
+        lecture = !lecture; bouton.textContent = lecture ? 'Pause' : 'Lecture';
+        if (lecture) { va((i + 1) % n); } else { planifie(); }
+      });
+    }
+    rendu(initial);
+    observe(racine, function (v) {
+      vu = v;
+      if (v && !deja && lecture) { deja = true; va(0); } else { planifie(); }
+    });
+    return { va: va };
+  };
+
+  /* ---- La journée en 24 secondes ---- */
+  var journee = document.querySelector('[data-journee]');
+  if (journee) {
+    var J0 = 420, J1 = 1200, JV = (J1 - J0) / 24000;
+    var jpct = function (m) { return ((m - J0) / (J1 - J0) * 100).toFixed(3) + '%'; };
+    var jd = function (n) { return (n < 10 ? '0' : '') + n; };
+    var place = function (el) {
+      el.style.setProperty('--g', jpct(+el.dataset.debut));
+      el.style.setProperty('--l', ((el.dataset.fin - el.dataset.debut) / (J1 - J0) * 100).toFixed(3) + '%');
+    };
+    var segs = [].slice.call(journee.querySelectorAll('.jr-piste li'));
+    var lieux = [].slice.call(journee.querySelectorAll('.jr-lieux span'));
+    segs.forEach(place); lieux.forEach(place);
+    var jHeure = journee.querySelector('[data-jr-heure]');
+    var jLieu = journee.querySelector('[data-jr-lieu]');
+    var jLeg = journee.querySelector('[data-jr-legende]');
+    var jBtn = journee.querySelector('[data-jr-play]');
+    var jt = J1, jLecture = !reduit, jVu = false, jDeja = false, jRaf = null, jDernier = 0, jAttente = 0, jCourant = -1;
+    var jDessine = function () {
+      journee.style.setProperty('--t', jpct(jt));
+      var m = Math.round(jt);
+      jHeure.textContent = jd(Math.floor(m / 60)) + ':' + jd(m % 60);
+      var cur = -1;
+      segs.forEach(function (li, k) {
+        var a = +li.dataset.debut, b = +li.dataset.fin;
+        if (jt >= a) { cur = k; }
+        li.classList.toggle('passe', jt >= b);
+        li.classList.toggle('on', jt >= a && jt < b);
+        if (jt >= a && jt < b) { li.style.setProperty('--p', ((jt - a) / (b - a) * 100).toFixed(2) + '%'); }
+      });
+      lieux.forEach(function (l) {
+        var on = jt >= +l.dataset.debut && jt < +l.dataset.fin || (jt >= J1 && +l.dataset.fin === J1);
+        if (l.classList.contains('on') !== on) { l.classList.toggle('on', on); }
+        if (on && jLieu.textContent !== l.textContent) { jLieu.textContent = l.textContent; }
+      });
+      if (cur !== jCourant) {
+        jCourant = cur;
+        jLeg.textContent = cur < 0 ? 'Avant l’ouverture du village.' : segs[cur].dataset.legende;
+      }
+    };
+    var jBoucle = function (now) {
+      jRaf = null;
+      if (!jLecture || !jVu) { return; }
+      var dt = jDernier ? Math.min(100, now - jDernier) : 0;
+      jDernier = now;
+      if (jt >= J1) { jAttente += dt; if (jAttente > 2500) { jt = J0; jAttente = 0; } }
+      else { jt = Math.min(J1, jt + dt * JV); }
+      jDessine();
+      jRaf = requestAnimationFrame(jBoucle);
+    };
+    var jRelance = function () {
+      jBtn.textContent = jLecture ? 'Pause' : 'Lecture';
+      if (!jRaf && jLecture && jVu) { jDernier = 0; jRaf = requestAnimationFrame(jBoucle); }
+    };
+    jBtn.addEventListener('click', function () {
+      jLecture = !jLecture;
+      if (jLecture && jt >= J1) { jt = J0; jAttente = 0; }
+      jRelance();
+    });
+    segs.forEach(function (li) {
+      li.querySelector('button').addEventListener('click', function () {
+        jt = +li.dataset.debut + .01; jAttente = 0; jDessine(); jRelance();
+      });
+    });
+    observe(journee, function (v) {
+      jVu = v;
+      if (v && !jDeja && jLecture) { jDeja = true; jt = J0; }
+      jRelance();
+    });
+    jBtn.hidden = false;
+    jDessine();
+  }
+
+  /* ---- L'accord des deux : deux scénarios de quatre étapes, en boucle ---- */
+  var accord = document.querySelector('[data-accord]');
+  if (accord) {
+    var AC = {
+      oui: ["Vous envoyez la demande, avec son objet. Julien voit votre profil et votre message, pas vos coordonnées.",
+            "Julien reçoit la demande dans l'app. Rien n'est encore réservé.",
+            "Julien accepte.",
+            "Le rendez-vous existe des deux côtés : une borne et un horaire sont réservés, la messagerie s'ouvre."],
+      non: ["Vous envoyez la demande, avec son objet. Julien voit votre profil et votre message, pas vos coordonnées.",
+            "Julien reçoit la demande dans l'app. Rien n'est encore réservé.",
+            "Julien ne répond pas. Il n'a rien à justifier.",
+            "La demande expire. Vous n'êtes pas prévenu d'un refus, seulement que la demande n'a pas abouti. Aucune coordonnée n'a circulé."]
+    };
+    var acChoix = [].slice.call(accord.querySelectorAll('[data-ac-scenario]'));
+    var acLeg = accord.querySelector('[data-ac-legende]');
+    var acN = accord.querySelector('[data-ac-n]');
+    var seqAccord = sequence(accord, 8, [3000, 2600, 2400, 4500, 3000, 2600, 3000, 5000], function (k) {
+      var sc = k < 4 ? 'oui' : 'non', e = k % 4;
+      accord.setAttribute('data-scenario', sc);
+      accord.setAttribute('data-etape', e);
+      acChoix.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.acScenario === sc ? 'true' : 'false'); });
+      acLeg.textContent = AC[sc][e];
+      acN.textContent = '0' + (e + 1) + ' / 04';
+    }, 3);
+    acChoix.forEach(function (b) {
+      b.addEventListener('click', function () { seqAccord.va(b.dataset.acScenario === 'oui' ? (reduit ? 3 : 0) : (reduit ? 7 : 4)); });
+    });
+  }
+
+  /* ---- Le dossier qui avance (/pour-qui) ---- */
+  var dossier = document.querySelector('[data-dossier]');
+  if (dossier) {
+    var lignesD = [].slice.call(dossier.querySelectorAll('.da-l li'));
+    var cellules = [].slice.call(document.querySelectorAll('.etapes .etape'));
+    var montant = dossier.querySelector('[data-da-montant]');
+    sequence(dossier, 4, [2200, 2200, 2600, 4800], function (k) {
+      dossier.setAttribute('data-etape', k);
+      lignesD.forEach(function (li, n) {
+        var etat = n < k || (k === 3 && n === 3) ? 'fait' : n === k ? 'cours' : '';
+        li.classList.toggle('fait', etat === 'fait');
+        li.classList.toggle('cours', etat === 'cours');
+        li.querySelector('.e').textContent = etat === 'fait' ? '✓ Fait' : etat === 'cours' ? 'En cours' : 'À venir';
+      });
+      cellules.forEach(function (c, n) { c.classList.toggle('on', n === k); });
+      montant.textContent = k === 3 ? '350 €' : '0 €';
+    }, 3);
+  }
+
   /* ---- Nav mobile ---- */
   var burger = document.querySelector('.burger');
   var links = document.getElementById('nav-links');
