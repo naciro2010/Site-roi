@@ -167,6 +167,21 @@
             <span class="champ-err" aria-live="polite"></span>
             <span class="aide">Un temps récent ou réaliste sur cette distance. Il fixe votre sas et votre heure de départ, pour une arrivée dans l'Arena entre 11&nbsp;h et 11&nbsp;h&nbsp;30. Modifiable depuis votre espace. <a href="../#course" style="color:inherit">Le plan des départs →</a></span>
           </div>
+          <div class="champ" style="margin-top:22px">
+            <label for="sante">Aptitude à courir</label>
+            <select id="sante" name="sante">
+              <option value="pps">Pass Prévention Santé (PPS) de la FFA</option>
+              <option value="licence">Licence FFA Athlé Compétition, Entreprise ou Running</option>
+              <option value="attente" selected>Je le fournirai plus tard</option>
+            </select>
+            <span class="champ-err" aria-live="polite"></span>
+            <span class="aide">Obligatoire pour toute course chronométrée en France si vous n'avez pas de licence FFA. Le PPS s'obtient en ligne sur <a href="https://pps.athle.fr/" target="_blank" rel="noopener" style="color:inherit">pps.athle.fr</a>&nbsp;: 5&nbsp;€, valable douze mois, il doit être valide le jour de la course.</span>
+          </div>
+          <div class="champ" style="margin-top:18px">
+            <label for="santeNumero">Numéro de PPS ou de licence <span class="opt">FACULTATIF À CE STADE</span></label>
+            <input id="santeNumero" name="santeNumero" type="text" autocomplete="off" placeholder="À renseigner au plus tard quinze jours avant la course">
+            <span class="champ-err" aria-live="polite"></span>
+          </div>
         </fieldset>
 
         <fieldset>

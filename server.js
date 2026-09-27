@@ -39,6 +39,10 @@ const SAS = { '5': ['C1', 'C2'], '10': ['D1', 'D2', 'D3'], '21': ['S1', 'S2', 'S
 /* Un sas qui n'appartient pas à la distance retombe sur le premier sas de
    celle-ci (le plus lent, donc le départ le plus tôt) : on n'arrive jamais
    après la fenêtre à cause d'une incohérence de formulaire. */
+/* L'aptitude à courir : depuis 2026, le Pass Prévention Santé (PPS) de la FFA
+   (5 €, valable 12 mois, pps.athle.fr) ou une licence FFA Athlé Compétition,
+   Entreprise ou Running. Le numéro se renseigne plus tard si besoin. */
+const SANTE = ['attente', 'pps', 'licence'];
 function sasPour(distance, sas) { return dansListe(sas, SAS[distance], SAS[distance][0]); }
 
 /* ---- Stockage : lecture/écriture atomique du fichier JSON ---- */
@@ -167,6 +171,7 @@ function publie(c) {
     id: c.id, reference: c.reference, prenom: c.prenom, nom: c.nom, email: c.email,
     fonction: c.fonction, entreprise: c.entreprise, profil: c.profil, voie: c.voie, siren: c.siren,
     objectif: c.objectif, distance: c.distance, sas: c.sas, formule: c.formule, vague: c.vague, etat: c.etat,
+    sante: c.sante || 'attente', santeNumero: c.santeNumero || '',
     cree: c.cree, maj: c.maj
   };
 }
@@ -224,6 +229,8 @@ async function api(req, res, url) {
       objectif: dansListe(d.objectif, OBJECTIFS, 'pairs'),
       distance: distance,
       sas: sasPour(distance, d.sas),
+      sante: dansListe(d.sante, SANTE, 'attente'),
+      santeNumero: texte(d.santeNumero, 30).replace(/\s+/g, ''),
       formule: dansListe(d.formule, FORMULES, 'dossard'),
       vague: vagueCourante(),
       etat: 'demande',           // demande → justificatif → valide → paye
@@ -269,6 +276,8 @@ async function api(req, res, url) {
     if (d.profil != null) { c.profil = dansListe(d.profil, PROFILS, c.profil); }
     if (d.voie != null) { c.voie = dansListe(d.voie, VOIES, c.voie); }
     if (d.siren != null) { c.siren = texte(d.siren, 20).replace(/\s+/g, ''); }
+    if (d.sante != null) { c.sante = dansListe(d.sante, SANTE, c.sante || 'attente'); }
+    if (d.santeNumero != null) { c.santeNumero = texte(d.santeNumero, 30).replace(/\s+/g, ''); }
     if (d.objectif != null) { c.objectif = dansListe(d.objectif, OBJECTIFS, c.objectif || 'pairs'); }
     if (d.distance != null) { c.distance = dansListe(String(d.distance), DISTANCES, c.distance); }
     // Changer de distance sans préciser le sas ramène au premier sas de la nouvelle distance.

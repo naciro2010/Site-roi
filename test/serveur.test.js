@@ -69,13 +69,15 @@ function appel(base, methode, chemin, corps, cookie) {
   await t('inscription complète → 201 + cookie de session', async function () {
     const r = await appel(base, 'POST', '/api/inscription', {
       prenom: 'Léa', nom: 'Martin', email: email, mdp: 'motdepasse1', fonction: 'Fondatrice', entreprise: 'Nordwind',
-      profil: 'entrepreneur', voie: 'kbis', objectif: 'financer', distance: '10', sas: 'D2', formule: 'premium', consent: true
+      profil: 'entrepreneur', voie: 'kbis', objectif: 'financer', distance: '10', sas: 'D2', formule: 'premium', sante: 'pps', santeNumero: ' PPS 1234 ', consent: true
     });
     assert.equal(r.status, 201);
     const j = await r.json();
     assert.equal(j.compte.email, email);
     assert.equal(j.compte.objectif, 'financer');
     assert.equal(j.compte.sas, 'D2');
+    assert.equal(j.compte.sante, 'pps');
+    assert.equal(j.compte.santeNumero, 'PPS1234');
     assert.equal(j.compte.formule, 'premium');
     assert.match(j.compte.reference, /^E01-\d{6}$/);
     assert.equal(j.compte.etat, 'demande');
@@ -108,6 +110,7 @@ function appel(base, methode, chemin, corps, cookie) {
     assert.equal(j.dossier.distance, '10');
     assert.equal(j.dossier.objectif, 'financer');
     assert.equal(j.dossier.sas, 'D2');
+    assert.equal(j.dossier.santeNumero, undefined, 'le numéro de PPS reste privé');
     assert.equal(j.dossier.formule, 'premium');
     assert.equal(j.dossier.etat, 'demande');
     assert.equal(j.dossier.edition, '01');
@@ -178,6 +181,14 @@ function appel(base, methode, chemin, corps, cookie) {
     c = (await r.json()).compte;
     assert.equal(c.sas, 'D3');
     assert.equal(c.objectif, 'recruter');
+  });
+  await t('PATCH /api/moi : PPS ou licence, valeur hors liste ignorée', async function () {
+    let r = await appel(base, 'PATCH', '/api/moi', { sante: 'licence', santeNumero: '1234567' }, cookie);
+    let c = (await r.json()).compte;
+    assert.equal(c.sante, 'licence');
+    assert.equal(c.santeNumero, '1234567');
+    r = await appel(base, 'PATCH', '/api/moi', { sante: 'certificat' }, cookie);
+    assert.equal((await r.json()).compte.sante, 'licence');
   });
   await t('déconnexion puis /api/moi → 401', async function () {
     const r = await appel(base, 'POST', '/api/deconnexion', null, cookie);

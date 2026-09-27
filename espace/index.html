@@ -69,6 +69,7 @@
           <div><dt>Distance</dt><dd id="es-distance">—</dd></div>
           <div><dt>Départ</dt><dd><span id="es-sas">—</span><small>Horaire indicatif, confirmé quinze jours avant la course. Arrivée dans l'Arena entre 11 h et 11 h 30.</small></dd></div>
           <div><dt>Vous cherchez</dt><dd id="es-objectif">—</dd></div>
+          <div><dt>Aptitude à courir</dt><dd><span id="es-sante">—</span><small id="es-sante-note">PPS ou licence FFA, obligatoire pour prendre le départ.</small></dd></div>
           <div><dt>Formule</dt><dd><span id="es-formule">—</span><small id="es-cercle-note" hidden>Le Cercle se confirme sur cooptation. Votre demande est enregistrée, réponse sous 48 heures ouvrées.</small></dd></div>
           <div><dt>Tarif</dt><dd><span id="es-prix">—</span><small id="es-prix-note">Prélevé après validation. En cas de refus, aucun montant n'est prélevé.</small></dd></div>
           <div><dt>Profil</dt><dd id="es-profil">—</dd></div>
@@ -235,6 +236,16 @@
             </select>
             <span class="champ-err"></span>
           </div>
+          <div class="champ">
+            <label for="p-sante">Aptitude à courir</label>
+            <select id="p-sante" name="sante">
+              <option value="pps">Pass Prévention Santé (PPS)</option>
+              <option value="licence">Licence FFA Compétition, Entreprise ou Running</option>
+              <option value="attente">Pas encore</option>
+            </select>
+            <span class="champ-err"></span>
+          </div>
+          <div class="champ"><label for="p-santeNumero">Numéro de PPS ou de licence</label><input id="p-santeNumero" name="santeNumero" type="text" autocomplete="off"><span class="champ-err"></span></div>
           <div class="champ"><label for="p-siren">SIREN <span class="opt">FACULTATIF</span></label><input id="p-siren" name="siren" type="text" inputmode="numeric"><span class="champ-err"></span></div>
           <div class="champ"><label for="p-mdp">Nouveau mot de passe <span class="opt">FACULTATIF</span></label><input id="p-mdp" name="mdp" type="password" autocomplete="new-password" minlength="8" placeholder="Laisser vide pour ne rien changer"><span class="champ-err"></span></div>
           <div class="champ large">

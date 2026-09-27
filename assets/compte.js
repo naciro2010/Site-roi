@@ -103,6 +103,7 @@
           fonction: d.fonction, entreprise: d.entreprise, profil: d.profil || 'autre', voie: d.voie || 'kbis',
           siren: d.siren || '', objectif: OBJECTIFS[d.objectif] ? d.objectif : 'pairs',
           distance: String(d.distance || '10'), sas: sasPour(String(d.distance || '10'), d.sas), formule: d.formule || 'dossard',
+          sante: ['pps', 'licence'].indexOf(d.sante) >= 0 ? d.sante : 'attente', santeNumero: String(d.santeNumero || '').replace(/\s+/g, ''),
           vague: local.vague(), etat: 'demande', cree: now, maj: now
         };
         l.push(c); local.ecrit(l);
@@ -124,8 +125,8 @@
         var moi = local.courant();
         if (!moi) { return rep(401, { erreur: 'Pas de session.' }); }
         if (methode === 'PATCH') {
-          ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'objectif', 'distance', 'formule'].forEach(function (k) {
-            if (d[k] != null && (d[k] !== '' || k === 'siren')) { moi[k] = String(d[k]); }
+          ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'objectif', 'distance', 'formule', 'sante', 'santeNumero'].forEach(function (k) {
+            if (d[k] != null && (d[k] !== '' || k === 'siren' || k === 'santeNumero')) { moi[k] = String(d[k]); }
           });
           if (d.sas != null || d.distance != null) { moi.sas = sasPour(moi.distance, d.sas != null ? d.sas : moi.sas); }
           if (d.mdp) { moi.mdp = local.hache(String(d.mdp)); }
@@ -288,6 +289,14 @@
       var sas = sasPour(c.distance, c.sas);
       $('#es-sas').textContent = 'Sas ' + sas + ', départ ' + DEPARTS[sas];
       $('#es-objectif').textContent = OBJECTIFS[c.objectif] || '—';
+      // L'aptitude à courir : PPS ou licence FFA, à fournir avant la course.
+      var sante = c.sante || 'attente', num = c.santeNumero || '';
+      $('#es-sante').textContent = sante === 'pps' ? 'Pass Prévention Santé' + (num ? ' n° ' + num : '') :
+        sante === 'licence' ? 'Licence FFA' + (num ? ' n° ' + num : '') : 'À fournir';
+      $('#es-sante-note').textContent = sante === 'attente' || !num ?
+        'Obligatoire pour prendre le départ. À renseigner au plus tard quinze jours avant la course, dans « Votre dossard » ci-dessous.' :
+        sante === 'pps' ? 'Le PPS doit être valide le jour de la course : il dure douze mois.' : 'Licence Athlé Compétition, Entreprise ou Running, en cours de validité le jour de la course.';
+      $('#es-sante').parentNode.parentNode.classList.toggle('a-faire', sante === 'attente' || !num);
       $('#es-formule').textContent = LIBELLES.formule[c.formule] || c.formule;
       $('#es-voie').textContent = LIBELLES.voie[c.voie] || c.voie;
       $('#es-profil').textContent = LIBELLES.profil[c.profil] || c.profil;
@@ -335,7 +344,8 @@
       // Formulaire de profil pré-rempli.
       var fp = $('#f-profil');
       if (fp) {
-        ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'objectif'].forEach(function (k) { if (fp.elements[k]) { fp.elements[k].value = c[k] || ''; } });
+        ['prenom', 'nom', 'fonction', 'entreprise', 'profil', 'voie', 'siren', 'objectif', 'santeNumero'].forEach(function (k) { if (fp.elements[k]) { fp.elements[k].value = c[k] || ''; } });
+        if (fp.elements.sante) { fp.elements.sante.value = c.sante || 'attente'; }
         $$('input[name=distance]', fp).forEach(function (r) { r.checked = (r.value === c.distance); });
         if (fp.elements.sas) { fp.elements.sas.value = sasPour(c.distance, c.sas); filtreSas(fp); }
       }
