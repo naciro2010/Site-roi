@@ -76,7 +76,7 @@
               <label for="mdp">Mot de passe</label>
               <input id="mdp" name="mdp" type="password" autocomplete="new-password" minlength="8" required>
               <span class="champ-err" aria-live="polite"></span>
-              <span class="aide">Huit caractères au minimum. Il donne accès à votre espace et à votre profil le jour de l'événement.</span>
+              <span class="aide">Huit caractères au minimum. Il donne accès à votre espace.</span>
             </div>
           </div>
         </fieldset>
@@ -126,7 +126,7 @@
                 <option value="cooptation">Cooptation — attestation employeur ou recommandation</option>
               </select>
               <span class="champ-err" aria-live="polite"></span>
-              <span class="aide">Un seul suffit. Il se transmet ensuite depuis votre espace. <a href="../pour-qui/#acces" style="color:inherit">Comment nous vérifions</a>.</span>
+              <span class="aide">Un seul suffit. Il se transmet ensuite par courriel, depuis le lien de votre espace. <a href="../pour-qui/#acces" style="color:inherit">Comment nous vérifions</a>.</span>
             </div>
             <div class="champ large">
               <label for="siren">SIREN <span class="opt">FACULTATIF</span></label>
@@ -141,7 +141,7 @@
           <div class="champ">
             <span class="lbl" id="lbl-distance">Distance. Le tarif et l'après-midi sont les mêmes pour les trois.</span>
             <div class="choix" role="radiogroup" aria-labelledby="lbl-distance">
-              <label><input type="radio" name="distance" value="5"><span class="c-t">5<small>KM</small></span><span class="c-s">Sans temps minimum, course ou marche rapide. Départs à 10&nbsp;h&nbsp;30 ou 10&nbsp;h&nbsp;45.</span></label>
+              <label><input type="radio" name="distance" value="5"><span class="c-t">5<small>KM</small></span><span class="c-s">Aucune allure imposée, course ou marche rapide. Départs à 10&nbsp;h&nbsp;30 ou 10&nbsp;h&nbsp;45.</span></label>
               <label><input type="radio" name="distance" value="10" checked><span class="c-t">10<small>KM</small></span><span class="c-s">Le format principal, entre les tours. Départs de 9&nbsp;h&nbsp;55 à 10&nbsp;h&nbsp;25.</span></label>
               <label><input type="radio" name="distance" value="21"><span class="c-t">21,1<small>KM</small></span><span class="c-s">Semi-marathon, distance officielle. Départs de 8&nbsp;h&nbsp;45 à 9&nbsp;h&nbsp;35.</span></label>
             </div>
@@ -150,11 +150,11 @@
             <label for="sas">Temps visé</label>
             <select id="sas" name="sas">
               <optgroup label="5 km">
-                <option value="C1" data-distance="5">30 à 50 min, marche rapide comprise · sas C1, départ 10 h 30</option>
+                <option value="C1" data-distance="5">30 min et plus, marche rapide comprise · sas C1, départ 10 h 30</option>
                 <option value="C2" data-distance="5">Moins de 30 min · sas C2, départ 10 h 45</option>
               </optgroup>
               <optgroup label="10 km">
-                <option value="D1" data-distance="10">1 h 05 à 1 h 25 · sas D1, départ 9 h 55</option>
+                <option value="D1" data-distance="10">1 h 05 et plus · sas D1, départ 9 h 55</option>
                 <option value="D2" data-distance="10" selected>45 min à 1 h 05 · sas D2, départ 10 h 15</option>
                 <option value="D3" data-distance="10">Moins de 45 min · sas D3, départ 10 h 25</option>
               </optgroup>
@@ -203,7 +203,7 @@
         </div>
 
         <div class="champ" style="margin-bottom:28px">
-          <p class="aide">Votre dossard apparaît dans l'app R.O.I dès la création du compte. Vos coordonnées n'y sont jamais visibles des autres participants.</p>
+          <p class="aide">Votre dossard apparaît dans l'app R.O.I dès l'envoi de la demande. Vos coordonnées n'y sont jamais visibles des autres participants.</p>
         </div>
 
         <div class="form-pied">
@@ -233,7 +233,7 @@
         </span>
       </div>
       <p class="dossard-legende">Le verso du dossard&nbsp;: <b>ce que les autres participants liront après la ligne.</b> Le numéro et la puce de chronométrage sont au recto.</p>
-      <p class="dossard-legende">Il se remplit pendant la saisie et reste modifiable depuis votre espace jusqu'au jour de l'événement.</p>
+      <p class="dossard-legende">Il se remplit pendant la saisie et reste modifiable depuis votre espace jusqu'à quinze jours avant la course, date d'impression des dossards.</p>
     </aside>
 
   </div>

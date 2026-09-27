@@ -368,7 +368,7 @@
           b.parentNode.replaceWith(ok); ok.focus();
         } else {
           ligne.hidden = true;
-          note(demo.querySelector('[data-tl-marc-note]'), "Créneau décliné. Marc voit seulement que le créneau n'est plus disponible.");
+          note(demo.querySelector('[data-tl-marc-note]'), "Proposition laissée à expirer. Marc voit seulement que le créneau n'est plus disponible.");
         }
       });
     });
