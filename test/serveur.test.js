@@ -189,6 +189,26 @@ function appel(base, methode, chemin, corps, cookie) {
     }
     assert.equal(dernier, 429);
   });
+  await t('POST /api/signalement enregistre, CORS ouvert, et refuse un corps vide', async function () {
+    const r = await appel(base, 'POST', '/api/signalement', { name: 'Marc Dubois', motif: 'Spam ou démarchage', reference: reference });
+    assert.equal(r.status, 200);
+    assert.equal(r.headers.get('access-control-allow-origin'), '*');
+    assert.equal((await appel(base, 'POST', '/api/signalement', { name: '' })).status, 400);
+    assert.equal((await appel(base, 'GET', '/api/signalement')).status, 405);
+  });
+  await t('POST /api/compte/suppression : mauvais e-mail → 404, rien n\'est supprimé', async function () {
+    const r = await appel(base, 'POST', '/api/compte/suppression', { reference: reference, email: 'autre@exemple.fr' });
+    assert.equal(r.status, 404);
+    const b = JSON.parse(fs.readFileSync(path.join(process.env.ROI_DATA_DIR, 'comptes.json'), 'utf8'));
+    assert.equal(b.comptes.length, 1);
+  });
+  await t('POST /api/compte/suppression : dossier non payé → supprimé, plus lisible par le pont', async function () {
+    const r = await appel(base, 'POST', '/api/compte/suppression', { reference: reference, email: email });
+    assert.equal(r.status, 200);
+    const b = JSON.parse(fs.readFileSync(path.join(process.env.ROI_DATA_DIR, 'comptes.json'), 'utf8'));
+    assert.equal(b.comptes.length, 0);
+    assert.equal(b.signalements.length, 1);
+  });
   await t('route inconnue → 404 JSON', async function () {
     const r = await appel(base, 'GET', '/api/rien');
     assert.equal(r.status, 404);

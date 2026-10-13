@@ -43,6 +43,7 @@ function charge() {
   base.suite = base.suite || 1001;
   base.comptes = base.comptes || [];
   base.sessions = base.sessions || {};
+  base.signalements = base.signalements || [];
   return base;
 }
 function sauve() {
@@ -104,14 +105,16 @@ function compteCourant(req) {
 
 /* ---- Garde-fou sur la connexion et la lecture du dossier : 10 essais / minute / IP ---- */
 const essais = new Map();
-function tropDEssais(req) {
+function tropDEssais(req, carte, max) {
+  carte = carte || essais;
   const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim();
   const now = Date.now();
-  const l = (essais.get(ip) || []).filter(function (t) { return now - t < 60000; });
+  const l = (carte.get(ip) || []).filter(function (t) { return now - t < 60000; });
   l.push(now);
-  essais.set(ip, l);
-  return l.length > 10;
+  carte.set(ip, l);
+  return l.length > (max || 10);
 }
+const essaisApp = new Map();
 
 /* ---- Utilitaires HTTP ---- */
 function json(res, code, corps, req) {
@@ -297,6 +300,57 @@ async function api(req, res, url) {
     // Même message que la référence ou l'e-mail soit faux : on n'énumère pas.
     if (!c) { return json(res, 404, { erreur: 'Aucun dossier avec cette référence et cet e-mail.' }, req); }
     return json(res, 200, { dossier: publieDossier(c) }, req);
+  }
+
+  /* ---- Ce que les stores exigent de l'app (App Store 1.2 et 5.1.1(v), Google Play) ----
+     L'app mobile n'a pas de cookie : elle s'identifie comme pour /api/dossier,
+     par référence + e-mail. Deux écritures, donc POST seulement et limite plus
+     serrée (5 par minute et par IP). */
+  if (url.pathname === '/api/compte/suppression' || url.pathname === '/api/signalement') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Vary', 'Origin');
+    if (req.method === 'OPTIONS') {
+      res.writeHead(204, { 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400' });
+      return res.end();
+    }
+    if (req.method !== 'POST') {
+      res.setHeader('Allow', 'POST, OPTIONS');
+      return json(res, 405, { erreur: 'Méthode non autorisée.' }, req);
+    }
+    if (tropDEssais(req, essaisApp, 5)) { return json(res, 429, { erreur: 'Trop d\'essais. Réessayez dans une minute.' }, req); }
+    let d; try { d = await litCorps(req); } catch (e) { return json(res, 400, { erreur: 'Requête illisible.' }, req); }
+    const b = charge();
+
+    if (url.pathname === '/api/signalement') {
+      const name = texte(d.name, 80), motif = texte(d.motif, 80);
+      if (!name || !motif) { return json(res, 400, { erreur: 'Nom et motif requis.' }, req); }
+      b.signalements.push({
+        name: name, motif: motif, detail: texte(d.detail, 500),
+        reference: texte(d.reference, 20).toUpperCase(), date: new Date().toISOString()
+      });
+      if (b.signalements.length > 5000) { b.signalements.splice(0, b.signalements.length - 5000); }
+      sauve();
+      return json(res, 200, { ok: true }, req);
+    }
+
+    const reference = texte(d.reference, 20).toUpperCase();
+    const email = texte(d.email, 160).toLowerCase();
+    if (!reference || !email) { return json(res, 400, { erreur: 'Référence et e-mail requis.' }, req); }
+    const c = b.comptes.find(function (x) { return String(x.reference).toUpperCase() === reference && x.email === email; });
+    if (!c) { return json(res, 404, { erreur: 'Aucun dossier avec cette référence et cet e-mail.' }, req); }
+    Object.keys(b.sessions).forEach(function (k) { if (b.sessions[k].id === c.id) { delete b.sessions[k]; } });
+    if (c.etat === 'paye') {
+      // Une inscription payée reste une pièce comptable : on garde la référence et le montant dû,
+      // on efface tout ce qui identifie la personne.
+      Object.assign(c, {
+        email: 'supprime-' + c.id + '@invalid', mdp: '', prenom: 'Compte', nom: 'supprimé',
+        fonction: '', entreprise: '', siren: '', supprime: new Date().toISOString(), maj: new Date().toISOString()
+      });
+    } else {
+      b.comptes.splice(b.comptes.indexOf(c), 1);
+    }
+    sauve();
+    return json(res, 200, { ok: true }, req);
   }
 
   return json(res, 404, { erreur: 'Route inconnue.' });
